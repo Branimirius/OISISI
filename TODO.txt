@@ -1,0 +1,4 @@
+BANE: #meni_bar
+      #status_bar
+FILIP: #glavni_prozor
+       #toolbar
