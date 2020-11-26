@@ -1,4 +1,4 @@
 BANE: #meni_bar
       #status_bar
-FILIP:
+FILIP: #glavni_ekran DONE
        #toolbar
