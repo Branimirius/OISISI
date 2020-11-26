@@ -1,4 +1,4 @@
-BANE: #meni_bar
-      #status_bar
+BANE: #meni_bar DONE
+      #status_bar COMING SOON
 FILIP: #glavni_ekran DONE
        #toolbar
