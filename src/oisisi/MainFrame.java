@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-
+//odkomentarisi ovo ispod
+//import javax.swing.JMenuBar;
+import javax.swing.JToolBar;
+import java.awt.BorderLayout;
 
 
 public class MainFrame extends JFrame{
@@ -27,6 +30,15 @@ public class MainFrame extends JFrame{
 		int screenWidth = screenSize.width*3/4;
 	
 		setSize(screenWidth, screenHeight);
+		
+		//odkomentarisi ovo ispod
+		//JMenuBar menuBar = new MyMenuBar(); 
+		JToolBar toolbar = new MyToolbar();
+		
+		//odkomentarisi ovo ispod
+		//setJMenuBar(menuBar); 
+		add(toolbar, BorderLayout.NORTH);
+		
 		
 		//centriranje prilikom otvaranja
 		setLocationRelativeTo(null);
