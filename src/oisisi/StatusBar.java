@@ -28,10 +28,10 @@ public class StatusBar extends JPanel{
 		
 		int screenWidth = screenSize.width*3/4;
 		
-			JLabel statusLabel = new JLabel("  Studentska služba", JLabel.LEFT);
+			JLabel statusLabel = new JLabel("   Studentska služba", JLabel.LEFT);
 			
 			Date date = new Date(); // Ovaj objekat sadrzi trenutni datum
-			SimpleDateFormat formatter = new SimpleDateFormat("HH:mm  dd.MM.yyyy.");
+			SimpleDateFormat formatter = new SimpleDateFormat("HH:mm  dd.MM.yyyy.   ");
 			JLabel datetimeLabel = new JLabel(formatter.format(date),JLabel.RIGHT);
 				
 			
