@@ -21,6 +21,7 @@ public class StatusBar extends JPanel{
 	private static final long serialVersionUID = 2824424565433334923L;
 
 	public StatusBar() {
+		setLayout(new BorderLayout());
 		
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
