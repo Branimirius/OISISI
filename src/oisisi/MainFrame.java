@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
+import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import java.awt.BorderLayout;
 
@@ -36,11 +37,12 @@ public class MainFrame extends JFrame{
 	
 		JMenuBar menuBar = new MenuBar(); 
 		JToolBar toolbar = new MyToolbar();
+		JPanel statusBar = new StatusBar();
 		
-		
+			
 		setJMenuBar(menuBar); 
 		add(toolbar, BorderLayout.NORTH);
-		
+		add(statusBar, BorderLayout.SOUTH);	
 		
 		
 		
