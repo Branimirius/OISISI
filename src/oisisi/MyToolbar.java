@@ -1,12 +1,14 @@
 package oisisi;
 
+
+
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Color;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
@@ -20,42 +22,44 @@ public class MyToolbar extends JToolBar {
 
 	public MyToolbar() {
 		
-		addSeparator();
+		setLayout(new BorderLayout());
+		
+		JPanel panel1 = new JPanel();
+		add(panel1,BorderLayout.WEST);
 		
 		JButton btnNew = new JButton(new ImageIcon("images_mc/crafting_table.png"));
 		btnNew.setToolTipText("New");
 		btnNew.setBorder(BorderFactory.createEmptyBorder());
-		add(btnNew);
-		
-		addSeparator();
-				
+		btnNew.setRolloverIcon(new ImageIcon("images_mc/crafting_table_top.png"));
+		btnNew.setRolloverEnabled(true);
+		panel1.add(btnNew);
+			
 		JButton btnEdit = new JButton(new ImageIcon("images_mc/anvil.png"));
 		btnEdit.setToolTipText("Edit");
 		btnEdit.setBorder(BorderFactory.createEmptyBorder());
-		add(btnEdit);
-		
-		addSeparator();
-		
+		panel1.add(btnEdit);
+
 		JButton btnDelete = new JButton(new ImageIcon("images_mc/unlit_furnance.png"));
 		btnDelete.setToolTipText("Delete");
 		btnDelete.setBorder(BorderFactory.createEmptyBorder());
 		btnDelete.setRolloverIcon(new ImageIcon("images_mc/furnance.png"));
 		btnDelete.setRolloverEnabled(true);
-		add(btnDelete);
-		
-		addSeparator();
+		panel1.add(btnDelete);
 		
 		setFloatable(false);
 		
-		add(Box.createHorizontalGlue());
-		//add(new JToolBar.Separator(new Dimension(15,10)));
+		JPanel panel2 = new JPanel();
+		add(panel2,BorderLayout.EAST);
+		panel2.setBorder(BorderFactory.createEmptyBorder());
 		
-		JTextField field = new JTextField();
-		add(field);
+		JTextField field = new JTextField(12);
+		field.setBorder(BorderFactory.createBevelBorder(1));
+		//field.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.BLACK));
+		panel2.add(field);
 		
 		JButton btnSearch=new JButton(new ImageIcon("images_mc/search.png"));
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBorder(BorderFactory.createEmptyBorder());
-		add(btnSearch);
+		panel2.add(btnSearch);
 	}
 }
