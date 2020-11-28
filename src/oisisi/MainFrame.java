@@ -3,7 +3,7 @@ package oisisi;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -32,9 +32,11 @@ public class MainFrame extends JFrame{
 		setSize(screenWidth, screenHeight);
 		
 		//centriranje prilikom otvaranja
-				setLocationRelativeTo(null);
+		setLocationRelativeTo(null);
 		
-	
+		ImageIcon icon = new ImageIcon("images_mc/icon.png");
+		setIconImage(icon.getImage());
+				
 		JMenuBar menuBar = new MenuBar(); 
 		JToolBar toolbar = new MyToolbar();
 		JPanel statusBar = new StatusBar();
