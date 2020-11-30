@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+import javax.swing.border.LineBorder;
 
 
 public class MyToolbar extends JToolBar {
@@ -23,6 +24,9 @@ public class MyToolbar extends JToolBar {
 	public MyToolbar() {
 		
 		setLayout(new BorderLayout());
+		
+		setBorder(new LineBorder(Color.BLACK));
+		//setBorder(BorderFactory.createBevelBorder(1));
 		
 		JPanel panel1 = new JPanel();
 		add(panel1,BorderLayout.WEST);
