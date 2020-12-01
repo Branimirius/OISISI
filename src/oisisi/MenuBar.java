@@ -8,10 +8,13 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 
 
-public class MenuBar extends JMenuBar {
+public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
 
 	
 	
@@ -60,12 +63,33 @@ public class MenuBar extends JMenuBar {
 			KeyStroke keyStrokeToHelp
 				= KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_DOWN_MASK);
 			miHelp.setAccelerator(keyStrokeToHelp);
+			miHelp.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					HATextArea helpText = new HATextArea();
+					helpText.setTitle(" You stuck? ");
+				}
+			});
+			
 			
 		JMenuItem miAbout = new JMenuItem("About  ");
 			miAbout.setIcon(new ImageIcon("images_mc/sign.png"));
 			KeyStroke keyStrokeToAbout
 				= KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK);
 			miAbout.setAccelerator(keyStrokeToAbout);
+			miAbout.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					AATextArea aboutText = new AATextArea();
+					aboutText.setTitle(" About info ");
+					
+				}
+			});
+		
 		
 		edit.add(miEdit);
 		edit.addSeparator();
@@ -79,6 +103,22 @@ public class MenuBar extends JMenuBar {
 		add(edit);
 		add(help);
 
+	}
+
+	
+	
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
