@@ -44,9 +44,9 @@ public class MainFrame extends JFrame{
 		
 		//work in poggers	
 		JPanel panel_todo = new JPanel();
-		add(panel_todo,BorderLayout.PAGE_END);
-		panel_todo.setPreferredSize(new Dimension(500, 200));
-		JLabel label = new JLabel("WORK IN PROGRESS");
+		add(panel_todo,BorderLayout.CENTER);
+		JLabel label = new JLabel("             WORK IN PROGRESS");
+		label.setPreferredSize(new Dimension(200, 100));
 		label.setBorder(new LineBorder(Color.BLACK));
 	    panel_todo.add(label);
 		// work in poggers
@@ -57,7 +57,7 @@ public class MainFrame extends JFrame{
 		
 			
 		setJMenuBar(menuBar); 
-		getContentPane().add(toolbar, BorderLayout.NORTH);
+	    getContentPane().add(toolbar, BorderLayout.NORTH);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);	
 		
 		
