@@ -2,6 +2,7 @@ package oisisi;
 
 import java.awt.BorderLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
@@ -22,10 +23,12 @@ public class HATextArea extends JFrame{
     //setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	 setVisible(true);
 	 
+	ImageIcon icon = new ImageIcon("images_mc/map.png");
+	setIconImage(icon.getImage());
 	 
 	 //panel za prikaz JTextArea
 	 
-	 JTextArea textArea=new JTextArea("pomocicemo vam \n  Pomocicemo Vam \n\n\n\n\n EEEVO momenat samo ",10,30);
+	 JTextArea textArea=new JTextArea(" pomocicemo vam \n Pomocicemo Vam \n . \n . \n . \n . \n EEEVO momenat samo ",10,30);
 	 textArea.setLineWrap(true);
 	 textArea.setEditable(false);
 
