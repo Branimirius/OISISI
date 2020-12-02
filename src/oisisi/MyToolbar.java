@@ -4,6 +4,10 @@ package oisisi;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,7 +18,7 @@ import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
 
 
-public class MyToolbar extends JToolBar {
+public class MyToolbar extends JToolBar implements ActionListener, ItemListener {
 
 	/**
 	 * 
@@ -36,11 +40,23 @@ public class MyToolbar extends JToolBar {
 		btnNew.setBorder(BorderFactory.createEmptyBorder());
 		btnNew.setRolloverIcon(new ImageIcon("images_mc/crafting_table_top.png"));
 		btnNew.setRolloverEnabled(true);
+		btnNew.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub	
+			}
+		});
 		panel1.add(btnNew);
 			
 		JButton btnEdit = new JButton(new ImageIcon("images_mc/anvil.png"));
 		btnEdit.setToolTipText("Edit");
 		btnEdit.setBorder(BorderFactory.createEmptyBorder());
+		btnEdit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub	
+			}
+		});
 		panel1.add(btnEdit);
 
 		JButton btnDelete = new JButton(new ImageIcon("images_mc/unlit_furnance.png"));
@@ -48,6 +64,12 @@ public class MyToolbar extends JToolBar {
 		btnDelete.setBorder(BorderFactory.createEmptyBorder());
 		btnDelete.setRolloverIcon(new ImageIcon("images_mc/furnance.png"));
 		btnDelete.setRolloverEnabled(true);
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub					
+			}
+		});
 		panel1.add(btnDelete);
 		
 		setFloatable(false);
@@ -64,6 +86,24 @@ public class MyToolbar extends JToolBar {
 		JButton btnSearch=new JButton(new ImageIcon("images_mc/search.png"));
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBorder(BorderFactory.createEmptyBorder());
+		btnSearch.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub	
+				AATextArea aboutText = new AATextArea();
+				aboutText.setTitle(" TEST DA LI RADI ACTION_LISTENER ");
+			}
+		});
 		panel2.add(btnSearch);
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 	}
 }
