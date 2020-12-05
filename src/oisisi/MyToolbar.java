@@ -12,10 +12,12 @@ import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
+
 
 
 public class MyToolbar extends JToolBar implements ActionListener, ItemListener {
@@ -40,10 +42,11 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		btnNew.setBorder(BorderFactory.createEmptyBorder());
 		btnNew.setRolloverIcon(new ImageIcon("images_mc/crafting_table_top.png"));
 		btnNew.setRolloverEnabled(true);
+		btnNew.setMnemonic('N');
 		btnNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub	
+				JOptionPane.showMessageDialog(null, ("TEST"));	
 			}
 		});
 		panel1.add(btnNew);
@@ -51,10 +54,11 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		JButton btnEdit = new JButton(new ImageIcon("images_mc/anvil.png"));
 		btnEdit.setToolTipText("Edit");
 		btnEdit.setBorder(BorderFactory.createEmptyBorder());
+		btnEdit.setMnemonic('E');
 		btnEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub	
+				JOptionPane.showMessageDialog(null, ("TEST TEST"));
 			}
 		});
 		panel1.add(btnEdit);
@@ -64,10 +68,11 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		btnDelete.setBorder(BorderFactory.createEmptyBorder());
 		btnDelete.setRolloverIcon(new ImageIcon("images_mc/furnance.png"));
 		btnDelete.setRolloverEnabled(true);
+		btnDelete.setMnemonic('D');
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub					
+				JOptionPane.showMessageDialog(null, ("TEST TEST TEST"));				
 			}
 		});
 		panel1.add(btnDelete);
@@ -86,12 +91,11 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		JButton btnSearch=new JButton(new ImageIcon("images_mc/search.png"));
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBorder(BorderFactory.createEmptyBorder());
+		btnSearch.setMnemonic('S');
 		btnSearch.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub	
-				AATextArea aboutText = new AATextArea();
-				aboutText.setTitle(" TEST DA LI RADI ACTION_LISTENER ");
+				JOptionPane.showMessageDialog(null, ("TEST TEST TEST TEST"));
 			}
 		});
 		panel2.add(btnSearch);
