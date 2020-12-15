@@ -37,7 +37,7 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		JPanel panel1 = new JPanel();
 		add(panel1,BorderLayout.WEST);
 		
-		JButton btnNew = new JButton(new ImageIcon("images_mc/crafting_table.png"));
+		JButton btnNew = new JButton(new ImageIcon("Images_mc/crafting_table.png"));
 		btnNew.setToolTipText("New");
 		btnNew.setBorder(BorderFactory.createEmptyBorder());
 		btnNew.setRolloverIcon(new ImageIcon("images_mc/crafting_table_top.png"));
@@ -51,7 +51,7 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		});
 		panel1.add(btnNew);
 			
-		JButton btnEdit = new JButton(new ImageIcon("images_mc/anvil.png"));
+		JButton btnEdit = new JButton(new ImageIcon("Images_mc/anvil.png"));
 		btnEdit.setToolTipText("Edit");
 		btnEdit.setBorder(BorderFactory.createEmptyBorder());
 		btnEdit.setMnemonic('E');
@@ -63,7 +63,7 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		});
 		panel1.add(btnEdit);
 
-		JButton btnDelete = new JButton(new ImageIcon("images_mc/unlit_furnance.png"));
+		JButton btnDelete = new JButton(new ImageIcon("Images_mc/unlit_furnance.png"));
 		btnDelete.setToolTipText("Delete");
 		btnDelete.setBorder(BorderFactory.createEmptyBorder());
 		btnDelete.setRolloverIcon(new ImageIcon("images_mc/furnance.png"));
@@ -88,7 +88,7 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		//field.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.BLACK));
 		panel2.add(field);
 		
-		JButton btnSearch=new JButton(new ImageIcon("images_mc/search.png"));
+		JButton btnSearch=new JButton(new ImageIcon("Images_mc/search.png"));
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBorder(BorderFactory.createEmptyBorder());
 		btnSearch.setMnemonic('S');
