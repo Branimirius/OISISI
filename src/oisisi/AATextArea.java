@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import javax.swing.WindowConstants;
 import javax.swing.JScrollPane;
 
 

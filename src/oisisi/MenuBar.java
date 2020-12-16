@@ -25,14 +25,14 @@ public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
 		JMenu file = new JMenu("File");
 		
 		JMenuItem miNew = new JMenuItem("New  ");
-		miNew.setIcon(new ImageIcon("images_mc/bookandquill.png"));
+		miNew.setIcon(new ImageIcon("Images_mc/bookandquill.png"));
 			KeyStroke keyStrokeToNew
 				= KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK);
 			miNew.setAccelerator(keyStrokeToNew);
 		
 		
 		JMenuItem miClose = new JMenuItem("Close  ");
-		miClose.setIcon(new ImageIcon("images_mc/closed_book22.png"));
+		miClose.setIcon(new ImageIcon("Images_mc/closed_book22.png"));
 			KeyStroke keyStrokeToClose
 				= KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_DOWN_MASK);
 			miClose.setAccelerator(keyStrokeToClose);
@@ -45,13 +45,13 @@ public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
 
 		JMenu edit = new JMenu("Edit");
 		JMenuItem miEdit = new JMenuItem("Edit  ");
-			miEdit.setIcon(new ImageIcon("images_mc/anvil.png"));
+			miEdit.setIcon(new ImageIcon("Images_mc/anvil.png"));
 			KeyStroke keyStrokeToEdit
 				= KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_DOWN_MASK);
 			miEdit.setAccelerator(keyStrokeToEdit);
 			
 		JMenuItem miDelete = new JMenuItem("Delete  ");
-			miDelete.setIcon(new ImageIcon("images_mc/unlit_furnance.png"));
+			miDelete.setIcon(new ImageIcon("Images_mc/unlit_furnance.png"));
 			KeyStroke keyStrokeToDelete
 				= KeyStroke.getKeyStroke(KeyEvent.VK_D, KeyEvent.CTRL_DOWN_MASK);
 			miDelete.setAccelerator(keyStrokeToDelete);
@@ -59,7 +59,7 @@ public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
 		
 		JMenu help = new JMenu("Help");
 		JMenuItem miHelp = new JMenuItem("Help  ");
-		miHelp.setIcon(new ImageIcon("images_mc/map.png"));
+		miHelp.setIcon(new ImageIcon("Images_mc/map.png"));
 			KeyStroke keyStrokeToHelp
 				= KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_DOWN_MASK);
 			miHelp.setAccelerator(keyStrokeToHelp);
@@ -75,7 +75,7 @@ public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
 			
 			
 		JMenuItem miAbout = new JMenuItem("About  ");
-			miAbout.setIcon(new ImageIcon("images_mc/sign.png"));
+			miAbout.setIcon(new ImageIcon("Images_mc/sign.png"));
 			KeyStroke keyStrokeToAbout
 				= KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK);
 			miAbout.setAccelerator(keyStrokeToAbout);
