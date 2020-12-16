@@ -39,7 +39,7 @@ public class MainFrame extends JFrame{
 		//centriranje prilikom otvaranja
 		setLocationRelativeTo(null);
 		
-		ImageIcon icon = new ImageIcon("images_mc/icon.png");
+		ImageIcon icon = new ImageIcon("Images_mc/icon.png");
 		setIconImage(icon.getImage());
 		
 		//work in poggers	
