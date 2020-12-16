@@ -1,0 +1,1 @@
+vamo napisi sta vec bude trebalo
