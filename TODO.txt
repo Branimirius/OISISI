@@ -2,3 +2,15 @@ BANE: #meni_bar DONE
       #status_bar DONE	
 FILIP: #glavni_ekran DONE
        #toolbar DONE
+-----------------------------
+BANE: #student
+      #ocena
+      #prikaz_studenata
+      #dodavanje_studenta
+FILIP: #profesor
+       #predmet
+       #prikaz_profesora
+       #dodavanje_profesora
+-----------------------------
+
+
