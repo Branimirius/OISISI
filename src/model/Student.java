@@ -1,8 +1,10 @@
 package model;
 
-enum status {B,S};
+ enum Status {B,S};
 
 public class Student {
+	
+	
 	private String prezime;
 	private String ime;
 	private String datumRodjenja;
@@ -12,11 +14,11 @@ public class Student {
 	private String brIndeksa;
 	private Integer godUpisa;
 	private Integer godStudija;
-	private status statusStudenta;
+	private Status statusStudenta;
 	private double prosecnaOcena;
 	
 	public Student(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
-			String eMail, String brIndeksa, Integer godUpisa, Integer godStudija, status statusStudenta,
+			String eMail, String brIndeksa, Integer godUpisa, Integer godStudija, Status statusStudenta,
 			double prosecnaOcena) {
 		super();
 		this.prezime = prezime;
@@ -104,11 +106,11 @@ public class Student {
 		this.godStudija = godStudija;
 	}
 
-	public status getStatusStudenta() {
+	public Status getStatusStudenta() {
 		return statusStudenta;
 	}
 
-	public void setStatusStudenta(status statusStudenta) {
+	public void setStatusStudenta(Status statusStudenta) {
 		this.statusStudenta = statusStudenta;
 	}
 

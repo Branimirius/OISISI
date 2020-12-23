@@ -22,27 +22,39 @@ public class BazaStudenata {
 		initStudente();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("PREZIME");
-		this.kolone.add("IME");
-		this.kolone.add("DATUM RODJENJA");
-		this.kolone.add("ADRESA STANOVANJA");
-		this.kolone.add("KONTAKT TELEFON");
-		this.kolone.add("EMAIL ADRESA");
 		this.kolone.add("BROJ INDEKSA");
-		this.kolone.add("GODINA UPISA");
+		this.kolone.add("IME");
+		this.kolone.add("PREZIME");
 		this.kolone.add("GODINA STUDIJA");
 		this.kolone.add("STATUS");
 		this.kolone.add("PROSEK");
+		/*
+	 	this.kolone.add("DATUM RODJENJA");
+		this.kolone.add("ADRESA STANOVANJA");
+		this.kolone.add("KONTAKT TELEFON");
+		this.kolone.add("EMAIL ADRESA");
+		
+		this.kolone.add("GODINA UPISA");
+		*/
+		
+		
+		
 
 	}
 
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		/*
-		Studenti.add(new Profesor("Mikic", "Mika", "10.11.1999.", "Strazilovska 26", 062345623, "email@gmail.com", 498293, "title", "doktor" ));
-		Studenti.add(new Profesor("Zikic", "Zika", "23.04.1964.", ));
-		Studenti.add(new Profesor("Peric", "Pera", "14.05.1958.", ));
-		*/
+		
+		studenti.add(new Student("prezime", "ime", "datumRodjenja", "adresaStana", "kontaktTel",
+				"eMail", "brIndeksa", 1678, 4567, Status.B,
+				9.78 ));
+		studenti.add(new Student("prezime", "ime", "datumRodjenja", "adresaStana", "kontaktTel",
+				"eMail", "brIndeksa", 4567, 342, Status.S,
+				8.78 ));
+		studenti.add(new Student("prezime", "ime", "datumRodjenja", "adresaStana", "kontaktTel",
+				"eMail", "brIndeksa", 3234, 3434, Status.S,
+				7.78 ));
+		
 	}
 
 	public List<Student> getStudenti() {
@@ -54,7 +66,7 @@ public class BazaStudenata {
 	}
 
 	public int getColumnCount() {
-		return 11;
+		return 6;
 	}
 
 	public String getColumnName(int index) {
@@ -91,7 +103,7 @@ public class BazaStudenata {
 		case 9:
 			return Integer.toString(student.getGodUpisa());
 		case 10:
-			return (student.getStatusStudenta() == status.B) ? "B" : "S";
+			return (student.getStatusStudenta() == Status.B) ? "B" : "S";
 		case 11:
 			return Double.toString(student.getProsecnaOcena());
 		default:
@@ -101,7 +113,7 @@ public class BazaStudenata {
 	} 
 
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
-			String eMail, String brIndeksa, Integer godUpisa, Integer godStudija, status statusStudenta,
+			String eMail, String brIndeksa, Integer godUpisa, Integer godStudija, Status statusStudenta,
 			double prosecnaOcena) {
 		this.studenti.add(new Student(prezime, ime, datumRodjenja, adresaStana, kontaktTel, eMail, brIndeksa, godUpisa, godStudija, statusStudenta,
 				prosecnaOcena));

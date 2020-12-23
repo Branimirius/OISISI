@@ -46,8 +46,9 @@ public class MainFrame extends JFrame{
 		JToolBar toolbar = new MyToolbar();
 		JPanel statusBar = new StatusBar();
 		Tab tab = new Tab();
+		tab.tabelaStudenti.setPreferredSize(new Dimension(screenWidth - 30, screenHeight));
+		tab.scrollStudenti.setPreferredSize(new Dimension(screenWidth - 30, screenHeight));
 		
-			
 		setJMenuBar(menuBar); 
 	    getContentPane().add(toolbar, BorderLayout.NORTH);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
