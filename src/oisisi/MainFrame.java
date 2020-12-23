@@ -14,10 +14,10 @@ import javax.swing.border.LineBorder;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JTabbedPane;
 
 
 public class MainFrame extends JFrame{
-	
 	
 	/**
 	 * 
@@ -27,7 +27,7 @@ public class MainFrame extends JFrame{
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("NAJBOLJA STUDENTSKA SLUZBA EU :D");
-		setLayout(new BorderLayout());
+		getContentPane().setLayout(new BorderLayout());
 		
 		//scalujemo velicinu prozora u odnosu na screensize
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -41,27 +41,18 @@ public class MainFrame extends JFrame{
 		
 		ImageIcon icon = new ImageIcon("Images_mc/icon.png");
 		setIconImage(icon.getImage());
-		
-		//work in poggers	
-		JPanel panel_todo = new JPanel();
-		add(panel_todo,BorderLayout.CENTER);
-		JLabel label = new JLabel("             WORK IN PROGRESS");
-		label.setPreferredSize(new Dimension(200, 100));
-		label.setBorder(new LineBorder(Color.BLACK));
-	    panel_todo.add(label);
-		// work in poggers
 	    
 		JMenuBar menuBar = new MenuBar(); 
 		JToolBar toolbar = new MyToolbar();
 		JPanel statusBar = new StatusBar();
+		Tab tab = new Tab();
 		
 			
 		setJMenuBar(menuBar); 
 	    getContentPane().add(toolbar, BorderLayout.NORTH);
-		getContentPane().add(statusBar, BorderLayout.SOUTH);	
-		
-		
-		
+		getContentPane().add(statusBar, BorderLayout.SOUTH);
+		add(tab,BorderLayout.CENTER);
+
 	}
 	
 	
