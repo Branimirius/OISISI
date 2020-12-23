@@ -13,14 +13,14 @@ public class Profesor {
      private Integer broj_licne_karte;
      private String titula;
      private String zvanje;
-     //private List<Predmet> lista_predmeta;
+     private List<Predmet> lista_predmeta;
 	
      
      public Profesor() {}
 
 	public Profesor(String prezime, String ime, String datum_rodjenja, String adresa_stanovanja,
-			Integer kontakt_telefon, String email_adresa, Integer broj_licne_karte, String titula, String zvanje
-		) {
+			Integer kontakt_telefon, String email_adresa, Integer broj_licne_karte, String titula, String zvanje,
+			List<Predmet> lista_predmeta) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
@@ -31,7 +31,7 @@ public class Profesor {
 		this.broj_licne_karte = broj_licne_karte;
 		this.titula = titula;
 		this.zvanje = zvanje;
-		//this.lista_predmeta = lista_predmeta;
+		this.lista_predmeta = lista_predmeta;
 	}
      
 	public String getPrezime() {
