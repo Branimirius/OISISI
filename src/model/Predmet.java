@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-enum Semestar{letnji, zimski};
+enum Semestar{ZIMSKI, LETNJI};
 
 public class Predmet {
 
@@ -12,14 +12,14 @@ public class Predmet {
 	private Integer godina_izvodjenja;
 	private Profesor predmetni_profesor;
 	private Integer broj_espb_bodova;
-	private list<Student> lista_polozili;
-	private list<Student> lista_nisu_polozili;
+	private List<Student> lista_polozili;
+	private List<Student> lista_nisu_polozili;
 	
 	public Predmet() {}
 	
 	public Predmet(long id_predmeta, String naziv_predmeta, Semestar semestar, Integer godina_izvodjenja,
-			Profesor predmetni_profesor, Integer broj_espb_bodova, list<Student> lista_polozili,
-			list<Student> lista_nisu_polozili) {
+			Profesor predmetni_profesor, Integer broj_espb_bodova, List<Student> list_polozili,
+			List<Student> list_nisu_polozili) {
 		super();
 		this.id_predmeta = id_predmeta;
 		this.naziv_predmeta = naziv_predmeta;
@@ -27,8 +27,8 @@ public class Predmet {
 		this.godina_izvodjenja = godina_izvodjenja;
 		this.predmetni_profesor = predmetni_profesor;
 		this.broj_espb_bodova = broj_espb_bodova;
-		this.lista_polozili = lista_polozili;
-		this.lista_nisu_polozili = lista_nisu_polozili;
+		this.lista_polozili = list_polozili;
+		this.lista_nisu_polozili = list_nisu_polozili;
 	}
 
 	public long getId_predmeta() {
@@ -79,20 +79,20 @@ public class Predmet {
 		this.broj_espb_bodova = broj_espb_bodova;
 	}
 
-	public list<Student> getLista_polozili() {
+	public List<Student> getList_polozili() {
 		return lista_polozili;
 	}
 
-	public void setLista_polozili(list<Student> lista_polozili) {
-		this.lista_polozili = lista_polozili;
+	public void setList_polozili(List<Student> list_polozili) {
+		this.lista_polozili = list_polozili;
 	}
 
-	public list<Student> getLista_nisu_polozili() {
+	public List<Student> getList_nisu_polozili() {
 		return lista_nisu_polozili;
 	}
 
-	public void setLista_nisu_polozili(list<Student> lista_nisu_polozili) {
-		this.lista_nisu_polozili = lista_nisu_polozili; 
+	public void setList_nisu_polozili(List<Student> list_nisu_polozili) {
+		this.lista_nisu_polozili = list_nisu_polozili; 
 	}
 	
 }
