@@ -28,12 +28,13 @@ public class BazaPredmeta {
 		initPredmeta();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("ID");
+		this.kolone.add("SIFRA PREDMETA");
 		this.kolone.add("NAZIV PREDMETA");
-		this.kolone.add("SEMESTAR");
-		this.kolone.add("GODINA IZVODJENJA");
-		//this.kolone.add("PREDMETNI PROFESOR");
 		this.kolone.add("BROJ ESPB BODOVA");
+		this.kolone.add("GODINA IZVODJENJA");
+		this.kolone.add("SEMESTAR");
+
+		//this.kolone.add("PREDMETNI PROFESOR");
 		//this.kolone.add("LISTA STUDENATA KOJI SU POLOZILI");
 		//this.kolone.add("LISTA STUDENATA KOJI NISU POLOZILI");
 		
@@ -51,7 +52,10 @@ public class BazaPredmeta {
 		
 		this.predmeti = new ArrayList<Predmet>();
 		predmeti.add(new Predmet(generateId(), "OISISI", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
-	
+		predmeti.add(new Predmet(generateId(), "PROGRAMSKI PREVODIOCI", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
+		predmeti.add(new Predmet(generateId(), "METODE OPTIMIZACIJE", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
+		predmeti.add(new Predmet(generateId(), "NANS", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
+		predmeti.add(new Predmet(generateId(), "BAZE PODATAKA", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
 	}
 
 	public List<Predmet> getPredmeti() {
@@ -86,13 +90,13 @@ public class BazaPredmeta {
 		case 1:
 			return predmet.getNaziv_predmeta();
 		case 2:
-			return (predmet.getSemestar()== Semestar.LETNJI) ? "LETNJI" : "ZIMSKI";
+			return Integer.toString(predmet.getBroj_espb_bodova());
 		case 3:
 			return Integer.toString(predmet.getGodina_izvodjenja());
 		case 4:
-			return predmet.getPredmetni_profesor().getPrezime();
+			return (predmet.getSemestar()== Semestar.LETNJI) ? "LETNJI" : "ZIMSKI";
 		case 5:
-			return Integer.toString(predmet.getBroj_espb_bodova());
+			return predmet.getPredmetni_profesor().getPrezime();
 		case 6:
 			return null; //predmet.getLista_polozili
 		case 7:

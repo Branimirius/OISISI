@@ -3,7 +3,6 @@ package oisisi;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -30,7 +29,10 @@ public class Tab extends JTabbedPane{
 	ProfesorJTable tabelaProfesori = new ProfesorJTable();
 		JScrollPane scrollProfesori = new JScrollPane(tabelaProfesori);
 	
-	JLabel predmetLabel = new JLabel("Predmet");
+	//JLabel predmetLabel = new JLabel("Predmet");
+	PredmetJTable tabelaPredmeti = new PredmetJTable();
+		JScrollPane scrollPredmeti = new JScrollPane(tabelaPredmeti);
+	
 	
 	JTabbedPane tabbedPane = new JTabbedPane();
 	
@@ -41,7 +43,8 @@ public class Tab extends JTabbedPane{
 		profesorPanel.setLayout(new BorderLayout());
 		profesorPanel.add(scrollProfesori, BorderLayout.CENTER);
 		
-		predmetPanel.add(predmetLabel);
+		predmetPanel.setLayout(new BorderLayout());
+		predmetPanel.add(scrollPredmeti, BorderLayout.CENTER);
 		
 		add("Student", studentPanel);
 		add("Profesor", profesorPanel);

@@ -1,16 +1,58 @@
 BANE: #meni_bar DONE
       #status_bar DONE	
+      
 FILIP: #glavni_ekran DONE
        #toolbar DONE
------------------------------
+----------------------------------------------------------
 BANE: #student DONE
       #ocena DONE
       #prikaz_studenata DONE
       #dodavanje_studenta
+      
 FILIP: #profesor DONE
        #predmet DONE
-       #prikaz_profesora
+       #prikaz_profesora DONE
        #dodavanje_profesora
------------------------------
-
+----------------------------------------------------------
+BANE: #student DONE
+	  #ocena DONE
+	  #menu_bar DONE
+	  #status_bar DONE
+	  #prikaz_studenata DONE
+	  #dodavanje_studenta
+      #dodavanje_predmeta
+	  #izmena_studenta 
+	  #izmena_predmeta
+	  #brisanje_studenta
+	  #brisanje_profesora
+	  #prikaz_polozenih_ispita
+	  #dodavanje_predmeta_studentu
+	  #uklanjanje_studenta_sa_predmeta
+	  #ponistavanje_ocene	
+	  #pretraga_studenata
+	  #sortiranje_studenata
+	  #dodavanje_profesora_na_predmet
+	  #uklanjanje_predmeta_profesoru
+	  #deserijalizacija
+	  
+FILIP: #profesor DONE
+	   #predmet DONE
+	   #glavni_prozor DONE
+	   #toolbar DONE
+	   #prikaz_profesora DONE
+	   #prikaz_predmeta DONE
+	   #dodavanje_profesora
+	   #izmena_profesora
+	   #brisanje_predmeta
+	   #prikaz_nepolozenih_ispita
+	   #upis_ocene
+	   #pretraga_profesora
+	   #pretraga_predmeta
+	   #sortiranje_profesora
+	   #sortiranje_predmeta
+	   #profesor_predaje_predmete
+	   #dodavanja_predmeta_profesoru
+	   #uklanjanje_profesora_sa_predmeta
+	   #serijalizacija
+----------------------------------------------------------
 
