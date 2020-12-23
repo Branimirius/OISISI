@@ -42,7 +42,6 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		btnNew.setBorder(BorderFactory.createEmptyBorder());
 		btnNew.setRolloverIcon(new ImageIcon("Images_mc/crafting_table_top.png"));
 		btnNew.setRolloverEnabled(true);
-		btnNew.setMnemonic('N');
 		btnNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -54,7 +53,6 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		JButton btnEdit = new JButton(new ImageIcon("Images_mc/anvil.png"));
 		btnEdit.setToolTipText("Edit");
 		btnEdit.setBorder(BorderFactory.createEmptyBorder());
-		btnEdit.setMnemonic('E');
 		btnEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -68,7 +66,6 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		btnDelete.setBorder(BorderFactory.createEmptyBorder());
 		btnDelete.setRolloverIcon(new ImageIcon("Images_mc/furnance.png"));
 		btnDelete.setRolloverEnabled(true);
-		btnDelete.setMnemonic('D');
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -91,7 +88,6 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		JButton btnSearch=new JButton(new ImageIcon("Images_mc/search.png"));
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBorder(BorderFactory.createEmptyBorder());
-		btnSearch.setMnemonic('S');
 		btnSearch.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
