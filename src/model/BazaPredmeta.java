@@ -32,20 +32,20 @@ public class BazaPredmeta {
 		this.kolone.add("NAZIV PREDMETA");
 		this.kolone.add("SEMESTAR");
 		this.kolone.add("GODINA IZVODJENJA");
-		this.kolone.add("PREDMETNI PROFESOR");
+		//this.kolone.add("PREDMETNI PROFESOR");
 		this.kolone.add("BROJ ESPB BODOVA");
-		this.kolone.add("LISTA STUDENATA KOJI SU POLOZILI");
-		this.kolone.add("LISTA STUDENATA KOJI NISU POLOZILI");
+		//this.kolone.add("LISTA STUDENATA KOJI SU POLOZILI");
+		//this.kolone.add("LISTA STUDENATA KOJI NISU POLOZILI");
 		
 	}
 
 	private void initPredmeta() {
 		this.studenti_polozili = new ArrayList<Student>();
-		studenti_polozili.add(new Student("Pinjuh", "Filip", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, status.B, 7));
-		studenti_polozili.add(new Student("Bane", "Carina", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, status.B, 7));
+		studenti_polozili.add(new Student("Pinjuh", "Filip", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, Status.B, 7));
+		studenti_polozili.add(new Student("Bane", "Carina", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, Status.B, 7));
 		
 		this.studenti_nisu_polozili = new ArrayList<Student>();
-		studenti_polozili.add(new Student("Mihajlo", "Kisic", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, status.B, 7));
+		studenti_polozili.add(new Student("Mihajlo", "Kisic", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, Status.B, 7));
 		
 		this.profesor = new Profesor("Mikic", "Mika", "10.11.1999.", "Strazilovska 26", 062345623, "pajta@gmail.com", 498293, "doktor", "prof", predmeti);
 		
@@ -63,7 +63,7 @@ public class BazaPredmeta {
 	}
 
 	public int getColumnCount() {
-		return 8;
+		return 5;
 	}
 	
 	private long generateId() {
