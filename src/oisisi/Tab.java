@@ -2,7 +2,6 @@ package oisisi;
 
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,19 +19,28 @@ public class Tab extends JTabbedPane{
 	JPanel profesorPanel = new JPanel();
 	JPanel predmetPanel = new JPanel();
 	
+	//JLabel studentiLabel = new JLaberl("Student");
 	
 	StudentJTable tabelaStudenti = new StudentJTable();
 		JScrollPane scrollStudenti = new JScrollPane(tabelaStudenti);
 		
 		
-	JLabel profesorLabel = new JLabel("Profesor");
+	//JLabel profesorLabel = new JLabel("Profesor");
+		
+	ProfesorJTable tabelaProfesori = new ProfesorJTable();
+		JScrollPane scrollProfesori = new JScrollPane(tabelaProfesori);
+	
 	JLabel predmetLabel = new JLabel("Predmet");
 	
 	JTabbedPane tabbedPane = new JTabbedPane();
 	
 	public Tab() {
+		studentPanel.setLayout(new BorderLayout());
 		studentPanel.add(scrollStudenti, BorderLayout.CENTER);
-		profesorPanel.add(profesorLabel);
+		
+		profesorPanel.setLayout(new BorderLayout());
+		profesorPanel.add(scrollProfesori, BorderLayout.CENTER);
+		
 		predmetPanel.add(predmetLabel);
 		
 		add("Student", studentPanel);

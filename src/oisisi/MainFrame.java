@@ -6,15 +6,12 @@ import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
-import javax.swing.border.LineBorder;
-
 import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JTabbedPane;
+
 
 
 public class MainFrame extends JFrame{
@@ -45,9 +42,8 @@ public class MainFrame extends JFrame{
 		JMenuBar menuBar = new MenuBar(); 
 		JToolBar toolbar = new MyToolbar();
 		JPanel statusBar = new StatusBar();
-		Tab tab = new Tab();
-		tab.tabelaStudenti.setPreferredSize(new Dimension(screenWidth - 30, screenHeight));
-		tab.scrollStudenti.setPreferredSize(new Dimension(screenWidth - 30, screenHeight));
+		
+		Tab tab = new Tab();		
 		
 		setJMenuBar(menuBar); 
 	    getContentPane().add(toolbar, BorderLayout.NORTH);
