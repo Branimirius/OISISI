@@ -1,6 +1,8 @@
-package oisisi;
+package main;
 
 import javax.swing.JFrame;
+
+import oisisi.MainFrame;
 
 public class Main {
 
