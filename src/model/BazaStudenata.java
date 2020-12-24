@@ -45,16 +45,27 @@ public class BazaStudenata {
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
 		
-		studenti.add(new Student("prezime", "ime", "datumRodjenja", "adresaStana", "kontaktTel",
-				"eMail", "brIndeksa", 1678, 4567, Status.B,
+		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
+				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
 				9.78 ));
-		studenti.add(new Student("prezime", "ime", "datumRodjenja", "adresaStana", "kontaktTel",
+		studenti.add(new Student("Ivanovic", "Ivan", "14.5.2000", "Ulica neka 17", "067788666",
 				"eMail", "brIndeksa", 4567, 342, Status.S,
 				8.78 ));
 		studenti.add(new Student("prezime", "ime", "datumRodjenja", "adresaStana", "kontaktTel",
 				"eMail", "brIndeksa", 3234, 3434, Status.S,
 				7.78 ));
-		
+		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
+				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
+				9.78 ));
+		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
+				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
+				9.78 ));
+		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
+				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
+				9.78 ));
+		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
+				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
+				9.78 ));
 	}
 
 	public List<Student> getStudenti() {
