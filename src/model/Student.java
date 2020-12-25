@@ -17,9 +17,9 @@ public class Student {
 	private Status statusStudenta;
 	private double prosecnaOcena;
 	
-	public Student(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
-			String eMail, String brIndeksa, Integer godUpisa, Integer godStudija, Status statusStudenta,
-			double prosecnaOcena) {
+	public Student(String brIndeksa, String ime, String prezime, Integer godStudija, Status statusStudenta,
+			double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
+			String eMail) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;

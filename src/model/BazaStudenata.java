@@ -22,7 +22,7 @@ public class BazaStudenata {
 		initStudente();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("BROJ INDEKSA");
+		this.kolone.add("INDEKS");
 		this.kolone.add("IME");
 		this.kolone.add("PREZIME");
 		this.kolone.add("GODINA STUDIJA");
@@ -45,27 +45,27 @@ public class BazaStudenata {
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
 		
-		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
-				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
-				9.78 ));
-		studenti.add(new Student("Ivanovic", "Ivan", "14.5.2000", "Ulica neka 17", "067788666",
-				"eMail", "brIndeksa", 4567, 342, Status.S,
-				8.78 ));
-		studenti.add(new Student("prezime", "ime", "datumRodjenja", "adresaStana", "kontaktTel",
-				"eMail", "brIndeksa", 3234, 3434, Status.S,
-				7.78 ));
-		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
-				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
-				9.78 ));
-		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
-				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
-				9.78 ));
-		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
-				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
-				9.78 ));
-		studenti.add(new Student("Markovic", "Marko ", "12.3.1998", "Neki Bulevar 14", "0642345678",
-				"markomarkovic@", "brIndeksa", 1678, 4567, Status.B,
-				9.78 ));
+		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", 4567, Status.B,
+				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
+				"markomarkovic@"));
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", 4567,Status.S ,
+				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
+				"eMail" ));
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", 4567,Status.S ,
+				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
+				"eMail" ));
+		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", 4567, Status.B,
+				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
+				"markomarkovic@"));
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", 4567,Status.S ,
+				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
+				"eMail" ));
+		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", 4567, Status.B,
+				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
+				"markomarkovic@"));
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", 4567,Status.S ,
+				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
+				"eMail" ));
 	}
 
 	public List<Student> getStudenti() {
@@ -94,29 +94,29 @@ public class BazaStudenata {
 		
 		switch (column) {
 		case 0:
-			//return Long.toString(student.getId());
-		case 1:
-			return student.getPrezime();
-		case 2:
-			return student.getIme();
-		case 3:
-			return student.getDatumRodjenja();
-		case 4:
-			return student.getAdresaStana();
-		case 5:
-			return student.getKontaktTel();
-		case 6:
 			return student.getBrIndeksa();
-		case 7:
-			return student.geteMail();
-		case 8:
+		case 1:
+			return student.getIme();
+		case 2:
+			return student.getPrezime();
+		case 3:
 			return Integer.toString(student.getGodStudija());
-		case 9:
-			return Integer.toString(student.getGodUpisa());
-		case 10:
+		case 4:
 			return (student.getStatusStudenta() == Status.B) ? "B" : "S";
-		case 11:
+		case 5:
 			return Double.toString(student.getProsecnaOcena());
+		case 6:
+			return student.getKontaktTel();
+		case 7:
+			return Integer.toString(student.getGodUpisa());
+		case 8:
+			return student.getDatumRodjenja();
+		case 9:
+			return student.getAdresaStana();
+		case 10:
+			return student.geteMail();
+		
+			
 		default:
 			return null;
 		}
@@ -126,8 +126,8 @@ public class BazaStudenata {
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, Integer godStudija, Status statusStudenta,
 			double prosecnaOcena) {
-		this.studenti.add(new Student(prezime, ime, datumRodjenja, adresaStana, kontaktTel, eMail, brIndeksa, godUpisa, godStudija, statusStudenta,
-				prosecnaOcena));
+		this.studenti.add(new Student(brIndeksa, ime, prezime, godStudija, statusStudenta, prosecnaOcena, kontaktTel, godUpisa, datumRodjenja, adresaStana,
+				eMail));
 		
 	}
 

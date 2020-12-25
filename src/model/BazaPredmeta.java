@@ -42,11 +42,11 @@ public class BazaPredmeta {
 
 	private void initPredmeta() {
 		this.studenti_polozili = new ArrayList<Student>();
-		studenti_polozili.add(new Student("Pinjuh", "Filip", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, Status.B, 7));
-		studenti_polozili.add(new Student("Bane", "Carina", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, Status.B, 7));
+		studenti_polozili.add(new Student("RA174", "Filip", "Pinjuh", 3, Status.B, 7, "51235124", 2018, "101199", "Strz 25", "email"));
+		studenti_polozili.add(new Student("RA174", "Bane", "Carina", 3, Status.B, 7, "51235124", 2018,"101199", "Strz 25", "email"));
 		
 		this.studenti_nisu_polozili = new ArrayList<Student>();
-		studenti_polozili.add(new Student("Mihajlo", "Kisic", "101199", "Strz 25", "51235124", "email", "RA174", 2018, 3, Status.B, 7));
+		studenti_polozili.add(new Student("RA174", "Mihajlo", "Kisic", 3, Status.B, 7, "51235124", 2018, "101199", "Strz 25", "email"));
 		
 		this.profesor = new Profesor("Mikic", "Mika", "10.11.1999.", "Strazilovska 26", 062345623, "pajta@gmail.com", 498293, "doktor", "prof", predmeti);
 		
