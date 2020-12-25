@@ -2,25 +2,27 @@ package oisisi;
 
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+
+import dialog.NewStudentDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 
 
-public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
+public class MenuBar extends JMenuBar implements ActionListener {
 
 	
 	
 	private static final long serialVersionUID = -7863806568418316202L;
-
-	public MenuBar() {
+	
+	public MenuBar(final JFrame parent) {
 
 		JMenu file = new JMenu("File");
 		file.setMnemonic('f');
@@ -31,7 +33,20 @@ public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
 				= KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK);
 			miNew.setAccelerator(keyStrokeToNew);
 			miNew.setMnemonic('n');
-		
+			miNew.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					ChangeListenerTabs brt = new ChangeListenerTabs();				
+					switch (brt.getSel()) {
+					case 0:
+						NewStudentDialog newStudent = new NewStudentDialog(parent, "Dodavanje studenta", true);
+						newStudent.setVisible(true);
+						
+					}	
+				}
+			});
+			
 		JMenuItem miClose = new JMenuItem("Close  ");
 		miClose.setIcon(new ImageIcon("Images_mc/closed_book22.png"));
 			KeyStroke keyStrokeToClose
@@ -112,14 +127,9 @@ public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
 		add(help);
 
 	}
-
 	
 	
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 
 
@@ -128,5 +138,7 @@ public class MenuBar extends JMenuBar implements ActionListener,ItemListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+
 
 }

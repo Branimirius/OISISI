@@ -7,16 +7,30 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
+
+
+
 public class Tab extends JTabbedPane{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+		
+	private static Tab instance = null;
+
+	public static Tab getInstance() {
+		if (instance == null) {
+			instance = new Tab();
+		}
+		return instance;
+	}
 	
 	JPanel studentPanel = new JPanel();
 	JPanel profesorPanel = new JPanel();
 	JPanel predmetPanel = new JPanel();
+	
+	public static int selectedTab;
 	
 	//JLabel studentiLabel = new JLaberl("Student");
 	
@@ -49,6 +63,20 @@ public class Tab extends JTabbedPane{
 		add("Student", studentPanel);
 		add("Profesor", profesorPanel);
 		add("Predmet", predmetPanel);
+		
+		addChangeListener(new ChangeListenerTabs());
+			
+			
+		
+		
+	}
+
+	public int getSelectedTab() {
+		return selectedTab;
+	}
+
+	public void setSelectedTab(int selectedTab) {
+		Tab.selectedTab = selectedTab;
 	}
 	
 	

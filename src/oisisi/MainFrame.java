@@ -21,6 +21,8 @@ public class MainFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = 2427219556160021852L;
 
+	private Tab tab;
+	
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("NAJBOLJA STUDENTSKA SLUZBA EU :D");
@@ -39,31 +41,21 @@ public class MainFrame extends JFrame{
 		ImageIcon icon = new ImageIcon("Images_mc/icon.png");
 		setIconImage(icon.getImage());
 	    
-		JMenuBar menuBar = new MenuBar(); 
+		JMenuBar menuBar = new MenuBar(this); 
 		JToolBar toolbar = new MyToolbar();
 		JPanel statusBar = new StatusBar();
 		
-		Tab tab = new Tab();		
+		tab = new Tab();				
+		
 		
 		setJMenuBar(menuBar); 
 	    getContentPane().add(toolbar, BorderLayout.NORTH);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
 		add(tab,BorderLayout.CENTER);
-
+		
 	}
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
