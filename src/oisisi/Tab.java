@@ -2,6 +2,7 @@ package oisisi;
 
 
 import java.awt.BorderLayout;
+import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -69,6 +70,13 @@ public class Tab extends JTabbedPane{
 			
 		
 		
+	}
+	
+	public void updateTables() {
+		AbstractTableModelProfesor model = (AbstractTableModelProfesor) tabelaProfesori.getModel();
+		model.igracDodat();
+		model.fireTableDataChanged();
+		validate();
 	}
 
 	public int getSelectedTab() {

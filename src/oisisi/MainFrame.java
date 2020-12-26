@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
+
 import java.awt.BorderLayout;
 
 
@@ -20,7 +21,16 @@ public class MainFrame extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 2427219556160021852L;
+	
+	private static MainFrame instance = null;
 
+	public static MainFrame getInstance() {
+		if (instance == null) {
+			instance = new MainFrame();
+		}
+		return instance;
+	}
+	
 	private Tab tab;
 	
 	public MainFrame() {
@@ -42,17 +52,21 @@ public class MainFrame extends JFrame{
 		setIconImage(icon.getImage());
 	    
 		JMenuBar menuBar = new MenuBar(this); 
-		JToolBar toolbar = new MyToolbar();
+		JToolBar toolbar = new MyToolbar(this);
 		JPanel statusBar = new StatusBar();
 		
 		tab = new Tab();				
-		
 		
 		setJMenuBar(menuBar); 
 	    getContentPane().add(toolbar, BorderLayout.NORTH);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
 		add(tab,BorderLayout.CENTER);
 		
+	}
+	
+	public void updateView() {
+		this.tab.updateTables();
+		System.out.println("uspesno updatovani tablovi");
 	}
 	
 	

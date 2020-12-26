@@ -1,6 +1,7 @@
 package controller;
 
 import model.BazaProfesora;
+import oisisi.Tab;
 
 public class ProfesorController {
 
@@ -17,7 +18,7 @@ public class ProfesorController {
 	
 	public void dodajProfesora() {
 		//izmena modela
-		BazaProfesora.getInstance().dodajProfesora("Indjic", "Vladimir", "10.11.1980", "kralja petra 1 25", 63880548, "email_adresa", 333666, "doktor", "asistent", null);				
-	
+		BazaProfesora.getInstance().dodajProfesora("Indjic", "Vladimir", "10.11.1980", "kralja petra 1 25", 63880548, "email_adresa", 333666, null, null, null);				
+	    Tab.getInstance().updateTables();
 	}
 }

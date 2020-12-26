@@ -12,11 +12,16 @@ import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
+
+import controller.ProfesorController;
+import dialog.NewProfesorDialog;
+import dialog.NewStudentDialog;
 
 
 
@@ -27,7 +32,7 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 	 */
 	private static final long serialVersionUID = 1307178798190736592L;
 
-	public MyToolbar() {
+	public MyToolbar(final JFrame parent) {
 		
 		setLayout(new BorderLayout());
 		
@@ -45,9 +50,26 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		btnNew.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, ("TEST"));	
+
+				ChangeListenerTabs which_tab = new ChangeListenerTabs();				
+				//iz nekog razloga ovo nije htelo sa switch, uvek je ispisivalo sve :( 
+				
+				if(which_tab.getSel() == 0) {
+					NewStudentDialog newStudent = new NewStudentDialog(parent, "Dodavanje studenta", true);
+					newStudent.setVisible(true);
+				}	
+				else if(which_tab.getSel() == 1) {
+					NewProfesorDialog newProfesor = new NewProfesorDialog(parent, "Dodavanje profesora", true);
+					newProfesor.setVisible(true);
+				}
+				else 	if(which_tab.getSel() ==  2) {
+					JOptionPane.showMessageDialog(null, ("placeholder za dodavanje predmeta"));
+				}
+				else 
+					JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));
 			}
 		});
+				
 		panel1.add(btnNew);
 			
 		JButton btnEdit = new JButton(new ImageIcon("Images_mc/anvil.png"));
