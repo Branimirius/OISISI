@@ -136,11 +136,11 @@ public class NewProfesorDialog  extends JDialog{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					ProfesorController.getInstance().dodajProfesora(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
-							Integer.parseInt(txtTel.getText()), txtMail.getText(), Integer.parseInt(txtBrLicne.getText()), 
+							txtTel.getText(), txtMail.getText(), txtBrLicne.getText(), 
 							stringToTitula(titule[comboTitula.getSelectedIndex()]), stringToZvanje(zvanja[comboZvanje.getSelectedIndex()]), null);
 					
 					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
-							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtBrLicne.getText()) + titule[comboTitula.getSelectedIndex()] + zvanja[comboZvanje.getSelectedIndex()]);
+							txtTel.getText() + 	txtMail.getText() + txtBrLicne.getText() + titule[comboTitula.getSelectedIndex()] + zvanja[comboZvanje.getSelectedIndex()]);
 				}
 			});
 		JButton odustani = new JButton("Odustani");

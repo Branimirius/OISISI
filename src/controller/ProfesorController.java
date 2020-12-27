@@ -22,7 +22,7 @@ public class ProfesorController {
 	private ProfesorController() {}
 	
 	public void dodajProfesora(String prezime, String ime, String datum_rodjenja, String adresa_stanovanja, 
-			Integer kontakt_telefon, String email_adresa, Integer broj_licne_karte, 
+			String kontakt_telefon, String email_adresa, String broj_licne_karte, 
 			Titula titula, Zvanje zvanje, List<Predmet> lista_predmeta ) {
 		//izmena modela
 		BazaProfesora.getInstance().dodajProfesora(prezime, ime, datum_rodjenja, adresa_stanovanja, 

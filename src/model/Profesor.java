@@ -1,6 +1,8 @@
 package model;
 
+
 import java.util.List;
+
 import model.Titula;
 import model.Zvanje;
 
@@ -10,9 +12,9 @@ public class Profesor {
 	 private String ime;
 	 private String datum_rodjenja;
      private String adresa_stanovanja;
-     private Integer kontakt_telefon;
+     private String kontakt_telefon;
      private String email_adresa;
-     private Integer broj_licne_karte;
+     private String broj_licne_karte;
      private Titula titula;
      private  Zvanje zvanje;
      private List<Predmet> lista_predmeta;
@@ -21,7 +23,7 @@ public class Profesor {
      public Profesor() {}
 
 	public Profesor(String prezime, String ime, String datum_rodjenja, String adresa_stanovanja,
-			Integer kontakt_telefon, String email_adresa, Integer broj_licne_karte, Titula titula, Zvanje zvanje,
+			String kontakt_telefon, String email_adresa, String broj_licne_karte, Titula titula, Zvanje zvanje,
 			List<Predmet> lista_predmeta) {
 		super();
 		this.prezime = prezime;
@@ -60,10 +62,10 @@ public class Profesor {
 	public void setAdresa_stanovanja(String adresa_stanovanja) {
 		this.adresa_stanovanja = adresa_stanovanja;
 	}
-	public Integer getKontakt_telefon() {
+	public String getKontakt_telefon() {
 		return kontakt_telefon;
 	}
-	public void setKontakt_telefon(Integer kontakt_telefon) {
+	public void setKontakt_telefon(String kontakt_telefon) {
 		this.kontakt_telefon = kontakt_telefon;
 	}
 	public String getEmail_adresa() {
@@ -72,10 +74,10 @@ public class Profesor {
 	public void setEmail_adresa(String email_adresa) {
 		this.email_adresa = email_adresa;
 	}
-	public Integer getBroj_licne_karte() {
+	public String getBroj_licne_karte() {
 		return broj_licne_karte;
 	}
-	public void setBroj_licne_karte(Integer broj_licne_karte) {
+	public void setBroj_licne_karte(String broj_licne_karte) {
 		this.broj_licne_karte = broj_licne_karte;
 	}
 	public Titula getTitula() {

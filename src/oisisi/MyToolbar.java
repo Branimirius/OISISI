@@ -19,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
 
-import controller.ProfesorController;
 import dialog.NewProfesorDialog;
 import dialog.NewStudentDialog;
 
