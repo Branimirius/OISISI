@@ -1,6 +1,5 @@
 package model;
 
- enum Status {B,S};
 
 public class Student {
 	
@@ -13,11 +12,11 @@ public class Student {
 	private String eMail;
 	private String brIndeksa;
 	private Integer godUpisa;
-	private Integer godStudija;
+	private String godStudija;
 	private Status statusStudenta;
 	private double prosecnaOcena;
 	
-	public Student(String brIndeksa, String ime, String prezime, Integer godStudija, Status statusStudenta,
+	public Student(String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
 			double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
 			String eMail) {
 		super();
@@ -98,11 +97,11 @@ public class Student {
 		this.godUpisa = godUpisa;
 	}
 
-	public Integer getGodStudija() {
+	public String getGodStudija() {
 		return godStudija;
 	}
 
-	public void setGodStudija(Integer godStudija) {
+	public void setGodStudija(String godStudija) {
 		this.godStudija = godStudija;
 	}
 

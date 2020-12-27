@@ -1,6 +1,9 @@
 package controller;
 
 import model.BazaStudenata;
+import model.Status;
+import oisisi.MainFrame;
+
 
 
 
@@ -16,12 +19,14 @@ private static StudentController instance = null;
 	
 	private StudentController() {}
 	
-	public void dodajStudenta() {
+	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
+			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta,
+			double prosecnaOcena) {
 		// izmena modela
-		BazaStudenata.getInstance().dodajStudenta("Neki", "Lik", "Ne znam", "nemam pojam", "nesto", "videcemo","broj indeksa",
-				58, 5, null, 7.5);
-		// azuriranje prikaza
-		//MainFrame.getInstance().azurirajPrikaz("DODAT", -1);
+		BazaStudenata.getInstance().dodajStudenta(prezime, ime, datumRodjenja, adresaStana, kontaktTel, eMail, brIndeksa,
+				godUpisa, godStudija, statusStudenta, prosecnaOcena);
+		// azuriranje prikaza		
+		MainFrame.getInstance().updateView();
 	}
 	
 }

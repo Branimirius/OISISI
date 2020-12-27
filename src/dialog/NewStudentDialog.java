@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -14,6 +16,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import controller.StudentController;
+import model.Status;
 
 public class NewStudentDialog extends JDialog {
 
@@ -118,7 +122,7 @@ public class NewStudentDialog extends JDialog {
 		panelGodStudija.add(comboGodStudija);
 		
 		JPanel panelFinans = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JLabel labelFinans = new JLabel("      Godina upisa*");
+		JLabel labelFinans = new JLabel("      Nacin finansiranja*");
 		labelFinans.setPreferredSize(dim);
 		String nacin[] = { "Budzet", "Samofinansiranje"};
 		JComboBox<String> comboFinans = new JComboBox<String>(nacin);
@@ -130,6 +134,22 @@ public class NewStudentDialog extends JDialog {
 		JPanel panelDugmici = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JButton potvrdi = new JButton("Potvrdi");
 		 potvrdi.setBackground(Color.GREEN);
+		 		 		 		 		 
+		 potvrdi.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
+							txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
+							stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0);
+				    //MainFrame.getInstance().updateView();
+				   // Tab.getInstance().updateTables();
+					//StudentController.getInstance().dodajStudenta();
+					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
+							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
+					//MainFrame.getInstance().updateView();
+				}
+			});
+		 
 		JButton odustani = new JButton("Odustani");
 		JLabel stealth = new JLabel();
 		stealth.setPreferredSize(new Dimension(30,20));
@@ -155,6 +175,16 @@ public class NewStudentDialog extends JDialog {
 		
 		add(boxCentar, BorderLayout.NORTH);
 		add(panelDugmici, BorderLayout.SOUTH);
+	}
+	public Status stringToStatus(String status) {
+		switch (status) {
+		case "Budzet":
+			return Status.B;			
+		case "Samofinansiranje":
+			return Status.S;
+		default:
+			return null;
+		}
 	}
 	
 }

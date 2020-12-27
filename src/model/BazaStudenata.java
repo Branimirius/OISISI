@@ -45,25 +45,25 @@ public class BazaStudenata {
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
 		
-		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", 4567, Status.B,
+		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
 				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
 				"markomarkovic@"));
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", 4567,Status.S ,
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
 				"eMail" ));
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", 4567,Status.S ,
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
 				"eMail" ));
-		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", 4567, Status.B,
+		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
 				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
 				"markomarkovic@"));
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", 4567,Status.S ,
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
 				"eMail" ));
-		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", 4567, Status.B,
+		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
 				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
 				"markomarkovic@"));
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", 4567,Status.S ,
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
 				"eMail" ));
 	}
@@ -100,7 +100,7 @@ public class BazaStudenata {
 		case 2:
 			return student.getPrezime();
 		case 3:
-			return Integer.toString(student.getGodStudija());
+			return student.getGodStudija();
 		case 4:
 			return (student.getStatusStudenta() == Status.B) ? "B" : "S";
 		case 5:
@@ -124,10 +124,10 @@ public class BazaStudenata {
 	} 
 
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
-			String eMail, String brIndeksa, Integer godUpisa, Integer godStudija, Status statusStudenta,
+			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta,
 			double prosecnaOcena) {
 		this.studenti.add(new Student(brIndeksa, ime, prezime, godStudija, statusStudenta, prosecnaOcena, kontaktTel, godUpisa, datumRodjenja, adresaStana,
-				eMail));
+				eMail));		
 		
 	}
 
