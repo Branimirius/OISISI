@@ -12,7 +12,7 @@ BANE: #student DONE
 FILIP: #profesor DONE
        #predmet DONE
        #prikaz_profesora DONE
-       #dodavanje_profesora
+       #dodavanje_profesora DONE
 ----------------------------------------------------------
 BANE: #student DONE
 	  #ocena DONE
