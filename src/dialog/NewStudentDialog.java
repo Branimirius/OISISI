@@ -112,7 +112,7 @@ public class NewStudentDialog extends JDialog {
 		panelGod.add(txtGod);
 		
 		JPanel panelGodStudija = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JLabel labelGodStudija = new JLabel("      Godina upisa*");
+		JLabel labelGodStudija = new JLabel("      Godina studija*");
 		labelGodStudija.setPreferredSize(dim);
 		String godina[] = { "I (prva)", "II (druga)", "III (treca)","IV (cetvrta)"};
 		JComboBox<String> comboGodStudija = new JComboBox<String>(godina);
