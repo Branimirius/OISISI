@@ -2,9 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Profesor;
-import oisisi.Tab;
+
 
 public class BazaProfesora {
 
@@ -79,9 +78,9 @@ public class BazaProfesora {
 			case 1:
 				return profesor.getIme();
 			case 2:
-				return null;//profesor.getTitula();
+				return titulaToString(profesor.getTitula());
 			case 3:
-				return null;//profesor.getZvanje();
+				return zvanjeToString(profesor.getZvanje());
 			case 4:
 				return Integer.toString(profesor.getKontakt_telefon());
 			case 5:
@@ -103,7 +102,44 @@ public class BazaProfesora {
 				Integer kontakt_telefon, String email_adresa, Integer broj_licne_karte, Titula titula, Zvanje zvanje, List<Predmet> lista_predmeta ) {
 			this.profesori.add(new Profesor(prezime, ime, datum_rodjenja, adresa_stanovanja, 
 					kontakt_telefon, email_adresa, broj_licne_karte, titula, zvanje, lista_predmeta));
-			System.out.println("Profesor dodat");
+		}
+		
+		public String titulaToString(Titula t) {
+			switch(t) {
+			case BSC:
+				return "Bsc";
+			case MSC:
+				return "MSc";
+			case MR:
+				return "mr";
+			case DR:
+				return "dr";
+			case PROF_DR:
+				return "prof. dr";
+			default:
+				return null;
+			}
+		}
+		
+		public String zvanjeToString(Zvanje z) {
+			switch(z) {
+			case SARADNIK_U_NASTAVI:
+				return "Saradnik u nastavi";
+			case ASISTENT:
+				return "Asistent";
+			case ASISTENT_SA_DOKTORATOM:
+				return "Asistent sa doktoratom";
+			case DOCENT:
+				return "Docent";
+			case VANREDNI_PROFESOR:
+				return "Vandredni profesor";
+			case REDOVNI_PROFESOR:
+				return "Redovni profesor";
+			case PROFESOR_EMERITUS:
+				return "Profesor emeritus";
+			default:
+				return null;
+			}
 		}
 
 }

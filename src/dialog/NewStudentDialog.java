@@ -176,6 +176,7 @@ public class NewStudentDialog extends JDialog {
 		add(boxCentar, BorderLayout.NORTH);
 		add(panelDugmici, BorderLayout.SOUTH);
 	}
+	
 	public Status stringToStatus(String status) {
 		switch (status) {
 		case "Budzet":

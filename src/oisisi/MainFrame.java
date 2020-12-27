@@ -55,30 +55,38 @@ public class MainFrame extends JFrame{
 		JToolBar toolbar = new MyToolbar(this);
 		JPanel statusBar = new StatusBar();
 		
-		//tab = new Tab();
 		showTab();
 		
 		setJMenuBar(menuBar); 
 	    getContentPane().add(toolbar, BorderLayout.NORTH);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
-		//add(tab,BorderLayout.CENTER);
 		
 		setVisible(true);
 	}
 	
-	public void updateView() {
+	public void updateViewStudent() {
 		
-		AbstractTableModelStudent model = (AbstractTableModelStudent) this.tab.tabelaStudenti.getModel();
-		model.fireTableDataChanged();
+		AbstractTableModelStudent modelStudent = (AbstractTableModelStudent) this.tab.tabelaStudenti.getModel();
+		modelStudent.fireTableDataChanged();
 		validate();
-		System.out.println("azuriro iz mejna ");	
+		System.out.println("azuriro iz mejna studente ");	
 	}
+	
+	public void updateViewProfesor() {
+		
+		AbstractTableModelProfesor modelProfesor = (AbstractTableModelProfesor) this.tab.tabelaProfesori.getModel();
+		modelProfesor.fireTableDataChanged();
+		validate();
+		System.out.println("azuriro iz mejna profesore");	
+	}
+	
+	
 	public void showTab() {
 		this.tab = new Tab();
 		this.add(tab, BorderLayout.CENTER);		
-		this.updateView();
-		
-		
+		this.updateViewStudent();
+		this.updateViewProfesor();
+
 	}
 	
 	

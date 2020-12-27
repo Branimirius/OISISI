@@ -1,11 +1,8 @@
 package model;
 
 import java.util.List;
-
-enum Titula {BSC, MSC, MR, DR, PROF_DR};
-
-enum Zvanje{SARADNIK_U_NASTAVI, ASISTENT, ASISTENT_SA_DOKTORATOM, 
-	DOCENT, VANREDNI_PROFESOR, REDOVNI_PROFESOR, PROFESOR_EMERITUS}
+import model.Titula;
+import model.Zvanje;
 
 public class Profesor {
 

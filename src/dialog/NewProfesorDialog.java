@@ -16,10 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.ProfesorController;
-import oisisi.MainFrame;
-import oisisi.Tab;
-import model.BazaProfesora;
-import model.Profesor;
+import model.Titula;
+import model.Zvanje;
 
 import javax.swing.JComboBox;
 
@@ -137,13 +135,12 @@ public class NewProfesorDialog  extends JDialog{
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					/*BazaProfesora.getInstance().dodajProfesora(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
-							Integer.parseInt(txtTel.getText()), txtMail.getText(), Integer.parseInt(txtBrLicne.getText()), null, null, null);*/
-				    //MainFrame.getInstance().updateView();
-				   // Tab.getInstance().updateTables();
-					ProfesorController.getInstance().dodajProfesora();
+					ProfesorController.getInstance().dodajProfesora(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
+							Integer.parseInt(txtTel.getText()), txtMail.getText(), Integer.parseInt(txtBrLicne.getText()), 
+							stringToTitula(titule[comboTitula.getSelectedIndex()]), stringToZvanje(zvanja[comboZvanje.getSelectedIndex()]), null);
+					
 					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
-							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtBrLicne.getText()));
+							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtBrLicne.getText()) + titule[comboTitula.getSelectedIndex()] + zvanja[comboZvanje.getSelectedIndex()]);
 				}
 			});
 		JButton odustani = new JButton("Odustani");
@@ -161,6 +158,44 @@ public class NewProfesorDialog  extends JDialog{
 		
 		add(boxCentar, BorderLayout.NORTH);
 		add(panelButtons, BorderLayout.SOUTH);
+	}
+	
+	public Titula  stringToTitula(String t) {
+		switch(t) {
+		case "Bsc":
+			return Titula.BSC;
+		case "Msc":
+			return Titula.MSC;
+		case "mr":
+			return Titula.MR;
+		case "dr":
+			return Titula.DR;
+		case "prof. dr":
+			return Titula.PROF_DR;
+		default:
+			return null;
+		}
+	}
+	
+	public Zvanje stringToZvanje(String z) {
+		switch(z) {
+		case "Saradnik u nastavi":
+			return Zvanje.SARADNIK_U_NASTAVI;
+		case "Asistent":
+			return Zvanje.ASISTENT;
+		case "Asistent sa doktoratom":
+			return Zvanje.ASISTENT_SA_DOKTORATOM;
+		case "Docent":
+			return Zvanje.DOCENT;
+		case "Vanredni profesor":
+			return Zvanje.VANREDNI_PROFESOR;
+		case "Redovni profesor":
+			return Zvanje.REDOVNI_PROFESOR;
+		case "Profesor emeritus":
+			return Zvanje.PROFESOR_EMERITUS;
+		default:
+			return null;
+		}
 	}
 }
 

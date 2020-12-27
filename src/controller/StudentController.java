@@ -26,7 +26,7 @@ private static StudentController instance = null;
 		BazaStudenata.getInstance().dodajStudenta(prezime, ime, datumRodjenja, adresaStana, kontaktTel, eMail, brIndeksa,
 				godUpisa, godStudija, statusStudenta, prosecnaOcena);
 		// azuriranje prikaza		
-		MainFrame.getInstance().updateView();
+		MainFrame.getInstance().updateViewStudent();
 	}
 	
 }
