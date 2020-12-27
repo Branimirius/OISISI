@@ -17,6 +17,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.Document;
+
+import controller.ButtonController;
 import controller.StudentController;
 import model.Status;
 import validation.AdrKeyListener;
@@ -42,8 +45,8 @@ public class NewStudentDialog extends JDialog {
 		}
 		return instance;
 	}
+		
 	
-	public JButton potvrdi = new JButton("Potvrdi");
 	
 	public NewStudentDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
@@ -62,8 +65,8 @@ public class NewStudentDialog extends JDialog {
 		labelIme.setPreferredSize(dim);
 		JTextField txtIme = new JTextField();
 		txtIme.setPreferredSize(dim);
-		KeyListener SamoSlovaListener = new SamoSlovaKeyListener();
-		txtIme.addKeyListener(SamoSlovaListener);
+		KeyListener SamoSlovaListener = new SamoSlovaKeyListener();		
+		txtIme.addKeyListener(SamoSlovaListener);		
 		panelIme.add(labelIme);
 		panelIme.add(txtIme);
 		
@@ -163,32 +166,31 @@ public class NewStudentDialog extends JDialog {
 		panelFinans.add(comboFinans);
 		
 		JPanel panelDugmici = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		//JButton potvrdi = new JButton("Potvrdi");
+		JButton potvrdi = new JButton("Potvrdi");
 		 potvrdi.setBackground(Color.GREEN);
-		 /*
-		 if(txtPrezime.getText().isEmpty() || txtIme.getText().isEmpty() || txtDatRod.getText().isEmpty() || txtAdresa.getText().isEmpty() 
-					|| txtTel.getText().isEmpty() || txtMail.getText().isEmpty() || txtIndex.getText().isEmpty() || txtGod.getText().isEmpty()) {
-				potvrdi.setBackground(Color.GRAY);
-			}
-		 	*/	 		 		 		 
+		 
+		 potvrdi.setEnabled(false);
+		 Document documentprz = txtPrezime.getDocument();
+		 documentprz.addDocumentListener(new ButtonController(potvrdi));
+		 Document documentime = txtIme.getDocument();
+		 documentime.addDocumentListener(new ButtonController(potvrdi));		 		
+		 
+			 		 		 
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					
-					
 					StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
 							txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
 							stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0);
-				    //MainFrame.getInstance().updateView();
-				   // Tab.getInstance().updateTables();
-					//StudentController.getInstance().dodajStudenta();
+				    
 					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
 							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
-					//MainFrame.getInstance().updateView();
+					
 					
 				}
 			});
+		
 		 
 		JButton odustani = new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
