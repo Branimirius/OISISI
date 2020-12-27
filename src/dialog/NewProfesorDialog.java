@@ -164,6 +164,7 @@ public class NewProfesorDialog  extends JDialog{
 		odustani.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
 		});
 		JLabel stealth = new JLabel();

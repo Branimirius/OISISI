@@ -41,7 +41,7 @@ FILIP: #profesor DONE
 	   #toolbar DONE
 	   #prikaz_profesora DONE
 	   #prikaz_predmeta DONE
-	   #dodavanje_profesora
+	   #dodavanje_profesora DONE
 	   #izmena_profesora
 	   #brisanje_predmeta
 	   #prikaz_nepolozenih_ispita

@@ -11,6 +11,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import validation.MyWindowListener;
+
 import java.awt.BorderLayout;
 
 
@@ -35,7 +37,7 @@ public class MainFrame extends JFrame{
 	
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("NAJBOLJA STUDENTSKA SLUZBA EU :D");
+		setTitle("STUDENTSKA SLUZBA");
 		getContentPane().setLayout(new BorderLayout());
 		
 		//scalujemo velicinu prozora u odnosu na screensize
@@ -47,6 +49,8 @@ public class MainFrame extends JFrame{
 		
 		//centriranje prilikom otvaranja
 		setLocationRelativeTo(null);
+		
+		addWindowListener(new MyWindowListener());
 		
 		ImageIcon icon = new ImageIcon("Images_mc/icon.png");
 		setIconImage(icon.getImage());
