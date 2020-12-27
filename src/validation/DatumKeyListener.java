@@ -17,9 +17,9 @@ public class DatumKeyListener implements KeyListener {
 			return;
 		}
 		JTextField txt = (JTextField) arg0.getComponent();
-		if (txt.getText().length() ==  10) {
+		if (txt.getText().length() ==  11) {
 			JOptionPane.showMessageDialog(null, "Možete uneti maksimalno 10 karaktera!");
-			txt.setText(txt.getText().substring(0, 10));
+			txt.setText(txt.getText().substring(0, 11));
 		}
 
 	}
