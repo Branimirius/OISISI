@@ -6,9 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-
+import dialog.NewProfesorDialog;
 import dialog.NewStudentDialog;
 
 import java.awt.event.ActionEvent;
@@ -38,13 +39,22 @@ public class MenuBar extends JMenuBar implements ActionListener {
 				public void actionPerformed(ActionEvent e) {
 					
 					ChangeListenerTabs brt = new ChangeListenerTabs();				
-					switch (brt.getSel()) {
-					case 0:
+																										
+					if(brt.getSel() == 0) {
 						NewStudentDialog newStudent = new NewStudentDialog(parent, "Dodavanje studenta", true);
 						newStudent.setVisible(true);
-						
 					}	
-				}
+					else if(brt.getSel() == 1) {
+						NewProfesorDialog newProfesor = new NewProfesorDialog(parent, "Dodavanje profesora", true);
+						newProfesor.setVisible(true);
+					}
+					else 	if(brt.getSel() ==  2) {
+						JOptionPane.showMessageDialog(null, ("placeholder za dodavanje predmeta"));
+					}
+					else 
+						JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));
+				}	
+				
 			});
 			
 		JMenuItem miClose = new JMenuItem("Close  ");

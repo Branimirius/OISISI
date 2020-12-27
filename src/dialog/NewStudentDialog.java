@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -18,6 +19,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import controller.StudentController;
 import model.Status;
+import validation.AdrKeyListener;
+import validation.BrTelKeyListener;
+import validation.GodUpisaKeyListener;
+import validation.IndexKeyListener;
+import validation.MailKeyListener;
+import validation.SamoSlovaKeyListener;
 
 public class NewStudentDialog extends JDialog {
 
@@ -26,7 +33,18 @@ public class NewStudentDialog extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 5204056953739620396L;
-
+	
+	private static NewStudentDialog instance = null;
+	
+	public static NewStudentDialog getInstance(Frame parent, String title, boolean modal) {
+		if (instance == null) {
+			instance = new NewStudentDialog(parent, title, modal);
+		}
+		return instance;
+	}
+	
+	public JButton potvrdi = new JButton("Potvrdi");
+	
 	public NewStudentDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		
@@ -44,7 +62,8 @@ public class NewStudentDialog extends JDialog {
 		labelIme.setPreferredSize(dim);
 		JTextField txtIme = new JTextField();
 		txtIme.setPreferredSize(dim);
-		//txtIme.addActionListener(actionListener);
+		KeyListener SamoSlovaListener = new SamoSlovaKeyListener();
+		txtIme.addKeyListener(SamoSlovaListener);
 		panelIme.add(labelIme);
 		panelIme.add(txtIme);
 		
@@ -54,15 +73,17 @@ public class NewStudentDialog extends JDialog {
 		JTextField txtPrezime = new JTextField();
 		txtPrezime.setPreferredSize(dim);
 		//txtPrezime.addActionListener(actionListener);
+		KeyListener SamoSlovaListenerPrezime = new SamoSlovaKeyListener();
+		txtPrezime.addKeyListener(SamoSlovaListenerPrezime);
 		panelPrezime.add(labelPrezime);
 		panelPrezime.add(txtPrezime);
 		
 		JPanel panelDatRod = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelDatRod = new JLabel("      Datum rodjenja*");
 		labelDatRod.setPreferredSize(dim);
-		JTextField txtDatRod = new JTextField();
+		JTextField txtDatRod = new JTextField("dd/MM/yyyy");
 		txtDatRod.setPreferredSize(dim);
-		//txtDatRod.addActionListener(actionListener);
+		//txtDatRod.addActionListener(actionListener);		
 		panelDatRod.add(labelDatRod);
 		panelDatRod.add(txtDatRod);
 		
@@ -72,6 +93,8 @@ public class NewStudentDialog extends JDialog {
 		JTextField txtAdresa = new JTextField();
 		txtAdresa.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
+		KeyListener adresaListener = new AdrKeyListener();
+		txtAdresa.addKeyListener(adresaListener);
 		panelAdresa.add(labelAdresa);
 		panelAdresa.add(txtAdresa);
 		
@@ -81,6 +104,8 @@ public class NewStudentDialog extends JDialog {
 		JTextField txtTel = new JTextField();
 		txtTel.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
+		KeyListener brTelListener = new BrTelKeyListener();
+		txtTel.addKeyListener(brTelListener);
 		panelTel.add(labelTel);
 		panelTel.add(txtTel);
 		
@@ -88,8 +113,10 @@ public class NewStudentDialog extends JDialog {
 		JLabel labelMail = new JLabel("      E-mail adresa*");
 		labelMail.setPreferredSize(dim);
 		JTextField txtMail = new JTextField();
+		KeyListener mailListener = new MailKeyListener();
+		txtMail.addKeyListener(mailListener);
 		txtMail.setPreferredSize(dim);
-		//txtDatRod.addActionListener(actionListener);
+		//txtDatRod.addActionListener(actionListener);		
 		panelMail.add(labelMail);
 		panelMail.add(txtMail);
 		
@@ -99,6 +126,8 @@ public class NewStudentDialog extends JDialog {
 		JTextField txtIndex = new JTextField();
 		txtIndex.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
+		KeyListener indexListener = new IndexKeyListener();
+		txtIndex.addKeyListener(indexListener);
 		panelIndex.add(labelIndex);
 		panelIndex.add(txtIndex);
 		
@@ -108,6 +137,8 @@ public class NewStudentDialog extends JDialog {
 		JTextField txtGod = new JTextField();
 		txtGod.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
+		KeyListener godListener = new GodUpisaKeyListener();
+		txtGod.addKeyListener(godListener);
 		panelGod.add(labelGod);
 		panelGod.add(txtGod);
 		
@@ -132,12 +163,20 @@ public class NewStudentDialog extends JDialog {
 		panelFinans.add(comboFinans);
 		
 		JPanel panelDugmici = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JButton potvrdi = new JButton("Potvrdi");
+		//JButton potvrdi = new JButton("Potvrdi");
 		 potvrdi.setBackground(Color.GREEN);
-		 		 		 		 		 
+		 /*
+		 if(txtPrezime.getText().isEmpty() || txtIme.getText().isEmpty() || txtDatRod.getText().isEmpty() || txtAdresa.getText().isEmpty() 
+					|| txtTel.getText().isEmpty() || txtMail.getText().isEmpty() || txtIndex.getText().isEmpty() || txtGod.getText().isEmpty()) {
+				potvrdi.setBackground(Color.GRAY);
+			}
+		 	*/	 		 		 		 
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					
+					
+					
 					StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
 							txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
 							stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0);
@@ -147,10 +186,17 @@ public class NewStudentDialog extends JDialog {
 					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
 							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
 					//MainFrame.getInstance().updateView();
+					
 				}
 			});
 		 
 		JButton odustani = new JButton("Odustani");
+		odustani.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		JLabel stealth = new JLabel();
 		stealth.setPreferredSize(new Dimension(30,20));
 		panelDugmici.add(potvrdi);
@@ -175,6 +221,8 @@ public class NewStudentDialog extends JDialog {
 		
 		add(boxCentar, BorderLayout.NORTH);
 		add(panelDugmici, BorderLayout.SOUTH);
+		
+		//setVisible(true);
 	}
 	
 	public Status stringToStatus(String status) {
@@ -186,6 +234,9 @@ public class NewStudentDialog extends JDialog {
 		default:
 			return null;
 		}
+	}
+	public void disableButton() {
+		
 	}
 	
 }
