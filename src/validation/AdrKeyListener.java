@@ -34,7 +34,7 @@ public class AdrKeyListener implements KeyListener{
 					|| c == '(' || c == ')' || c == '_' || c == '-' || c == '=' || c == '+' 
 					|| c == '|' || c == ']' || c == '[' || c == '}' || c == '{' || c == '.' 
 					|| c == '/' || c == '?' || c == '>' || c == '<') {
-				JOptionPane.showMessageDialog(null, "Nije dozvoljen unos brojeva i znakova!");
+				JOptionPane.showMessageDialog(null, "Nije dozvoljen unos znakova!");
 				JTextField txt = (JTextField) arg0.getComponent();
 				txt.setText(txt.getText().substring(0, txt.getText().length() - 1));
 

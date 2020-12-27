@@ -112,7 +112,7 @@ public class BazaProfesora {
 		public String titulaToString(Titula t) {
 			switch(t) {
 			case BSC:
-				return "Bsc";
+				return "BSc";
 			case MSC:
 				return "MSc";
 			case MR:

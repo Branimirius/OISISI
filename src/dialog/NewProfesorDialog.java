@@ -16,11 +16,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
+
+import controller.ButtonController;
 import controller.ProfesorController;
 import model.Titula;
 import model.Zvanje;
 import validation.AdrKeyListener;
 import validation.BrTelKeyListener;
+import validation.DatumKeyListener;
 import validation.LicnaKartaKeyListener;
 import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
@@ -72,6 +78,8 @@ public class NewProfesorDialog  extends JDialog{
 		JLabel labelDatRod = new JLabel("      Datum rodjenja*");
 		labelDatRod.setPreferredSize(dim);
 		JTextField txtDatRod = new JTextField("dd/MM/yyyy");
+		KeyListener datumListener = new DatumKeyListener();
+		txtDatRod.addKeyListener(datumListener);
 		txtDatRod.setPreferredSize(dim);
 		panelDatRod.add(labelDatRod);
 		panelDatRod.add(txtDatRod);
@@ -149,6 +157,13 @@ public class NewProfesorDialog  extends JDialog{
 		JPanel panelButtons = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JButton potvrdi = new JButton("Potvrdi");
 		 potvrdi.setBackground(Color.GREEN);
+		 
+		 potvrdi.setEnabled(false);
+		 Document documentprz = txtPrezime.getDocument();
+		 documentprz.addDocumentListener(new ButtonController(potvrdi));
+		 Document documentime = txtIme.getDocument();
+		 documentime.addDocumentListener(new ButtonController(potvrdi));
+		 
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -180,9 +195,9 @@ public class NewProfesorDialog  extends JDialog{
 	
 	public Titula  stringToTitula(String t) {
 		switch(t) {
-		case "Bsc":
+		case "BSc":
 			return Titula.BSC;
-		case "Msc":
+		case "MSc":
 			return Titula.MSC;
 		case "mr":
 			return Titula.MR;
