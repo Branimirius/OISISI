@@ -169,7 +169,7 @@ public class NewStudentDialog extends JDialog {
 		JButton potvrdi = new JButton("Potvrdi");
 		 potvrdi.setBackground(Color.GREEN);
 		 
-		 potvrdi.setEnabled(false);
+		// potvrdi.setEnabled(false);
 		 Document documentprz = txtPrezime.getDocument();
 		 //documentprz.addDocumentListener(new ButtonController(potvrdi));
 		 Document documentime = txtIme.getDocument();

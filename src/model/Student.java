@@ -1,5 +1,8 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Student {
@@ -7,7 +10,7 @@ public class Student {
 	
 	private String prezime;
 	private String ime;
-	private String datumRodjenja;
+	private Date datumRodjenja;
 	private String adresaStana;
 	private String kontaktTel;
 	private String eMail;
@@ -25,7 +28,7 @@ public class Student {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
-		this.datumRodjenja = datumRodjenja;
+		this.datumRodjenja = stringToDate(datumRodjenja);
 		this.adresaStana = adresaStana;
 		this.kontaktTel = kontaktTel;
 		this.eMail = eMail;
@@ -70,12 +73,12 @@ public class Student {
 		this.ime = ime;
 	}
 
-	public String getDatumRodjenja() {
+	public Date getDatumRodjenja() {
 		return datumRodjenja;
 	}
 
 	public void setDatumRodjenja(String datumRodjenja) {
-		this.datumRodjenja = datumRodjenja;
+		this.datumRodjenja = stringToDate(datumRodjenja);
 	}
 
 	public String getAdresaStana() {
@@ -141,6 +144,17 @@ public class Student {
 	public void setProsecnaOcena(double prosecnaOcena) {
 		this.prosecnaOcena = prosecnaOcena;
 	}
-	
+	public Date stringToDate(String datum) {
+		Date ret = new Date();
+		try {
+			ret = new SimpleDateFormat("dd/MM/yyyy").parse(datum);
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
+		
+	}
 	
 }

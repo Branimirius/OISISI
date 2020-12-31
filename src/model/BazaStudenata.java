@@ -1,6 +1,8 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BazaStudenata {
@@ -50,25 +52,25 @@ public class BazaStudenata {
 		this.studenti = new ArrayList<Student>();
 		
 		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
-				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
+				9.78, "0642345678", 1678,"12/3/1998" , "Neki Bulevar 14",
 				"markomarkovic@", polozeni, nepolozeni));
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
-				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
+				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
 				"eMail", polozeni, nepolozeni ));
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
-				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
-				"eMail", polozeni, nepolozeni ));
-		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
-				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
-				"markomarkovic@", polozeni, nepolozeni));
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
-				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
+				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
 				"eMail", polozeni, nepolozeni ));
 		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
-				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
+				9.78, "0642345678", 1678,"12/3/1998" , "Neki Bulevar 14",
 				"markomarkovic@", polozeni, nepolozeni));
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
-				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
+				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
+				"eMail", polozeni, nepolozeni ));
+		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
+				9.78, "0642345678", 1678,"12/3/1998" , "Neki Bulevar 14",
+				"markomarkovic@", polozeni, nepolozeni));
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
+				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
 				"eMail", polozeni, nepolozeni ));
 	}
 
@@ -114,7 +116,7 @@ public class BazaStudenata {
 		case 7:
 			return Integer.toString(student.getGodUpisa());
 		case 8:
-			return student.getDatumRodjenja();
+			return dateToString(student.getDatumRodjenja());
 		case 9:
 			return student.getAdresaStana();
 		case 10:
@@ -134,7 +136,12 @@ public class BazaStudenata {
 				eMail, polozeni, nepolozeni));		
 		
 	}
-
+	public String dateToString(Date datum) {
+		String ret;
+		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
+		
+		return ret;
+	}
 	
 
 }
