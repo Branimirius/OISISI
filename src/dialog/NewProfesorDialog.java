@@ -156,11 +156,21 @@ public class NewProfesorDialog  extends JDialog{
 		JButton potvrdi = new JButton("Potvrdi");
 		 potvrdi.setBackground(Color.GREEN);
 		 
-		 potvrdi.setEnabled(false);
-		 Document documentprz = txtPrezime.getDocument();
-		 documentprz.addDocumentListener(new ButtonController(potvrdi));
-		 Document documentime = txtIme.getDocument();
-		 documentime.addDocumentListener(new ButtonController(potvrdi));
+		 potvrdi.setEnabled(false); //resavanje potvrdi dugmeta
+		 Document documentPrz = txtPrezime.getDocument();
+		 documentPrz.addDocumentListener(new ButtonController(potvrdi, 0));
+		 Document documentIme = txtIme.getDocument();
+		 documentIme.addDocumentListener(new ButtonController(potvrdi, 1));
+		 Document documentDatRod = txtDatRod.getDocument();
+		 documentDatRod.addDocumentListener(new ButtonController(potvrdi, 2));
+		 Document documentAdresa = txtAdresa.getDocument();
+		 documentAdresa.addDocumentListener(new ButtonController(potvrdi, 3));
+		 Document documentTel = txtTel.getDocument();
+		 documentTel.addDocumentListener(new ButtonController(potvrdi, 4));
+		 Document documentMail = txtMail.getDocument();
+		 documentMail.addDocumentListener(new ButtonController(potvrdi, 5));
+		 Document documentBrLicne = txtBrLicne.getDocument();
+		 documentBrLicne.addDocumentListener(new ButtonController(potvrdi, 6));
 		 
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
@@ -168,9 +178,6 @@ public class NewProfesorDialog  extends JDialog{
 					ProfesorController.getInstance().dodajProfesora(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
 							txtTel.getText(), txtMail.getText(), txtBrLicne.getText(), 
 							stringToTitula(titule[comboTitula.getSelectedIndex()]), stringToZvanje(zvanja[comboZvanje.getSelectedIndex()]), null);
-					
-					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
-							txtTel.getText() + 	txtMail.getText() + txtBrLicne.getText() + titule[comboTitula.getSelectedIndex()] + zvanja[comboZvanje.getSelectedIndex()]);
 				}
 			});
 		JButton odustani = new JButton("Odustani");
