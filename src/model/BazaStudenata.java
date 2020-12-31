@@ -43,29 +43,33 @@ public class BazaStudenata {
 	}
 
 	private void initStudente() {
+		
+		List<Ocena> polozeni = new ArrayList<Ocena>();
+		List<Predmet> nepolozeni = new ArrayList<Predmet>();
+		
 		this.studenti = new ArrayList<Student>();
 		
 		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
 				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
-				"markomarkovic@"));
+				"markomarkovic@", polozeni, nepolozeni));
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
-				"eMail" ));
+				"eMail", polozeni, nepolozeni ));
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
-				"eMail" ));
+				"eMail", polozeni, nepolozeni ));
 		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
 				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
-				"markomarkovic@"));
+				"markomarkovic@", polozeni, nepolozeni));
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
-				"eMail" ));
+				"eMail", polozeni, nepolozeni ));
 		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
 				9.78, "0642345678", 1678,"12.3.1998" , "Neki Bulevar 14",
-				"markomarkovic@"));
+				"markomarkovic@", polozeni, nepolozeni));
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14.5.2000", "Ulica neka 17",
-				"eMail" ));
+				"eMail", polozeni, nepolozeni ));
 	}
 
 	public List<Student> getStudenti() {
@@ -125,9 +129,9 @@ public class BazaStudenata {
 
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta,
-			double prosecnaOcena) {
+			double prosecnaOcena, List<Ocena> polozeni, List<Predmet> nepolozeni) {
 		this.studenti.add(new Student(brIndeksa, ime, prezime, godStudija, statusStudenta, prosecnaOcena, kontaktTel, godUpisa, datumRodjenja, adresaStana,
-				eMail));		
+				eMail, polozeni, nepolozeni));		
 		
 	}
 

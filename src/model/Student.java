@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 
 public class Student {
 	
@@ -15,10 +16,12 @@ public class Student {
 	private String godStudija;
 	private Status statusStudenta;
 	private double prosecnaOcena;
+	private List<Ocena> polozeni;
+	private List<Predmet> nepolozeni;
 	
 	public Student(String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
 			double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
-			String eMail) {
+			String eMail, List<Ocena> polozeni, List<Predmet> nepolozeni) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
@@ -31,6 +34,24 @@ public class Student {
 		this.godStudija = godStudija;
 		this.statusStudenta = statusStudenta;
 		this.prosecnaOcena = prosecnaOcena;
+		this.polozeni = polozeni;
+		this.nepolozeni = nepolozeni;
+	}
+
+	public List<Ocena> getPolozeni() {
+		return polozeni;
+	}
+
+	public void setPolozeni(List<Ocena> polozeni) {
+		this.polozeni = polozeni;
+	}
+
+	public List<Predmet> getNepolozeni() {
+		return nepolozeni;
+	}
+
+	public void setNepolozeni(List<Predmet> nepolozeni) {
+		this.nepolozeni = nepolozeni;
 	}
 
 	public String getPrezime() {

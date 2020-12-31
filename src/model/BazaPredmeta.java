@@ -20,6 +20,7 @@ public class BazaPredmeta {
 	private List<Student> studenti_nisu_polozili;
 	private List<Predmet> predmeti;
 	private List<String> kolone;
+	private List<Ocena> polozeni;
 	private Profesor profesor;
 
 	private BazaPredmeta() {
@@ -42,11 +43,11 @@ public class BazaPredmeta {
 
 	private void initPredmeta() {
 		this.studenti_polozili = new ArrayList<Student>();
-		studenti_polozili.add(new Student("RA174", "Filip", "Pinjuh", "3", Status.B, 7, "51235124", 2018, "101199", "Strz 25", "email"));
-		studenti_polozili.add(new Student("RA174", "Bane", "Carina", "3", Status.B, 7, "51235124", 2018,"101199", "Strz 25", "email"));
+		studenti_polozili.add(new Student("RA174", "Filip", "Pinjuh", "3", Status.B, 7, "51235124", 2018, "101199", "Strz 25", "email", polozeni, predmeti));
+		studenti_polozili.add(new Student("RA174", "Bane", "Carina", "3", Status.B, 7, "51235124", 2018,"101199", "Strz 25", "email", polozeni, predmeti));
 		
 		this.studenti_nisu_polozili = new ArrayList<Student>();
-		studenti_polozili.add(new Student("RA174", "Mihajlo", "Kisic", "3", Status.B, 7, "51235124", 2018, "101199", "Strz 25", "email"));
+		studenti_polozili.add(new Student("RA174", "Mihajlo", "Kisic", "3", Status.B, 7, "51235124", 2018, "101199", "Strz 25", "email", polozeni, predmeti));
 		
 		this.profesor = new Profesor("Mikic", "Mika", "10.11.1999.", "Strazilovska 26", "062345623", "pajta@gmail.com", "498293", Titula.MR, Zvanje.REDOVNI_PROFESOR, predmeti);
 		
@@ -56,6 +57,9 @@ public class BazaPredmeta {
 		predmeti.add(new Predmet(generateId(), "METODE OPTIMIZACIJE", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
 		predmeti.add(new Predmet(generateId(), "NANS", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
 		predmeti.add(new Predmet(generateId(), "BAZE PODATAKA", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
+	
+		this.polozeni = new ArrayList<Ocena>();
+		
 	}
 
 	public List<Predmet> getPredmeti() {

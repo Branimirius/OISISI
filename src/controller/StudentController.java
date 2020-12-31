@@ -1,6 +1,10 @@
 package controller;
 
+import java.util.List;
+
 import model.BazaStudenata;
+import model.Ocena;
+import model.Predmet;
 import model.Status;
 import oisisi.MainFrame;
 
@@ -21,10 +25,10 @@ private static StudentController instance = null;
 	
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta,
-			double prosecnaOcena) {
+			double prosecnaOcena, List<Ocena> polozeni, List<Predmet> nepolozeni) {
 		// izmena modela
 		BazaStudenata.getInstance().dodajStudenta(prezime, ime, datumRodjenja, adresaStana, kontaktTel, eMail, brIndeksa,
-				godUpisa, godStudija, statusStudenta, prosecnaOcena);
+				godUpisa, godStudija, statusStudenta, prosecnaOcena, polozeni, nepolozeni);
 		// azuriranje prikaza		
 		MainFrame.getInstance().updateViewStudent();
 	}

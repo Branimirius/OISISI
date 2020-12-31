@@ -171,9 +171,9 @@ public class NewStudentDialog extends JDialog {
 		 
 		 potvrdi.setEnabled(false);
 		 Document documentprz = txtPrezime.getDocument();
-		 documentprz.addDocumentListener(new ButtonController(potvrdi));
+		 //documentprz.addDocumentListener(new ButtonController(potvrdi));
 		 Document documentime = txtIme.getDocument();
-		 documentime.addDocumentListener(new ButtonController(potvrdi));		 		
+		 //documentime.addDocumentListener(new ButtonController(potvrdi));		 		
 		 
 			 		 		 
 		 potvrdi.addActionListener(new ActionListener() {
@@ -182,7 +182,7 @@ public class NewStudentDialog extends JDialog {
 					
 					StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
 							txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
-							stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0);
+							stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0, null, null);
 				    
 					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
 							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
