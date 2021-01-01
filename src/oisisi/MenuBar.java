@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import dialog.NewPredmetDialog;
 import dialog.NewProfesorDialog;
 import dialog.NewStudentDialog;
 
@@ -49,7 +50,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 						newProfesor.setVisible(true);
 					}
 					else 	if(brt.getSel() ==  2) {
-						JOptionPane.showMessageDialog(null, ("placeholder za dodavanje predmeta"));
+						NewPredmetDialog newPredmet = new NewPredmetDialog(parent, "Dodavanje studenta", true);
+						newPredmet.setVisible(true);
 					}
 					else 
 						JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));

@@ -74,7 +74,7 @@ public class BazaPredmeta {
 		return 5;
 	}
 	
-	private long generateId() {
+	public long generateId() {
 		return ++generator;
 	}
 
@@ -90,17 +90,17 @@ public class BazaPredmeta {
 		Predmet predmet = this.predmeti.get(row);
 		switch (column) {
 		case 0:
-			return Long.toString(predmet.getId_predmeta());
+			return Long.toString(predmet.getIdPredmeta());
 		case 1:
-			return predmet.getNaziv_predmeta();
+			return predmet.getNazivPredmeta();
 		case 2:
-			return Integer.toString(predmet.getBroj_espb_bodova());
+			return Integer.toString(predmet.getBrojEspbBodova());
 		case 3:
-			return Integer.toString(predmet.getGodina_izvodjenja());
+			return Integer.toString(predmet.getGodinaIzvodjenja());
 		case 4:
 			return (predmet.getSemestar()== Semestar.LETNJI) ? "LETNJI" : "ZIMSKI";
 		case 5:
-			return predmet.getPredmetni_profesor().getPrezime();
+			return predmet.getPredmetniProfesor().getPrezime();
 		case 6:
 			return null; //predmet.getLista_polozili
 		case 7:

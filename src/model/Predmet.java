@@ -2,49 +2,49 @@ package model;
 
 import java.util.List;
 
-enum Semestar{ZIMSKI, LETNJI};
+//enum Semestar{ZIMSKI, LETNJI};
 
 public class Predmet {
 
-	private long id_predmeta;
-	private String naziv_predmeta;
+	private long idPredmeta;
+	private String nazivPredmeta;
 	private Semestar semestar;
-	private Integer godina_izvodjenja;
-	private Profesor predmetni_profesor;
-	private Integer broj_espb_bodova;
-	private List<Student> lista_polozili;
-	private List<Student> lista_nisu_polozili;
+	private Integer godinaIzvodjenja;
+	private Profesor predmetniProfesor;
+	private Integer brojEspbBodova;
+	private List<Student> listaPolozili;
+	private List<Student> listaNisuPolozili;
 	
 	public Predmet() {}
 	
-	public Predmet(long id_predmeta, String naziv_predmeta, Semestar semestar, Integer godina_izvodjenja,
-			Profesor predmetni_profesor, Integer broj_espb_bodova, List<Student> list_polozili,
-			List<Student> list_nisu_polozili) {
+	public Predmet(long idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
+			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili,
+			List<Student> listNisuPolozili) {
 		super();
-		this.id_predmeta = id_predmeta;
-		this.naziv_predmeta = naziv_predmeta;
+		this.idPredmeta = idPredmeta;
+		this.nazivPredmeta = nazivPredmeta;
 		this.semestar = semestar;
-		this.godina_izvodjenja = godina_izvodjenja;
-		this.predmetni_profesor = predmetni_profesor;
-		this.broj_espb_bodova = broj_espb_bodova;
-		this.lista_polozili = list_polozili;
-		this.lista_nisu_polozili = list_nisu_polozili;
+		this.godinaIzvodjenja = godinaIzvodjenja;
+		this.predmetniProfesor = predmetniProfesor;
+		this.brojEspbBodova = brojEspbBodova;
+		this.listaPolozili = listPolozili;
+		this.listaNisuPolozili = listNisuPolozili;
 	}
 
-	public long getId_predmeta() {
-		return id_predmeta;
+	public long getIdPredmeta() {
+		return idPredmeta;
 	}
 
-	public void setId_predmeta(long id_predmeta) {
-		this.id_predmeta = id_predmeta;
+	public void setIdPredmeta(long idPredmeta) {
+		this.idPredmeta = idPredmeta;
 	}
 
-	public String getNaziv_predmeta() {
-		return naziv_predmeta;
+	public String getNazivPredmeta() {
+		return nazivPredmeta;
 	}
 
-	public void setNaziv_predmeta(String naziv_predmeta) {
-		this.naziv_predmeta = naziv_predmeta;
+	public void setNazivPredmeta(String nazivPredmeta) {
+		this.nazivPredmeta = nazivPredmeta;
 	}
 
 	public Semestar getSemestar() {
@@ -55,44 +55,44 @@ public class Predmet {
 		this.semestar = semestar;
 	}
 
-	public Integer getGodina_izvodjenja() {
-		return godina_izvodjenja;
+	public Integer getGodinaIzvodjenja() {
+		return godinaIzvodjenja;
 	}
 
-	public void setGodina_izvodjenja(Integer godina_izvodjenja) {
-		this.godina_izvodjenja = godina_izvodjenja;
+	public void setGodinaIzvodjenja(Integer godinaIzvodjenja) {
+		this.godinaIzvodjenja = godinaIzvodjenja;
 	}
 
-	public Profesor getPredmetni_profesor() {
-		return predmetni_profesor;
+	public Profesor getPredmetniProfesor() {
+		return predmetniProfesor;
 	}
 
-	public void setPredmetni_profesor(Profesor predmetni_profesor) {
-		this.predmetni_profesor = predmetni_profesor;
+	public void setPredmetniProfesor(Profesor predmetniProfesor) {
+		this.predmetniProfesor = predmetniProfesor;
 	}
 
-	public Integer getBroj_espb_bodova() {
-		return broj_espb_bodova;
+	public Integer getBrojEspbBodova() {
+		return brojEspbBodova;
 	}
 
-	public void setBroj_espb_bodova(Integer broj_espb_bodova) {
-		this.broj_espb_bodova = broj_espb_bodova;
+	public void setBrojEspbBodova(Integer brojEspbEodova) {
+		this.brojEspbBodova = brojEspbEodova;
 	}
 
-	public List<Student> getList_polozili() {
-		return lista_polozili;
+	public List<Student> getListPolozili() {
+		return listaPolozili;
 	}
 
-	public void setList_polozili(List<Student> list_polozili) {
-		this.lista_polozili = list_polozili;
+	public void setListPolozili(List<Student> listPolozili) {
+		this.listaPolozili = listPolozili;
 	}
 
-	public List<Student> getList_nisu_polozili() {
-		return lista_nisu_polozili;
+	public List<Student> getListNisuPolozili() {
+		return listaNisuPolozili;
 	}
 
-	public void setList_nisu_polozili(List<Student> list_nisu_polozili) {
-		this.lista_nisu_polozili = list_nisu_polozili; 
+	public void setListNisuPolozili(List<Student> listNisuPolozili) {
+		this.listaNisuPolozili = listNisuPolozili; 
 	}
 	
 }
