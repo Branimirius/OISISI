@@ -15,13 +15,17 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.Document;
 
 import controller.ButtonController;
+import controller.ButtonControllerStudent;
 import controller.StudentController;
+import model.BazaStudenata;
 import model.Status;
+import model.Student;
 import validation.AdrKeyListener;
 import validation.BrTelKeyListener;
 import validation.GodUpisaKeyListener;
@@ -169,16 +173,37 @@ public class NewStudentDialog extends JDialog {
 		JButton potvrdi = new JButton("Potvrdi");
 		 potvrdi.setBackground(Color.GREEN);
 		 
-		// potvrdi.setEnabled(false);
-		 Document documentprz = txtPrezime.getDocument();
-		 //documentprz.addDocumentListener(new ButtonController(potvrdi));
-		 Document documentime = txtIme.getDocument();
-		 //documentime.addDocumentListener(new ButtonController(potvrdi));		 		
-		 
+		 potvrdi.setEnabled(false); //resavanje potvrdi dugmeta
+		 Document documentPrz = txtPrezime.getDocument();
+		 documentPrz.addDocumentListener(new ButtonControllerStudent(potvrdi, 0));
+		 Document documentIme = txtIme.getDocument();
+		 documentIme.addDocumentListener(new ButtonControllerStudent(potvrdi, 1));
+		 Document documentDatRod = txtDatRod.getDocument();
+		 documentDatRod.addDocumentListener(new ButtonControllerStudent(potvrdi, 2));
+		 Document documentAdresa = txtAdresa.getDocument();
+		 documentAdresa.addDocumentListener(new ButtonControllerStudent(potvrdi, 3));
+		 Document documentTel = txtTel.getDocument();
+		 documentTel.addDocumentListener(new ButtonControllerStudent(potvrdi, 4));
+		 Document documentMail = txtMail.getDocument();
+		 documentMail.addDocumentListener(new ButtonControllerStudent(potvrdi, 5));
+		 Document documentBrLicne = txtIndex.getDocument();
+		 documentBrLicne.addDocumentListener(new ButtonControllerStudent(potvrdi, 6));
+		 Document documentGod = txtGod.getDocument();
+		 documentGod.addDocumentListener(new ButtonControllerStudent(potvrdi, 7));
 			 		 		 
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					/*
+					for(Student s : BazaStudenata.getInstance().getStudenti()) {
+						if(s.getBrIndeksa() == txtIndex.getText()) {
+							JOptionPane.showMessageDialog(null, "Student sa brojem indeksa "+ txtIndex.getText() +
+									" vec postoji u tabeli");
+						}
+					}
+					*/
+					
+					
 					
 					StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
 							txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
