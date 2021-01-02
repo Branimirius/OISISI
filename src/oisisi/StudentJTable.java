@@ -7,6 +7,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
+import model.BazaStudenata;
+
 
 public class StudentJTable extends JTable {
 
@@ -15,6 +17,14 @@ public class StudentJTable extends JTable {
 	 */
 	private static final long serialVersionUID = -7678717758337523861L;
 	
+	private static StudentJTable instance = null;
+
+	public static StudentJTable getInstance() {
+		if (instance == null) {
+			instance = new StudentJTable();
+		}
+		return instance;
+	}
 	
 	public StudentJTable() {
 		this.setRowSelectionAllowed(true);

@@ -86,7 +86,7 @@ public class Tab extends JTabbedPane{
 	}
 	
 	public void prikaziTabeluStudent() {
-		tabelaStudenti = new StudentJTable();
+		tabelaStudenti = StudentJTable.getInstance();
 		JScrollPane scrollStudenti = new JScrollPane(tabelaStudenti);
 		studentPanel.setLayout(new BorderLayout());
 		studentPanel.add(scrollStudenti, BorderLayout.CENTER);		

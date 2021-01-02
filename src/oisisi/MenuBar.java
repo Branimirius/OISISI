@@ -9,10 +9,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import controller.StudentController;
+import dialog.EditStudentDialog;
 import dialog.NewPredmetDialog;
 import dialog.NewProfesorDialog;
 import dialog.NewStudentDialog;
 
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -80,6 +83,31 @@ public class MenuBar extends JMenuBar implements ActionListener {
 				= KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_DOWN_MASK);
 			miEdit.setAccelerator(keyStrokeToEdit);
 			miEdit.setMnemonic('e');
+			miEdit.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					ChangeListenerTabs brt = new ChangeListenerTabs();	
+					if(brt.getSel() == 0) {
+						EditStudentDialog editStudent = new EditStudentDialog(parent, "Izmena studenta", true);
+						editStudent.setVisible(true);
+					}	
+					else if(brt.getSel() == 1) {
+						//EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Dodavanje profesora", true);
+						//editProfesor.setVisible(true);
+					}
+					else 	if(brt.getSel() ==  2) {
+						//EditPredmetDialog newPredmet = new EditPredmetDialog(parent, "Dodavanje studenta", true);
+						//editPredmet.setVisible(true);
+					}
+					else 
+						JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));
+				}	
+				
+				
+			});
+			
 			
 		JMenuItem miDelete = new JMenuItem("Delete  ");
 			miDelete.setIcon(new ImageIcon("Images_mc/unlit_furnance.png"));

@@ -1,5 +1,4 @@
-package dialog;
-
+package oisisi;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,19 +12,17 @@ import java.awt.event.KeyListener;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.text.Document;
 
-import controller.ButtonController;
 import controller.ButtonControllerStudent;
 import controller.StudentController;
-import model.BazaStudenata;
+import dialog.EditStudentDialog;
 import model.Status;
-import model.Student;
 import validation.AdrKeyListener;
 import validation.BrTelKeyListener;
 import validation.DatumKeyListener;
@@ -34,36 +31,26 @@ import validation.IndexKeyListener;
 import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
-public class NewStudentDialog extends JDialog {
+public class TabIzmenaStudenta extends JTabbedPane{
 
-	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5204056953739620396L;
+	private static final long serialVersionUID = -4492311871537969696L;
 	
-	private static NewStudentDialog instance = null;
-	
-	public static NewStudentDialog getInstance(Frame parent, String title, boolean modal) {
+	private static TabIzmenaStudenta instance = null;
+
+	public static TabIzmenaStudenta getInstance(Dimension dim) {
 		if (instance == null) {
-			instance = new NewStudentDialog(parent, title, modal);
+			instance = new TabIzmenaStudenta(dim);
 		}
 		return instance;
 	}
-		
 	
 	
-	public NewStudentDialog(Frame parent, String title, boolean modal) {
-		super(parent, title, modal);
-		
-		int dialWidth= (parent.getSize().width)/2;
-		int dialHeight = (parent.getSize().height*7/8);
-		Dimension dim = new Dimension(dialWidth*2/5, 25);
-		
-		setLayout(new BorderLayout());
-		setSize(dialWidth, dialHeight);
-		setLocationRelativeTo(parent);
-		
+	public TabIzmenaStudenta(Dimension dim) {
+		JPanel informacijePanel = new JPanel();
+		informacijePanel.setLayout(new BorderLayout());;
 		
 		JPanel panelIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelIme = new JLabel("      Ime*");
@@ -91,7 +78,7 @@ public class NewStudentDialog extends JDialog {
 		labelDatRod.setPreferredSize(dim);
 		JTextField txtDatRod = new JTextField("dd/MM/yyyy");
 		txtDatRod.setPreferredSize(dim);
-		//txtDatRod.addActionListener(actionListener);	
+		//txtDatRod.addActionListener(actionListener);
 		KeyListener datumKeyListener = new DatumKeyListener();
 		txtDatRod.addKeyListener(datumKeyListener);
 		panelDatRod.add(labelDatRod);
@@ -197,14 +184,6 @@ public class NewStudentDialog extends JDialog {
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					/*
-					for(Student s : BazaStudenata.getInstance().getStudenti()) {
-						if(s.getBrIndeksa() == txtIndex.getText()) {
-							JOptionPane.showMessageDialog(null, "Student sa brojem indeksa "+ txtIndex.getText() +
-									" vec postoji u tabeli");
-						}
-					}
-					*/
 					
 					int slash = 0;
 					for (int i = 0; i < txtDatRod.getText().length(); i ++) {
@@ -217,33 +196,27 @@ public class NewStudentDialog extends JDialog {
 						JOptionPane.showMessageDialog(null, "Format datuma mora biti: dd/mm/yyyy");
 					}
 					else {
-					
-					StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
+					int id = StudentJTable.getInstance().getSelectedRow();					
+					StudentController.getInstance().izmeniStudenta(id, txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
 							txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
-							stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0, null, null);
-				    
-					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
-							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
-					
+							stringToStatus(nacin[comboFinans.getSelectedIndex()]));
 					}
+					
+				}
+			});		    
+		
+		 JButton odustani = new JButton("Odustani");
+			odustani.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					//EditStudentDialog.getInstance(parent, title, modal).dispose();
 				}
 			});
-		
-		 
-		JButton odustani = new JButton("Odustani");
-		odustani.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		JLabel stealth = new JLabel();
-		stealth.setPreferredSize(new Dimension(30,20));
-		panelDugmici.add(potvrdi);
-		panelDugmici.add(stealth);
-		panelDugmici.add(odustani);
-		
-		
+			JLabel stealth = new JLabel();
+			stealth.setPreferredSize(new Dimension(30,20));
+			panelDugmici.add(potvrdi);
+			panelDugmici.add(stealth);
+			panelDugmici.add(odustani); 
 		
 		Box boxCentar = Box.createVerticalBox();
 		boxCentar.add(Box.createVerticalStrut(20));
@@ -259,24 +232,20 @@ public class NewStudentDialog extends JDialog {
 		boxCentar.add(panelFinans);
 		boxCentar.add(Box.createGlue());
 		
-		add(boxCentar, BorderLayout.NORTH);
-		add(panelDugmici, BorderLayout.SOUTH);
+		informacijePanel.add(boxCentar, BorderLayout.NORTH);
+		informacijePanel.add(panelDugmici, BorderLayout.SOUTH);
 		
-		//setVisible(true);
+		add("Informacije", informacijePanel);
 	}
 	
-	public Status stringToStatus(String status) {
-		switch (status) {
-		case "Budzet":
-			return Status.B;			
-		case "Samofinansiranje":
-			return Status.S;
-		default:
-			return null;
-		}
-	}
-	public void disableButton() {
-		
-	}
-	
+		public Status stringToStatus(String status) {
+			switch (status) {
+			case "Budzet":
+				return Status.B;			
+			case "Samofinansiranje":
+				return Status.S;
+			default:
+				return null;
+			}
+		}			
 }

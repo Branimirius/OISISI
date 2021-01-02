@@ -84,7 +84,7 @@ public class MainFrame extends JFrame{
 		System.out.println("azuriro iz mejna profesore");	
 	}
 	
-public void updateViewPredmet() {
+	public void updateViewPredmet() {
 		
 		AbstractTableModelPredmet modelPredmet = (AbstractTableModelPredmet) this.tab.tabelaPredmeti.getModel();
 		modelPredmet.fireTableDataChanged();

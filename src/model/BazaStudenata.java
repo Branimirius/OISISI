@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 public class BazaStudenata {
 	private static BazaStudenata instance = null;
 
@@ -141,6 +142,24 @@ public class BazaStudenata {
 		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
 		
 		return ret;
+	}
+	
+	public void izmeniStudenta(String ID, String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
+			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta) {
+		for (Student s : studenti) {
+			if (s.getBrIndeksa() == ID) {
+				s.setIme(ime);
+				s.setPrezime(prezime);
+				s.setDatumRodjenja(datumRodjenja);
+				s.setAdresaStana(adresaStana);
+				s.setKontaktTel(kontaktTel);
+				s.seteMail(eMail);
+				s.setBrIndeksa(brIndeksa);
+				s.setGodUpisa(godUpisa);
+				s.setGodStudija(godStudija);
+				s.setStatusStudenta(statusStudenta);
+			}
+		}
 	}
 	
 
