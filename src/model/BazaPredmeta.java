@@ -49,7 +49,7 @@ public class BazaPredmeta {
 		this.studenti_nisu_polozili = new ArrayList<Student>();
 		studenti_polozili.add(new Student("RA174", "Mihajlo", "Kisic", "3", Status.B, 7, "51235124", 2018, "10/11/99", "Strz 25", "email", polozeni, predmeti));
 		
-		this.profesor = new Profesor("Mikic", "Mika", "10.11.1999.", "Strazilovska 26", "062345623", "pajta@gmail.com", "498293", Titula.MR, Zvanje.REDOVNI_PROFESOR, predmeti);
+		this.profesor = new Profesor("Mikic", "Mika", "10/11/1999.", "Strazilovska 26", "062345623", "pajta@gmail.com", "498293", Titula.MR, Zvanje.REDOVNI_PROFESOR, predmeti);
 		
 		this.predmeti = new ArrayList<Predmet>();
 		predmeti.add(new Predmet(generateId(), "OISISI", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));

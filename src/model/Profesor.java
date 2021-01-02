@@ -1,6 +1,9 @@
 package model;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import model.Titula;
@@ -8,34 +11,36 @@ import model.Zvanje;
 
 public class Profesor {
 
+	private String datumRodjString;
      private String prezime;
 	 private String ime;
-	 private String datum_rodjenja;
-     private String adresa_stanovanja;
-     private String kontakt_telefon;
-     private String email_adresa;
-     private String broj_licne_karte;
+	 private Date datumRodjenja;
+     private String adresaStanovanja;
+     private String kontaktTelefon;
+     private String emailAdresa;
+     private String brLicneKarte;
      private Titula titula;
      private  Zvanje zvanje;
-     private List<Predmet> lista_predmeta;
+     private List<Predmet> listaPredmeta;
 	
      
      public Profesor() {}
 
-	public Profesor(String prezime, String ime, String datum_rodjenja, String adresa_stanovanja,
-			String kontakt_telefon, String email_adresa, String broj_licne_karte, Titula titula, Zvanje zvanje,
-			List<Predmet> lista_predmeta) {
+	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja,
+			String kontaktTelefon, String emailAdresa, String brLicneKarte, Titula titula, Zvanje zvanje,
+			List<Predmet> listaPredmeta) {
 		super();
+		this.setDatumRodjString(datumRodjenja);
 		this.prezime = prezime;
 		this.ime = ime;
-		this.datum_rodjenja = datum_rodjenja;
-		this.adresa_stanovanja = adresa_stanovanja;
-		this.kontakt_telefon = kontakt_telefon;
-		this.email_adresa = email_adresa;
-		this.broj_licne_karte = broj_licne_karte;
+		this.datumRodjenja = stringToDate(datumRodjenja);
+		this.adresaStanovanja = adresaStanovanja;
+		this.kontaktTelefon = kontaktTelefon;
+		this.emailAdresa = emailAdresa;
+		this.brLicneKarte = brLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
-		this.lista_predmeta = lista_predmeta;
+		this.listaPredmeta = listaPredmeta;
 	}
      
 	public String getPrezime() {
@@ -50,35 +55,35 @@ public class Profesor {
 	public void setIme(String ime) {
 		this.ime = ime;
 	}
-	public String getDatum_rodjenja() {
-		return datum_rodjenja;
+	public Date getDatumRodjenja() {
+		return datumRodjenja;
 	}
-	public void setDatum_rodjenja(String datum_rodjenja) {
-		this.datum_rodjenja = datum_rodjenja;
+	public void setDatumRodjenja(String datumRodjenja) {
+		this.datumRodjenja =stringToDate(datumRodjenja);
 	}
-	public String getAdresa_stanovanja() {
-		return adresa_stanovanja;
+	public String getAdresaStanovanja() {
+		return adresaStanovanja;
 	}
-	public void setAdresa_stanovanja(String adresa_stanovanja) {
-		this.adresa_stanovanja = adresa_stanovanja;
+	public void setAdresaStanovanja(String adresaStanovanja) {
+		this.adresaStanovanja = adresaStanovanja;
 	}
-	public String getKontakt_telefon() {
-		return kontakt_telefon;
+	public String getKontaktTelefon() {
+		return kontaktTelefon;
 	}
-	public void setKontakt_telefon(String kontakt_telefon) {
-		this.kontakt_telefon = kontakt_telefon;
+	public void setKontaktTelefon(String kontaktTelefon) {
+		this.kontaktTelefon = kontaktTelefon;
 	}
-	public String getEmail_adresa() {
-		return email_adresa;
+	public String getEmailAdresa() {
+		return emailAdresa;
 	}
-	public void setEmail_adresa(String email_adresa) {
-		this.email_adresa = email_adresa;
+	public void setEmailAdresa(String emailAdresa) {
+		this.emailAdresa = emailAdresa;
 	}
-	public String getBroj_licne_karte() {
-		return broj_licne_karte;
+	public String getBrLicneKarte() {
+		return brLicneKarte;
 	}
-	public void setBroj_licne_karte(String broj_licne_karte) {
-		this.broj_licne_karte = broj_licne_karte;
+	public void setBrLicneKarte(String brLicneKarte) {
+		this.brLicneKarte = brLicneKarte;
 	}
 	public Titula getTitula() {
 		return titula;
@@ -92,11 +97,32 @@ public class Profesor {
 	public void setZvanje(Zvanje zvanje) {
 		this.zvanje = zvanje;
 	}
-	public List<Predmet> getLista_predmeta() {
-		return lista_predmeta;
+	public List<Predmet> getListaPredmeta() {
+		return listaPredmeta;
 	}
-	public void setLista_predmeta(List<Predmet> lista_predmeta) {
-		this.lista_predmeta = lista_predmeta;
+	public void setListaPredmeta(List<Predmet> listaPredmeta) {
+		this.listaPredmeta = listaPredmeta;
+	}
+	
+	public Date stringToDate(String datum) {
+		Date ret = new Date();
+		try {
+			ret = new SimpleDateFormat("dd/MM/yyyy").parse(datum);
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
+		
+	}
+
+	public String getDatumRodjString() {
+		return datumRodjString;
+	}
+
+	public void setDatumRodjString(String datumRodjString) {
+		this.datumRodjString = datumRodjString;
 	}
 	
 }

@@ -87,15 +87,15 @@ public class BazaProfesora {
 			case 3:
 				return zvanjeToString(profesor.getZvanje());
 			case 4:
-				return profesor.getKontakt_telefon();
+				return profesor.getKontaktTelefon();
 			case 5:
-				return profesor.getEmail_adresa();
+				return profesor.getEmailAdresa();
 			case 6:
-				return profesor.getBroj_licne_karte();
+				return profesor.getBrLicneKarte();
 			case 7 :
-				return profesor.getDatum_rodjenja();
+				return profesor.getDatumRodjString();
 			case 8:
-				return profesor.getAdresa_stanovanja();
+				return profesor.getAdresaStanovanja();
 			case 9:
 				return null;  //Profesor.getLista_predmeta();
 			default:
