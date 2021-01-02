@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import controller.StudentController;
+import dialog.DeleteStudentDialog;
 import dialog.EditPredmetDialog;
 import dialog.EditStudentDialog;
 import dialog.NewPredmetDialog;
@@ -116,7 +117,32 @@ public class MenuBar extends JMenuBar implements ActionListener {
 				= KeyStroke.getKeyStroke(KeyEvent.VK_D, KeyEvent.CTRL_DOWN_MASK);
 			miDelete.setAccelerator(keyStrokeToDelete);
 			miDelete.setMnemonic('d');
-		
+			miDelete.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					ChangeListenerTabs brt = new ChangeListenerTabs();	
+					if(brt.getSel() == 0) {
+						DeleteStudentDialog deleteStudent = new DeleteStudentDialog(parent, "Brisanje studenta", true);
+						deleteStudent.setVisible(true);
+					}	
+					else if(brt.getSel() == 1) {
+						//EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Dodavanje profesora", true);
+						//editProfesor.setVisible(true);
+					}
+					else if(brt.getSel() ==  2) {
+						//EditPredmetDialog editPredmet = new EditPredmetDialog(parent, "Izmena predmeta", true);
+						//editPredmet.setVisible(true);
+					}
+					else 
+						JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));
+					
+				
+					
+				}
+				
+			});
+			
 		JMenu help = new JMenu("Help");
 		help.setMnemonic('h');
 		

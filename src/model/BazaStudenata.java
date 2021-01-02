@@ -161,6 +161,14 @@ public class BazaStudenata {
 			}
 		}
 	}
+	public void izbrisiStudenta(String ID) {
+		for (Student s : studenti) {
+			if(s.getBrIndeksa() == ID) {
+				studenti.remove(s);
+				break;
+			}
+		}
+	}
 	
 
 }

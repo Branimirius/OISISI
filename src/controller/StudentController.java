@@ -49,4 +49,16 @@ private static StudentController instance = null;
 		JOptionPane.showMessageDialog(null, ("Izmena je izvrsena"));
 	}
 	
+	public void izbrisiStudenta(int rowSelectedIndex) {
+		if (rowSelectedIndex < 0) {
+			JOptionPane.showMessageDialog(null, "Niste izabrali studenta.");
+			return;
+		}
+		Student student = BazaStudenata.getInstance().getRow(rowSelectedIndex);
+		BazaStudenata.getInstance().izbrisiStudenta(student.getBrIndeksa());
+		//azuriranje prikaza
+		MainFrame.getInstance().updateViewStudent();
+		
+	}
+	
 }
