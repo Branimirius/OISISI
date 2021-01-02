@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
 
+import dialog.EditPredmetDialog;
+import dialog.EditStudentDialog;
 import dialog.NewProfesorDialog;
 import dialog.NewStudentDialog;
 
@@ -50,18 +52,18 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ChangeListenerTabs which_tab = new ChangeListenerTabs();				
+				ChangeListenerTabs brt= new ChangeListenerTabs();				
 				//iz nekog razloga ovo nije htelo sa switch, uvek je ispisivalo sve :( 
 				
-				if(which_tab.getSel() == 0) {
+				if(brt.getSel() == 0) {
 					NewStudentDialog newStudent = new NewStudentDialog(parent, "Dodavanje studenta", true);
 					newStudent.setVisible(true);
 				}	
-				else if(which_tab.getSel() == 1) {
+				else if(brt.getSel() == 1) {
 					NewProfesorDialog newProfesor = new NewProfesorDialog(parent, "Dodavanje profesora", true);
 					newProfesor.setVisible(true);
 				}
-				else 	if(which_tab.getSel() ==  2) {
+				else 	if(brt.getSel() ==  2) {
 					JOptionPane.showMessageDialog(null, ("placeholder za dodavanje predmeta"));
 				}
 				else 
@@ -77,8 +79,25 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		btnEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, ("TEST TEST"));
-			}
+				
+				ChangeListenerTabs brt = new ChangeListenerTabs();	
+				if(brt.getSel() == 0) {
+					EditStudentDialog editStudent = new EditStudentDialog(parent, "Izmena studenta", true);
+					editStudent.setVisible(true);
+				}	
+				else if(brt.getSel() == 1) {
+					//EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Dodavanje profesora", true);
+					//editProfesor.setVisible(true);
+				}
+				else if(brt.getSel() ==  2) {
+					EditPredmetDialog editPredmet = new EditPredmetDialog(parent, "Izmena predmeta", true);
+					editPredmet.setVisible(true);
+				}
+				else 
+					JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));
+			}	
+			
+			
 		});
 		panel1.add(btnEdit);
 
@@ -103,7 +122,6 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		
 		JTextField field = new JTextField(12);
 		field.setBorder(BorderFactory.createBevelBorder(1));
-		//field.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.BLACK));
 		panel2.add(field);
 		
 		JButton btnSearch=new JButton(new ImageIcon("Images_mc/search.png"));

@@ -37,14 +37,13 @@ public class Tab extends JTabbedPane{
 
 	
 	//public StudentJTable tabelaStudenti ;
-	/*	JScrollPane scrollStudenti = new JScrollPane(tabelaStudenti);
-	*/	
+
 	StudentJTable tabelaStudenti = StudentJTable.getInstance();
 	JScrollPane scrollStudenti = new JScrollPane(tabelaStudenti);
 		
 	//JLabel profesorLabel = new JLabel("Profesor");
 		
-	ProfesorJTable tabelaProfesori = new ProfesorJTable();
+	ProfesorJTable tabelaProfesori = ProfesorJTable.getInstance();
 		JScrollPane scrollProfesori = new JScrollPane(tabelaProfesori);
 	
 	//JLabel predmetLabel = new JLabel("Predmet");
@@ -74,7 +73,6 @@ public class Tab extends JTabbedPane{
 		
 				
 	}
-	
 	
 	public int getSelectedTab() {
 		return selectedTab;

@@ -14,6 +14,15 @@ public class ProfesorJTable extends JTable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private static ProfesorJTable instance = null;
+
+	public static ProfesorJTable getInstance() {
+		if (instance == null) {
+			instance = new ProfesorJTable();
+		}
+		return instance;
+	}
 
 	public ProfesorJTable() {
 		this.setRowSelectionAllowed(true);
