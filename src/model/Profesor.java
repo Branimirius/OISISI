@@ -59,7 +59,7 @@ public class Profesor {
 		return datumRodjenja;
 	}
 	public void setDatumRodjenja(String datumRodjenja) {
-		this.datumRodjenja =stringToDate(datumRodjenja);
+		this.datumRodjenja = stringToDate(datumRodjenja);
 	}
 	public String getAdresaStanovanja() {
 		return adresaStanovanja;

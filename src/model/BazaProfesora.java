@@ -103,10 +103,28 @@ public class BazaProfesora {
 			}
 		}
 
-		public void dodajProfesora(String prezime, String ime, String datum_rodjenja, String adresa_stanovanja, 
-				String kontakt_telefon, String email_adresa, String broj_licne_karte, Titula titula, Zvanje zvanje, List<Predmet> lista_predmeta ) {
-			this.profesori.add(new Profesor(prezime, ime, datum_rodjenja, adresa_stanovanja, 
-					kontakt_telefon, email_adresa, broj_licne_karte, titula, zvanje, lista_predmeta));
+		public void dodajProfesora(String prezime, String ime, String datumRodjenja, String adresaStanovanja, 
+				String kontaktTelefon, String emailAdresa, String brLicneKarte, Titula titula, Zvanje zvanje, List<Predmet> listaPredmeta ) {
+			this.profesori.add(new Profesor(prezime, ime, datumRodjenja, adresaStanovanja, 
+					datumRodjenja, brLicneKarte, adresaStanovanja, titula, zvanje, listaPredmeta));
+		}
+		
+		public void izmeniProfesora(String ID, String prezime, String ime, String datumRodjenja, String adresaStanovanja, 
+				String kontaktTelefon, String emailAdresa, String brLicneKarte, Titula titula, Zvanje zvanje, List<Predmet> listaPredmeta) {
+			for (Profesor p : profesori) {
+				if (p.getBrLicneKarte() == ID) {
+					p.setPrezime(prezime);
+					p.setIme(ime);
+					p.setDatumRodjenja(datumRodjenja);
+					p.setAdresaStanovanja(adresaStanovanja);
+					p.setKontaktTelefon(kontaktTelefon);
+					p.setEmailAdresa(emailAdresa);
+					p.setBrLicneKarte(brLicneKarte);
+					p.setTitula(titula);
+					p.setZvanje(zvanje);
+					
+				}
+			}
 		}
 		
 		public String titulaToString(Titula t) {

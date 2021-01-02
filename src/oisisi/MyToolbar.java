@@ -20,6 +20,7 @@ import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
 
 import dialog.EditPredmetDialog;
+import dialog.EditProfesorDialog;
 import dialog.EditStudentDialog;
 import dialog.NewProfesorDialog;
 import dialog.NewStudentDialog;
@@ -86,8 +87,8 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 					editStudent.setVisible(true);
 				}	
 				else if(brt.getSel() == 1) {
-					//EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Dodavanje profesora", true);
-					//editProfesor.setVisible(true);
+					EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Dodavanje profesora", true);
+					editProfesor.setVisible(true);
 				}
 				else if(brt.getSel() ==  2) {
 					EditPredmetDialog editPredmet = new EditPredmetDialog(parent, "Izmena predmeta", true);

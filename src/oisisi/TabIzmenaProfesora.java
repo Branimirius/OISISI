@@ -1,25 +1,25 @@
-package dialog;
+package oisisi;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JDialog;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-
 import javax.swing.text.Document;
 
 import controller.ButtonController;
 import controller.ProfesorController;
+import controller.StudentController;
 import model.Titula;
 import model.Zvanje;
 import validation.AdrKeyListener;
@@ -29,28 +29,25 @@ import validation.LicnaKartaKeyListener;
 import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
-import javax.swing.JComboBox;
-
-
-public class NewProfesorDialog  extends JDialog{
+public class TabIzmenaProfesora extends JTabbedPane{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	
-	public NewProfesorDialog(Frame parent, String title, boolean modal) {
-		super(parent, title, modal);
-		
-		int dialWidth= (parent.getSize().width)/2;
-		int dialHeight = (parent.getSize().height*7/8);
-		Dimension dim = new Dimension(dialWidth*2/5, 25);
-		
-		setLayout(new BorderLayout());
-		setSize(dialWidth, dialHeight);
-		setLocationRelativeTo(parent);
-		
+	private static TabIzmenaProfesora instance = null;
+
+	public static TabIzmenaProfesora getInstance(Dimension dim) {
+		if (instance == null) {
+			instance = new TabIzmenaProfesora(dim);
+		}
+		return instance;
+	}
+	
+	public TabIzmenaProfesora(Dimension dim) {
+		JPanel informacijePanel = new JPanel();
+		informacijePanel.setLayout(new BorderLayout());
 		
 		JPanel panelPrezime = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelPrezime = new JLabel("      Prezime*");
@@ -175,7 +172,8 @@ public class NewProfesorDialog  extends JDialog{
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ProfesorController.getInstance().dodajProfesora(txtPrezime.getText(), txtIme.getText(), 
+					int id = ProfesorJTable.getInstance().getSelectedRow();					
+					ProfesorController.getInstance().izmeniProfesora(id, txtPrezime.getText(), txtIme.getText(),
 							txtDatRod.getText(), txtAdresa.getText(), txtTel.getText(), txtMail.getText(), txtBrLicne.getText(), 
 							stringToTitula(titule[comboTitula.getSelectedIndex()]), stringToZvanje(zvanja[comboZvanje.getSelectedIndex()]), null);
 				}
@@ -184,7 +182,6 @@ public class NewProfesorDialog  extends JDialog{
 		odustani.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 			}
 		});
 		JLabel stealth = new JLabel();
@@ -194,8 +191,10 @@ public class NewProfesorDialog  extends JDialog{
 		panelButtons.add(odustani);
 		 
 		
-		add(boxCentar, BorderLayout.NORTH);
-		add(panelButtons, BorderLayout.SOUTH);
+		informacijePanel.add(boxCentar, BorderLayout.NORTH);
+		informacijePanel.add(panelButtons, BorderLayout.SOUTH);
+		
+		add("Informacije", informacijePanel);
 	}
 	
 	public Titula  stringToTitula(String t) {
@@ -235,5 +234,5 @@ public class NewProfesorDialog  extends JDialog{
 			return null;
 		}
 	}
-}
 
+}
