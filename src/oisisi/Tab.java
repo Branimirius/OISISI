@@ -36,9 +36,11 @@ public class Tab extends JTabbedPane{
 	
 
 	
-	public StudentJTable tabelaStudenti ;
+	//public StudentJTable tabelaStudenti ;
 	/*	JScrollPane scrollStudenti = new JScrollPane(tabelaStudenti);
 	*/	
+	StudentJTable tabelaStudenti = StudentJTable.getInstance();
+	JScrollPane scrollStudenti = new JScrollPane(tabelaStudenti);
 		
 	//JLabel profesorLabel = new JLabel("Profesor");
 		
@@ -46,7 +48,7 @@ public class Tab extends JTabbedPane{
 		JScrollPane scrollProfesori = new JScrollPane(tabelaProfesori);
 	
 	//JLabel predmetLabel = new JLabel("Predmet");
-	PredmetJTable tabelaPredmeti = new PredmetJTable();
+	PredmetJTable tabelaPredmeti = PredmetJTable.getInstance();
 		JScrollPane scrollPredmeti = new JScrollPane(tabelaPredmeti);
 	
 	
@@ -54,7 +56,8 @@ public class Tab extends JTabbedPane{
 	
 	public Tab() {
 		
-		prikaziTabeluStudent();
+		studentPanel.setLayout(new BorderLayout());
+		studentPanel.add(scrollStudenti, BorderLayout.CENTER);
 		
 		profesorPanel.setLayout(new BorderLayout());
 		profesorPanel.add(scrollProfesori, BorderLayout.CENTER);
@@ -63,20 +66,16 @@ public class Tab extends JTabbedPane{
 		predmetPanel.setLayout(new BorderLayout());
 		predmetPanel.add(scrollPredmeti, BorderLayout.CENTER);
 		
-		
+		add("Student", studentPanel);
 		add("Profesor", profesorPanel);
-		add("Predmet", predmetPanel);
+		add("Predmet", predmetPanel);		
 		
 		addChangeListener(new ChangeListenerTabs());
 		
-		
-			
-		
-		
+				
 	}
 	
 	
-
 	public int getSelectedTab() {
 		return selectedTab;
 	}
@@ -85,16 +84,7 @@ public class Tab extends JTabbedPane{
 		Tab.selectedTab = selectedTab;
 	}
 	
-	public void prikaziTabeluStudent() {
-		tabelaStudenti = StudentJTable.getInstance();
-		JScrollPane scrollStudenti = new JScrollPane(tabelaStudenti);
-		studentPanel.setLayout(new BorderLayout());
-		studentPanel.add(scrollStudenti, BorderLayout.CENTER);		
-		this.add("Student", studentPanel);
-
-		
-		System.out.println("Prikazao tabelu ");
-	}
+	
 	
 
 }

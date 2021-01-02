@@ -21,9 +21,9 @@ public class EspbKeyListener implements KeyListener{
 			return;
 		}
 		JTextField txt = (JTextField) e.getComponent();
-		if (txt.getText().length() ==  1) {
-			JOptionPane.showMessageDialog(null, "Možete uneti maksimalno 1 karakter!");
-			txt.setText(txt.getText().substring(0, 1));
+		if (txt.getText().length() ==  2) {
+			JOptionPane.showMessageDialog(null, "Možete uneti maksimalno 2 karaktera!");
+			txt.setText(txt.getText().substring(0, 2));
 		}
 		
 	}

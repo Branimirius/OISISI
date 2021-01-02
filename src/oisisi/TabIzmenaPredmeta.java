@@ -1,10 +1,9 @@
-package dialog;
+package oisisi;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -12,48 +11,41 @@ import java.awt.event.KeyListener;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.text.Document;
 
 import controller.ButtonControllerPredmet;
-import controller.ButtonControllerStudent;
 import controller.PredmetController;
+import controller.StudentController;
 import model.BazaPredmeta;
 import model.Semestar;
 import validation.EspbKeyListener;
 import validation.GodIzvodjenjaKeyListener;
 import validation.SamoSlovaKeyListener;
 
-public class NewPredmetDialog extends JDialog{
+public class TabIzmenaPredmeta extends JTabbedPane{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4843464385947003961L;
+	private static final long serialVersionUID = 3984268731055278179L;
 
-private static NewPredmetDialog instance = null;
-	
-	public static NewPredmetDialog getInstance(Frame parent, String title, boolean modal) {
+	private static TabIzmenaPredmeta instance = null;
+
+	public static TabIzmenaPredmeta getInstance(Dimension dim) {
 		if (instance == null) {
-			instance = new NewPredmetDialog(parent, title, modal);
+			instance = new TabIzmenaPredmeta(dim);
 		}
 		return instance;
 	}
 	
-	public NewPredmetDialog(Frame parent, String title, boolean modal) {
-		super(parent, title, modal);
-		
-		int dialWidth= (parent.getSize().width)/2;
-		int dialHeight = (parent.getSize().height*7/8);
-		Dimension dim = new Dimension(dialWidth*2/5, 25);
-		
-		setLayout(new BorderLayout());
-		setSize(dialWidth, dialHeight);
-		setLocationRelativeTo(parent);
+	public TabIzmenaPredmeta(Dimension dim) {
+		JPanel informacijePanel = new JPanel();
+		informacijePanel.setLayout(new BorderLayout());
 		
 		JPanel panelNaziv = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelNaziv = new JLabel("      Naziv predmeta*");
@@ -106,6 +98,7 @@ private static NewPredmetDialog instance = null;
 		 Document documentGod = txtGod.getDocument();
 		 documentGod.addDocumentListener(new ButtonControllerPredmet(potvrdi, 2));
 		 
+		 
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {															
@@ -116,12 +109,9 @@ private static NewPredmetDialog instance = null;
 					}
 					else {
 					
-					PredmetController.getInstance().dodajPredmet(BazaPredmeta.getInstance().generateId(), txtNaziv.getText(), stringToSemestar(semestar[comboSemestar.getSelectedIndex()]), Integer.parseInt(txtGod.getText()), 
-							null, Integer.parseInt(txtESPB.getText()), null, null);
-				    
-					//System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
-							//Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
-					
+					int id = PredmetJTable.getInstance().getSelectedRow();					
+					PredmetController.getInstance().izmeniPredmet(id, txtNaziv.getText(), Integer.parseInt(txtESPB.getText()),stringToSemestar(semestar[comboSemestar.getSelectedIndex()]), 					 
+							 Integer.parseInt(txtGod.getText()));
 					}
 				}
 			});
@@ -130,25 +120,29 @@ private static NewPredmetDialog instance = null;
 			odustani.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					dispose();
+					//dispose();
 				}
 			});
 			JLabel stealth = new JLabel();
 			stealth.setPreferredSize(new Dimension(30,20));
 			panelDugmici.add(potvrdi);
 			panelDugmici.add(stealth);
-			panelDugmici.add(odustani); 
+			panelDugmici.add(odustani);
+		
 			
-		
-		Box boxCentar = Box.createVerticalBox();
-		boxCentar.add(Box.createVerticalStrut(20));
-		boxCentar.add(panelNaziv);
-		boxCentar.add(panelESPB);
-		boxCentar.add(panelGod);
-		boxCentar.add(panelSemestar);
-		
-		add(boxCentar, BorderLayout.NORTH);
-		add(panelDugmici, BorderLayout.SOUTH);
+			Box boxCentar = Box.createVerticalBox();
+			boxCentar.add(Box.createVerticalStrut(20));
+			boxCentar.add(panelNaziv);
+			boxCentar.add(panelESPB);
+			boxCentar.add(panelGod);
+			boxCentar.add(panelSemestar);
+			
+			informacijePanel.add(boxCentar, BorderLayout.NORTH);
+			informacijePanel.add(panelDugmici, BorderLayout.SOUTH);	
+			
+			add("Informacije", informacijePanel);
+			
+			
 	}
 	
 	public Semestar stringToSemestar(String semestar) {

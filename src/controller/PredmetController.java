@@ -2,9 +2,14 @@ package controller;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import model.BazaPredmeta;
+import model.BazaStudenata;
+import model.Predmet;
 import model.Profesor;
 import model.Semestar;
+import model.Status;
 import model.Student;
 import oisisi.MainFrame;
 
@@ -31,4 +36,17 @@ private static PredmetController instance = null;
 		MainFrame.getInstance().updateViewPredmet();
 	    
 	}
+	
+	public void izmeniPredmet(int rowSelectedIndex, String nazivPredmeta, Integer brojEspbBodova, Semestar semestar, Integer godinaIzvodjenja) {
+		if (rowSelectedIndex < 0) {
+			JOptionPane.showMessageDialog(null, "Niste izabrali predmet.");
+			return;
+		}
+		Predmet predmet = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
+		BazaPredmeta.getInstance().izmeniPredmet(predmet.getIdPredmeta(), nazivPredmeta, brojEspbBodova, semestar, godinaIzvodjenja);
+		//azuriranje prikaza
+		MainFrame.getInstance().updateViewPredmet();
+		JOptionPane.showMessageDialog(null, ("Izmena je izvrsena"));
+	}
+	
 }

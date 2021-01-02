@@ -110,10 +110,19 @@ public class BazaPredmeta {
 		}
 	}
 	
-	public void dodajPredmet(long id_predmeta, String naziv_predmeta, Semestar semestar, Integer godina_izvodjenja,
-			Profesor predmetni_profesor, Integer broj_espb_bodova, List<Student> list_polozili, List<Student> list_nisu_polozili ) {
-		this.predmeti.add(new Predmet(id_predmeta, naziv_predmeta, semestar, godina_izvodjenja,
-				predmetni_profesor, broj_espb_bodova,  list_polozili, list_nisu_polozili));
+	public void dodajPredmet(long idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
+			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili, List<Student> listNisuPolozili ) {
+		this.predmeti.add(new Predmet(idPredmeta, nazivPredmeta, semestar, godinaIzvodjenja,
+				predmetniProfesor, brojEspbBodova,  listPolozili, listNisuPolozili));
 	}
-	
+	public void izmeniPredmet(long idPredmeta, String nazivPredmeta, Integer brojEspbBodova, Semestar semestar, Integer godinaIzvodjenja ) {
+		for(Predmet p : predmeti) {
+			if(p.getIdPredmeta() == idPredmeta) {
+				p.setNazivPredmeta(nazivPredmeta);
+				p.setSemestar(semestar);
+				p.setGodinaIzvodjenja(godinaIzvodjenja);
+				p.setBrojEspbBodova(brojEspbBodova);
+			}
+		}
+	}
 }

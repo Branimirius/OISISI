@@ -50,7 +50,7 @@ public class TabIzmenaStudenta extends JTabbedPane{
 	
 	public TabIzmenaStudenta(Dimension dim) {
 		JPanel informacijePanel = new JPanel();
-		informacijePanel.setLayout(new BorderLayout());;
+		informacijePanel.setLayout(new BorderLayout());
 		
 		JPanel panelIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelIme = new JLabel("      Ime*");

@@ -14,6 +14,15 @@ public class PredmetJTable extends JTable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private static PredmetJTable instance = null;
+
+	public static PredmetJTable getInstance() {
+		if (instance == null) {
+			instance = new PredmetJTable();
+		}
+		return instance;
+	}
+	
 	public PredmetJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);

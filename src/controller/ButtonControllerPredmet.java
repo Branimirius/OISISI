@@ -4,13 +4,12 @@ import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class ButtonControllerStudent implements DocumentListener{
+public class ButtonControllerPredmet implements DocumentListener{
 
-	
 	JButton button;
-	  int br;
+	int br;
 	
-	  public ButtonControllerStudent(JButton b, int i) {
+	public ButtonControllerPredmet(JButton b, int i) {
 		    button = b;
 		    br = i;
 		  }  
@@ -32,10 +31,12 @@ public class ButtonControllerStudent implements DocumentListener{
 		disableIfEmpty(e);
 		
 	}
+	
 	public void disableIfEmpty(DocumentEvent e) {
-		 if (e.getDocument().getLength() > 0) 
-		  		ValidListaStudent.getInstance().validateList(br); 
-	  if(ValidListaStudent.getInstance().listValid())
-				button.setEnabled(e.getDocument().getLength() > 0);
+		  if (e.getDocument().getLength() > 0) 
+			  		ValidListaPredmet.getInstance().validateList(br); 
+		  if(ValidListaPredmet.getInstance().listValid())
+					button.setEnabled(e.getDocument().getLength() > 0);
 	  }
+
 }
