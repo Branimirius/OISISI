@@ -2,8 +2,6 @@
 //ref : https://stackoverflow.com/questions/23856818/set-enable-button-if-text-field-is-fill
 package controller;
 
-//import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -13,8 +11,6 @@ public class ButtonController implements DocumentListener {
 	  JButton button;
 	  int br;
 	  
-	  //ArrayList<Boolean> listValid = new ArrayList<Boolean>();
-	// Boolean[] listValid = new Boolean[2];
 	 
 	  public ButtonController(JButton b, int i) {
 	    button = b;
@@ -34,10 +30,10 @@ public class ButtonController implements DocumentListener {
 	  }
 
 	  public void disableIfEmpty(DocumentEvent e) {
-		  if (e.getDocument().getLength() > 0) 
-			  		ValidLista.getInstance().validateList(br);
-		if (ValidLista.getInstance().listValid())
-					button.setEnabled(true);
+		  if (e.getDocument().getLength() > 1) 
+			  		ValidLista.getInstance().validateList(br); 
+		  if(ValidLista.getInstance().listValid())
+					button.setEnabled(e.getDocument().getLength() > 1);
 	  }
 
 	}

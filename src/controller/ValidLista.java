@@ -36,6 +36,10 @@ public class ValidLista {
 		this.listValid[i] = true;
 	}
 	
+	public void deValidateList(int i) {
+		this.listValid[i] = false;
+	}
+	
 	public Boolean listValid() {
 		if (this.listValid[0] == true && this.listValid[1] == true && 
 			this.listValid[2] == true && this.listValid[3] == true &&
