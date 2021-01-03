@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import controller.StudentController;
+import dialog.DeleteProfesorDialog;
 import dialog.DeleteStudentDialog;
 import dialog.EditPredmetDialog;
 import dialog.EditStudentDialog;
@@ -127,12 +128,12 @@ public class MenuBar extends JMenuBar implements ActionListener {
 						deleteStudent.setVisible(true);
 					}	
 					else if(brt.getSel() == 1) {
-						//EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Dodavanje profesora", true);
-						//editProfesor.setVisible(true);
+						DeleteProfesorDialog deleteProfesor = new DeleteProfesorDialog(parent, "Brisanje profesora", true);
+						deleteProfesor.setVisible(true);
 					}
 					else if(brt.getSel() ==  2) {
-						//EditPredmetDialog editPredmet = new EditPredmetDialog(parent, "Izmena predmeta", true);
-						//editPredmet.setVisible(true);
+						//DeletePredmetDialog deletePredmet = new DeletePredmetDialog(parent, "Brisanje predmeta", true);
+						//deletePredmet.setVisible(true);
 					}
 					else 
 						JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));

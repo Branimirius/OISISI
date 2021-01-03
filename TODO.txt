@@ -19,12 +19,12 @@ BANE: #student DONE
 	  #menu_bar DONE
 	  #status_bar DONE
 	  #prikaz_studenata DONE
-	  #dodavanje_studenta
-      #dodavanje_predmeta
-	  #izmena_studenta 
-	  #izmena_predmeta
-	  #brisanje_studenta
-	  #brisanje_profesora
+	  #dodavanje_studenta DONE	
+      #dodavanje_predmeta DONE
+	  #izmena_studenta DONE
+	  #izmena_predmeta DONE
+	  #brisanje_studenta DONE
+	  #brisanje_profesora DONE
 	  #prikaz_polozenih_ispita
 	  #dodavanje_predmeta_studentu
 	  #uklanjanje_studenta_sa_predmeta

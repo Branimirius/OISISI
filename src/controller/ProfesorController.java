@@ -5,8 +5,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import model.BazaProfesora;
+import model.BazaStudenata;
 import model.Predmet;
 import model.Profesor;
+import model.Student;
 import model.Titula;
 import model.Zvanje;
 import oisisi.MainFrame;
@@ -48,5 +50,16 @@ public class ProfesorController {
 		//azuriranje prikaza
 		MainFrame.getInstance().updateViewProfesor();
 		JOptionPane.showMessageDialog(null, ("Izmena je izvrsena"));
+	}
+	public void izbrisiProfesora(int rowSelectedIndex) {
+		if (rowSelectedIndex < 0) {
+			JOptionPane.showMessageDialog(null, "Niste izabrali profesora.");
+			return;
+		}
+		Profesor profesor = BazaProfesora.getInstance().getRow(rowSelectedIndex);
+		BazaProfesora.getInstance().izbrisiProfesora(profesor.getBrLicneKarte());
+		//azuriranje prikaza
+		MainFrame.getInstance().updateViewProfesor();
+		
 	}
 }

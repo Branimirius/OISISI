@@ -164,6 +164,15 @@ public class BazaProfesora {
 				return null;
 			}
 		}
+		
+		public void izbrisiProfesora(String ID) {
+			for (Profesor p : profesori) {
+				if(p.getBrLicneKarte() == ID) {
+					profesori.remove(p);
+					break;
+				}
+			}
+		}
 
 }
 

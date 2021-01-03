@@ -11,26 +11,26 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.StudentController;
-import oisisi.StudentJTable;
+import controller.ProfesorController;
+import oisisi.ProfesorJTable;
 
-public class DeleteStudentDialog extends JDialog{
+public class DeleteProfesorDialog extends JDialog{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 54699537888204593L;
+	private static final long serialVersionUID = -996656305975062013L;
+
+	private static DeleteProfesorDialog instance = null;
 	
-	private static DeleteStudentDialog instance = null;
-	
-	public static DeleteStudentDialog getInstance(Frame parent, String title, boolean modal) {
+	public static DeleteProfesorDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
-			instance = new DeleteStudentDialog(parent, title, modal);
+			instance = new DeleteProfesorDialog(parent, title, modal);
 		}
 		return instance;
 	}
 	
-	public DeleteStudentDialog(Frame parent, String title, boolean modal) {
+	public DeleteProfesorDialog(Frame parent, String title, boolean modal) {
 		
 		super(parent, title, modal);
 		
@@ -42,7 +42,7 @@ public class DeleteStudentDialog extends JDialog{
 		setSize(dialWidth, dialHeight);
 		setLocationRelativeTo(parent);
 		
-		JLabel tekst = new JLabel("     Da li ste sigurni da zelite da obrisete studenta? ");
+		JLabel tekst = new JLabel("     Da li ste sigurni da zelite da obrisete profesora? ");
 		JLabel stealth = new JLabel("  ");		
 		
 		JPanel panelDugmici = new JPanel();
@@ -54,8 +54,8 @@ public class DeleteStudentDialog extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				int id = StudentJTable.getInstance().getSelectedRow();	
-				StudentController.getInstance().izbrisiStudenta(id);
+				int id = ProfesorJTable.getInstance().getSelectedRow();	
+				ProfesorController.getInstance().izbrisiProfesora(id);
 				dispose();
 			}
 			
@@ -77,5 +77,8 @@ public class DeleteStudentDialog extends JDialog{
 		add(panelDugmici, BorderLayout.SOUTH);
 		
 	}
+	
+	
+	
 	
 }
