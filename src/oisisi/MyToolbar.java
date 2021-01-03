@@ -91,7 +91,7 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 					editStudent.setVisible(true);
 				}	
 				else if(brt.getSel() == 1) {
-					EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Dodavanje profesora", true);
+					EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Izmena profesora", true);
 					editProfesor.setVisible(true);
 				}
 				else if(brt.getSel() ==  2) {
