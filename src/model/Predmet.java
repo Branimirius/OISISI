@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Predmet {
 
-	private long idPredmeta;
+	private String idPredmeta;
 	private String nazivPredmeta;
 	private Semestar semestar;
 	private Integer godinaIzvodjenja;
@@ -17,7 +17,7 @@ public class Predmet {
 	
 	public Predmet() {}
 	
-	public Predmet(long idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
+	public Predmet(String idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
 			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili,
 			List<Student> listNisuPolozili) {
 		super();
@@ -31,11 +31,11 @@ public class Predmet {
 		this.listaNisuPolozili = listNisuPolozili;
 	}
 
-	public long getIdPredmeta() {
+	public String getIdPredmeta() {
 		return idPredmeta;
 	}
 
-	public void setIdPredmeta(long idPredmeta) {
+	public void setIdPredmeta(String idPredmeta) {
 		this.idPredmeta = idPredmeta;
 	}
 

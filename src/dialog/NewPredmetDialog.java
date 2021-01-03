@@ -65,6 +65,16 @@ private static NewPredmetDialog instance = null;
 		panelNaziv.add(labelNaziv);
 		panelNaziv.add(txtNaziv);
 		
+		JPanel panelSifra = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JLabel labelSifra = new JLabel("      Sifra predmeta*");
+		labelSifra.setPreferredSize(dim);
+		JTextField txtSifra = new JTextField();
+		txtSifra.setPreferredSize(dim);
+		//KeyListener SifraListener = new SamoSlovaKeyListener();		
+		//txtSifra.addKeyListener(SamoSlovaListener);		
+		panelSifra.add(labelSifra);
+		panelSifra.add(txtSifra);
+		
 		JPanel panelESPB = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelESPB = new JLabel("      Broj ESPB bodova*");
 		labelESPB.setPreferredSize(dim);
@@ -116,7 +126,7 @@ private static NewPredmetDialog instance = null;
 					}
 					else {
 					
-					PredmetController.getInstance().dodajPredmet(BazaPredmeta.getInstance().generateId(), txtNaziv.getText(), stringToSemestar(semestar[comboSemestar.getSelectedIndex()]), Integer.parseInt(txtGod.getText()), 
+					PredmetController.getInstance().dodajPredmet(txtSifra.getText(), txtNaziv.getText(), stringToSemestar(semestar[comboSemestar.getSelectedIndex()]), Integer.parseInt(txtGod.getText()), 
 							null, Integer.parseInt(txtESPB.getText()), null, null);
 				    
 					//System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
@@ -143,12 +153,14 @@ private static NewPredmetDialog instance = null;
 		Box boxCentar = Box.createVerticalBox();
 		boxCentar.add(Box.createVerticalStrut(20));
 		boxCentar.add(panelNaziv);
+		boxCentar.add(panelSifra);
 		boxCentar.add(panelESPB);
 		boxCentar.add(panelGod);
 		boxCentar.add(panelSemestar);
 		
 		add(boxCentar, BorderLayout.NORTH);
 		add(panelDugmici, BorderLayout.SOUTH);
+	
 	}
 	
 	public Semestar stringToSemestar(String semestar) {

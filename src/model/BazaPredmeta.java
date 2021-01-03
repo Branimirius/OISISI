@@ -14,10 +14,10 @@ public class BazaPredmeta {
 		return instance;
 	}
 	
-	private long generator;
+	private String idPredmeta;
 	
-	private List<Student> studenti_polozili;
-	private List<Student> studenti_nisu_polozili;
+	private List<Student> studentiPolozili;
+	private List<Student> studentiNisuPolozili;
 	private List<Predmet> predmeti;
 	private List<String> kolone;
 	private List<Ocena> polozeni;
@@ -25,7 +25,7 @@ public class BazaPredmeta {
 
 	private BazaPredmeta() {
 		
-		generator = 0;
+	
 		initPredmeta();
 
 		this.kolone = new ArrayList<String>();
@@ -42,21 +42,21 @@ public class BazaPredmeta {
 	}
 
 	private void initPredmeta() {
-		this.studenti_polozili = new ArrayList<Student>();
-		studenti_polozili.add(new Student("RA174", "Filip", "Pinjuh", "3", Status.B, 7, "51235124", 2018, "10/11/99", "Strz 25", "email", polozeni, predmeti));
-		studenti_polozili.add(new Student("RA174", "Bane", "Carina", "3", Status.B, 7, "51235124", 2018,"10/11/99", "Strz 25", "email", polozeni, predmeti));
+		this.studentiPolozili = new ArrayList<Student>();
+		studentiPolozili.add(new Student("RA174", "Filip", "Pinjuh", "3", Status.B, 7, "51235124", 2018, "10/11/99", "Strz 25", "email", polozeni, predmeti));
+		studentiPolozili.add(new Student("RA174", "Bane", "Carina", "3", Status.B, 7, "51235124", 2018,"10/11/99", "Strz 25", "email", polozeni, predmeti));
 		
-		this.studenti_nisu_polozili = new ArrayList<Student>();
-		studenti_polozili.add(new Student("RA174", "Mihajlo", "Kisic", "3", Status.B, 7, "51235124", 2018, "10/11/99", "Strz 25", "email", polozeni, predmeti));
+		this.studentiNisuPolozili = new ArrayList<Student>();
+		studentiPolozili.add(new Student("RA174", "Mihajlo", "Kisic", "3", Status.B, 7, "51235124", 2018, "10/11/99", "Strz 25", "email", polozeni, predmeti));
 		
 		this.profesor = new Profesor("Mikic", "Mika", "10/11/1999.", "Strazilovska 26", "062345623", "pajta@gmail.com", "498293", Titula.MR, Zvanje.REDOVNI_PROFESOR, predmeti);
 		
 		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet(generateId(), "OISISI", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
-		predmeti.add(new Predmet(generateId(), "PROGRAMSKI PREVODIOCI", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
-		predmeti.add(new Predmet(generateId(), "METODE OPTIMIZACIJE", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
-		predmeti.add(new Predmet(generateId(), "NANS", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
-		predmeti.add(new Predmet(generateId(), "BAZE PODATAKA", Semestar.ZIMSKI, 3, profesor, 8, studenti_polozili, studenti_nisu_polozili));
+		predmeti.add(new Predmet("SE3", "OISISI", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
+		predmeti.add(new Predmet("PP", "PROGRAMSKI PREVODIOCI", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
+		predmeti.add(new Predmet("MO", "METODE OPTIMIZACIJE", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
+		predmeti.add(new Predmet("N3", "NANS", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
+		predmeti.add(new Predmet("BP", "BAZE PODATAKA", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
 	
 		this.polozeni = new ArrayList<Ocena>();
 		
@@ -74,9 +74,9 @@ public class BazaPredmeta {
 		return 5;
 	}
 	
-	public long generateId() {
+	/*public long generateId() {
 		return ++generator;
-	}
+	}*/
 
 	public String getColumnName(int index) {
 		return this.kolone.get(index);
@@ -90,7 +90,7 @@ public class BazaPredmeta {
 		Predmet predmet = this.predmeti.get(row);
 		switch (column) {
 		case 0:
-			return Long.toString(predmet.getIdPredmeta());
+			return predmet.getIdPredmeta();
 		case 1:
 			return predmet.getNazivPredmeta();
 		case 2:
@@ -110,12 +110,12 @@ public class BazaPredmeta {
 		}
 	}
 	
-	public void dodajPredmet(long idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
+	public void dodajPredmet(String idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
 			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili, List<Student> listNisuPolozili ) {
 		this.predmeti.add(new Predmet(idPredmeta, nazivPredmeta, semestar, godinaIzvodjenja,
 				predmetniProfesor, brojEspbBodova,  listPolozili, listNisuPolozili));
 	}
-	public void izmeniPredmet(long idPredmeta, String nazivPredmeta, Integer brojEspbBodova, Semestar semestar, Integer godinaIzvodjenja ) {
+	public void izmeniPredmet(String idPredmeta, String nazivPredmeta, Integer brojEspbBodova, Semestar semestar, Integer godinaIzvodjenja ) {
 		for(Predmet p : predmeti) {
 			if(p.getIdPredmeta() == idPredmeta) {
 				p.setNazivPredmeta(nazivPredmeta);
@@ -125,7 +125,7 @@ public class BazaPredmeta {
 			}
 		}
 	}
-	public void izbrisiPredmet(long ID) {
+	public void izbrisiPredmet(String ID) {
 		for (Predmet p : predmeti) {
 			if(p.getIdPredmeta() == ID) {
 				predmeti.remove(p);

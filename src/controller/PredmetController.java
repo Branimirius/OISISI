@@ -26,7 +26,7 @@ private static PredmetController instance = null;
 	
 	private PredmetController() {}
 	
-	public void dodajPredmet(long idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
+	public void dodajPredmet(String idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
 			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili,
 			List<Student> listNisuPolozili) {
 		//izmena modela
