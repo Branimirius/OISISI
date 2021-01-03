@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -15,13 +14,11 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.text.Document;
 
 import controller.ButtonControllerStudent;
 import controller.StudentController;
-import dialog.EditStudentDialog;
 import model.Status;
 import validation.AdrKeyListener;
 import validation.BrTelKeyListener;
@@ -31,28 +28,25 @@ import validation.IndexKeyListener;
 import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
-public class TabIzmenaStudenta extends JTabbedPane{
+public class TabInformacijeStudent extends JPanel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4492311871537969696L;
-	
-	private static TabIzmenaStudenta instance = null;
+	private static final long serialVersionUID = 360658756718759759L;
 
-	public static TabIzmenaStudenta getInstance(Dimension dim) {
+	private static TabInformacijeStudent instance = null;
+
+	public static TabInformacijeStudent getInstance(Dimension dim) {
 		if (instance == null) {
-			instance = new TabIzmenaStudenta(dim);
+			instance = new TabInformacijeStudent(dim);
 		}
 		return instance;
 	}
 	
-	
-	public TabIzmenaStudenta(Dimension dim) {
-		JPanel informacijePanel = new JPanel();
-		JPanel polozeniPanel = new JPanel();
+	public TabInformacijeStudent(Dimension dim) {
 		
-		informacijePanel.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		
 		JPanel panelIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelIme = new JLabel("      Ime*");
@@ -234,22 +228,19 @@ public class TabIzmenaStudenta extends JTabbedPane{
 		boxCentar.add(panelFinans);
 		boxCentar.add(Box.createGlue());
 		
-		informacijePanel.add(boxCentar, BorderLayout.NORTH);
-		informacijePanel.add(panelDugmici, BorderLayout.SOUTH);
 		
-		JPanel infoPanel = TabInformacijeStudent.getInstance(dim);
-		add("Informacije", infoPanel);
-		add("Polozeni Predmeti", polozeniPanel);
+		add(boxCentar, BorderLayout.NORTH);
+		add(panelDugmici, BorderLayout.SOUTH);
 	}
+	public Status stringToStatus(String status) {
+		switch (status) {
+		case "Budzet":
+			return Status.B;			
+		case "Samofinansiranje":
+			return Status.S;
+		default:
+			return null;
+		}
+	}			
 	
-		public Status stringToStatus(String status) {
-			switch (status) {
-			case "Budzet":
-				return Status.B;			
-			case "Samofinansiranje":
-				return Status.S;
-			default:
-				return null;
-			}
-		}			
 }
