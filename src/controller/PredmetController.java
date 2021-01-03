@@ -49,4 +49,16 @@ private static PredmetController instance = null;
 		JOptionPane.showMessageDialog(null, ("Izmena je izvrsena"));
 	}
 	
+	public void izbrisiPredmet(int rowSelectedIndex) {
+		if (rowSelectedIndex < 0) {
+			JOptionPane.showMessageDialog(null, "Niste izabrali studenta.");
+			return;
+		}
+		Predmet predmet = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
+		BazaPredmeta.getInstance().izbrisiPredmet(predmet.getIdPredmeta());
+		//azuriranje prikaza
+		MainFrame.getInstance().updateViewPredmet();
+		
+	}
+	
 }

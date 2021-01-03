@@ -125,4 +125,12 @@ public class BazaPredmeta {
 			}
 		}
 	}
+	public void izbrisiPredmet(long ID) {
+		for (Predmet p : predmeti) {
+			if(p.getIdPredmeta() == ID) {
+				predmeti.remove(p);
+				break;
+			}
+		}
+	}
 }

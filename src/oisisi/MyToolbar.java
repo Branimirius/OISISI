@@ -19,9 +19,12 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
 
+import dialog.DeletePredmetDialog;
+import dialog.DeleteStudentDialog;
 import dialog.EditPredmetDialog;
 import dialog.EditProfesorDialog;
 import dialog.EditStudentDialog;
+import dialog.NewPredmetDialog;
 import dialog.NewProfesorDialog;
 import dialog.NewStudentDialog;
 
@@ -65,7 +68,8 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 					newProfesor.setVisible(true);
 				}
 				else 	if(brt.getSel() ==  2) {
-					JOptionPane.showMessageDialog(null, ("placeholder za dodavanje predmeta"));
+					NewPredmetDialog newPredmet = new NewPredmetDialog(parent, "Dodavanje predmeta", true);
+					newPredmet.setVisible(true);
 				}
 				else 
 					JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));
@@ -110,7 +114,21 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, ("TEST TEST TEST"));				
+				ChangeListenerTabs brt = new ChangeListenerTabs();	
+				if(brt.getSel() == 0) {
+					DeleteStudentDialog deleteStudent = new DeleteStudentDialog(parent, "Brisanje studenta", true);
+					deleteStudent.setVisible(true);
+				}	
+				else if(brt.getSel() == 1) {
+					//EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Brisanje profesora", true);
+					//editProfesor.setVisible(true);
+				}
+				else if(brt.getSel() ==  2) {
+					DeletePredmetDialog deletePredmet = new	DeletePredmetDialog(parent, "Brisanje predmeta", true);
+					deletePredmet.setVisible(true);
+				}
+				else 
+					JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));		
 			}
 		});
 		panel1.add(btnDelete);
