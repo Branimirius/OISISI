@@ -21,6 +21,10 @@ public class AbstractTableModelPolozeni extends AbstractTableModel{
 	public int getColumnCount() {
 		return BazaOcena.getInstance().getColumnCount();
 	}
+	
+	public String getColumnName(int column) {
+		return BazaOcena.getInstance().getColumnName(column);
+	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {

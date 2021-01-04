@@ -47,7 +47,8 @@ public class BazaStudenata {
 
 	private void initStudente() {
 		
-		List<Ocena> polozeni = new ArrayList<Ocena>();		
+		List<Ocena> polozeni1 = new ArrayList<Ocena>();	
+		List<Ocena> polozeni2 = new ArrayList<Ocena>();
 		
 		List<Predmet> nepolozeni = new ArrayList<Predmet>();
 				
@@ -58,19 +59,19 @@ public class BazaStudenata {
 		
 		Student s1 = new Student("RkeKoke", "Marko ", "Markovic", "4567", Status.B,
 				9.78, "0642345678", 1678,"12/3/1998" , "Neki Bulevar 14",
-				"markomarkovic@", polozeni, nepolozeni);
+				"markomarkovic@", polozeni1, nepolozeni);
 		s1.addOcena(p1, 8, "12/12/2001");
 		s1.addOcena(p2, 9, "31/1/2012");
 		
 		Student s2 = new Student("RA-178/2018", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
-				"eMail", polozeni, nepolozeni );
+				"eMail", polozeni2, nepolozeni );
 		s2.addOcena(p3, 6, "31/2/2009");
 		s2.addOcena(p3, 10, "3/10/1999");
 		studenti.add(s1);
 		studenti.add(s2);
 		
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
+		/*studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
 				"eMail", polozeni, nepolozeni ));
 		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
@@ -84,7 +85,7 @@ public class BazaStudenata {
 				"markomarkovic@", polozeni, nepolozeni));
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
-				"eMail", polozeni, nepolozeni ));
+				"eMail", polozeni, nepolozeni )); */
 	}
 
 	public List<Student> getStudenti() {

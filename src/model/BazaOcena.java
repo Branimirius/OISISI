@@ -35,8 +35,16 @@ public class BazaOcena {
 	private void initOcena() {
 		//int id = StudentJTable.getInstance().getSelectedRow();
 		//if(id > 0) {
-		Student s = BazaStudenata.getInstance().getRow(1);
+		
+		int id = StudentJTable.getInstance().getSelectedRow();
+		if(id < 0) {
+			System.out.println("nije selektovan student");
+			return;
+		} 
+		else {
+		Student s = BazaStudenata.getInstance().getStudenti().get(id);
 		ocene = s.getPolozeni();
+		}
 		//}
 		//else return;
 		
@@ -52,6 +60,10 @@ public class BazaOcena {
 	
 	public int getColumnCount() {
 		return 5;
+	}
+	
+	public String getColumnName(int index) {
+		return this.kolone.get(index);
 	}
 	
 	public Ocena getRow(int rowIndex) {
@@ -83,6 +95,10 @@ public class BazaOcena {
 		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
 		
 		return ret;
+	}
+	public void clearOcene() {
+		this.ocene.clear();
+		
 	}
 	
 }

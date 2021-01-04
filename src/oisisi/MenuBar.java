@@ -13,6 +13,7 @@ import controller.StudentController;
 import dialog.DeleteProfesorDialog;
 import dialog.DeleteStudentDialog;
 import dialog.EditPredmetDialog;
+import dialog.EditProfesorDialog;
 import dialog.EditStudentDialog;
 import dialog.NewPredmetDialog;
 import dialog.NewProfesorDialog;
@@ -90,23 +91,29 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					int selStud = StudentJTable.getInstance().getSelectedRow();
 					
-					ChangeListenerTabs brt = new ChangeListenerTabs();	
-					if(brt.getSel() == 0) {
-						EditStudentDialog editStudent = new EditStudentDialog(parent, "Izmena studenta", true);
-						editStudent.setVisible(true);
+						ChangeListenerTabs brt = new ChangeListenerTabs();	
+						if(brt.getSel() == 0) {
+							if(selStud < 0) {
+								JOptionPane.showMessageDialog(null, "Izaberite studenta kog zelite da menjate");
+							}
+							else {
+								EditStudentDialog editStudent = new EditStudentDialog(parent, "Izmena studenta", true);
+								editStudent.setVisible(true);
+							}
+						}	
+						else if(brt.getSel() == 1) {
+							EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Izmena profesora", true);
+							editProfesor.setVisible(true);
+						}
+						else if(brt.getSel() ==  2) {
+							EditPredmetDialog editPredmet = new EditPredmetDialog(parent, "Izmena predmeta", true);
+							editPredmet.setVisible(true);
+						}
+						else 
+							JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));
 					}	
-					else if(brt.getSel() == 1) {
-						//EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Dodavanje profesora", true);
-						//editProfesor.setVisible(true);
-					}
-					else if(brt.getSel() ==  2) {
-						EditPredmetDialog editPredmet = new EditPredmetDialog(parent, "Izmena predmeta", true);
-						editPredmet.setVisible(true);
-					}
-					else 
-						JOptionPane.showMessageDialog(null, ("This shouldn't be possible"));
-				}	
 				
 				
 			});
