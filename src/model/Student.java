@@ -48,6 +48,11 @@ public class Student {
 	public void setPolozeni(List<Ocena> polozeni) {
 		this.polozeni = polozeni;
 	}
+	public void addOcena(Predmet p, int vr, String datum) {
+		Ocena o = new Ocena(this, p, vr, datum);
+		this.polozeni.add(o);
+		
+	}
 
 	public List<Predmet> getNepolozeni() {
 		return nepolozeni;

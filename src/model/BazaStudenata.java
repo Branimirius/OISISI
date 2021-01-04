@@ -47,17 +47,29 @@ public class BazaStudenata {
 
 	private void initStudente() {
 		
-		List<Ocena> polozeni = new ArrayList<Ocena>();
+		List<Ocena> polozeni = new ArrayList<Ocena>();		
+		
 		List<Predmet> nepolozeni = new ArrayList<Predmet>();
-		
+				
 		this.studenti = new ArrayList<Student>();
+		Predmet p1 = BazaPredmeta.getInstance().getRow(1);
+		Predmet p2 = BazaPredmeta.getInstance().getRow(2);
+		Predmet p3 = BazaPredmeta.getInstance().getRow(3);
 		
-		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
+		Student s1 = new Student("RkeKoke", "Marko ", "Markovic", "4567", Status.B,
 				9.78, "0642345678", 1678,"12/3/1998" , "Neki Bulevar 14",
-				"markomarkovic@", polozeni, nepolozeni));
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
+				"markomarkovic@", polozeni, nepolozeni);
+		s1.addOcena(p1, 8, "12/12/2001");
+		s1.addOcena(p2, 9, "31/1/2012");
+		
+		Student s2 = new Student("RA-178/2018", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
-				"eMail", polozeni, nepolozeni ));
+				"eMail", polozeni, nepolozeni );
+		s2.addOcena(p3, 6, "31/2/2009");
+		s2.addOcena(p3, 10, "3/10/1999");
+		studenti.add(s1);
+		studenti.add(s2);
+		
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
 				"eMail", polozeni, nepolozeni ));
@@ -170,6 +182,15 @@ public class BazaStudenata {
 		}
 	}
 	
+	private List<Ocena> napraviOcene(Student s, int ocena) {
+		List<Ocena> retVal = new ArrayList<Ocena>();
+		for(int i = 0; i < 2; i++) {
+			Predmet p = BazaPredmeta.getInstance().getPredmeti().get(i);
+			Ocena o = new Ocena(s, p, ocena,"22/22/3333");
+			retVal.add(o);
+		}
+		return retVal;
+	}
 
 }
 

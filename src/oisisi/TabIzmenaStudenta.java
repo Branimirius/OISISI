@@ -28,9 +28,9 @@ public class TabIzmenaStudenta extends JTabbedPane{
 	
 	public TabIzmenaStudenta(Dimension dim) {
 		
-					 		 		 
-		JPanel polozeniPanel = new JPanel();
+					 		 		 		
 		JPanel infoPanel = TabInformacijeStudent.getInstance(dim);
+		JPanel polozeniPanel = TabPolozeniPredmeti.getInstance();
 		JPanel nepolozeniPanel = TabNepolozeniPredmeti.getInstance(dim);
 		add("Informacije", infoPanel);
 		add("Polozeni Predmeti", polozeniPanel);

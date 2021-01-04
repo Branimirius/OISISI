@@ -23,6 +23,22 @@ public class BazaPredmeta {
 	private List<Ocena> polozeni;
 	private Profesor profesor;
 
+	public List<Student> getStudentiPolozili() {
+		return studentiPolozili;
+	}
+
+	public void setStudentiPolozili(List<Student> studentiPolozili) {
+		this.studentiPolozili = studentiPolozili;
+	}
+
+	public List<Student> getStudentiNisuPolozili() {
+		return studentiNisuPolozili;
+	}
+
+	public void setStudentiNisuPolozili(List<Student> studentiNisuPolozili) {
+		this.studentiNisuPolozili = studentiNisuPolozili;
+	}
+
 	private BazaPredmeta() {
 		
 	
