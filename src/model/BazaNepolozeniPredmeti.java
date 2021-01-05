@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import oisisi.NepolozeniJTable;
 import oisisi.StudentJTable;
 
 public class BazaNepolozeniPredmeti {
@@ -19,6 +20,7 @@ public class BazaNepolozeniPredmeti {
 	
 	private List<Predmet> predmeti;
 	private List<String> kolone;
+	private Student s;
 
 	private BazaNepolozeniPredmeti() {
 		
@@ -39,11 +41,23 @@ public class BazaNepolozeniPredmeti {
 			return;
 		} 
 		else {
-		Student s = BazaStudenata.getInstance().getStudenti().get(id);
+		s = BazaStudenata.getInstance().getStudenti().get(id);
 		predmeti = s.getNepolozeni();
 		}
 	}
 	
+	public void NepolozeniUOcene(int ocena) {
+		int id = NepolozeniJTable.getInstance().getSelectedRow();
+		if(id < 0) {
+			return;
+		}
+		else {
+		Predmet p = predmeti.get(id);
+		this.s.getNepolozeni().remove(p);
+		this.s.addOcena(p, ocena, "31/2/2021");
+		}
+	}
+
 	public void clearPredmeti() {
 		predmeti.clear();
 	}

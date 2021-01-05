@@ -95,7 +95,7 @@ public class BazaStudenata {
 				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
 				"eMail", polozeni, nepolozeni )); */
 	}
-
+	
 	public List<Student> getStudenti() {
 		return studenti;
 	}

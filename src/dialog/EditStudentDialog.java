@@ -61,10 +61,7 @@ public class EditStudentDialog extends JDialog{
 		
 		
 		showTabIzmena();
-		
-		
-			
-		
+
 	}
 	
 public void updateViewNepolozeni() {
