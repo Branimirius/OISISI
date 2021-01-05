@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.border.LineBorder;
 
+import controller.NepolozeniController;
+import controller.OceneController;
 import dialog.DeletePredmetDialog;
 import dialog.DeleteStudentDialog;
 import dialog.EditPredmetDialog;
@@ -92,6 +94,8 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 						JOptionPane.showMessageDialog(null, "Izaberite studenta kog zelite da menjate");
 					}
 					else {
+					OceneController.getInstance().initOcene();
+					NepolozeniController.getInstance().initNepolozeni();
 					EditStudentDialog editStudent = new EditStudentDialog(parent, "Izmena studenta", true);
 					editStudent.setVisible(true);
 					}

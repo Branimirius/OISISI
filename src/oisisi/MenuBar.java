@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import controller.NepolozeniController;
 import controller.OceneController;
 import dialog.DeleteProfesorDialog;
 import dialog.DeleteStudentDialog;
@@ -99,6 +100,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 							}
 							else {	
 								OceneController.getInstance().initOcene();
+								NepolozeniController.getInstance().initNepolozeni();
 								EditStudentDialog editStudent = new EditStudentDialog(parent, "Izmena studenta", true);
 								//TabPolozeniPredmeti.getInstance().updateViewPolozeni();
 								editStudent.setVisible(true);								

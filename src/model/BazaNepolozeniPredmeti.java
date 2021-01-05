@@ -32,12 +32,16 @@ public class BazaNepolozeniPredmeti {
 		this.kolone.add("SEMESTAR");
 	}
 	
-	private void initNepolozeniPredmeti() {
+	public void initNepolozeniPredmeti() {
 		int id = StudentJTable.getInstance().getSelectedRow();
-		
+		if(id < 0) {
+			System.out.println("nije selektovan student");
+			return;
+		} 
+		else {
 		Student s = BazaStudenata.getInstance().getStudenti().get(id);
 		predmeti = s.getNepolozeni();
-			
+		}
 	}
 	
 	public void clearPredmeti() {
