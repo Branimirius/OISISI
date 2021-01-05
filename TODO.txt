@@ -25,7 +25,7 @@ BANE: #student DONE
 	  #izmena_predmeta DONE
 	  #brisanje_studenta DONE
 	  #brisanje_profesora DONE
-	  #prikaz_polozenih_ispita
+	  #prikaz_polozenih_ispita DONE
 	  #dodavanje_predmeta_studentu
 	  #uklanjanje_studenta_sa_predmeta
 	  #ponistavanje_ocene	

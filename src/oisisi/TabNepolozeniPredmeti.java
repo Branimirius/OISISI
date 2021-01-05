@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import controller.NepolozeniController;
+import dialog.DodajNepolozeniPredmetDialog;
 
 public class TabNepolozeniPredmeti extends JPanel{
 
@@ -68,8 +69,26 @@ public class TabNepolozeniPredmeti extends JPanel{
 			}
 	});
 		
+		dodaj.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				DodajNepolozeniPredmetDialog dodajDialog = new DodajNepolozeniPredmetDialog(MainFrame.getInstance(),
+						"Dodavanje predmeta", true);
+				dodajDialog.setVisible(true);
+				
+			}
+			
+			
+		});
+		
 		updateViewNepolozeni();
+		
+
 	}
+	
+		
 	
 	public void updateViewNepolozeni() {
 		
