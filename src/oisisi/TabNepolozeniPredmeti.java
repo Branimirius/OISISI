@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 
 import controller.NepolozeniController;
 import dialog.DodajNepolozeniPredmetDialog;
+import dialog.ObrisiNepolozeniPredmetDialog;
 
 public class TabNepolozeniPredmeti extends JPanel{
 
@@ -67,7 +68,7 @@ public class TabNepolozeniPredmeti extends JPanel{
 			NepolozeniController.getInstance().Polaganje();
 			
 			}
-	});
+		});
 		
 		dodaj.addActionListener(new ActionListener() {
 
@@ -80,6 +81,16 @@ public class TabNepolozeniPredmeti extends JPanel{
 				
 			}
 			
+			
+		});
+		obrisi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ObrisiNepolozeniPredmetDialog obrisiDialog = new ObrisiNepolozeniPredmetDialog(MainFrame.getInstance(),
+						"Brisanje predmeta", true);
+				obrisiDialog.setVisible(true);
+			}
 			
 		});
 		

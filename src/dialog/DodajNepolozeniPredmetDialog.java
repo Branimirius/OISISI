@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import controller.NepolozeniController;
 import model.BazaOcena;
 import model.BazaPredmeta;
 import model.BazaStudenata;
@@ -79,12 +80,9 @@ public class DodajNepolozeniPredmetDialog extends JDialog{
 					if(id < 0) {
 						JOptionPane.showMessageDialog(null, "Izaberite predmet");
 						return;
-					}
-					Predmet predmet = BazaPredmeta.getInstance().getRow(id);
-					int idS = StudentJTable.getInstance().getSelectedRow();
-					BazaStudenata.getInstance().getRow(idS).addPredmet(predmet);
-					TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
+					}	
 					
+					NepolozeniController.getInstance().dodajPredmet(id);
 				}
 				
 			});

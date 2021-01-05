@@ -109,5 +109,12 @@ public class BazaNepolozeniPredmeti {
 			return null;
 		}
 	}
-
+	public void izbrisiPredmet(String ID) {
+		for (Predmet p : predmeti) {
+			if(p.getIdPredmeta() == ID) {
+				predmeti.remove(p);
+				break;
+			}
+		}
+	}
 }
