@@ -5,11 +5,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import model.BazaPredmeta;
-import model.BazaStudenata;
 import model.Predmet;
 import model.Profesor;
 import model.Semestar;
-import model.Status;
 import model.Student;
 import oisisi.MainFrame;
 

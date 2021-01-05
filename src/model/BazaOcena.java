@@ -32,9 +32,8 @@ public class BazaOcena {
 		this.kolone.add("Datum");
 	}
 	
-	private void initOcena() {
-		//int id = StudentJTable.getInstance().getSelectedRow();
-		//if(id > 0) {
+	public void initOcena() {
+		
 		
 		int id = StudentJTable.getInstance().getSelectedRow();
 		if(id < 0) {
@@ -45,8 +44,7 @@ public class BazaOcena {
 		Student s = BazaStudenata.getInstance().getStudenti().get(id);
 		ocene = s.getPolozeni();
 		}
-		//}
-		//else return;
+		
 		
 	}
 	

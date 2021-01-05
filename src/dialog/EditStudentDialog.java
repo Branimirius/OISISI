@@ -59,61 +59,8 @@ public class EditStudentDialog extends JDialog{
 		setSize(dialWidth, dialHeight);
 		setLocationRelativeTo(parent);
 		
-		/*TabIzmenaStudenta tabIzmena = TabIzmenaStudenta.getInstance(dim);
 		
-		add(tabIzmena);*/
 		showTabIzmena();
-		addWindowListener(new WindowListener(){			
-			
-
-			@Override
-			public void windowClosed(WindowEvent e) {				
-
-				/*TabPolozeniPredmeti.getInstance().updateViewPolozeni();
-				TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();*/
-			}
-
-			@Override
-			public void windowOpened(WindowEvent e) {
-				//TabPolozeniPredmeti.getInstance().updateViewPolozeni();
-				
-			}
-
-			@Override
-			public void windowClosing(WindowEvent e) {
-				
-				BazaOcena.getInstance().clearOcene();
-				
-				
-			}
-
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			
-			
-		});
 		
 		
 			

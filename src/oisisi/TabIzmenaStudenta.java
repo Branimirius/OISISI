@@ -36,7 +36,7 @@ public class TabIzmenaStudenta extends JTabbedPane{
 		add("Polozeni Predmeti", polozeniPanel);
 		add("Nepolozeni Predmeti", nepolozeniPanel);
 		
-		addChangeListener(new ChangeListenerIzmenaStudenta());
+		
 	}
 	
 	

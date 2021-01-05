@@ -20,9 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.text.Document;
 
 import controller.ButtonControllerPredmet;
-import controller.ButtonControllerStudent;
 import controller.PredmetController;
-import model.BazaPredmeta;
 import model.Semestar;
 import validation.EspbKeyListener;
 import validation.GodIzvodjenjaKeyListener;
@@ -129,8 +127,6 @@ private static NewPredmetDialog instance = null;
 					PredmetController.getInstance().dodajPredmet(txtSifra.getText(), txtNaziv.getText(), stringToSemestar(semestar[comboSemestar.getSelectedIndex()]), Integer.parseInt(txtGod.getText()), 
 							null, Integer.parseInt(txtESPB.getText()), null, null);
 				    
-					//System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
-							//Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
 					
 					}
 				}
