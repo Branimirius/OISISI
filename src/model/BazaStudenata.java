@@ -191,15 +191,7 @@ public class BazaStudenata {
 		}
 	}
 	
-	private List<Ocena> napraviOcene(Student s, int ocena) {
-		List<Ocena> retVal = new ArrayList<Ocena>();
-		for(int i = 0; i < 2; i++) {
-			Predmet p = BazaPredmeta.getInstance().getPredmeti().get(i);
-			Ocena o = new Ocena(s, p, ocena,"22/22/3333");
-			retVal.add(o);
-		}
-		return retVal;
-	}
+	
 
 }
 

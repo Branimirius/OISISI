@@ -26,7 +26,7 @@ BANE: #student DONE
 	  #brisanje_studenta DONE
 	  #brisanje_profesora DONE
 	  #prikaz_polozenih_ispita DONE
-	  #dodavanje_predmeta_studentu
+	  #dodavanje_predmeta_studentu - DONE/2 (TREBA DA IZFILTRIRA PONUDJENE PREDMETE)
 	  #uklanjanje_studenta_sa_predmeta
 	  #ponistavanje_ocene	
 	  #pretraga_studenata

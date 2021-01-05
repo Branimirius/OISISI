@@ -53,6 +53,9 @@ public class Student {
 		this.polozeni.add(o);
 		
 	}
+	public void addPredmet(Predmet p) {
+		this.nepolozeni.add(p);
+	}
 
 	public List<Predmet> getNepolozeni() {
 		return nepolozeni;
