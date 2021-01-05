@@ -5,6 +5,10 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import model.BazaNepolozeniPredmeti;
 
 
 
@@ -70,6 +74,17 @@ public class Tab extends JTabbedPane{
 		add("Predmet", predmetPanel);		
 		
 		addChangeListener(new ChangeListenerTabs());
+		
+		tabelaStudenti.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+	        public void valueChanged(ListSelectionEvent event) {
+	            // do some actions here, for example
+	            // print first column value from selected row
+	        	//TabPolozeniPredmeti.getInstance().updateViewPolozeni();
+				TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
+				//BazaNepolozeniPredmeti.getInstance().clearPredmeti();
+	            System.out.println(tabelaStudenti.getValueAt(tabelaStudenti.getSelectedRow(), 0).toString());
+	        }
+	    });
 		
 				
 	}

@@ -84,11 +84,17 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		btnEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int selStud = StudentJTable.getInstance().getSelectedRow();
 				
 				ChangeListenerTabs brt = new ChangeListenerTabs();	
 				if(brt.getSel() == 0) {
+					if(selStud < 0) {
+						JOptionPane.showMessageDialog(null, "Izaberite studenta kog zelite da menjate");
+					}
+					else {
 					EditStudentDialog editStudent = new EditStudentDialog(parent, "Izmena studenta", true);
 					editStudent.setVisible(true);
+					}
 				}	
 				else if(brt.getSel() == 1) {
 					EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Izmena profesora", true);

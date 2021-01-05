@@ -72,7 +72,7 @@ public class BazaPredmeta {
 		predmeti.add(new Predmet("PP", "PROGRAMSKI PREVODIOCI", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
 		predmeti.add(new Predmet("MO", "METODE OPTIMIZACIJE", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
 		predmeti.add(new Predmet("N3", "NANS", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
-		predmeti.add(new Predmet("BP", "BAZE PODATAKA", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
+		
 	
 		this.polozeni = new ArrayList<Ocena>();
 		

@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class TabNepolozeniPredmeti extends JPanel{
 
@@ -16,17 +18,22 @@ public class TabNepolozeniPredmeti extends JPanel{
 	
 	private static TabNepolozeniPredmeti instance = null;
 
-	public static TabNepolozeniPredmeti getInstance(Dimension dim) {
+	public static TabNepolozeniPredmeti getInstance() {
 		if (instance == null) {
-			instance = new TabNepolozeniPredmeti(dim);
+			instance = new TabNepolozeniPredmeti();
 		}
 		return instance;
 	}
 	
-	public TabNepolozeniPredmeti(Dimension dim) {		
-		//setLayout(new BorderLayout());
+	JPanel nepolozeniPanel = new JPanel();
+	NepolozeniJTable tabelaNepolozeni = NepolozeniJTable.getInstance();
+	JScrollPane scrollNepolozeni = new JScrollPane(tabelaNepolozeni);
+	
+	public TabNepolozeniPredmeti() {		
+		setLayout(new BorderLayout());
 		
 		JPanel buttonsPanel = new JPanel();
+		JPanel buttonsPanelLeft = new JPanel();
 		buttonsPanel.setLayout(new BorderLayout());
 		
 		JButton dodaj = new JButton("Dodaj");
@@ -38,12 +45,26 @@ public class TabNepolozeniPredmeti extends JPanel{
 		JButton polaganje = new JButton("Polaganje");
 		polaganje.setBackground(Color.MAGENTA);
 		
-		buttonsPanel.add(dodaj, BorderLayout.WEST);
-		buttonsPanel.add(obrisi, BorderLayout.CENTER);
-		buttonsPanel.add(polaganje, BorderLayout.EAST);
+		buttonsPanelLeft.add(dodaj);
+		buttonsPanelLeft.add(obrisi);
+		buttonsPanelLeft.add(polaganje);
 		
-		add(buttonsPanel, BorderLayout.WEST);
+		buttonsPanel.add(buttonsPanelLeft, BorderLayout.WEST);
 		
+		nepolozeniPanel.setLayout(new BorderLayout());
+		nepolozeniPanel.add(scrollNepolozeni, BorderLayout.CENTER);
+		
+		add(buttonsPanel, BorderLayout.NORTH);
+		add(nepolozeniPanel, BorderLayout.SOUTH);
+		
+		updateViewNepolozeni();
 	}
-
+	
+	public void updateViewNepolozeni() {
+		
+		AbstractTableModelNepolozeni modelNepolozeni = (AbstractTableModelNepolozeni) tabelaNepolozeni.getModel();
+		modelNepolozeni.fireTableDataChanged();
+		validate();
+	}
+	
 }
