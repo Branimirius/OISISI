@@ -55,7 +55,7 @@ public class TabNepolozeniPredmeti extends JPanel{
 		nepolozeniPanel.add(scrollNepolozeni, BorderLayout.CENTER);
 		
 		add(buttonsPanel, BorderLayout.NORTH);
-		add(nepolozeniPanel, BorderLayout.SOUTH);
+		add(nepolozeniPanel, BorderLayout.CENTER);
 		
 		updateViewNepolozeni();
 	}
