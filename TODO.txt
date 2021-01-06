@@ -45,7 +45,7 @@ FILIP: #profesor DONE
 	   #izmena_profesora DONE
 	   #brisanje_predmeta DONE
 	   #prikaz_nepolozenih_ispita DONE
-	   #upis_ocene 
+	   #upis_ocene DONE
 	   #pretraga_profesora
 	   #pretraga_predmeta
 	   #sortiranje_profesora

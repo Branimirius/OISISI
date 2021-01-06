@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import controller.NepolozeniController;
 import dialog.DodajNepolozeniPredmetDialog;
 import dialog.ObrisiNepolozeniPredmetDialog;
+import dialog.UnosOceneDialog;
 
 public class TabNepolozeniPredmeti extends JPanel{
 
@@ -65,7 +66,9 @@ public class TabNepolozeniPredmeti extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			NepolozeniController.getInstance().Polaganje();
+			//NepolozeniController.getInstance().Polaganje();
+				UnosOceneDialog polaganjeDialog = new UnosOceneDialog(MainFrame.getInstance(), "Polaganje", true);
+				polaganjeDialog.setVisible(true);
 			
 			}
 		});

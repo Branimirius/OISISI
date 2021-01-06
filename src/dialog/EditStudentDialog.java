@@ -59,7 +59,6 @@ public class EditStudentDialog extends JDialog{
 		setSize(dialWidth, dialHeight);
 		setLocationRelativeTo(parent);
 		
-		
 		showTabIzmena();
 
 	}

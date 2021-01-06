@@ -2,6 +2,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 
+import dialog.UnosOceneDialog;
 import model.BazaNepolozeniPredmeti;
 import model.BazaPredmeta;
 import model.BazaStudenata;
@@ -29,8 +30,8 @@ private static NepolozeniController instance = null;
 		TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
 	}
 	
-	public void Polaganje() {
-		BazaNepolozeniPredmeti.getInstance().NepolozeniUOcene();
+	public void Polaganje(String o, String t) {
+		BazaNepolozeniPredmeti.getInstance().NepolozeniUOcene(o, t);
 		TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
 		TabPolozeniPredmeti.getInstance().updateViewPolozeni();
 		

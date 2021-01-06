@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import dialog.EditStudentDialog;
+import dialog.UnosOceneDialog;
+import oisisi.MainFrame;
 import oisisi.NepolozeniJTable;
 import oisisi.StudentJTable;
 
@@ -46,7 +49,7 @@ public class BazaNepolozeniPredmeti {
 		}
 	}
 	
-	public void NepolozeniUOcene(int ocena) {
+	public void NepolozeniUOcene(String s, String t) {
 		int id = NepolozeniJTable.getInstance().getSelectedRow();
 		if(id < 0) {
 			return;
@@ -54,7 +57,7 @@ public class BazaNepolozeniPredmeti {
 		else {
 		Predmet p = predmeti.get(id);
 		this.s.getNepolozeni().remove(p);
-		this.s.addOcena(p, ocena, "31/2/2021");
+		this.s.addOcena(p, Integer.parseInt(s), t);
 		}
 	}
 
