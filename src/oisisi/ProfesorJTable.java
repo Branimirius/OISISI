@@ -27,7 +27,8 @@ public class ProfesorJTable extends JTable{
 	public ProfesorJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
-		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);		
+		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);	
+		this.setAutoCreateRowSorter(true);
 		this.setModel(new AbstractTableModelProfesor());	
 	}
 	
