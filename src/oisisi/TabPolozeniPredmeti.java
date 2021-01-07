@@ -2,12 +2,16 @@ package oisisi;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import dialog.ObrisiPolozeniPredmetDialog;
 
 
 public class TabPolozeniPredmeti extends JPanel{
@@ -34,10 +38,22 @@ public class TabPolozeniPredmeti extends JPanel{
 		
 		
 		setLayout(new BorderLayout());	
-		//ChangeListenerIzmenaStudenta brt = new ChangeListenerIzmenaStudenta();
+		
 		
 		JButton ponisti = new JButton("Ponisti ocenu");
-			ponisti.setBackground(Color.GREEN);		
+			ponisti.setBackground(Color.MAGENTA);	
+			ponisti.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					ObrisiPolozeniPredmetDialog obrisiDialog = new ObrisiPolozeniPredmetDialog(MainFrame.getInstance(),
+							"Ponistavanje ocene", true);
+					obrisiDialog.setVisible(true);
+				}
+				
+			});
+			
+			
 		JLabel stealthLab = new JLabel();
 		JPanel stealthPan = new JPanel();
 			stealthPan.add(stealthLab);

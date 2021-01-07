@@ -98,5 +98,12 @@ public class BazaOcena {
 		this.ocene.clear();
 		
 	}
-	
+	public void izbrisiOcenu(Ocena o) {
+		for (Ocena it : ocene) {
+			if(it == o) {
+				ocene.remove(o);
+				break;
+			}
+		}
+	}
 }

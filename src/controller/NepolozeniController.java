@@ -43,9 +43,16 @@ private static NepolozeniController instance = null;
 		TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
 		
 	}
+	
+	public void dodajPredmetNoId(Predmet predmet) {
+		int idS = StudentJTable.getInstance().getSelectedRow();
+		BazaStudenata.getInstance().getRow(idS).addPredmet(predmet);
+		TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
+	}
+	
 	public void obrisiPredmet(int id) {
 		if (id < 0) {
-			JOptionPane.showMessageDialog(null, "Niste izabrali studenta.");
+			JOptionPane.showMessageDialog(null, "Niste izabrali predmet.");
 			return;
 		}
 		Predmet predmet = BazaNepolozeniPredmeti.getInstance().getRow(id);

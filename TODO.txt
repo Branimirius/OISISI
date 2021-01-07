@@ -19,16 +19,16 @@ BANE: #student DONE
 	  #menu_bar DONE
 	  #status_bar DONE
 	  #prikaz_studenata DONE
-	  #dodavanje_studenta DONE	
-      #dodavanje_predmeta DONE
+	  #dodavanje_studenta DONE (treba dodati zastitu za vec postojece)
+      #dodavanje_predmeta DONE -\\-
 	  #izmena_studenta DONE
 	  #izmena_predmeta DONE
 	  #brisanje_studenta DONE
 	  #brisanje_profesora DONE
 	  #prikaz_polozenih_ispita DONE
 	  #dodavanje_predmeta_studentu - DONE/2 (TREBA DA IZFILTRIRA PONUDJENE PREDMETE)
-	  #uklanjanje_studenta_sa_predmeta
-	  #ponistavanje_ocene	
+	  #uklanjanje_studenta_sa_predmeta DONE
+	  #ponistavanje_ocene DONE	
 	  #pretraga_studenata
 	  #sortiranje_studenata
 	  #dodavanje_profesora_na_predmet
