@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 
 public class BazaStudenata {
 	private static BazaStudenata instance = null;
@@ -189,6 +191,17 @@ public class BazaStudenata {
 				break;
 			}
 		}
+	}
+	public boolean indexPostoji(String ID){
+		for(Student s : studenti) {
+			if(s.getBrIndeksa() == ID) {
+				System.out.println(s.getBrIndeksa());
+				return true;
+				
+			}							
+		}
+		return false;
+			
 	}
 	
 	

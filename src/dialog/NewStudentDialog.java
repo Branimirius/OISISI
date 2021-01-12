@@ -216,15 +216,20 @@ public class NewStudentDialog extends JDialog {
 					if (!(slash == 2)) {
 						JOptionPane.showMessageDialog(null, "Format datuma mora biti: dd/mm/yyyy");
 					}
-					else {
-					
-					StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
-							txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
-							stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0, null, null);
+					else {					
+						
+						if(!BazaStudenata.getInstance().indexPostoji(txtIndex.getText())) {	
+							StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
+								txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
+								stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0, null, null);
 				    
-					System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
-							Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
+							System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
+								Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));
 					
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Vec postoji student sa istim brojem indeksa.");
+						}
 					}
 				}
 			});
