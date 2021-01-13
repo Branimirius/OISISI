@@ -1,6 +1,13 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,7 +56,49 @@ public class BazaStudenata {
 
 	private void initStudente() {
 		
-		List<Ocena> polozeni1 = new ArrayList<Ocena>();	
+		//this.studenti = new ArrayList<Student>();
+		this.studenti = new ArrayList<Student>();
+		String kolone[];
+		String naredni;
+		BufferedReader reader = null;
+		
+		
+		try {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("studenti.txt")));
+		} catch (FileNotFoundException exception) {
+			exception.printStackTrace();
+		}
+		try {
+            while((naredni = reader.readLine()) != null) {
+                if(naredni.equals(""))    continue;
+
+                kolone = naredni.split("\\,");
+
+                Status status;
+                if(kolone[8].trim().equals("B"))
+                    status = Status.B;
+                else
+                    status = Status.S;
+               
+               
+               
+               studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), status, Double.parseDouble(kolone[10].trim()),
+            		   kolone[6].trim(),Integer.parseInt(kolone[9].trim()),kolone[4].trim(), kolone[5].trim(), kolone[7].trim()));
+                
+                //String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
+   				//double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
+   				//String eMail, List<Ocena> polozeni, List<Predmet> nepolozeni
+               
+
+                
+            }
+
+            reader.close();
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
+		
+		/*List<Ocena> polozeni1 = new ArrayList<Ocena>();	
 		List<Ocena> polozeni2 = new ArrayList<Ocena>();
 		
 		List<Predmet> nepolozeni1 = new ArrayList<Predmet>();
@@ -81,7 +130,7 @@ public class BazaStudenata {
 		studenti.add(s2);
 		
 		
-		/*studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
+		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
 				"eMail", polozeni, nepolozeni ));
 		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
@@ -96,6 +145,8 @@ public class BazaStudenata {
 		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
 				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
 				"eMail", polozeni, nepolozeni )); */
+		
+		
 	}
 	
 	public List<Student> getStudenti() {
@@ -155,9 +206,9 @@ public class BazaStudenata {
 
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta,
-			double prosecnaOcena, List<Ocena> polozeni, List<Predmet> nepolozeni) {
+			double prosecnaOcena) {
 		this.studenti.add(new Student(brIndeksa, ime, prezime, godStudija, statusStudenta, prosecnaOcena, kontaktTel, godUpisa, datumRodjenja, adresaStana,
-				eMail, polozeni, nepolozeni));		
+				eMail));		
 		
 	}
 	public String dateToString(Date datum) {
@@ -203,7 +254,15 @@ public class BazaStudenata {
 		return false;
 			
 	}
-	
+	public Student getStudent(String ID) {
+		for(Student s : studenti) {
+			if(s.getBrIndeksa() == ID) {
+				return s;
+				
+			}
+		}
+		return null;
+	}
 	
 
 }

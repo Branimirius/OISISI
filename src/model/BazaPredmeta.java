@@ -1,5 +1,10 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +63,7 @@ public class BazaPredmeta {
 	}
 
 	private void initPredmeta() {
-		this.studentiPolozili = new ArrayList<Student>();
+		/*this.studentiPolozili = new ArrayList<Student>();
 		studentiPolozili.add(new Student("RA174", "Filip", "Pinjuh", "3", Status.B, 7, "51235124", 2018, "10/11/99", "Strz 25", "email", polozeni, predmeti));
 		studentiPolozili.add(new Student("RA174", "Bane", "Carina", "3", Status.B, 7, "51235124", 2018,"10/11/99", "Strz 25", "email", polozeni, predmeti));
 		
@@ -74,7 +79,64 @@ public class BazaPredmeta {
 		predmeti.add(new Predmet("N3", "NANS", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
 		
 	
-		this.polozeni = new ArrayList<Ocena>();
+		this.polozeni = new ArrayList<Ocena>();*/
+		
+	
+
+	        this.predmeti = new ArrayList<Predmet>();
+	       
+
+	        String kolone[];
+	        String naredni;
+	        BufferedReader reader = null;
+
+	        try {
+	            reader = new BufferedReader(new InputStreamReader(new FileInputStream("predmeti.txt")));
+	        } catch (FileNotFoundException exception) {
+	            exception.printStackTrace();
+	        }
+
+
+	        try {
+	            while((naredni = reader.readLine()) != null) {
+	                if(naredni.equals(""))    continue;
+
+	                kolone = naredni.split(",");
+
+	                Semestar semestar1;
+	                if(kolone[5].trim().equals("ZIMSKI"))
+	                    semestar1 = Semestar.ZIMSKI;
+	                else
+	                    semestar1 = Semestar.LETNJI;
+	                Profesor objProfesor = null;
+	                String profLicnaKarta = kolone[4].trim();
+	                if(profLicnaKarta.contains("null")) {
+	                    objProfesor = null;
+	                }else {
+	                    for(Profesor p : BazaProfesora.getInstance().getProfesori()) {
+	                        if(p.getBrLicneKarte().equals(profLicnaKarta) == true) {
+	                            objProfesor = p;
+	                        }
+	                    }
+	                }
+	                Predmet pred = new Predmet( kolone[0].trim(), kolone[1].trim(), semestar1, Integer.parseInt(kolone[2].trim()), objProfesor, Integer.parseInt(kolone[3].trim()), null, null  );
+	                predmeti.add(pred);
+	                //String idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
+	    			//Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili,
+	    			//List<Student> listNisuPolozili
+	               
+
+	                if(objProfesor != null)
+	                    objProfesor.getListaPredmeta().add(pred);
+	            }
+
+	            reader.close();
+	        } catch(IOException exception) {
+	            exception.printStackTrace();
+	        }
+	    
+	          
+	          
 		
 	}
 
@@ -148,5 +210,13 @@ public class BazaPredmeta {
 				break;
 			}
 		}
+	}
+	public Predmet getPredmet(String ID) {
+		for (Predmet p : predmeti) {
+			if(p.getIdPredmeta() == ID) {
+				return p;
+			}
+		}
+		return null;
 	}
 }

@@ -221,7 +221,7 @@ public class NewStudentDialog extends JDialog {
 						if(!BazaStudenata.getInstance().indexPostoji(txtIndex.getText())) {	
 							StudentController.getInstance().dodajStudenta(txtPrezime.getText(), txtIme.getText(), txtDatRod.getText(), txtAdresa.getText(), 
 								txtTel.getText(), txtMail.getText(), txtIndex.getText(), Integer.parseInt(txtGod.getText()), godina[comboGodStudija.getSelectedIndex()], 
-								stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0, null, null);
+								stringToStatus(nacin[comboFinans.getSelectedIndex()]), 0);
 				    
 							System.out.println(txtPrezime.getText() + txtIme.getText() + txtDatRod.getText() + txtAdresa.getText() +
 								Integer.parseInt(txtTel.getText()) + 	txtMail.getText() + Integer.parseInt(txtGod.getText()));

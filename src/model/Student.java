@@ -2,6 +2,7 @@ package model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Student {
 	
 	public Student(String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
 			double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
-			String eMail, List<Ocena> polozeni, List<Predmet> nepolozeni) {
+			String eMail) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
@@ -37,8 +38,8 @@ public class Student {
 		this.godStudija = godStudija;
 		this.statusStudenta = statusStudenta;
 		this.prosecnaOcena = prosecnaOcena;
-		this.polozeni = polozeni;
-		this.nepolozeni = nepolozeni;
+		this.polozeni = new ArrayList<Ocena>();
+		this.nepolozeni = new ArrayList<Predmet>();
 	}
 
 	public List<Ocena> getPolozeni() {
@@ -52,6 +53,9 @@ public class Student {
 		Ocena o = new Ocena(this, p, vr, datum);
 		this.polozeni.add(o);
 		
+	}
+	public void addOcena(Ocena o) {
+		this.polozeni.add(o);
 	}
 	public void addPredmet(Predmet p) {
 		this.nepolozeni.add(p);

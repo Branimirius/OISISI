@@ -28,10 +28,10 @@ private static StudentController instance = null;
 	
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta,
-			double prosecnaOcena, List<Ocena> polozeni, List<Predmet> nepolozeni) {
+			double prosecnaOcena) {
 		// izmena modela
 		BazaStudenata.getInstance().dodajStudenta(prezime, ime, datumRodjenja, adresaStana, kontaktTel, eMail, brIndeksa,
-				godUpisa, godStudija, statusStudenta, prosecnaOcena, polozeni, nepolozeni);
+				godUpisa, godStudija, statusStudenta, prosecnaOcena);
 		// azuriranje prikaza		
 		MainFrame.getInstance().updateViewStudent();
 	}

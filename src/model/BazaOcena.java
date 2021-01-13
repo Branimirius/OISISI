@@ -1,5 +1,10 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,8 +39,76 @@ public class BazaOcena {
 	
 	public void initOcena() {
 		
+		this.ocene = new ArrayList<Ocena>();
+		String kolone[];
+		String naredni;
+		BufferedReader reader = null;
 		
-		int id = StudentJTable.getInstance().getSelectedRow();
+		
+		try {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("ocene.txt")));
+		} catch (FileNotFoundException exception) {
+			exception.printStackTrace();
+		}
+		try {
+            while((naredni = reader.readLine()) != null) {
+                if(naredni.equals(""))    continue;
+
+                kolone = naredni.split("\\,");
+                
+                
+                Student student = null;
+                Predmet predmet = null;
+                
+                for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+                	if(p.getIdPredmeta().equals(kolone[1].trim()) == true) {
+                		predmet = p;
+                	}
+                }
+                for(Student s : BazaStudenata.getInstance().getStudenti()) {
+                	if(s.getBrIndeksa().equals(kolone[0].trim() ) == true) {
+                		student = s;
+                	}
+                }
+                
+                
+                
+                
+                
+                Ocena ocena = new Ocena(student, predmet, Integer.parseInt(kolone[2].trim()), kolone[3].trim());
+                ocene.add(ocena);
+               
+              // student.addOcena(predmet, Integer.parseInt(kolone[2].trim()), datum);
+                //String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
+   				//double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
+   				//String eMail, List<Ocena> polozeni, List<Predmet> nepolozeni
+               
+
+                
+            }
+
+            reader.close();
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
+		 for(Student s : BazaStudenata.getInstance().getStudenti()) {
+			 ArrayList<Ocena> spisakPolozenih = new ArrayList<Ocena>();
+			 
+			 for(Ocena o: ocene) {
+				 if(o.getStudent() == s) {
+					 spisakPolozenih.add(o);
+				 }
+			 }
+			 s.setPolozeni(spisakPolozenih);
+			 
+		 }
+		 /*for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+			 List<Student> polozili = new ArrayList<Student>();
+			 
+		 }*/
+		
+		
+		/*int id = StudentJTable.getInstance().getSelectedRow();
 		if(id < 0) {
 			System.out.println("nije selektovan student");
 			return;
@@ -44,7 +117,7 @@ public class BazaOcena {
 		Student s = BazaStudenata.getInstance().getStudenti().get(id);
 		ocene = s.getPolozeni();
 		}
-		
+		*/
 		
 	}
 	

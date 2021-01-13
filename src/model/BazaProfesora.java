@@ -4,6 +4,11 @@
 package model;
 
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +49,63 @@ public class BazaProfesora {
 		}
 
 		private void initProfesore() {
-			List<Predmet> predmeti1 = new ArrayList<Predmet>();
+			
+			this.profesori = new ArrayList<Profesor>();
+			String kolone[];
+			String naredni;
+			BufferedReader reader = null;
+			
+			
+			try {
+				reader = new BufferedReader(new InputStreamReader(new FileInputStream("profesori.txt")));
+			} catch (FileNotFoundException exception) {
+				exception.printStackTrace();
+			}
+			try {
+	            while((naredni = reader.readLine()) != null) {
+	                if(naredni.equals(""))    continue;
+
+	                kolone = naredni.split("\\,");
+
+	                Titula titula = null;
+	                if(kolone[8].trim().equals("DR"))
+	                    titula = Titula.DR;
+	                else if(kolone[8].trim().equals("PROF_DR"))
+	                    titula = Titula.PROF_DR;
+	                else if(kolone[8].trim().equals("BSC"))
+	                    titula = Titula.BSC;
+	                else if(kolone[8].trim().equals("MSC"))
+	                    titula = Titula.MSC;
+	                
+	                Zvanje zvanje = null;
+	                if(kolone[9].trim().equals("REDOVNI_PROFESOR"))
+	                    zvanje = Zvanje.REDOVNI_PROFESOR;
+	                else if(kolone[9].trim().equals("VANREDNI_PROFESOR"))
+	                	zvanje = Zvanje.VANREDNI_PROFESOR;
+	                else if(kolone[9].trim().equals("DOCENT"))
+	                	zvanje = Zvanje.DOCENT;
+	                else if(kolone[9].trim().equals("ASISTENT"))
+	                	zvanje = Zvanje.ASISTENT;
+	                
+	               profesori.add(new Profesor(kolone[2].trim(), kolone[1].trim(), kolone[3].trim(), kolone[4].trim(),
+	            		   kolone[5].trim(), kolone[6].trim(), kolone[0].trim(), titula, zvanje,
+	        			null));
+	                
+	                //String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
+	   				//double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
+	   				//String eMail, List<Ocena> polozeni, List<Predmet> nepolozeni
+	               
+
+	                
+	            }
+
+	            reader.close();
+	        } catch(IOException exception) {
+	            exception.printStackTrace();
+	        }
+			
+			
+			/*List<Predmet> predmeti1 = new ArrayList<Predmet>();
 			predmeti1.add(new Predmet());
 			predmeti1.add(new Predmet());
 			
@@ -52,6 +113,8 @@ public class BazaProfesora {
 			profesori.add(new Profesor("Mikic", "Mika", "10/11/1999", "Strazilovska 26", "62345623", "pajta@gmail.com", "498293", Titula.DR, Zvanje.ASISTENT_SA_DOKTORATOM, predmeti1 ));
 			profesori.add(new Profesor("Zikic", "Zika", "23/04/1964", "Strazilovska 54", "62377553", "bata@gmail.com", "497893", Titula.DR, Zvanje.DOCENT, predmeti1));
 			profesori.add(new Profesor("Peric", "Pera", "14/05/1958", "Strazilovska 77", "62424253", "lik@gmail.com", "808845", Titula.MR, Zvanje.REDOVNI_PROFESOR, predmeti1));
+		*/
+		
 		}
 
 		public List<Profesor> getProfesori() {

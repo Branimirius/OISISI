@@ -1,5 +1,10 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +27,7 @@ public class BazaNepolozeniPredmeti {
 	
 	
 	private List<Predmet> predmeti;
+	private List<Ocena> ocene;
 	private List<String> kolone;
 	private Student s;
 
@@ -38,7 +44,67 @@ public class BazaNepolozeniPredmeti {
 	}
 	
 	public void initNepolozeniPredmeti() {
-		int id = StudentJTable.getInstance().getSelectedRow();
+		
+		
+		this.predmeti = new ArrayList<Predmet>();
+		this.ocene = new ArrayList<Ocena>();
+		String kolone[];
+		String naredni;
+		BufferedReader reader = null;
+		
+		
+		try {
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream("nepolozeni.txt")));
+		} catch (FileNotFoundException exception) {
+			exception.printStackTrace();
+		}
+		try {
+            while((naredni = reader.readLine()) != null) {
+                if(naredni.equals(""))    continue;
+
+                kolone = naredni.split("\\,");
+                Student student = null;
+                Predmet predmet = null; 
+                for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+                	if(p.getIdPredmeta().equals(kolone[1].trim()) == true) {
+                		predmet = p;
+                	}
+                }
+                for(Student s : BazaStudenata.getInstance().getStudenti()) {
+                	if(s.getBrIndeksa().equals(kolone[0].trim() ) == true) {
+                		student = s;
+                	}
+                }
+                
+                Ocena ocena = new Ocena(student, predmet, Integer.parseInt(kolone[2].trim()), kolone[3].trim());
+                ocene.add(ocena);
+                predmeti.add(predmet);
+               
+                //String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
+   				//double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
+   				//String eMail, List<Ocena> polozeni, List<Predmet> nepolozeni
+               
+
+                
+            }
+
+            reader.close();
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
+		for(Student s : BazaStudenata.getInstance().getStudenti()) {
+			 ArrayList<Predmet> spisakNepolozenih = new ArrayList<Predmet>();
+			 
+			 for(Ocena o: ocene) {
+				 if(o.getStudent() == s) {
+					 spisakNepolozenih.add(o.getPredmet());
+				 }
+			 }
+			 s.setNepolozeni(spisakNepolozenih);
+			 
+		 }
+		
+		/*int id = StudentJTable.getInstance().getSelectedRow();
 		if(id < 0) {
 			System.out.println("nije selektovan student");
 			return;
@@ -46,7 +112,7 @@ public class BazaNepolozeniPredmeti {
 		else {
 		s = BazaStudenata.getInstance().getStudenti().get(id);
 		predmeti = s.getNepolozeni();
-		}
+		}*/
 	}
 	
 	public void NepolozeniUOcene(String s, String t) {
