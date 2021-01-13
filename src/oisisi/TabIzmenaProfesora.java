@@ -13,6 +13,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -189,8 +190,15 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					int id = ProfesorJTable.getInstance().getSelectedRow();					
-					ProfesorController.getInstance().izmeniProfesora(id, txtPrezime.getText(), txtIme.getText(),
+					int id = ProfesorJTable.getInstance().getSelectedRow();			
+					if (id< 0) {
+						JOptionPane.showMessageDialog(null, "Niste izabrali profesora.");
+						return;
+					}
+					
+					String licnaProf = (String)ProfesorJTable.getInstance().getValueAt(id, 4);
+					Profesor profesor = BazaProfesora.getInstance().findProf(licnaProf);
+					ProfesorController.getInstance().izmeniProfesora(profesor, txtPrezime.getText(), txtIme.getText(),
 							txtDatRod.getText(), txtAdresa.getText(), txtTel.getText(), txtMail.getText(), txtBrLicne.getText(), 
 							stringToTitula(titule[comboTitula.getSelectedIndex()]), stringToZvanje(zvanja[comboZvanje.getSelectedIndex()]), null);
 				}

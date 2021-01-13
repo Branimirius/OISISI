@@ -50,7 +50,7 @@ public class BazaProfesora implements Serializable{
 			//this.kolone.add("ADRESA STANOVANJA");
 			//this.kolone.add("KONTAKT TELEFON");
 			//this.kolone.add("EMAIL ADRESA");
-			//this.kolone.add("BROJ LICNE KARTE");
+			this.kolone.add("BROJ LICNE KARTE");
 			//this.kolone.add("LISTA PREDMETA NA KOJIMA JE PROFESOR");
 		
 		}
@@ -186,6 +186,16 @@ public class BazaProfesora implements Serializable{
 			
 		}
 
+		public Profesor findProf(String licna) {
+			Profesor prof = null;
+			for(int i = 0; i<profesori.size(); i++) {
+				if(profesori.get(i).getBrLicneKarte() == licna) {
+					prof = profesori.get(i);
+				}
+			}
+			return prof;
+		}
+		
 		public List<Profesor> getProfesori() {
 			return profesori;
 		}
@@ -195,7 +205,7 @@ public class BazaProfesora implements Serializable{
 		}
 		
 		public int getColumnCount() {
-			return 4;
+			return 5;
 		}
 
 		public String getColumnName(int index) {
@@ -219,11 +229,11 @@ public class BazaProfesora implements Serializable{
 			case 3:
 				return zvanjeToString(profesor.getZvanje());
 			case 4:
-				return profesor.getKontaktTelefon();
+				return profesor.getBrLicneKarte();
 			case 5:
 				return profesor.getEmailAdresa();
 			case 6:
-				return profesor.getBrLicneKarte();
+				return profesor.getKontaktTelefon();
 			case 7 :
 				return profesor.getDatumRodjString();
 			case 8:

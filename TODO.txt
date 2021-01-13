@@ -46,14 +46,14 @@ FILIP: #profesor DONE
 	   #brisanje_predmeta DONE
 	   #prikaz_nepolozenih_ispita DONE
 	   #upis_ocene DONE
-	   #pretraga_profesora
+	   #pretraga_profesora 
 	   #pretraga_predmeta
-	   #sortiranje_profesora
-	   #sortiranje_predmeta
+	   #sortiranje_profesora DONE
+	   #sortiranje_predmeta DONE
 	   #profesor_predaje_predmete
 	   #dodavanja_predmeta_profesoru
 	   #uklanjanje_profesora_sa_predmeta
-	   #serijalizacija
+	   #serijalizacija DONE
 ----------------------------------------------------------
 
 SITNICE:

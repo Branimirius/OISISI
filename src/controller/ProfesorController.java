@@ -35,15 +35,11 @@ public class ProfesorController {
 	    
 	}
 	
-	public void izmeniProfesora(int rowSelectedIndex, String prezime, String ime, String datum_rodjenja, String adresa_stanovanja, 
+	public void izmeniProfesora(Profesor prof, String prezime, String ime, String datum_rodjenja, String adresa_stanovanja, 
 			String kontakt_telefon, String email_adresa, String broj_licne_karte, 
 			Titula titula, Zvanje zvanje, List<Predmet> lista_predmeta) {
-		if (rowSelectedIndex < 0) {
-			JOptionPane.showMessageDialog(null, "Niste izabrali profesora.");
-			return;
-		}
-		Profesor profesor = BazaProfesora.getInstance().getRow(rowSelectedIndex);
-		BazaProfesora.getInstance().izmeniProfesora(profesor.getBrLicneKarte(), prezime, ime, datum_rodjenja, adresa_stanovanja, 
+		
+		BazaProfesora.getInstance().izmeniProfesora(prof.getBrLicneKarte(), prezime, ime, datum_rodjenja, adresa_stanovanja, 
 				kontakt_telefon, email_adresa, broj_licne_karte, titula, zvanje, lista_predmeta);
 		//azuriranje prikaza
 		MainFrame.getInstance().updateViewProfesor();
