@@ -1,14 +1,22 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BazaPredmeta {
+public class BazaPredmeta implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4603675659213102682L;
 
 	private static BazaPredmeta instance = null;
 
@@ -63,24 +71,6 @@ public class BazaPredmeta {
 	}
 
 	private void initPredmeta() {
-		/*this.studentiPolozili = new ArrayList<Student>();
-		studentiPolozili.add(new Student("RA174", "Filip", "Pinjuh", "3", Status.B, 7, "51235124", 2018, "10/11/99", "Strz 25", "email", polozeni, predmeti));
-		studentiPolozili.add(new Student("RA174", "Bane", "Carina", "3", Status.B, 7, "51235124", 2018,"10/11/99", "Strz 25", "email", polozeni, predmeti));
-		
-		this.studentiNisuPolozili = new ArrayList<Student>();
-		studentiPolozili.add(new Student("RA174", "Mihajlo", "Kisic", "3", Status.B, 7, "51235124", 2018, "10/11/99", "Strz 25", "email", polozeni, predmeti));
-		
-		this.profesor = new Profesor("Mikic", "Mika", "10/11/1999.", "Strazilovska 26", "062345623", "pajta@gmail.com", "498293", Titula.MR, Zvanje.REDOVNI_PROFESOR, predmeti);
-		
-		this.predmeti = new ArrayList<Predmet>();
-		predmeti.add(new Predmet("SE3", "OISISI", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
-		predmeti.add(new Predmet("PP", "PROGRAMSKI PREVODIOCI", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
-		predmeti.add(new Predmet("MO", "METODE OPTIMIZACIJE", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
-		predmeti.add(new Predmet("N3", "NANS", Semestar.ZIMSKI, 3, profesor, 8, studentiPolozili, studentiNisuPolozili));
-		
-	
-		this.polozeni = new ArrayList<Ocena>();*/
-		
 	
 
 	        this.predmeti = new ArrayList<Predmet>();
@@ -137,6 +127,47 @@ public class BazaPredmeta {
 	    
 	          
 	          
+		
+	}
+	
+	public void Serializacija() throws Exception, IOException{
+		BufferedWriter out = null;
+		try {
+		out =new  BufferedWriter(new FileWriter("studenti.txt"));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			for (Predmet p : predmeti){
+					String semestar= null;
+					if(p.getSemestar() == Semestar.LETNJI) {
+						semestar= "LETNJI";
+					}else if(p.getSemestar() == Semestar.ZIMSKI) {
+						semestar = "ZIMSKI";
+					}
+					
+					
+					StringBuilder sb = new StringBuilder("");
+					
+					sb.append(p.getIdPredmeta()+ ", " + p.getNazivPredmeta()+ ", " + Integer.toString(p.getGodinaIzvodjenja())+ ", " +  
+									Integer.toString(p.getBrojEspbBodova())+ ", " + p.getPredmetniProfesor().getBrLicneKarte()+ ", " + 
+									semestar);
+						out.write(sb.toString());
+						out.write("\n");
+							}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(out!= null)
+				try {
+					out.close();
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+		}
+		    
+
 		
 	}
 

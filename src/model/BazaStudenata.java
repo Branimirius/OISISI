@@ -1,10 +1,20 @@
+//https://www.geeksforgeeks.org/serialization-in-java/
+//https://stackabuse.com/java-read-a-file-into-an-arraylist/
 package model;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +25,12 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 
-public class BazaStudenata {
+
+public class BazaStudenata implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7339228090521864855L;
 	private static BazaStudenata instance = null;
 
 	public static BazaStudenata getInstance() {
@@ -56,7 +71,6 @@ public class BazaStudenata {
 
 	private void initStudente() {
 		
-		//this.studenti = new ArrayList<Student>();
 		this.studenti = new ArrayList<Student>();
 		String kolone[];
 		String naredni;
@@ -80,17 +94,10 @@ public class BazaStudenata {
                 else
                     status = Status.S;
                
-               
-               
+                  
                studenti.add(new Student( kolone[0].trim(), kolone[1].trim(), kolone[2].trim(), kolone[3].trim(), status, Double.parseDouble(kolone[10].trim()),
-            		   kolone[6].trim(),Integer.parseInt(kolone[9].trim()),kolone[4].trim(), kolone[5].trim(), kolone[7].trim()));
-                
-                //String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
-   				//double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
-   				//String eMail, List<Ocena> polozeni, List<Predmet> nepolozeni
-               
+            		   kolone[6].trim(),Integer.parseInt(kolone[9].trim()),kolone[4].trim(), kolone[5].trim(), kolone[7].trim()));             
 
-                
             }
 
             reader.close();
@@ -98,56 +105,51 @@ public class BazaStudenata {
             exception.printStackTrace();
         }
 		
-		/*List<Ocena> polozeni1 = new ArrayList<Ocena>();	
-		List<Ocena> polozeni2 = new ArrayList<Ocena>();
-		
-		List<Predmet> nepolozeni1 = new ArrayList<Predmet>();
-		List<Predmet> nepolozeni2 = new ArrayList<Predmet>();
-				
-		this.studenti = new ArrayList<Student>();
-		Predmet p1 = BazaPredmeta.getInstance().getRow(1);
-		Predmet p2 = BazaPredmeta.getInstance().getRow(2);
-		Predmet p3 = BazaPredmeta.getInstance().getRow(3);
-		
-		nepolozeni1.add(p3);
-		
-		nepolozeni2.add(p1);
-		nepolozeni2.add(p2);
-		
-		Student s1 = new Student("RkeKoke", "Marko ", "Markovic", "4567", Status.B,
-				9.78, "0642345678", 1678,"12/3/1998" , "Neki Bulevar 14",
-				"markomarkovic@", polozeni1, nepolozeni1);
-		s1.addOcena(p1, 8, "12/12/2001");
-		s1.addOcena(p2, 9, "31/1/2012");
-		
-		Student s2 = new Student("RA-178/2018", "Ivan", "Ivanovic", "4567",Status.S ,
-				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
-				"eMail", polozeni2, nepolozeni2);
-		s2.addOcena(p3, 6, "31/2/2009");
-		s2.addOcena(p3, 10, "3/10/1999");
-		
-		studenti.add(s1);
-		studenti.add(s2);
-		
-		
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
-				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
-				"eMail", polozeni, nepolozeni ));
-		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
-				9.78, "0642345678", 1678,"12/3/1998" , "Neki Bulevar 14",
-				"markomarkovic@", polozeni, nepolozeni));
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
-				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
-				"eMail", polozeni, nepolozeni ));
-		studenti.add(new Student("brIndeksa", "Marko ", "Markovic", "4567", Status.B,
-				9.78, "0642345678", 1678,"12/3/1998" , "Neki Bulevar 14",
-				"markomarkovic@", polozeni, nepolozeni));
-		studenti.add(new Student("brIndeksa", "Ivan", "Ivanovic", "4567",Status.S ,
-				8.78, "067788666",  342, "14/5/2000", "Ulica neka 17",
-				"eMail", polozeni, nepolozeni )); */
-		
 		
 	}
+	
+	public void Serializacija() throws Exception, IOException{
+		BufferedWriter out = null;
+		try {
+		out =new  BufferedWriter(new FileWriter("studenti.txt"));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			for (Student s : studenti){
+					String status = null;
+					if(s.getStatusStudenta() == Status.B) {
+						status = "B";
+					}else if(s.getStatusStudenta() == Status.S) {
+						status = "S";
+					}
+					
+					
+					StringBuilder sb = new StringBuilder("");
+					
+					sb.append(s.getBrIndeksa() + ", " + s.getIme() + ", " + s.getPrezime() + ", " +  
+									s.getGodStudija() + ", " + dateToString(s.getDatumRodjenja()) + ", " + 
+									s.getAdresaStana() + ", " + s.getKontaktTel() + ", " + s.geteMail() + ", " + 
+									status + ", " + s.getGodUpisa() + ", " + s.getProsecnaOcena());
+						out.write(sb.toString());
+						out.write("\n");
+							}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(out!= null)
+				try {
+					out.close();
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+		}
+		    
+
+		
+	}
+	
 	
 	public List<Student> getStudenti() {
 		return studenti;

@@ -1,11 +1,16 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import dialog.EditStudentDialog;
@@ -14,8 +19,12 @@ import oisisi.MainFrame;
 import oisisi.NepolozeniJTable;
 import oisisi.StudentJTable;
 
-public class BazaNepolozeniPredmeti {
+public class BazaNepolozeniPredmeti implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -983853907984269259L;
 	private static BazaNepolozeniPredmeti instance = null;
 
 	public static BazaNepolozeniPredmeti getInstance() {
@@ -115,6 +124,36 @@ public class BazaNepolozeniPredmeti {
 		}*/
 	}
 	
+	public void Serializacija() throws Exception, IOException{
+		BufferedWriter out = null;
+		try {
+		out =new  BufferedWriter(new FileWriter("ocene.txt"));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			for (Ocena o : ocene){
+									
+					StringBuilder sb = new StringBuilder("");
+					
+					sb.append(o.getStudent().getBrIndeksa()+ ", " + o.getPredmet().getIdPredmeta() + ", " + "5"+ ", " +  
+									dateToString(o.getDatum()));
+						out.write(sb.toString());
+						out.write("\n");
+							}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(out!= null)
+				try {
+					out.close();
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+		}
+	}
+	
 	public void NepolozeniUOcene(String s, String t) {
 		int id = NepolozeniJTable.getInstance().getSelectedRow();
 		if(id < 0) {
@@ -126,7 +165,12 @@ public class BazaNepolozeniPredmeti {
 		this.s.addOcena(p, Integer.parseInt(s), t);
 		}
 	}
-
+	public String dateToString(Date datum) {
+		String ret;
+		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
+		
+		return ret;
+	}
 	public void clearPredmeti() {
 		predmeti.clear();
 	}

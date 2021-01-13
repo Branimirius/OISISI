@@ -5,18 +5,25 @@ package model;
 
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Profesor;
 
 
-public class BazaProfesora {
+public class BazaProfesora implements Serializable{
 
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3335280947264351732L;
 		private static BazaProfesora instance = null;
 
 		public static BazaProfesora getInstance() {
@@ -115,6 +122,68 @@ public class BazaProfesora {
 			profesori.add(new Profesor("Peric", "Pera", "14/05/1958", "Strazilovska 77", "62424253", "lik@gmail.com", "808845", Titula.MR, Zvanje.REDOVNI_PROFESOR, predmeti1));
 		*/
 		
+		}
+		
+		public void Serializacija() throws Exception, IOException{
+			BufferedWriter out = null;
+			try {
+			out =new  BufferedWriter(new FileWriter("profesori.txt"));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				for (Profesor p : profesori){
+						String titula = null;
+						if(p.getTitula() == Titula.BSC) {
+							titula = "BSC";
+						}else if(p.getTitula() == Titula.DR) {
+							titula = "DR";
+						}else if(p.getTitula() == Titula.MR) {
+							titula = "MR";
+						}else if(p.getTitula() == Titula.MSC) {
+							titula = "MSC";
+						}else if(p.getTitula() == Titula.PROF_DR) {
+							titula = "PROF_DR";
+						}
+						String zvanje = null;
+						if(p.getZvanje() == Zvanje.ASISTENT) {
+							zvanje = "ASISTENT";
+						} else if(p.getZvanje() == Zvanje.ASISTENT_SA_DOKTORATOM){
+							zvanje = "ASISTENT_SA_DOKTORATOM";
+						}else if(p.getZvanje() == Zvanje.DOCENT) {
+							zvanje = "DOCENT";
+						}else if(p.getZvanje() == Zvanje.PROFESOR_EMERITUS){
+							zvanje = "PROFESOR_EMERITUS";
+						}else if(p.getZvanje() == Zvanje.REDOVNI_PROFESOR){
+							zvanje = "REDOVNI_PROFESOR";
+						}else if(p.getZvanje() == Zvanje.SARADNIK_U_NASTAVI){
+							zvanje = "SARADNIK_NASTAVI";
+						}else if(p.getZvanje() == Zvanje.VANREDNI_PROFESOR){
+							zvanje = "VANREDNI_PROFESOR";
+						}
+						StringBuilder sb = new StringBuilder("");
+						
+						sb.append(p.getBrLicneKarte()+", " + p.getIme() + ", " + p.getPrezime() + ", " +  
+										p.getDatumRodjString() + ", " + p.getAdresaStanovanja() + ", " + 
+										p.getKontaktTelefon() + ", " + p.getEmailAdresa() + ", " +"    " + ", " + 
+										titula+ ", " + zvanje);
+							out.write(sb.toString());
+							out.write("\n");
+								}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally {
+				if(out!= null)
+					try {
+						out.close();
+					}catch(IOException e) {
+						e.printStackTrace();
+					}
+			}
+			    
+
+			
 		}
 
 		public List<Profesor> getProfesori() {

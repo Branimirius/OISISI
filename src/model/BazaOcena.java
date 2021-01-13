@@ -1,10 +1,13 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,8 +15,12 @@ import java.util.List;
 
 import oisisi.StudentJTable;
 
-public class BazaOcena {
+public class BazaOcena implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8649203947466713456L;
 	private static BazaOcena instance = null;
 
 	public static BazaOcena getInstance() {
@@ -120,7 +127,35 @@ public class BazaOcena {
 		*/
 		
 	}
-	
+	public void Serializacija() throws Exception, IOException{
+		BufferedWriter out = null;
+		try {
+		out =new  BufferedWriter(new FileWriter("ocene.txt"));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			for (Ocena o : ocene){
+									
+					StringBuilder sb = new StringBuilder("");
+					
+					sb.append(o.getStudent().getBrIndeksa()+ ", " + o.getPredmet().getIdPredmeta() + ", " + Integer.toString(o.getOcena() )+ ", " +  
+									dateToString(o.getDatum()));
+						out.write(sb.toString());
+						out.write("\n");
+							}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(out!= null)
+				try {
+					out.close();
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+		}
+	}
 	public List<Ocena> getOcene() {
 		return ocene;
 	}

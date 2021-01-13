@@ -19,6 +19,11 @@ import dialog.EditStudentDialog;
 import dialog.NewPredmetDialog;
 import dialog.NewProfesorDialog;
 import dialog.NewStudentDialog;
+import model.BazaNepolozeniPredmeti;
+import model.BazaOcena;
+import model.BazaPredmeta;
+import model.BazaProfesora;
+import model.BazaStudenata;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,6 +77,22 @@ public class MenuBar extends JMenuBar implements ActionListener {
 				= KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_DOWN_MASK);
 			miClose.setAccelerator(keyStrokeToClose);
 			miClose.setMnemonic('c');
+			miClose.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+				try {
+					BazaStudenata.getInstance().Serializacija();
+					BazaOcena.getInstance().Serializacija();
+					BazaNepolozeniPredmeti.getInstance().Serializacija();
+					//BazaPredmeta.getInstance().Serializacija();
+					BazaProfesora.getInstance().Serializacija();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				}
+			});
 		
 		file.add(miNew);
 		file.addSeparator();
