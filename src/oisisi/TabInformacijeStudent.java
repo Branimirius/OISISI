@@ -7,6 +7,9 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -19,7 +22,9 @@ import javax.swing.text.Document;
 
 import controller.ButtonControllerStudent;
 import controller.StudentController;
+import model.BazaStudenata;
 import model.Status;
+import model.Student;
 import validation.AdrKeyListener;
 import validation.BrTelKeyListener;
 import validation.DatumKeyListener;
@@ -43,15 +48,25 @@ public class TabInformacijeStudent extends JPanel {
 		}
 		return instance;
 	}
+	private Student s;
 	
 	public TabInformacijeStudent(Dimension dim) {
+		
+		int id = StudentJTable.getInstance().getSelectedRow();
+		if(id < 0) {
+			return;
+		}
+		else {
+			List<Student> pp = BazaStudenata.getInstance().getStudenti();
+			s = pp.get(id);
+		}
 		
 		setLayout(new BorderLayout());
 		
 		JPanel panelIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelIme = new JLabel("      Ime*");
 		labelIme.setPreferredSize(dim);
-		JTextField txtIme = new JTextField();
+		JTextField txtIme = new JTextField(s.getIme());
 		txtIme.setPreferredSize(dim);
 		KeyListener SamoSlovaListener = new SamoSlovaKeyListener();		
 		txtIme.addKeyListener(SamoSlovaListener);		
@@ -61,7 +76,7 @@ public class TabInformacijeStudent extends JPanel {
 		JPanel panelPrezime = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelPrezime = new JLabel("      Prezime*");
 		labelPrezime.setPreferredSize(dim);
-		JTextField txtPrezime = new JTextField();
+		JTextField txtPrezime = new JTextField(s.getPrezime());
 		txtPrezime.setPreferredSize(dim);
 		//txtPrezime.addActionListener(actionListener);
 		KeyListener SamoSlovaListenerPrezime = new SamoSlovaKeyListener();
@@ -72,7 +87,7 @@ public class TabInformacijeStudent extends JPanel {
 		JPanel panelDatRod = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelDatRod = new JLabel("      Datum rodjenja*");
 		labelDatRod.setPreferredSize(dim);
-		JTextField txtDatRod = new JTextField("dd/MM/yyyy");
+		JTextField txtDatRod = new JTextField(dateToString(s.getDatumRodjenja()));
 		txtDatRod.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
 		KeyListener datumKeyListener = new DatumKeyListener();
@@ -83,7 +98,7 @@ public class TabInformacijeStudent extends JPanel {
 		JPanel panelAdresa = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelAdresa = new JLabel("      Adresa stanovanja*");
 		labelAdresa.setPreferredSize(dim);
-		JTextField txtAdresa = new JTextField();
+		JTextField txtAdresa = new JTextField(s.getAdresaStana());
 		txtAdresa.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
 		KeyListener adresaListener = new AdrKeyListener();
@@ -94,7 +109,7 @@ public class TabInformacijeStudent extends JPanel {
 		JPanel panelTel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelTel = new JLabel("      Broj telefona*");
 		labelTel.setPreferredSize(dim);
-		JTextField txtTel = new JTextField();
+		JTextField txtTel = new JTextField(s.getKontaktTel());
 		txtTel.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
 		KeyListener brTelListener = new BrTelKeyListener();
@@ -105,7 +120,7 @@ public class TabInformacijeStudent extends JPanel {
 		JPanel panelMail = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelMail = new JLabel("      E-mail adresa*");
 		labelMail.setPreferredSize(dim);
-		JTextField txtMail = new JTextField();
+		JTextField txtMail = new JTextField(s.geteMail());
 		KeyListener mailListener = new MailKeyListener();
 		txtMail.addKeyListener(mailListener);
 		txtMail.setPreferredSize(dim);
@@ -116,7 +131,7 @@ public class TabInformacijeStudent extends JPanel {
 		JPanel panelIndex = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelIndex = new JLabel("      Broj indeksa*");
 		labelIndex.setPreferredSize(dim);
-		JTextField txtIndex = new JTextField();
+		JTextField txtIndex = new JTextField(s.getBrIndeksa());
 		txtIndex.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
 		KeyListener indexListener = new IndexKeyListener();
@@ -127,7 +142,7 @@ public class TabInformacijeStudent extends JPanel {
 		JPanel panelGod = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelGod = new JLabel("      Godina upisa*");
 		labelGod.setPreferredSize(dim);
-		JTextField txtGod = new JTextField();
+		JTextField txtGod = new JTextField(Integer.toString(s.getGodUpisa()));
 		txtGod.setPreferredSize(dim);
 		//txtDatRod.addActionListener(actionListener);
 		KeyListener godListener = new GodUpisaKeyListener();
@@ -140,7 +155,8 @@ public class TabInformacijeStudent extends JPanel {
 		labelGodStudija.setPreferredSize(dim);
 		String godina[] = { "I (prva)", "II (druga)", "III (treca)","IV (cetvrta)"};
 		JComboBox<String> comboGodStudija = new JComboBox<String>(godina);
-		comboGodStudija.setPreferredSize(dim);				
+		comboGodStudija.setPreferredSize(dim);
+		comboGodStudija.setSelectedItem(s.getGodStudija());
 		//comboGodStudija.addActionListener(actionListener);
 		panelGodStudija.add(labelGodStudija);
 		panelGodStudija.add(comboGodStudija);
@@ -150,7 +166,8 @@ public class TabInformacijeStudent extends JPanel {
 		labelFinans.setPreferredSize(dim);
 		String nacin[] = { "Budzet", "Samofinansiranje"};
 		JComboBox<String> comboFinans = new JComboBox<String>(nacin);
-		comboFinans.setPreferredSize(dim);				
+		comboFinans.setPreferredSize(dim);
+		comboFinans.setSelectedItem(statusToString(s.getStatusStudenta()));
 		//comboGodStudija.addActionListener(actionListener);
 		panelFinans.add(labelFinans);
 		panelFinans.add(comboFinans);
@@ -242,5 +259,20 @@ public class TabInformacijeStudent extends JPanel {
 			return null;
 		}
 	}			
-	
+	public String dateToString(Date datum) {
+		String ret;
+		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
+		
+		return ret;
+	}
+	public String statusToString(Status status) {
+		switch (status) {
+		case B:
+			return "Budzet";			
+		case S:
+			return "Samofinansiranje";
+		default:
+			return null;
+		}
+	}			
 }

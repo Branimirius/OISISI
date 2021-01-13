@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -22,6 +23,9 @@ import controller.ButtonControllerPredmet;
 import controller.PredmetController;
 import controller.StudentController;
 import model.BazaPredmeta;
+import model.BazaProfesora;
+import model.Predmet;
+import model.Profesor;
 import model.Semestar;
 import validation.EspbKeyListener;
 import validation.GodIzvodjenjaKeyListener;
@@ -42,15 +46,25 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 		}
 		return instance;
 	}
+	private Predmet p;
 	
 	public TabIzmenaPredmeta(Dimension dim) {
+		int id = PredmetJTable.getInstance().getSelectedRow();
+		if(id < 0) {
+			return;
+		}
+		else {
+			List<Predmet> pp = BazaPredmeta.getInstance().getPredmeti();
+			p = pp.get(id);
+		}
+		
 		JPanel informacijePanel = new JPanel();
 		informacijePanel.setLayout(new BorderLayout());
 		
 		JPanel panelNaziv = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelNaziv = new JLabel("      Naziv predmeta*");
 		labelNaziv.setPreferredSize(dim);
-		JTextField txtNaziv = new JTextField();
+		JTextField txtNaziv = new JTextField(p.getNazivPredmeta());
 		txtNaziv.setPreferredSize(dim);
 		KeyListener SamoSlovaListener = new SamoSlovaKeyListener();		
 		txtNaziv.addKeyListener(SamoSlovaListener);		
@@ -60,7 +74,7 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 		JPanel panelESPB = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelESPB = new JLabel("      Broj ESPB bodova*");
 		labelESPB.setPreferredSize(dim);
-		JTextField txtESPB = new JTextField();
+		JTextField txtESPB = new JTextField(Integer.toString(p.getBrojEspbBodova()));
 		txtESPB.setPreferredSize(dim);
 		KeyListener ESPBListener = new EspbKeyListener();
 		txtESPB.addKeyListener(ESPBListener);
@@ -70,7 +84,7 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 		JPanel panelGod = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelGod = new JLabel("      Godina izvodjenja*");
 		labelGod.setPreferredSize(dim);
-		JTextField txtGod = new JTextField();
+		JTextField txtGod = new JTextField(Integer.toString(p.getGodinaIzvodjenja()));
 		txtGod.setPreferredSize(dim);
 		KeyListener godListener = new GodIzvodjenjaKeyListener();
 		txtGod.addKeyListener(godListener);
@@ -82,6 +96,7 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 		labelSemestar.setPreferredSize(dim);
 		String semestar[] = { "Zimski", "Letnji"};
 		JComboBox<String> comboSemestar = new JComboBox<String>(semestar);
+		comboSemestar.setSelectedItem(semestarToString(p.getSemestar()));
 		comboSemestar.setPreferredSize(dim);				
 		panelSemestar.add(labelSemestar);
 		panelSemestar.add(comboSemestar);
@@ -151,6 +166,16 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 			return Semestar.ZIMSKI;			
 		case "Letnji":
 			return Semestar.LETNJI;
+		default:
+			return null;
+		}
+	}
+	public String semestarToString(Semestar semestar) {
+		switch (semestar) {
+		case ZIMSKI:
+			return "Zimski";			
+		case LETNJI:
+			return "Letnji";
 		default:
 			return null;
 		}
