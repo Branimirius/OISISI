@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -50,10 +51,10 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		JPanel panel1 = new JPanel();
 		add(panel1,BorderLayout.WEST);
 		
-		JButton btnNew = new JButton(new ImageIcon("Images_mc/crafting_table.png"));
+		JButton btnNew = new JButton(new ImageIcon("Images_mc" + File.separator + "crafting_table.png"));
 		btnNew.setToolTipText("New");
 		btnNew.setBorder(BorderFactory.createEmptyBorder());
-		btnNew.setRolloverIcon(new ImageIcon("Images_mc/crafting_table_top.png"));
+		btnNew.setRolloverIcon(new ImageIcon("Images_mc" + File.separator + "crafting_table_top.png"));
 		btnNew.setRolloverEnabled(true);
 		btnNew.addActionListener(new ActionListener() {
 			@Override
@@ -81,7 +82,7 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 				
 		panel1.add(btnNew);
 			
-		JButton btnEdit = new JButton(new ImageIcon("Images_mc/anvil.png"));
+		JButton btnEdit = new JButton(new ImageIcon("Images_mc" + File.separator + "anvil.png"));
 		btnEdit.setToolTipText("Edit");
 		btnEdit.setBorder(BorderFactory.createEmptyBorder());
 		btnEdit.addActionListener(new ActionListener() {
@@ -117,10 +118,10 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		});
 		panel1.add(btnEdit);
 
-		JButton btnDelete = new JButton(new ImageIcon("Images_mc/unlit_furnance.png"));
+		JButton btnDelete = new JButton(new ImageIcon("Images_mc" + File.separator + "unlit_furnance.png"));
 		btnDelete.setToolTipText("Delete");
 		btnDelete.setBorder(BorderFactory.createEmptyBorder());
-		btnDelete.setRolloverIcon(new ImageIcon("Images_mc/furnance.png"));
+		btnDelete.setRolloverIcon(new ImageIcon("Images_mc" + File.separator + "furnance.png"));
 		btnDelete.setRolloverEnabled(true);
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
@@ -154,7 +155,7 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 		field.setBorder(BorderFactory.createBevelBorder(1));
 		panel2.add(field);
 		
-		JButton btnSearch=new JButton(new ImageIcon("Images_mc/search.png"));
+		JButton btnSearch=new JButton(new ImageIcon("Images_mc" + File.separator + "search.png"));
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBorder(BorderFactory.createEmptyBorder());
 		btnSearch.addActionListener(new ActionListener() {

@@ -28,6 +28,7 @@ import model.BazaStudenata;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 
 public class MenuBar extends JMenuBar implements ActionListener {
@@ -42,7 +43,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		file.setMnemonic('f');
 		
 		JMenuItem miNew = new JMenuItem("New  ");
-		miNew.setIcon(new ImageIcon("Images_mc/bookandquill.png"));
+		miNew.setIcon(new ImageIcon("Images_mc" + File.separator + "bookandquill.png"));
 			KeyStroke keyStrokeToNew
 				= KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK);
 			miNew.setAccelerator(keyStrokeToNew);
@@ -72,7 +73,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			});
 			
 		JMenuItem miClose = new JMenuItem("Close  ");
-		miClose.setIcon(new ImageIcon("Images_mc/closed_book22.png"));
+		miClose.setIcon(new ImageIcon("Images_mc" + File.separator + "closed_book22.png"));
 			KeyStroke keyStrokeToClose
 				= KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_DOWN_MASK);
 			miClose.setAccelerator(keyStrokeToClose);
@@ -103,7 +104,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		JMenu edit = new JMenu("Edit");
 		edit.setMnemonic('e');
 		JMenuItem miEdit = new JMenuItem("Edit  ");
-			miEdit.setIcon(new ImageIcon("Images_mc/anvil.png"));
+			miEdit.setIcon(new ImageIcon("Images_mc" + File.separator + "anvil.png"));
 			KeyStroke keyStrokeToEdit
 				= KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_DOWN_MASK);
 			miEdit.setAccelerator(keyStrokeToEdit);
@@ -144,7 +145,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			
 			
 		JMenuItem miDelete = new JMenuItem("Delete  ");
-			miDelete.setIcon(new ImageIcon("Images_mc/unlit_furnance.png"));
+			miDelete.setIcon(new ImageIcon("Images_mc" + File.separator + "unlit_furnance.png"));
 			KeyStroke keyStrokeToDelete
 				= KeyStroke.getKeyStroke(KeyEvent.VK_D, KeyEvent.CTRL_DOWN_MASK);
 			miDelete.setAccelerator(keyStrokeToDelete);
@@ -179,7 +180,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		help.setMnemonic('h');
 		
 		JMenuItem miHelp = new JMenuItem("Help  ");
-		miHelp.setIcon(new ImageIcon("Images_mc/map.png"));
+		miHelp.setIcon(new ImageIcon("Images_mc" + File.separator + "map.png"));
 			KeyStroke keyStrokeToHelp
 				= KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_DOWN_MASK);
 			miHelp.setAccelerator(keyStrokeToHelp);
@@ -196,7 +197,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 			
 			
 		JMenuItem miAbout = new JMenuItem("About  ");
-			miAbout.setIcon(new ImageIcon("Images_mc/sign.png"));
+			miAbout.setIcon(new ImageIcon("Images_mc" + File.separator + "sign.png"));
 			KeyStroke keyStrokeToAbout
 				= KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK);
 			miAbout.setAccelerator(keyStrokeToAbout);

@@ -3,6 +3,7 @@ package oisisi;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -52,7 +53,7 @@ public class MainFrame extends JFrame{
 		
 		addWindowListener(new MyWindowListener());
 		
-		ImageIcon icon = new ImageIcon("Images_mc/icon.png");
+		ImageIcon icon = new ImageIcon("Images_mc" + File.separator + "icon.png");
 		setIconImage(icon.getImage());
 	    
 		JMenuBar menuBar = new MenuBar(this); 
