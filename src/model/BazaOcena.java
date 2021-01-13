@@ -102,17 +102,28 @@ public class BazaOcena implements Serializable{
 			 ArrayList<Ocena> spisakPolozenih = new ArrayList<Ocena>();
 			 
 			 for(Ocena o: ocene) {
-				 if(o.getStudent() == s) {
+				 if(o.getStudent().getBrIndeksa() == s.getBrIndeksa()) {
 					 spisakPolozenih.add(o);
 				 }
 			 }
 			 s.setPolozeni(spisakPolozenih);
 			 
 		 }
-		 /*for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+		 for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
 			 List<Student> polozili = new ArrayList<Student>();
+			 List<Student> nisuPolozili = new ArrayList<Student>();
 			 
-		 }*/
+			 for(Ocena o : ocene) {
+				 if(o.getPredmet() == p) {
+					 polozili.add(o.getStudent());
+				 }
+				 else {
+					 nisuPolozili.add(o.getStudent());
+				 }
+			 }
+			 p.setListPolozili(polozili);
+			 p.setListNisuPolozili(nisuPolozili);
+		 }
 		
 		
 		/*int id = StudentJTable.getInstance().getSelectedRow();

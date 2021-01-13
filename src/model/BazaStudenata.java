@@ -24,6 +24,11 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import oisisi.NepolozeniJTable;
+import oisisi.StudentJTable;
+import oisisi.TabNepolozeniPredmeti;
+import oisisi.TabPolozeniPredmeti;
+
 
 
 public class BazaStudenata implements Serializable{
@@ -148,6 +153,19 @@ public class BazaStudenata implements Serializable{
 		    
 
 		
+	}
+	public void PoloziIspit(String s, String d) {
+		int id = NepolozeniJTable.getInstance().getSelectedRow();
+		int ids = StudentJTable.getInstance().getSelectedRow();
+		if(id < 0 || ids <0) {
+			return;
+		}
+		else {
+		Predmet p = BazaNepolozeniPredmeti.getInstance().getPredmeti().get(id);
+		studenti.get(ids).getNepolozeni().remove(p);
+		studenti.get(ids).addOcena(p, Integer.parseInt(s), d);
+		
+		}
 	}
 	
 	

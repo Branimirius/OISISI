@@ -31,9 +31,10 @@ private static NepolozeniController instance = null;
 	}
 	
 	public void Polaganje(String o, String t) {
-		BazaNepolozeniPredmeti.getInstance().NepolozeniUOcene(o, t);
+		BazaStudenata.getInstance().PoloziIspit(o, t);
 		TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
 		TabPolozeniPredmeti.getInstance().updateViewPolozeni();
+		MainFrame.getInstance().updateViewStudent();
 		
 	}
 	public void dodajPredmet(int id) {

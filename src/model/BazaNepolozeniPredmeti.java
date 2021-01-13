@@ -38,7 +38,7 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	private List<Predmet> predmeti;
 	private List<Ocena> ocene;
 	private List<String> kolone;
-	private Student s;
+	private Student stud;
 
 	private BazaNepolozeniPredmeti() {
 		
@@ -105,7 +105,7 @@ public class BazaNepolozeniPredmeti implements Serializable{
 			 ArrayList<Predmet> spisakNepolozenih = new ArrayList<Predmet>();
 			 
 			 for(Ocena o: ocene) {
-				 if(o.getStudent() == s) {
+				 if(o.getStudent().getBrIndeksa() == s.getBrIndeksa()) {
 					 spisakNepolozenih.add(o.getPredmet());
 				 }
 			 }
@@ -113,15 +113,6 @@ public class BazaNepolozeniPredmeti implements Serializable{
 			 
 		 }
 		
-		/*int id = StudentJTable.getInstance().getSelectedRow();
-		if(id < 0) {
-			System.out.println("nije selektovan student");
-			return;
-		} 
-		else {
-		s = BazaStudenata.getInstance().getStudenti().get(id);
-		predmeti = s.getNepolozeni();
-		}*/
 	}
 	
 	public void Serializacija() throws Exception, IOException{
@@ -161,8 +152,8 @@ public class BazaNepolozeniPredmeti implements Serializable{
 		}
 		else {
 		Predmet p = predmeti.get(id);
-		this.s.getNepolozeni().remove(p);
-		this.s.addOcena(p, Integer.parseInt(s), t);
+		stud.getNepolozeni().remove(p);
+		stud.addOcena(p, Integer.parseInt(s), t);
 		}
 	}
 	public String dateToString(Date datum) {
