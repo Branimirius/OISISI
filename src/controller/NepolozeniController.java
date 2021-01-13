@@ -30,8 +30,13 @@ private static NepolozeniController instance = null;
 		TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
 	}
 	
-	public void Polaganje(String o, String t) {
-		BazaStudenata.getInstance().PoloziIspit(o, t);
+	public void Polaganje(String o, String t, int id) {
+		if (id < 0) {
+			JOptionPane.showMessageDialog(null, "Niste izabrali predmet.");
+			return;
+		}
+		Predmet predmet = BazaNepolozeniPredmeti.getInstance().getRow(id);
+		BazaStudenata.getInstance().PoloziIspit(predmet,o, t);
 		TabNepolozeniPredmeti.getInstance().updateViewNepolozeni();
 		TabPolozeniPredmeti.getInstance().updateViewPolozeni();
 		MainFrame.getInstance().updateViewStudent();

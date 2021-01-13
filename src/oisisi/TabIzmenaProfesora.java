@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -19,6 +20,10 @@ import javax.swing.text.Document;
 
 import controller.ButtonController;
 import controller.ProfesorController;
+import model.BazaNepolozeniPredmeti;
+import model.BazaProfesora;
+import model.Predmet;
+import model.Profesor;
 import model.Titula;
 import model.Zvanje;
 import validation.AdrKeyListener;
@@ -35,6 +40,8 @@ public class TabIzmenaProfesora extends JTabbedPane{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private Profesor p;
+	
 	private static TabIzmenaProfesora instance = null;
 
 	public static TabIzmenaProfesora getInstance(Dimension dim) {
@@ -45,13 +52,22 @@ public class TabIzmenaProfesora extends JTabbedPane{
 	}
 	
 	public TabIzmenaProfesora(Dimension dim) {
+		int id = ProfesorJTable.getInstance().getSelectedRow();
+		if(id < 0) {
+			return;
+		}
+		else {
+			List<Profesor> pp = BazaProfesora.getInstance().getProfesori();
+			p = pp.get(id);
+		}
+		
 		JPanel informacijePanel = new JPanel();
 		informacijePanel.setLayout(new BorderLayout());
 		
 		JPanel panelPrezime = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelPrezime = new JLabel("      Prezime*");
 		labelPrezime.setPreferredSize(dim);
-		JTextField txtPrezime = new JTextField();
+		JTextField txtPrezime = new JTextField(p.getPrezime());
 		KeyListener SamoSlovaListener = new SamoSlovaKeyListener();
 		txtPrezime.addKeyListener(SamoSlovaListener);
 		txtPrezime.setPreferredSize(dim);
@@ -61,7 +77,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		JPanel panelIme = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelIme = new JLabel("      Ime*");
 		labelIme.setPreferredSize(dim);
-		JTextField txtIme = new JTextField();
+		JTextField txtIme = new JTextField(p.getIme());
 		txtIme.setPreferredSize(dim);
 		KeyListener SamoSlovaListenerime = new SamoSlovaKeyListener();
 		txtIme.addKeyListener(SamoSlovaListenerime);
@@ -71,7 +87,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		JPanel panelDatRod = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelDatRod = new JLabel("      Datum rodjenja*");
 		labelDatRod.setPreferredSize(dim);
-		JTextField txtDatRod = new JTextField("dd/MM/yyyy");
+		JTextField txtDatRod = new JTextField(p.getDatumRodjString());
 		KeyListener datumListener = new DatumKeyListener();
 		txtDatRod.addKeyListener(datumListener);
 		txtDatRod.setPreferredSize(dim);
@@ -81,7 +97,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		JPanel panelAdresa = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelAdresa = new JLabel("      Adresa stanovanja*");
 		labelAdresa.setPreferredSize(dim);
-		JTextField txtAdresa = new JTextField();
+		JTextField txtAdresa = new JTextField(p.getAdresaStanovanja());
 		txtAdresa.setPreferredSize(dim);
 		KeyListener adresaListener = new AdrKeyListener();
 		txtAdresa.addKeyListener(adresaListener);
@@ -91,7 +107,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		JPanel panelTel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelTel = new JLabel("      Kontakt telefon*");
 		labelTel.setPreferredSize(dim);
-		JTextField txtTel = new JTextField();
+		JTextField txtTel = new JTextField(p.getKontaktTelefon());
 		KeyListener brTelListener = new BrTelKeyListener();
 		txtTel.addKeyListener(brTelListener);
 		txtTel.setPreferredSize(dim);
@@ -101,7 +117,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		JPanel panelMail = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelMail = new JLabel("      E-mail adresa*");
 		labelMail.setPreferredSize(dim);
-		JTextField txtMail = new JTextField();
+		JTextField txtMail = new JTextField(p.getEmailAdresa());
 		KeyListener mailListener = new MailKeyListener();
 		txtMail.addKeyListener(mailListener);
 		txtMail.setPreferredSize(dim);
@@ -111,7 +127,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		JPanel panelBrLicne = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		JLabel labelBrLicne = new JLabel("      Broj Licne Karte*");
 		labelBrLicne.setPreferredSize(dim);
-		JTextField txtBrLicne = new JTextField();
+		JTextField txtBrLicne = new JTextField(p.getBrLicneKarte());
 		KeyListener licnaKartaListener = new LicnaKartaKeyListener();
 		txtBrLicne.addKeyListener(licnaKartaListener);
 		txtBrLicne.setPreferredSize(dim);
@@ -124,6 +140,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		String titule[] = {"BSc", "MSc", "mr", "dr", "prof. dr"};
 		JComboBox<String> comboTitula = new JComboBox<String>(titule);
 		comboTitula.setPreferredSize(dim);
+		comboTitula.setSelectedItem(titulaToString(p.getTitula()));
 		panelTitula.add(labelTitula);
 		panelTitula.add(comboTitula);
 		
@@ -133,6 +150,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		String zvanja[] = {"Saradnik u nastavi", "Asistent", "Asistent sa doktoratom", "Docent", "Vanredni profesor", "Redovni profesor", "Profesor emeritus"};
 		JComboBox<String> comboZvanje = new JComboBox<String>(zvanja);
 		comboZvanje.setPreferredSize(dim);
+		comboZvanje.setSelectedItem(zvanjeToString(p.getZvanje()));
 		panelZvanje.add(labelZvanje);
 		panelZvanje.add(comboZvanje);
 		
@@ -234,4 +252,42 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		}
 	}
 
+	public String titulaToString(Titula t) {
+		switch(t) {
+		case BSC:
+			return "BSc";
+		case MSC:
+			return "MSc";
+		case MR:
+			return "mr";
+		case DR:
+			return "dr";
+		case PROF_DR:
+			return "prof. dr";
+		default:
+			return null;
+		}
+	}
+	
+	public String zvanjeToString(Zvanje z) {
+		switch(z) {
+		case SARADNIK_U_NASTAVI:
+			return "Saradnik u nastavi";
+		case ASISTENT:
+			return "Asistent";
+		case ASISTENT_SA_DOKTORATOM:
+			return "Asistent sa doktoratom";
+		case DOCENT:
+			return "Docent";
+		case VANREDNI_PROFESOR:
+			return "Vandredni profesor";
+		case REDOVNI_PROFESOR:
+			return "Redovni profesor";
+		case PROFESOR_EMERITUS:
+			return "Profesor emeritus";
+		default:
+			return null;
+		}
+	}
+	
 }

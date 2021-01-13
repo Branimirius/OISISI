@@ -110,7 +110,8 @@ private static UnosOceneDialog instance = null;
 		 potvrdi.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					NepolozeniController.getInstance().Polaganje(txtOcena.getText(), txtDatum.getText());
+					int id = NepolozeniJTable.getInstance().getSelectedRow();
+					NepolozeniController.getInstance().Polaganje(txtOcena.getText(), txtDatum.getText(), id);
 					//setUnesenaOcena(txtOcena.getText());
 				}
 			});

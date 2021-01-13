@@ -22,6 +22,7 @@ import javax.swing.border.LineBorder;
 import controller.NepolozeniController;
 import controller.OceneController;
 import dialog.DeletePredmetDialog;
+import dialog.DeleteProfesorDialog;
 import dialog.DeleteStudentDialog;
 import dialog.EditPredmetDialog;
 import dialog.EditProfesorDialog;
@@ -130,8 +131,8 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 					deleteStudent.setVisible(true);
 				}	
 				else if(brt.getSel() == 1) {
-					//EditProfesorDialog editProfesor = new EditProfesorDialog(parent, "Brisanje profesora", true);
-					//editProfesor.setVisible(true);
+					DeleteProfesorDialog deleteProfesor = new DeleteProfesorDialog(parent, "Brisanje profesora", true);
+					deleteProfesor.setVisible(true);
 				}
 				else if(brt.getSel() ==  2) {
 					DeletePredmetDialog deletePredmet = new	DeletePredmetDialog(parent, "Brisanje predmeta", true);

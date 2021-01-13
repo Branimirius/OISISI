@@ -152,14 +152,12 @@ public class BazaStudenata implements Serializable{
 
 		
 	}
-	public void PoloziIspit(String s, String d) {
-		int id = NepolozeniJTable.getInstance().getSelectedRow();
+	public void PoloziIspit(Predmet p, String s, String d) {
 		int ids = StudentJTable.getInstance().getSelectedRow();
-		if(id < 0 || ids <0) {
+		if(ids <0) {
 			return;
 		}
 		else {
-		Predmet p = BazaNepolozeniPredmeti.getInstance().getPredmeti().get(id);
 		studenti.get(ids).getNepolozeni().remove(p);
 		studenti.get(ids).addOcena(p, Integer.parseInt(s), d);
 		
