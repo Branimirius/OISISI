@@ -118,7 +118,7 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	public void Serializacija() throws Exception, IOException{
 		BufferedWriter out = null;
 		try {
-		out =new  BufferedWriter(new FileWriter("ocene.txt"));
+		out =new  BufferedWriter(new FileWriter("nepolozeni.txt"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}

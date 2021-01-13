@@ -133,7 +133,7 @@ public class BazaPredmeta implements Serializable {
 	public void Serializacija() throws Exception, IOException{
 		BufferedWriter out = null;
 		try {
-		out =new  BufferedWriter(new FileWriter("studenti.txt"));
+		out =new  BufferedWriter(new FileWriter("predmeti.txt"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -151,7 +151,7 @@ public class BazaPredmeta implements Serializable {
 					StringBuilder sb = new StringBuilder("");
 					
 					sb.append(p.getIdPredmeta()+ ", " + p.getNazivPredmeta()+ ", " + Integer.toString(p.getGodinaIzvodjenja())+ ", " +  
-									Integer.toString(p.getBrojEspbBodova())+ ", " + p.getPredmetniProfesor().getBrLicneKarte()+ ", " + 
+									Integer.toString(p.getBrojEspbBodova())+ ", " + "null" + ", " + 
 									semestar);
 						out.write(sb.toString());
 						out.write("\n");

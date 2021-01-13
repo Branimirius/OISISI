@@ -85,7 +85,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 					BazaStudenata.getInstance().Serializacija();
 					BazaOcena.getInstance().Serializacija();
 					BazaNepolozeniPredmeti.getInstance().Serializacija();
-					//BazaPredmeta.getInstance().Serializacija();
+					BazaPredmeta.getInstance().Serializacija();
 					BazaProfesora.getInstance().Serializacija();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
