@@ -1,3 +1,6 @@
+/**
+ * validation je paket koji zaokruzuje sve koriscene Key Listener komponente aplikacije.
+ */
 package validation;
 
 import java.awt.event.KeyEvent;

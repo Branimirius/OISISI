@@ -1,5 +1,10 @@
 //reference: http://www.java2s.com/Tutorials/Java/Swing/JButton/Enable_or_disable_a_JButton_based_on_JTextField_content_in_Java.htm
 //ref : https://stackoverflow.com/questions/23856818/set-enable-button-if-text-field-is-fill
+
+/**
+ * controller je paket koji sadrzi sve kontrolere koji posreduju izmedju akcija korisnika i
+ *  baze podataka.
+ */
 package controller;
 
 import javax.swing.JButton;
@@ -14,7 +19,6 @@ import javax.swing.event.DocumentListener;
  * @author Filip
  *
  */
-
 public class ButtonController implements DocumentListener { 
 	  JButton button;
 	  int br;
