@@ -7,6 +7,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost tokom popunjavanja polja za broj telefona.
+ * Dozvoljava samo unos brojeva.
+ * @author Branimir
+ *
+ */
 public class BrTelKeyListener implements KeyListener {
 
 	@Override

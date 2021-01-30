@@ -4,6 +4,12 @@ import javax.swing.table.AbstractTableModel;
 
 import model.BazaPredmeta;
 
+/**
+ * Apstraktni model koji se koristi za kreiranje tabele.
+ * Radjeno po uzoru na vezbe.
+ * @author Filip
+ *
+ */
 public class AbstractTableModelPredmet  extends AbstractTableModel{
 
 	/**

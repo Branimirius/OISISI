@@ -14,6 +14,12 @@ import javax.swing.JPanel;
 import controller.StudentController;
 import oisisi.StudentJTable;
 
+/**
+ * Dijalog za brisanje studenta. Sastoji se od konstruktora dijaloga unutar koga su implementirane 
+ * sve potrebne funkcionalnosti.
+ * @author Branimir
+ *
+ */
 public class DeleteStudentDialog extends JDialog{
 
 	/**
@@ -23,6 +29,14 @@ public class DeleteStudentDialog extends JDialog{
 	
 	private static DeleteStudentDialog instance = null;
 	
+	/**
+	 * Metoda koja vraca instancu dijaloga za brisanje studenta.
+	 * Kao parametre prima roditeljski frejm, naslov dijaloga i istinitosnu vrednost da li je modalan ili ne.
+	 * @param parent
+	 * @param title
+	 * @param modal
+	 * @return instance
+	 */
 	public static DeleteStudentDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new DeleteStudentDialog(parent, title, modal);
@@ -30,6 +44,14 @@ public class DeleteStudentDialog extends JDialog{
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor dijaloga za brisanje studenta,
+	 *  kao parametre prima roditeljski frejm, naslov dijaloga i istinitosnu vrednost da li je modalan ili ne.
+	 * Unutar ovog konstruktora implementirani su dugmici za potvrdu ili odustanak od brisanja studenta koji je selektovan u tabeli. 
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost 
+	 */
 	public DeleteStudentDialog(Frame parent, String title, boolean modal) {
 		
 		super(parent, title, modal);

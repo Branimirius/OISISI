@@ -15,6 +15,11 @@ import controller.OceneController;
 import oisisi.NepolozeniJTable;
 import oisisi.PolozeniJTable;
 
+/**
+ * Dijalog za brisanje polozenog predmeta kod studenta.
+ * @author Branimir
+ *
+ */
 public class ObrisiPolozeniPredmetDialog extends JDialog{
 
 	/**
@@ -23,8 +28,16 @@ public class ObrisiPolozeniPredmetDialog extends JDialog{
 	private static final long serialVersionUID = 7857530925277765202L;
 
 	
-private static ObrisiPolozeniPredmetDialog instance = null;
+	private static ObrisiPolozeniPredmetDialog instance = null;
 	
+
+	/**
+	 * Metoda koja pravi/vraca instancu dijaloga za brisanje polozenog predmeta kod studenta.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 * @return instance
+	 */
 	public static ObrisiPolozeniPredmetDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new ObrisiPolozeniPredmetDialog(parent, title, modal);
@@ -32,6 +45,14 @@ private static ObrisiPolozeniPredmetDialog instance = null;
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor dijaloga za brisanje polozenog predmeta kod studenta. Tu su implementirane funkcionalnosti za
+	 * potvrdu ili odustanak od brisanja predmeta iz baze ocena, preko kontrolera.
+	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public ObrisiPolozeniPredmetDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 				

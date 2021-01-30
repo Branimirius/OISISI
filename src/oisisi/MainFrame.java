@@ -18,6 +18,12 @@ import java.awt.BorderLayout;
 
 
 
+/**
+ * Ovo je singleton klasa glavnog prozora aplikacije, instanca se poziva upravo u Main.
+ * Ovo je stablo aplikacije.
+ * @author Filip
+ *
+ */
 public class MainFrame extends JFrame{
 	
 	/**
@@ -27,6 +33,10 @@ public class MainFrame extends JFrame{
 	
 	private static MainFrame instance = null;
 
+	/**
+	 * Metoda koja pravi/vraca instancu klase MainFrame.
+	 * @return instance
+	 */
 	public static MainFrame getInstance() {
 		if (instance == null) {
 			instance = new MainFrame();
@@ -36,6 +46,9 @@ public class MainFrame extends JFrame{
 	
 	private Tab tab;
 	
+	/**
+	 * Konstruktor u kome je definisan izgled glavnog prozora aplikacije, koristi se u instanciranju.
+	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("STUDENTSKA SLUZBA");
@@ -69,6 +82,9 @@ public class MainFrame extends JFrame{
 		setVisible(true);
 	}
 	
+	/**
+	 * Metoda koja azurira izgled tabele studenata nakon svake izmene.
+	 */
 	public void updateViewStudent() {
 		
 		AbstractTableModelStudent modelStudent = (AbstractTableModelStudent) this.tab.tabelaStudenti.getModel();
@@ -77,6 +93,9 @@ public class MainFrame extends JFrame{
 		System.out.println("azuriro iz mejna studente ");	
 	}
 	
+	/**
+	 * Metoda koja azurira izgled tabele profesora nakon svake izmene.
+	 */
 	public void updateViewProfesor() {
 		
 		AbstractTableModelProfesor modelProfesor = (AbstractTableModelProfesor) this.tab.tabelaProfesori.getModel();
@@ -85,6 +104,9 @@ public class MainFrame extends JFrame{
 		System.out.println("azuriro iz mejna profesore");	
 	}
 	
+	/**
+	 * Metoda koja azurira izgled tabele predmeta nakon svake izmene.
+	 */
 	public void updateViewPredmet() {
 		
 		AbstractTableModelPredmet modelPredmet = (AbstractTableModelPredmet) this.tab.tabelaPredmeti.getModel();
@@ -93,6 +115,9 @@ public class MainFrame extends JFrame{
 		System.out.println("azuriro iz mejna predmete");	
 	}
 	
+	/**
+	 * Metoda koja poziva tabove sa tabelama studenata, profesora i premeta.
+	 */
 	public void showTab() {
 		this.tab = new Tab();
 		this.add(tab, BorderLayout.CENTER);		

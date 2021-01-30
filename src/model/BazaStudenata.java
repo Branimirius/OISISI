@@ -28,7 +28,12 @@ import oisisi.TabNepolozeniPredmeti;
 import oisisi.TabPolozeniPredmeti;
 
 
-
+/**
+ * Baza svih studenata. Ovde se nalazi lista svih studenata na studentskoj sluzbi i koristi se za kreiranje   
+ * odgovarajucih tabela.
+ * @author Branimir
+ *
+ */
 public class BazaStudenata implements Serializable{
 	/**
 	 * 
@@ -36,6 +41,10 @@ public class BazaStudenata implements Serializable{
 	private static final long serialVersionUID = 7339228090521864855L;
 	private static BazaStudenata instance = null;
 
+	/**
+	 * Metoda koja vraca instancu baze studenata.
+	 * @return instance
+	 */
 	public static BazaStudenata getInstance() {
 		if (instance == null) {
 			instance = new BazaStudenata();
@@ -47,6 +56,11 @@ public class BazaStudenata implements Serializable{
 	private List<Student> studenti;
 	private List<String> kolone;
 
+	
+	/**
+	 * Konstruktor koji se koristi za pravljenje instance, sastoji se od metode inicijalizacije baze studenata i 
+	 * definisanje kolona za tabelu studenata.
+	 */
 	private BazaStudenata() {
 	
 		initStudente();
@@ -72,6 +86,10 @@ public class BazaStudenata implements Serializable{
 
 	}
 
+	/**
+	 * Metoda koja pomocu deserijalizacije ucitava vrednosti svih studenata iz datog fajla i rasporedjuje ih u 
+	 * odgovarajuce liste.
+	 */
 	private void initStudente() {
 		
 		this.studenti = new ArrayList<Student>();
@@ -111,6 +129,12 @@ public class BazaStudenata implements Serializable{
 		
 	}
 	
+	/**
+	 * Metoda koja vrsi serijalizaciju trenutnog stanja u tabeli (nakon svih izmena) na taj nacin cuvamo stanje u tabeli za 
+	 * sledecu upotrebu.
+	 * @throws Exception
+	 * @throws IOException
+	 */
 	public void Serializacija() throws Exception, IOException{
 		BufferedWriter out = null;
 		try {
@@ -152,6 +176,13 @@ public class BazaStudenata implements Serializable{
 
 		
 	}
+	
+	/**
+	 * Metoda koja upisuje ocenu studentu. Kao parametre prima predmet koji je polozen, vrednost ocene i datum polaganja.
+	 * @param p predmet
+	 * @param s vrednost ocene
+	 * @param d datum polaganja
+	 */
 	public void PoloziIspit(Predmet p, String s, String d) {
 		int ids = StudentJTable.getInstance().getSelectedRow();
 		if(ids <0) {
@@ -181,11 +212,21 @@ public class BazaStudenata implements Serializable{
 		return this.kolone.get(index);
 	}
 
+	/**
+	 * Odabir studenta iz tabele.
+	 * @param rowIndex ciljani indeks studenta
+	 * @return student sa datog indeksa iz liste profesora
+	 */
 	public Student getRow(int rowIndex) {
 		return this.studenti.get(rowIndex);
 	}
 
-	
+	/**
+	 * Preuzimanje vrednosti iz specificnog polja unutar tabele.
+	 * @param row red
+	 * @param column kolona
+	 * @return vrednost polja(red, kolona)
+	 */
 	public String getValueAt(int row, int column) {
 		Student student = this.studenti.get(row);
 		
@@ -220,6 +261,20 @@ public class BazaStudenata implements Serializable{
 		
 	} 
 
+	/**
+	 * Metoda koja dodaje novog studenta u listu studenata. Poziva se iz kontrolera.
+	 * @param prezime
+	 * @param ime
+	 * @param datumRodjenja
+	 * @param adresaStana
+	 * @param kontaktTel
+	 * @param eMail
+	 * @param brIndeksa
+	 * @param godUpisa
+	 * @param godStudija
+	 * @param statusStudenta
+	 * @param prosecnaOcena
+	 */
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta,
 			double prosecnaOcena) {
@@ -227,6 +282,11 @@ public class BazaStudenata implements Serializable{
 				eMail));		
 		
 	}
+	/**
+	 * Metoda koja pretvara tip datuma iz Date u String, radi lakseg koriscenja.
+	 * @param datum Date
+	 * @return datum string
+	 */
 	public String dateToString(Date datum) {
 		String ret;
 		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
@@ -234,6 +294,21 @@ public class BazaStudenata implements Serializable{
 		return ret;
 	}
 	
+	/**
+	 * Metoda koja menja informacije o selektovanom studentu ciji se ID prosledjuje kao parametar.
+	 * Kao parametre prima sva potrebna polja za konstrukciju studenta. Ubacuje ga u listu(tabelu) 
+	 * @param ID indeks selektovanog studenta iz liste(tabele)
+	 * @param prezime
+	 * @param ime
+	 * @param datumRodjenja
+	 * @param adresaStana
+	 * @param kontaktTel
+	 * @param eMail
+	 * @param brIndeksa
+	 * @param godUpisa
+	 * @param godStudija
+	 * @param statusStudenta
+	 */
 	public void izmeniStudenta(String ID, String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta) {
 		for (Student s : studenti) {
@@ -251,6 +326,10 @@ public class BazaStudenata implements Serializable{
 			}
 		}
 	}
+	/**
+	 * Metoda koja trazi ID selektovanog studenta u listi studenata i brise taj element liste.
+	 * @param ID indeks selektovanog studenta
+	 */
 	public void izbrisiStudenta(String ID) {
 		for (Student s : studenti) {
 			if(s.getBrIndeksa() == ID) {
@@ -259,6 +338,12 @@ public class BazaStudenata implements Serializable{
 			}
 		}
 	}
+	/**
+	 * Metoda koja proverava da li dati indeks studenta vec postoji u listi studenata.
+	 * Koristi se pri sprecavanju pojave dva ista studenta u listi studenata.
+	 * @param ID indeks koji se uporedjuje
+	 * @return istinitosna vrednost
+	 */
 	public boolean indexPostoji(String ID){
 		for(Student s : studenti) {
 			if(s.getBrIndeksa() == ID) {
@@ -270,6 +355,11 @@ public class BazaStudenata implements Serializable{
 		return false;
 			
 	}
+	/**
+	 * Metoda koja trazi studenta sa datim indeksom i vraca ga kao izlaznu vrednost.
+	 * @param ID indeks trazenog student
+	 * @return student
+	 */
 	public Student getStudent(String ID) {
 		for(Student s : studenti) {
 			if(s.getBrIndeksa() == ID) {

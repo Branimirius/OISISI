@@ -31,7 +31,11 @@ import validation.SamoSlovaKeyListener;
 
 import javax.swing.JComboBox;
 
-
+/**
+ * Dijalog za dodavanje novog profesora u tabelu svih profesora.
+ * @author Filip
+ *
+ */
 public class NewProfesorDialog  extends JDialog{
 
 	/**
@@ -39,7 +43,15 @@ public class NewProfesorDialog  extends JDialog{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
+	/**
+	 * Konstruktor dijaloga za dodavanje novog profesora u tabelu profesora, sastoji se od polja za svaku potrebnu informaciju,
+	 * dugmica za odustanak ili potvrdu. Ukoliko polja nisu validno popunjena, bacice gresku. Ukoliko nisu sva polja popunjena,
+	 * onemogucava pritisak dugmeta za potvrdu.
+	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public NewProfesorDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		
@@ -198,6 +210,11 @@ public class NewProfesorDialog  extends JDialog{
 		add(panelButtons, BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * Metoda koja prebacuje vrednost titule profesora iz tipa string u tip enum Titula.
+	 * @param t string titula
+	 * @return titula enum
+	 */
 	public Titula  stringToTitula(String t) {
 		switch(t) {
 		case "BSc":
@@ -215,6 +232,11 @@ public class NewProfesorDialog  extends JDialog{
 		}
 	}
 	
+	/**
+	 * Metoda koja prebacuje vrednost zvanja profesora iz tipa string u tip enum Zvanje.
+	 * @param z string zvanje
+	 * @return zvanje enum
+	 */
 	public Zvanje stringToZvanje(String z) {
 		switch(z) {
 		case "Saradnik u nastavi":

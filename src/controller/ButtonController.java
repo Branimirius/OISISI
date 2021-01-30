@@ -7,12 +7,27 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 
-public class ButtonController implements DocumentListener {
+/**
+ * Klasa koja implementira DocumentListener,
+ *  upotrebljena je za zakljucavanje dugmeta u dijalozima za izmenu i dodavanje profesora.
+ *  
+ * @author Filip
+ *
+ */
+
+public class ButtonController implements DocumentListener { 
 	  JButton button;
 	  int br;
 	  
 	 
-	  public ButtonController(JButton b, int i) {
+	  /**
+	   * Konstruktor kontrolera zakljucavanja dugmeta u dijalozima za izmenu i dodavanje profesora
+	   * Prima parametre: dugme na koje se odnosi i broj polja koje se popunjava, kada su sva polja popunjena
+	   * dugme ce se otkljucati ili zakljucati ako je polje prazno.
+	 * @param b
+	 * @param i
+	 */
+	public ButtonController(JButton b, int i) {
 	    button = b;
 	    br = i;
 	  }
@@ -29,7 +44,12 @@ public class ButtonController implements DocumentListener {
 	    disableIfEmpty(e);
 	  }
 
-	  public void disableIfEmpty(DocumentEvent e) {
+	  /**
+	   * Metoda koja zakljucava dugme za potvrdu ako je neko polje prazno,
+	   * kao parametar uzima registrovani dogadjaj unutar dokumenta (polja).
+	 * @param e registrovani dogadjaj unutar polja dijaloga
+	 */
+	public void disableIfEmpty(DocumentEvent e) {
 		  if (e.getDocument().getLength() > 1) 
 			  		ValidLista.getInstance().validateList(br); 
 		  if(ValidLista.getInstance().listValid())

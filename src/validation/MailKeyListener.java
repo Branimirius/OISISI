@@ -9,6 +9,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost tokom popunjavanja polja za e mail adresu studenta ili profesora.
+ * dozvoljava unos 25 karaktera maksimalno, pri cemu nije moguce uneti  brojeve i znakove.
+ * @author Branimir
+ *
+ */
 public class MailKeyListener implements KeyListener{
 	
 	@Override

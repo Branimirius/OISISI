@@ -17,7 +17,12 @@ import java.util.List;
 
 import model.Profesor;
 
-
+/**
+ * Baza svih profesora. Ovde se nalazi lista svih profesora na studentskoj sluzbi i koristi se za kreiranje   
+ * odgovarajucih tabela.
+ * @author Filip
+ *
+ */
 public class BazaProfesora implements Serializable{
 
 		/**
@@ -26,6 +31,10 @@ public class BazaProfesora implements Serializable{
 	private static final long serialVersionUID = -3335280947264351732L;
 		private static BazaProfesora instance = null;
 
+		/**
+		 * Metoda koja vraca instancu baze profesora.
+		 * @return instance
+		 */
 		public static BazaProfesora getInstance() {
 			if (instance == null) {
 				instance = new BazaProfesora();
@@ -36,6 +45,10 @@ public class BazaProfesora implements Serializable{
 		private List<Profesor> profesori;
 		private List<String> kolone;
 
+		/**
+		 * Konstruktor koji se koristi za pravljenje instance, sastoji se od metode inicijalizacije baze profesora i 
+		 * definisanje kolona za tabelu profesora.
+		 */
 		private BazaProfesora() {
 		
 			initProfesore();
@@ -55,6 +68,10 @@ public class BazaProfesora implements Serializable{
 		
 		}
 
+		/**
+		 * Metoda koja pomocu deserijalizacije ucitava vrednosti svih profesora iz datog fajla i rasporedjuje ih u 
+		 * odgovarajuce liste.
+		 */
 		private void initProfesore() {
 			
 			this.profesori = new ArrayList<Profesor>();
@@ -124,6 +141,12 @@ public class BazaProfesora implements Serializable{
 		
 		}
 		
+		/**
+		 * Metoda koja vrsi serijalizaciju trenutnog stanja u tabeli (nakon svih izmena) na taj nacin cuvamo stanje u tabeli za 
+		 * sledecu upotrebu.
+		 * @throws Exception
+		 * @throws IOException
+		 */
 		public void Serializacija() throws Exception, IOException{
 			BufferedWriter out = null;
 			try {
@@ -186,6 +209,12 @@ public class BazaProfesora implements Serializable{
 			
 		}
 
+		/**
+		 * Metoda koja trazi profesora sa prosledjenim kljucem 
+		 * Vraca ga za dalju upotrebu.
+		 * @param licna kljuc
+		 * @return profesor
+		 */
 		public Profesor findProf(String licna) {
 			Profesor prof = null;
 			for(int i = 0; i<profesori.size(); i++) {
@@ -212,10 +241,21 @@ public class BazaProfesora implements Serializable{
 			return this.kolone.get(index);
 		}
 
+		/**
+		 * Odabir profesora iz tabele.
+		 * @param rowIndex ciljani indeks profesora
+		 * @return profesor sa datog indeksa iz liste profesora
+		 */
 		public Profesor getRow(int rowIndex) {
 			return this.profesori.get(rowIndex);
 		}
 
+		/**
+		 * Preuzimanje vrednosti iz specificnog polja unutar tabele.
+		 * @param row red
+		 * @param column kolona
+		 * @return vrednost polja(red, kolona)
+		 */
 		public String getValueAt(int row, int column) {
 			Profesor profesor = this.profesori.get(row);
 			
@@ -245,12 +285,41 @@ public class BazaProfesora implements Serializable{
 			}
 		}
 
+		
+		/**
+		 * Metoda koja se poziva iz kontrolera pri procesu dodavanja novog profesora u listu profesora.
+		 * @param prezime
+		 * @param ime
+		 * @param datumRodjenja
+		 * @param adresaStanovanja
+		 * @param kontaktTelefon
+		 * @param emailAdresa
+		 * @param brLicneKarte
+		 * @param titula
+		 * @param zvanje
+		 * @param listaPredmeta
+		 */
 		public void dodajProfesora(String prezime, String ime, String datumRodjenja, String adresaStanovanja, 
 				String kontaktTelefon, String emailAdresa, String brLicneKarte, Titula titula, Zvanje zvanje, List<Predmet> listaPredmeta ) {
 			this.profesori.add(new Profesor(prezime, ime, datumRodjenja, adresaStanovanja, 
 					datumRodjenja, brLicneKarte, adresaStanovanja, titula, zvanje, listaPredmeta));
 		}
 		
+		
+		/**
+		 * Metoda koja se poziva iz kontrolera profesora pri procesu izmene profesora iz liste profesora.
+		 * @param ID
+		 * @param prezime
+		 * @param ime
+		 * @param datumRodjenja
+		 * @param adresaStanovanja
+		 * @param kontaktTelefon
+		 * @param emailAdresa
+		 * @param brLicneKarte
+		 * @param titula
+		 * @param zvanje
+		 * @param listaPredmeta
+		 */
 		public void izmeniProfesora(String ID, String prezime, String ime, String datumRodjenja, String adresaStanovanja, 
 				String kontaktTelefon, String emailAdresa, String brLicneKarte, Titula titula, Zvanje zvanje, List<Predmet> listaPredmeta) {
 			for (Profesor p : profesori) {
@@ -269,6 +338,11 @@ public class BazaProfesora implements Serializable{
 			}
 		}
 		
+		/**
+		 * Metoda koja prebacuje vrednost titule profesora iz tipa enum Titula u tip String.
+		 * @param t enum titula
+		 * @return titula string
+		 */
 		public String titulaToString(Titula t) {
 			switch(t) {
 			case BSC:
@@ -286,6 +360,11 @@ public class BazaProfesora implements Serializable{
 			}
 		}
 		
+		/**
+		 * Metoda koja prebacuje vrednost zvanja profesora iz tipa enum zvanje u tip String.
+		 * @param z enum zvanje
+		 * @return zvanje string
+		 */
 		public String zvanjeToString(Zvanje z) {
 			switch(z) {
 			case SARADNIK_U_NASTAVI:
@@ -307,6 +386,10 @@ public class BazaProfesora implements Serializable{
 			}
 		}
 		
+		/**
+		 * Metoda koja trazi profesora sa zadatim kljucem i brise ga iz tabele.
+		 * @param ID kljuc ciljanog profesora (broj licne karte)
+		 */
 		public void izbrisiProfesora(String ID) {
 			for (Profesor p : profesori) {
 				if(p.getBrLicneKarte() == ID) {

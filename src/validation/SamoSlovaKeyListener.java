@@ -7,6 +7,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost prilikom popunjavanja polja u kojima se ne sme pojaviti nista osim slova.
+ * Dozvoljava samo unos slova u tekucem polju. Koristi se u svakom dijalogu.
+ * @author Filip
+ *
+ */
 public class SamoSlovaKeyListener implements KeyListener{
 	
 	@Override

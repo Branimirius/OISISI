@@ -4,6 +4,11 @@ import java.util.List;
 
 //enum Semestar{ZIMSKI, LETNJI};
 
+/**
+ * Klasa koja predstavlja model predmeta.
+ * @author Filip
+ *
+ */
 public class Predmet {
 
 	private String idPredmeta;
@@ -15,8 +20,22 @@ public class Predmet {
 	private List<Student> listaPolozili;
 	private List<Student> listaNisuPolozili;
 	
+	/**
+	 * prazan konstruktor
+	 */
 	public Predmet() {}
 	
+	/**
+	 * Konstruktor predmeta, prima parametre za svako polje.
+	 * @param idPredmeta
+	 * @param nazivPredmeta
+	 * @param semestar
+	 * @param godinaIzvodjenja
+	 * @param predmetniProfesor
+	 * @param brojEspbBodova
+	 * @param listPolozili
+	 * @param listNisuPolozili
+	 */
 	public Predmet(String idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
 			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili,
 			List<Student> listNisuPolozili) {

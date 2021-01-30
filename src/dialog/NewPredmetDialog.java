@@ -26,6 +26,11 @@ import validation.EspbKeyListener;
 import validation.GodIzvodjenjaKeyListener;
 import validation.SamoSlovaKeyListener;
 
+/**
+ * Dijalog za dodavanje novog predmeta u tabelu svih predmeta.
+ * @author Branimir
+ *
+ */
 public class NewPredmetDialog extends JDialog{
 
 	/**
@@ -35,6 +40,13 @@ public class NewPredmetDialog extends JDialog{
 
 private static NewPredmetDialog instance = null;
 	
+	/**
+	 * Metoda koja pravi/vraca instancu dijaloga za dodavanje predmeta.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 * @return instance
+	 */
 	public static NewPredmetDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new NewPredmetDialog(parent, title, modal);
@@ -42,6 +54,15 @@ private static NewPredmetDialog instance = null;
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor dijaloga za dodavanje novog predmeta u tabelu predmeta, sastoji se od polja za svaku potrebnu informaciju,
+	 * dugmica za odustanak ili potvrdu. Ukoliko polja nisu validno popunjena, bacice gresku. Ukoliko nisu sva polja popunjena,
+	 * onemogucava pritisak dugmeta za potvrdu.
+	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public NewPredmetDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		
@@ -159,6 +180,11 @@ private static NewPredmetDialog instance = null;
 	
 	}
 	
+	/**
+	 * Metoda koja prebacuje izabrani semestar iz stringa u enum Semestar.
+	 * @param semestar string naziv semestra
+	 * @return semestar enum
+	 */
 	public Semestar stringToSemestar(String semestar) {
 		switch (semestar) {
 		case "Zimski":

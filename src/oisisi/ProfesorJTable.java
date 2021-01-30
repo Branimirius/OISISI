@@ -7,6 +7,11 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
+/**
+ * Singleton klasa koja nasledjuje JTable i predstavlja tabelu profesora.
+ * @author Filip
+ *
+ */
 public class ProfesorJTable extends JTable{
 	
 	
@@ -17,6 +22,10 @@ public class ProfesorJTable extends JTable{
 	
 	private static ProfesorJTable instance = null;
 
+	/**
+	 * Metoda koja vraca/pravi instancu klase ProfesorJTable.
+	 * @return instance
+	 */
 	public static ProfesorJTable getInstance() {
 		if (instance == null) {
 			instance = new ProfesorJTable();
@@ -24,6 +33,10 @@ public class ProfesorJTable extends JTable{
 		return instance;
 	}
 
+	/**
+	 * Konstruktor tabele profesora, koristi metode iz JTable klase.
+	 * Povezana je sa apstraktim modelom.
+	 */
 	public ProfesorJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);

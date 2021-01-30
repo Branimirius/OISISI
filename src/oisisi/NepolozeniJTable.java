@@ -7,6 +7,11 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
+/**
+ * Singleton klasa koja nasledjuje JTable i predstavlja tabelu nepolozenih predmeta.
+ * @author Branimir
+ *
+ */
 public class NepolozeniJTable extends JTable{
 
 	/**
@@ -16,6 +21,10 @@ public class NepolozeniJTable extends JTable{
 	
 	private static NepolozeniJTable instance = null;
 
+	/**
+	 * Metoda koja vraca/pravi instancu klase nepolozeniJTable.
+	 * @return instance
+	 */
 	public static NepolozeniJTable getInstance() {
 		if (instance == null) {
 			instance = new NepolozeniJTable();
@@ -23,6 +32,10 @@ public class NepolozeniJTable extends JTable{
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor tabele nepolozenih predmeta, koristi metode iz JTable klase.
+	 * Povezana je sa apstraktim modelom.
+	 */
 	public NepolozeniJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);

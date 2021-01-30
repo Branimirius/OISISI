@@ -19,6 +19,12 @@ import oisisi.MainFrame;
 import oisisi.NepolozeniJTable;
 import oisisi.StudentJTable;
 
+/**
+ * Baza nepolozenih predmeta studenata. Ovde se nalaze liste studenata i predmeta koje su neophodne za kreiranje 
+ * odgovarajucih tabela.
+ * @author Filip
+ *
+ */
 public class BazaNepolozeniPredmeti implements Serializable{
 	
 	/**
@@ -27,6 +33,10 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	private static final long serialVersionUID = -983853907984269259L;
 	private static BazaNepolozeniPredmeti instance = null;
 
+	/**
+	 * Metoda koja vraca instancu baze nepolozenih predmeta.
+	 * @return instance
+	 */
 	public static BazaNepolozeniPredmeti getInstance() {
 		if (instance == null) {
 			instance = new BazaNepolozeniPredmeti();
@@ -40,6 +50,10 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	private List<String> kolone;
 	private Student stud;
 
+	/**
+	 * Konstruktor koji se koristi za pravljenje instance, sastoji se od metode inicijalizacije baze nepolozenih predmeta i 
+	 * definisanje kolona za tabelu nepolozenih.
+	 */
 	private BazaNepolozeniPredmeti() {
 		
 		initNepolozeniPredmeti();
@@ -52,6 +66,10 @@ public class BazaNepolozeniPredmeti implements Serializable{
 		this.kolone.add("SEMESTAR");
 	}
 	
+	/**
+	 * Metoda koja pomocu deserijalizacije ucitava vrednosti nepolozenih prdmeta iz datog fajla i rasporedjuje ih u 
+	 * odgovarajuce liste.
+	 */
 	public void initNepolozeniPredmeti() {
 		
 		
@@ -115,6 +133,12 @@ public class BazaNepolozeniPredmeti implements Serializable{
 		
 	}
 	
+	/**
+	 * Metoda koja vrsi serijalizaciju trenutnog stanja u tabeli(nakon svih izmena) na taj nacin cuvamo stanje u tabeli za 
+	 * sledecu upotrebu.
+	 * @throws Exception
+	 * @throws IOException
+	 */
 	public void Serializacija() throws Exception, IOException{
 		BufferedWriter out = null;
 		try {
@@ -145,6 +169,12 @@ public class BazaNepolozeniPredmeti implements Serializable{
 		}
 	}
 	
+	/**
+	 * Metoda koja prebacuje predmete iz nepolozenih u polozene (ocene). Koristi se u funkciji polaganja ispita i
+	 * unosa ocene.
+	 * @param s vrednost ocene
+	 * @param t datum polaganja
+	 */
 	public void NepolozeniUOcene(String s, String t) {
 		int id = NepolozeniJTable.getInstance().getSelectedRow();
 		if(id < 0) {
@@ -156,12 +186,21 @@ public class BazaNepolozeniPredmeti implements Serializable{
 		stud.addOcena(p, Integer.parseInt(s), t);
 		}
 	}
+	/**
+	 * Metoda koja prebacuje datum iz tipa Date u tip String.
+	 * Napravljena zbog jednostavnijeg rukovanja datumom.
+	 * @param datum Date
+	 * @return ret datum string
+	 */
 	public String dateToString(Date datum) {
 		String ret;
 		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
 		
 		return ret;
 	}
+	/**
+	 * Brisanje liste nepolozenih predmeta.
+	 */
 	public void clearPredmeti() {
 		predmeti.clear();
 	}
@@ -186,10 +225,21 @@ public class BazaNepolozeniPredmeti implements Serializable{
 		return this.kolone.get(index);
 	}
 
+	/**
+	 * Odabir predmeta iz tabele.
+	 * @param rowIndex
+	 * @return
+	 */
 	public Predmet getRow(int rowIndex) {
 		return this.predmeti.get(rowIndex);
 	}
 
+	/**
+	 * Preuzimanje vrednosti iz specificnog polja unutar tabele.
+	 * @param row red
+	 * @param column kolona
+	 * @return vrednost polja(red, kolona)
+	 */
 	public String getValueAt(int row, int column) {
 		Predmet predmet = this.predmeti.get(row);
 		switch (column) {
@@ -213,6 +263,10 @@ public class BazaNepolozeniPredmeti implements Serializable{
 			return null;
 		}
 	}
+	/**
+	 * Brisanje predmeta prosledjenim indeksom iz liste nepolozenih predmeta.
+	 * @param ID indeks ciljanog predmeta
+	 */
 	public void izbrisiPredmet(String ID) {
 		for (Predmet p : predmeti) {
 			if(p.getIdPredmeta() == ID) {

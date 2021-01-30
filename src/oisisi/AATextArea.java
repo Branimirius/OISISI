@@ -8,6 +8,11 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
 
+/**
+ * Klasa koja se koristi za kreiranje prozora za about.
+ * @author Branimir
+ *
+ */
 public class AATextArea extends JFrame{
 	
 	
@@ -18,6 +23,9 @@ public class AATextArea extends JFrame{
 	private static final long serialVersionUID = -6270508181557940307L;
 	
 
+	/**
+	 * Konstruktor prozora koji sadrzi informacije o aplikaciji.
+	 */
 	public AATextArea() {
 	 super();
 	 setTitle("Tekstualne komponente");

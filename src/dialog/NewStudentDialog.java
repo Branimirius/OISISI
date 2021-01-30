@@ -34,6 +34,11 @@ import validation.IndexKeyListener;
 import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
+/**
+ * Dijalog za dodavanje novog studenta u tabelu svih studenata.
+ * @author Branimir
+ *
+ */
 public class NewStudentDialog extends JDialog {
 
 	
@@ -44,6 +49,13 @@ public class NewStudentDialog extends JDialog {
 	
 	private static NewStudentDialog instance = null;
 	
+	/**
+	 * Metoda koja pravi/vraca instancu dijaloga za dodavanje studenta.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 * @return instance
+	 */
 	public static NewStudentDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new NewStudentDialog(parent, title, modal);
@@ -52,7 +64,15 @@ public class NewStudentDialog extends JDialog {
 	}
 		
 	
-	
+	/**
+	 * Konstruktor dijaloga za dodavanje novog studenta u tabelu studenata, sastoji se od polja za svaku potrebnu informaciju,
+	 * dugmica za odustanak ili potvrdu. Ukoliko polja nisu validno popunjena, bacice gresku. Ukoliko nisu sva polja popunjena,
+	 * onemogucava pritisak dugmeta za potvrdu.
+	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public NewStudentDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		
@@ -270,6 +290,11 @@ public class NewStudentDialog extends JDialog {
 		//setVisible(true);
 	}
 	
+	/**
+	 * Metoda koja prebacuje vrednost statusa studenta iz tipa string u tip enum Status.
+	 * @param status string
+	 * @return status enum
+	 */
 	public Status stringToStatus(String status) {
 		switch (status) {
 		case "Budzet":

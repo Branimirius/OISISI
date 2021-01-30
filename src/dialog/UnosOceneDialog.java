@@ -25,6 +25,11 @@ import validation.DatumKeyListener;
 import validation.GodUpisaKeyListener;
 import validation.SamoSlovaKeyListener;
 
+/**
+ * Dijalog za unos ocene kod studenta, to jest polaganje predmeta.
+ * @author Filip
+ *
+ */
 public class UnosOceneDialog extends JDialog{
 
 	/**
@@ -34,6 +39,13 @@ public class UnosOceneDialog extends JDialog{
 	
 private static UnosOceneDialog instance = null;
 	
+	/**
+	 * Metoda koja vraca/pravi instancu dijaloga za unos ocene kod studenta.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 * @return instance
+	 */
 	public static UnosOceneDialog getInstance(JFrame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new UnosOceneDialog(parent, title, modal);
@@ -44,6 +56,14 @@ private static UnosOceneDialog instance = null;
 	private Predmet p;
 	private String unesenaOcena;
 	
+	/**
+	 * Konstruktor za dijalog unosa ocene kod studenta. Sastoji se od polja, labela i dugmica. 
+	 * Polja se popunjavaju informacijama o oceni koja se upisuje, ako nije validno popunjeno, baca gresku.
+	 * Ako nije sve popunjeno, dugme ce biti onemoguceno.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public UnosOceneDialog(JFrame parent, String title, boolean modal) {
 	super(parent, title, modal);
 		

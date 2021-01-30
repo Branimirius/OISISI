@@ -6,6 +6,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost tokom popunjavanja polja za godinu izvodjenja predmeta.
+ * Dozvoljava samo unos jednocifrenih brojeva od 1 do 6.
+ * @author Filip
+ *
+ */
 public class GodIzvodjenjaKeyListener implements KeyListener{
 
 	@Override

@@ -7,6 +7,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost tokom popunjavanja polja za datum.
+ * Dozvoljava samo unos brojeva i kose crtice u formatu koji je naznacen pre popunjavanja.
+ * @author Branimir
+ *
+ */
 public class DatumKeyListener implements KeyListener {
 
 	@Override

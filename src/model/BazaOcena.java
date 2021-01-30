@@ -15,6 +15,12 @@ import java.util.List;
 
 import oisisi.StudentJTable;
 
+/**
+ * Baza polozenih predmeta studenata. Ovde se nalaze liste studenata, predmeta i ocena koje su neophodne za kreiranje 
+ * odgovarajucih tabela.
+ * @author Branimir
+ *
+ */
 public class BazaOcena implements Serializable{
 	
 	/**
@@ -23,6 +29,10 @@ public class BazaOcena implements Serializable{
 	private static final long serialVersionUID = 8649203947466713456L;
 	private static BazaOcena instance = null;
 
+	/**
+	 * Metoda koja vraca instancu baze ocena.
+	 * @return instance
+	 */
 	public static BazaOcena getInstance() {
 		if (instance == null) {
 			instance = new BazaOcena();
@@ -33,6 +43,10 @@ public class BazaOcena implements Serializable{
 	private List<Ocena> ocene;
 	private List<String> kolone;
 
+	/**
+	 * Konstruktor koji se koristi za pravljenje instance, sastoji se od metode inicijalizacije baze ocena i 
+	 * definisanje kolona za tabelu polozenih predmeta.
+	 */
 	private BazaOcena() {
 		initOcena();
 
@@ -44,6 +58,10 @@ public class BazaOcena implements Serializable{
 		this.kolone.add("Datum");
 	}
 	
+	/**
+	 * Metoda koja pomocu deserijalizacije ucitava vrednosti polozenih prdmeta iz datog fajla i rasporedjuje ih u 
+	 * odgovarajuce liste.
+	 */
 	public void initOcena() {
 		
 		this.ocene = new ArrayList<Ocena>();
@@ -138,6 +156,13 @@ public class BazaOcena implements Serializable{
 		*/
 		
 	}
+	
+	/**
+	 * Metoda koja vrsi serijalizaciju trenutnog stanja u tabeli (nakon svih izmena) na taj nacin cuvamo stanje u tabeli za 
+	 * sledecu upotrebu.
+	 * @throws Exception
+	 * @throws IOException
+	 */
 	public void Serializacija() throws Exception, IOException{
 		BufferedWriter out = null;
 		try {
@@ -183,10 +208,21 @@ public class BazaOcena implements Serializable{
 		return this.kolone.get(index);
 	}
 	
+	/**
+	 * Odabir predmeta iz tabele.
+	 * @param rowIndex
+	 * @return
+	 */
 	public Ocena getRow(int rowIndex) {
 		return this.ocene.get(rowIndex);
 	}
 	
+	/**
+	 * Preuzimanje vrednosti iz specificnog polja unutar tabele.
+	 * @param row red
+	 * @param column kolona
+	 * @return vrednost polja(red, kolona)
+	 */
 	public String getValueAt(int row, int column) {
 		Ocena ocena = this.ocene.get(row);
 		switch (column) {
@@ -207,16 +243,31 @@ public class BazaOcena implements Serializable{
 		}
 	}
 	
+	/**
+	 * Metoda koja prebacuje datum iz tipa Date u tip String.
+	 * Napravljena zbog jednostavnijeg rukovanja datumom.
+	 * @param datum Date
+	 * @return ret datum string
+	 */
 	public String dateToString(Date datum) {
 		String ret;
 		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
 		
 		return ret;
 	}
+	
+	/**
+	 * Brisanje liste ocena.
+	 */
 	public void clearOcene() {
 		this.ocene.clear();
 		
 	}
+	
+	/**
+	 * Brisanje ocene prosledjenim indeksom iz liste polozenih predmeta.
+	 * @param ID indeks ciljane ocene
+	 */
 	public void izbrisiOcenu(Ocena o) {
 		for (Ocena it : ocene) {
 			if(it == o) {

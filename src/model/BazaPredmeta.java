@@ -11,6 +11,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Baza svih predmeta. Ovde se nalazi lista svih predmeta na studentskoj sluzbi i koristi se za kreiranje   
+ * odgovarajucih tabela.
+ * @author Filip
+ *
+ */
 public class BazaPredmeta implements Serializable {
 
 	/**
@@ -20,6 +26,10 @@ public class BazaPredmeta implements Serializable {
 
 	private static BazaPredmeta instance = null;
 
+	/**
+	 * Metoda koja vraca instancu baze predmeta.
+	 * @return instance
+	 */
 	public static BazaPredmeta getInstance() {
 		if (instance == null) {
 			instance = new BazaPredmeta();
@@ -36,6 +46,10 @@ public class BazaPredmeta implements Serializable {
 	private List<Ocena> polozeni;
 	private Profesor profesor;
 
+	/**
+	 * Lista studenata koji su polozili predmet.
+	 * @return studentiPolozili
+	 */
 	public List<Student> getStudentiPolozili() {
 		return studentiPolozili;
 	}
@@ -44,6 +58,10 @@ public class BazaPredmeta implements Serializable {
 		this.studentiPolozili = studentiPolozili;
 	}
 
+	/**
+	 * Lista studenata koji nisu polozili predmet.
+	 * @return studentiNisuPolozili
+	 */
 	public List<Student> getStudentiNisuPolozili() {
 		return studentiNisuPolozili;
 	}
@@ -52,6 +70,10 @@ public class BazaPredmeta implements Serializable {
 		this.studentiNisuPolozili = studentiNisuPolozili;
 	}
 
+	/**
+	 * Konstruktor koji se koristi za pravljenje instance, sastoji se od metode inicijalizacije baze predmeta i 
+	 * definisanje kolona za tabelu predmeta.
+	 */
 	private BazaPredmeta() {
 		
 	
@@ -70,6 +92,10 @@ public class BazaPredmeta implements Serializable {
 		
 	}
 
+	/**
+	 * Metoda koja pomocu deserijalizacije ucitava vrednosti svih prdmeta iz datog fajla i rasporedjuje ih u 
+	 * odgovarajuce liste.
+	 */
 	private void initPredmeta() {
 	
 
@@ -130,6 +156,12 @@ public class BazaPredmeta implements Serializable {
 		
 	}
 	
+	/**
+	 * Metoda koja vrsi serijalizaciju trenutnog stanja u tabeli (nakon svih izmena) na taj nacin cuvamo stanje u tabeli za 
+	 * sledecu upotrebu.
+	 * @throws Exception
+	 * @throws IOException
+	 */
 	public void Serializacija() throws Exception, IOException{
 		BufferedWriter out = null;
 		try {
@@ -191,10 +223,21 @@ public class BazaPredmeta implements Serializable {
 		return this.kolone.get(index);
 	}
 
+	/**
+	 * Odabir predmeta iz tabele.
+	 * @param rowIndex ciljani predmet iz tabele
+	 * @return predmet sa datog indeksa iz liste predmeta
+	 */
 	public Predmet getRow(int rowIndex) {
 		return this.predmeti.get(rowIndex);
 	}
 
+	/**
+	 * Preuzimanje vrednosti iz specificnog polja unutar tabele.
+	 * @param row red
+	 * @param column kolona
+	 * @return vrednost polja(red, kolona)
+	 */
 	public String getValueAt(int row, int column) {
 		Predmet predmet = this.predmeti.get(row);
 		switch (column) {
@@ -219,11 +262,31 @@ public class BazaPredmeta implements Serializable {
 		}
 	}
 	
+	/**
+	 * Metoda koja se poziva iz kontrolera pri procesu dodavanja novog predmeta u listu predmeta.
+	 * @param idPredmeta
+	 * @param nazivPredmeta
+	 * @param semestar
+	 * @param godinaIzvodjenja
+	 * @param predmetniProfesor
+	 * @param brojEspbBodova
+	 * @param listPolozili
+	 * @param listNisuPolozili
+	 */
 	public void dodajPredmet(String idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
 			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili, List<Student> listNisuPolozili ) {
 		this.predmeti.add(new Predmet(idPredmeta, nazivPredmeta, semestar, godinaIzvodjenja,
 				predmetniProfesor, brojEspbBodova,  listPolozili, listNisuPolozili));
 	}
+	
+	/**
+	 * Metoda koja se poziva iz kontrolera predmeta pri procesu izmene predmeta iz liste predmeta.
+	 * @param idPredmeta
+	 * @param nazivPredmeta
+	 * @param brojEspbBodova
+	 * @param semestar
+	 * @param godinaIzvodjenja
+	 */
 	public void izmeniPredmet(String idPredmeta, String nazivPredmeta, Integer brojEspbBodova, Semestar semestar, Integer godinaIzvodjenja ) {
 		for(Predmet p : predmeti) {
 			if(p.getIdPredmeta() == idPredmeta) {
@@ -234,6 +297,10 @@ public class BazaPredmeta implements Serializable {
 			}
 		}
 	}
+	/**
+	 * Metoda koja brise predmet sa zadatim indeksom iz liste predmeta (tabele)
+	 * @param ID indeks ciljanog predmeta
+	 */
 	public void izbrisiPredmet(String ID) {
 		for (Predmet p : predmeti) {
 			if(p.getIdPredmeta() == ID) {
@@ -242,6 +309,11 @@ public class BazaPredmeta implements Serializable {
 			}
 		}
 	}
+	/**
+	 * Metoda koja trazi predmet sa prosledjenim indeksom i vraca ga za dalju upotrebu.
+	 * @param ID indeks ciljanog predmeta
+	 * @return predmet
+	 */
 	public Predmet getPredmet(String ID) {
 		for (Predmet p : predmeti) {
 			if(p.getIdPredmeta() == ID) {

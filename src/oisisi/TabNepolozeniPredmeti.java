@@ -14,6 +14,12 @@ import dialog.DodajNepolozeniPredmetDialog;
 import dialog.ObrisiNepolozeniPredmetDialog;
 import dialog.UnosOceneDialog;
 
+/**
+ * Tab koji sadrzi tabelu nepolozenih predmeta selektovanog studenta.
+ * Poziva se pri izmeni studenta, kao treci tab po redu.
+ * @author Branimir
+ *
+ */
 public class TabNepolozeniPredmeti extends JPanel{
 
 	/**
@@ -23,6 +29,10 @@ public class TabNepolozeniPredmeti extends JPanel{
 	
 	private static TabNepolozeniPredmeti instance = null;
 
+	/**
+	 * Metoda koja vraca/pravi instancu taba nepolozenih predmeta
+	 * @return instance
+	 */
 	public static TabNepolozeniPredmeti getInstance() {
 		if (instance == null) {
 			instance = new TabNepolozeniPredmeti();
@@ -34,6 +44,10 @@ public class TabNepolozeniPredmeti extends JPanel{
 	NepolozeniJTable tabelaNepolozeni = NepolozeniJTable.getInstance();
 	JScrollPane scrollNepolozeni = new JScrollPane(tabelaNepolozeni);
 	
+	/**
+	 * Konstruktor taba sa nepolozenim predmetima, tu se ukljucuje tabela nepolozenih predmeta za odredjenog studenta,
+	 * kao i dugmici za brisanje, dodavanje i polaganje predmeta.
+	 */
 	public TabNepolozeniPredmeti() {		
 		setLayout(new BorderLayout());
 		
@@ -104,6 +118,9 @@ public class TabNepolozeniPredmeti extends JPanel{
 	
 		
 	
+	/**
+	 * Metoda koja osvezava tabelu nepolozenih predmeta studenta.
+	 */
 	public void updateViewNepolozeni() {
 		
 		AbstractTableModelNepolozeni modelNepolozeni = (AbstractTableModelNepolozeni) tabelaNepolozeni.getModel();

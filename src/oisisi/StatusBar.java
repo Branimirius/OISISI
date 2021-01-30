@@ -14,6 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
+/**
+ * Status bar (statusna linija) je panel koji se nalazi na dnu prozora aplikacije i
+ *  sadrzi naziv aplikacije i trenutno vreme i datum.
+ * @author Branimir
+ *
+ */
 public class StatusBar extends JPanel implements ActionListener{
 	
 	
@@ -24,6 +30,9 @@ public class StatusBar extends JPanel implements ActionListener{
 	
 	
 	
+	/**
+	 * Konstruktor statusne linije, koristi tajmer i formater kako bi predstavio trenutno vreme i datum sistema.
+	 */
 	public StatusBar() {
 				
 		setLayout(new BorderLayout());

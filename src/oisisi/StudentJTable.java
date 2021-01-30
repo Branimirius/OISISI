@@ -9,7 +9,11 @@ import javax.swing.table.TableCellRenderer;
 
 import model.BazaStudenata;
 
-
+/**
+ * Singleton klasa koja nasledjuje JTable i predstavlja tabelu studenata.
+ * @author Branimir
+ *
+ */
 public class StudentJTable extends JTable {
 
 	/**
@@ -19,6 +23,10 @@ public class StudentJTable extends JTable {
 	
 	private static StudentJTable instance = null;
 
+	/**
+	 * Metoda koja vraca/pravi instancu klase StudentJTable.
+	 * @return instance
+	 */
 	public static StudentJTable getInstance() {
 		if (instance == null) {
 			instance = new StudentJTable();
@@ -26,6 +34,10 @@ public class StudentJTable extends JTable {
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor tabele studenata, koristi metode iz JTable klase.
+	 * Povezana je sa apstraktim modelom.
+	 */
 	public StudentJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);

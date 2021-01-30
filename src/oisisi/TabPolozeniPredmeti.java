@@ -13,7 +13,12 @@ import javax.swing.JScrollPane;
 
 import dialog.ObrisiPolozeniPredmetDialog;
 
-
+/**
+ * Tab koji sadrzi tabelu polozenih predmeta selektovanog studenta.
+ * Poziva se pri izmeni studenta, kao drugi tab po redu.
+ * @author Branimir
+ *
+ */
 public class TabPolozeniPredmeti extends JPanel{
 
 	/**
@@ -23,6 +28,10 @@ public class TabPolozeniPredmeti extends JPanel{
 	
 	private static TabPolozeniPredmeti instance = null;
 
+	/**
+	 * Metoda koja vraca/pravi instancu taba polozenih predmeta
+	 * @return instance
+	 */
 	public static TabPolozeniPredmeti getInstance() {
 		if (instance == null) {
 			instance = new TabPolozeniPredmeti();
@@ -34,6 +43,10 @@ public class TabPolozeniPredmeti extends JPanel{
 	PolozeniJTable tabelaPolozeni = PolozeniJTable.getInstance();		
 	JScrollPane scrollPolozeni = new JScrollPane(tabelaPolozeni);
 		
+		/**
+		 * Konstruktor taba sa polozenim predmetima, tu se ukljucuje tabela polozenih predmeta(ocena) za odredjenog studenta,
+		 * kao labela sa prosekom i dugme za ponistavanje ocene.
+		 */
 		public TabPolozeniPredmeti() {
 		
 		
@@ -77,6 +90,10 @@ public class TabPolozeniPredmeti extends JPanel{
 			add(boxCentar, BorderLayout.NORTH);
 			
 		}
+		
+		/**
+		 * Metoda koja osvezava tabelu polozenih predmeta(ocena) studenta.
+		 */
 		public void updateViewPolozeni() {
 			
 			AbstractTableModelPolozeni modelPolozeni = (AbstractTableModelPolozeni) this.tabelaPolozeni.getModel();

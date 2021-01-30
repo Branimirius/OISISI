@@ -6,6 +6,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost popunjavanja polja za broj espb bodova studenta.
+ * Dozvoljava samo unos celih brojeva sa jednom ili dve cifre.
+ * @author Branimir
+ *
+ */
 public class EspbKeyListener implements KeyListener{
 
 	@Override

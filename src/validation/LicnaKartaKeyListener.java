@@ -7,6 +7,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost tokom popunjavanja polja za broj licne karte profesora.
+ * Dozvoljava unos 9 karaktera i to samo brojeva.
+ * @author Filip
+ *
+ */
 public class LicnaKartaKeyListener implements KeyListener {
 
 	@Override

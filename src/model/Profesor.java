@@ -9,6 +9,11 @@ import java.util.List;
 import model.Titula;
 import model.Zvanje;
 
+/**
+ * Klasa koja predstavlja model profesora u studentskoj sluzbi.
+ * @author Filip
+ *
+ */
 public class Profesor {
 
 	private String datumRodjString;
@@ -24,8 +29,25 @@ public class Profesor {
      private List<Predmet> listaPredmeta;
 	
      
-     public Profesor() {}
+     /**
+     * Prazan konstruktor
+     */
+    public Profesor() {}
 
+	/**
+	 * Konstruktor sa parametrima za model profesora.
+	 * Prima odgovarajuce parametre za svako polje.
+	 * @param prezime
+	 * @param ime
+	 * @param datumRodjenja
+	 * @param adresaStanovanja
+	 * @param kontaktTelefon
+	 * @param emailAdresa
+	 * @param brLicneKarte
+	 * @param titula
+	 * @param zvanje
+	 * @param listaPredmeta
+	 */
 	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja,
 			String kontaktTelefon, String emailAdresa, String brLicneKarte, Titula titula, Zvanje zvanje,
 			List<Predmet> listaPredmeta) {
@@ -104,6 +126,11 @@ public class Profesor {
 		this.listaPredmeta = listaPredmeta;
 	}
 	
+	/**
+	 * Metoda koja pretvara tip datuma iz String u Date, koristi se za cuvanje datuma kao Date.
+	 * @param datum String
+	 * @return datum Date
+	 */
 	public Date stringToDate(String datum) {
 		Date ret = new Date();
 		try {

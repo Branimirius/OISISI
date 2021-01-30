@@ -6,7 +6,12 @@ import model.BazaStudenata;
 
 
 
-
+/**
+ * Apstraktni model koji se koristi za kreiranje tabele.
+ * Radjeno po uzoru na vezbe.
+ * @author Branimir
+ *
+ */
 public class AbstractTableModelStudent extends AbstractTableModel {
 
 	/**

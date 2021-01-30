@@ -8,7 +8,11 @@ import javax.swing.JDialog;
 
 import oisisi.TabIzmenaProfesora;
 
-
+/**
+ * Dijalog za izmenu profesora.
+ * @author Filip
+ *
+ */
 public class EditProfesorDialog extends JDialog{
 
 	/**
@@ -18,6 +22,13 @@ public class EditProfesorDialog extends JDialog{
 	
 	private static EditProfesorDialog instance = null;
 	
+	/**
+	 * Metoda koja poziva/pravi instancu dijaloga za izmenu profesora.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 * @return instance
+	 */
 	public static EditProfesorDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new EditProfesorDialog(parent, title, modal);
@@ -25,6 +36,14 @@ public class EditProfesorDialog extends JDialog{
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor dijaloga za izmenu profesora.
+	 * Poziva tab za izmenu, na kome se nalaze svi potrebni elementi.
+	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public EditProfesorDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		

@@ -6,6 +6,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji se koristi pri proveri validnosti popunjavanja polja za adresu.
+ * Proverava da li su uneti znakovi koji se ne smeju javiti u adresi.
+ * @author Branimir
+ *
+ */
 public class AdrKeyListener implements KeyListener{
 	
 		@Override

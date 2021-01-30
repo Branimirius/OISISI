@@ -6,6 +6,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost tokom popunjavanja polja za godinu upisa studenta.
+ * Dozvoljava samo unos celih projeva sa 4 cifre.
+ * @author Branimir
+ *
+ */
 public class GodUpisaKeyListener implements KeyListener{
 
 	@Override

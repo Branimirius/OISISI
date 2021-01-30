@@ -6,6 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
+/**
+ * Window Listener koji se koristi prilikom zatvaranja glavnog prozora studentske sluzbe.
+ * Prvo izbacuje dijalog gd korisnik potvrdjuje da li zaista zeli da napusti aplikaciju da ne bi dolazilo do 
+ * slucajnog zatvaranja.
+ * @author Filip
+ *
+ */
 public class MyWindowListener implements WindowListener {
 
 	@Override

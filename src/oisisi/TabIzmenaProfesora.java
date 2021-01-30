@@ -34,6 +34,12 @@ import validation.LicnaKartaKeyListener;
 import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
+/**
+ * Klasa koja predstavlja tabove na kojima se menjaju informacije o selektovanom profesoru.
+ * Sastoji se od labela polja i dugmica za sve neophodne informacije o profesoru.
+ * @author Filip
+ *
+ */
 public class TabIzmenaProfesora extends JTabbedPane{
 
 	/**
@@ -45,6 +51,11 @@ public class TabIzmenaProfesora extends JTabbedPane{
 	
 	private static TabIzmenaProfesora instance = null;
 
+	/**
+	 * Metoda koja vraca/pravi instancu taba za izmenu profesora.
+	 * @param dim dimenzija koja se prosledjuje iz roditeljskog frejma.
+	 * @return instance
+	 */
 	public static TabIzmenaProfesora getInstance(Dimension dim) {
 		if (instance == null) {
 			instance = new TabIzmenaProfesora(dim);
@@ -52,6 +63,13 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor taba za izmenu profesora. 
+	 * Kreiraju se labele, polja i dugmici za sve neophodne informacije o profesoru.  
+	 * Ukoliko nisu sva polja popunjena, dugme je zakljucano. Ukoliko neko polje nije validno popnjeno, 
+	 * program baca gresku. 
+	 * @param dim dimenzija taba, salje se iz roditeljskog frejma
+	 */
 	public TabIzmenaProfesora(Dimension dim) {
 		int id = ProfesorJTable.getInstance().getSelectedRow();
 		if(id < 0) {
@@ -222,6 +240,12 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		add("Informacije", informacijePanel);
 	}
 	
+	/**
+	 * Metoda koja menja menja tip titule profesora iz String u enum Titula.
+	 * String se koristi u combo box komponenti, enum se koristi za cuvanje u modelu.
+	 * @param t string titula
+	 * @return titula enum
+	 */
 	public Titula  stringToTitula(String t) {
 		switch(t) {
 		case "BSc":
@@ -239,6 +263,12 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		}
 	}
 	
+	/**
+	 * Metoda koja menja menja tip zvanja profesora iz String u enum Zvanje.
+	 * String se koristi u combo box komponenti, enum se koristi za cuvanje u modelu.
+	 * @param t string zvanje
+	 * @return zvanje enum
+	 */
 	public Zvanje stringToZvanje(String z) {
 		switch(z) {
 		case "Saradnik u nastavi":
@@ -260,6 +290,12 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		}
 	}
 
+	/**
+	 * Metoda koja menja menja tip titule prfesora iz enum Titula u String.
+	 * String se koristi u combo box komponenti, enum se koristi za cuvanje u modelu.
+	 * @param t enum titula
+	 * @return titula string
+	 */
 	public String titulaToString(Titula t) {
 		switch(t) {
 		case BSC:
@@ -277,6 +313,12 @@ public class TabIzmenaProfesora extends JTabbedPane{
 		}
 	}
 	
+	/**
+	 * Metoda koja menja menja tip zvanja profesora iz enum Zvanje u String.
+	 * String se koristi u combo box komponenti, enum se koristi za cuvanje u modelu.
+	 * @param t enum zvanje
+	 * @return zvanje string
+	 */
 	public String zvanjeToString(Zvanje z) {
 		switch(z) {
 		case SARADNIK_U_NASTAVI:

@@ -31,6 +31,12 @@ import validation.EspbKeyListener;
 import validation.GodIzvodjenjaKeyListener;
 import validation.SamoSlovaKeyListener;
 
+/**
+ * Klasa koja predstavlja tabove na kojima se menjaju informacije o selektovanom predmetu.
+ * Sastoji se od labela polja i dugmica za sve neophodne informacije o predmetu.
+ * @author Filip
+ *
+ */
 public class TabIzmenaPredmeta extends JTabbedPane{
 
 	/**
@@ -40,14 +46,26 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 
 	private static TabIzmenaPredmeta instance = null;
 
+	/**
+	 * Metoda koja vraca/pravi instancu taba za izmenu predmeta.
+	 * @param dim dimenzija koja se prosledjuje iz roditeljskog frejma.
+	 * @return instance
+	 */
 	public static TabIzmenaPredmeta getInstance(Dimension dim) {
 		if (instance == null) {
 			instance = new TabIzmenaPredmeta(dim);
 		}
 		return instance;
 	}
-	private Predmet p;
+	private Predmet p;             
 	
+	/**
+	 * Konstruktor taba za izmenu predmeta. 
+	 * Kreiraju se labele, polja i dugmici za sve neophodne informacije o predmetu.  
+	 * Ukoliko nisu sva polja popunjena, dugme je zakljucano. Ukoliko neko polje nije validno popnjeno, 
+	 * program baca gresku. 
+	 * @param dim dimenzija taba, salje se iz roditeljskog frejma
+	 */
 	public TabIzmenaPredmeta(Dimension dim) {
 		int id = PredmetJTable.getInstance().getSelectedRow();
 		if(id < 0) {
@@ -160,6 +178,12 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 			
 	}
 	
+	/**
+	 * Metoda koja pretvara tip semestra iz String u enum Semestar.
+	 * String se koristio u combo box konponenti, a Semestar enum nam je potreban za cuvanje.
+	 * @param semestar String
+	 * @return semestar enum
+	 */
 	public Semestar stringToSemestar(String semestar) {
 		switch (semestar) {
 		case "Zimski":
@@ -170,6 +194,13 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 			return null;
 		}
 	}
+	
+	/**
+	 * * Metoda koja pretvara tip semestra iz enum Semestar u String.
+	 * String se koristi u combo box konponenti, a Semestar za cuvanje.
+	 * @param semestar
+	 * @return
+	 */
 	public String semestarToString(Semestar semestar) {
 		switch (semestar) {
 		case ZIMSKI:

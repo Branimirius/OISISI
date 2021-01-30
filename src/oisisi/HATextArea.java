@@ -7,13 +7,20 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
-
+/**
+ * Klasa koja se koristi za kreiranje prozora za help.
+ * @author Branimir
+ *
+ */
 public class HATextArea extends JFrame{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1860111951298993987L;
 
+	/**
+	 * Konstruktor prozora koji sadrzi pomocne informacije (help).
+	 */
 	public HATextArea() {
 	 super();
 	 setTitle("Tekstualne komponente");

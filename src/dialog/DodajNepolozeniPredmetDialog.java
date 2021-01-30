@@ -29,6 +29,12 @@ import oisisi.MainFrame;
 import oisisi.StudentJTable;
 import oisisi.TabNepolozeniPredmeti;
 
+/**
+ * Dijalog pomocu koga dodajemo predmet studentu, u tabelu nepolozenih.
+ * Sadrzi konstruktor dijaloga sa svim potrebnim funkcijama.
+ * @author Branimir
+ *
+ */
 public class DodajNepolozeniPredmetDialog extends JDialog{
 
 	/**
@@ -37,6 +43,13 @@ public class DodajNepolozeniPredmetDialog extends JDialog{
 	private static final long serialVersionUID = -2561289172986759311L;
 
 	
+	/**
+	 * Konstruktor dijaloga za dodavanje nepolozenog predmeta studentu.
+	 * Inicijalizuju se dimenzije, polja, dugmici i sve funkcionalnosti dugmica u odnosu na popunjena polja.
+	 * @param parent roditeljski frejm
+	 * @param title naslov dijaloga
+	 * @param modal da li je dijalog modalan ili ne
+	 */
 	public DodajNepolozeniPredmetDialog(JFrame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		

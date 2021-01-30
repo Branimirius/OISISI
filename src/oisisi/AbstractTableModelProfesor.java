@@ -3,6 +3,12 @@ package oisisi;
 import javax.swing.table.AbstractTableModel;
 import model.BazaProfesora;
 
+/**
+ * Apstraktni model koji se koristi za kreiranje tabele.
+ * Radjeno po uzoru na vezbe.
+ * @author Filip
+ *
+ */
 public class AbstractTableModelProfesor extends AbstractTableModel {
 
 	/**

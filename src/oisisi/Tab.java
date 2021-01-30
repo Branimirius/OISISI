@@ -12,10 +12,13 @@ import model.BazaNepolozeniPredmeti;
 
 
 
-
-
-
-
+/**
+ * Tab nasledjuje JTabbedPane i predstavlja tabove na kojima se nalaze paneli sa odgovarajucim tabelama.
+ * (tabela profesora, predmeta i studenata)
+ * Ovde se upotrebljava change listener za registrovanje trenutnog taba.
+ * @author Filip
+ *
+ */
 public class Tab extends JTabbedPane{
 	
 	/**

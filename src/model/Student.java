@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Klasa koja predstavlja model studenta u studentskoj sluzbi.
+ * Kao polja sadrzi sve bitne osobine za jednu studentsku sluzbu.
+ * @author Branimir
+ *
+ */
 public class Student {
 	
 	
@@ -23,6 +29,20 @@ public class Student {
 	private List<Ocena> polozeni;
 	private List<Predmet> nepolozeni;
 	
+	/**
+	 * Konstruktor sa parametrima za objekat studenta. Sva potrebna polja dobija kroz parametre.
+	 * @param brIndeksa
+	 * @param ime
+	 * @param prezime
+	 * @param godStudija
+	 * @param statusStudenta
+	 * @param prosecnaOcena
+	 * @param kontaktTel
+	 * @param godUpisa
+	 * @param datumRodjenja
+	 * @param adresaStana
+	 * @param eMail
+	 */
 	public Student(String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
 			double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
 			String eMail) {
@@ -49,14 +69,32 @@ public class Student {
 	public void setPolozeni(List<Ocena> polozeni) {
 		this.polozeni = polozeni;
 	}
+	
+	/**
+	 * Metoda koja dodaje ocenu studentu, koristi se prilikom polaganja predmeta.
+	 * Ova metoda prvo kreira objekat ocene i zatim je dodaje u listu.
+	 * @param p predmet
+	 * @param vr vrednost ocene
+	 * @param datum datum polaganja
+	 */
 	public void addOcena(Predmet p, int vr, String datum) {
 		Ocena o = new Ocena(this, p, vr, datum);
 		this.polozeni.add(o);
 		
 	}
+	
+	/**
+	 * Metoda koja dobija ocenu kao parametar i ubacuje je u listu ocena kod studenta.
+	 * @param o ocena
+	 */
 	public void addOcena(Ocena o) {
 		this.polozeni.add(o);
 	}
+	
+	/**
+	 * Metoda koja prima predmet kao parametar i ubacuje ga u listu predmeta kod studenta.
+	 * @param p predmet
+	 */
 	public void addPredmet(Predmet p) {
 		this.nepolozeni.add(p);
 	}
@@ -156,6 +194,12 @@ public class Student {
 	public void setProsecnaOcena(double prosecnaOcena) {
 		this.prosecnaOcena = prosecnaOcena;
 	}
+	
+	/**
+	 * Metoda koja pretvara tip datuma iz String u Date, koristi se za cuvanje datuma kao Date.
+	 * @param datum String
+	 * @return datum Date
+	 */
 	public Date stringToDate(String datum) {
 		Date ret = new Date();
 		try {

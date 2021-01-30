@@ -33,6 +33,20 @@ import validation.IndexKeyListener;
 import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
+/**
+ * Ovo je tab koji se pojavljuje pri izmeni studenta i na njemu se mogu menjati sve osnovne informacije o studentu.
+ * Sastoji se iz tekstualnih polja, labela i dugmica za potvrdu i odustanak. Dugme za potvrdu se zakljucava ukoliko 
+ * nisu popunjena sva polja. Takodje nije moguce uneti nevalidne vrednosti u polja.
+ * @author Branimir
+ *
+ */
+/**
+ * Konstruktor taba za izmenu informacija o studentu.
+ * Sastoji se iz tekstualnih polja, labela i dugmica za potvrdu i odustanak. Dugme za potvrdu se zakljucava ukoliko 
+ * nisu popunjena sva polja. Takodje nije moguce uneti nevalidne vrednosti u polja.
+ * @author brani
+ *
+ */
 public class TabInformacijeStudent extends JPanel {
 
 	/**
@@ -249,6 +263,13 @@ public class TabInformacijeStudent extends JPanel {
 		add(boxCentar, BorderLayout.NORTH);
 		add(panelDugmici, BorderLayout.SOUTH);
 	}
+	
+	/**
+	 * Metoda koja pretvara tip statusa studenta iz String (combo box) u Status(model studenta)
+	 * Status nam je potreban za slanje u kontroler i konstruktor studenta.
+	 * @param status String
+	 * @return status Status
+	 */
 	public Status stringToStatus(String status) {
 		switch (status) {
 		case "Budzet":
@@ -258,13 +279,26 @@ public class TabInformacijeStudent extends JPanel {
 		default:
 			return null;
 		}
-	}			
+	}	
+	
+	/**
+	 * Metoda koja pretvara tip datuma iz Date u String, radi lakseg rukovanja datumom.
+	 * @param datum Date
+	 * @return datum String
+	 */
 	public String dateToString(Date datum) {
 		String ret;
 		ret = new SimpleDateFormat("dd/MM/yyyy").format(datum);
 		
 		return ret;
 	}
+	
+	/**
+	 * Metoda koja pretvara tip statusa studenta iz Status (model) u String(combo box)
+	 * String nam je potreban jer mozemo laske uporedjivati informaciju o statusu studenta.
+	 * @param status Status
+	 * @return status String
+	 */
 	public String statusToString(Status status) {
 		switch (status) {
 		case B:

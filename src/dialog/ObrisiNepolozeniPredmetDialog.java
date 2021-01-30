@@ -15,6 +15,11 @@ import controller.PredmetController;
 import oisisi.NepolozeniJTable;
 import oisisi.PredmetJTable;
 
+/**
+ * Dijalog za brisanje nepolozenog predmeta kod studenta.
+ * @author Branimir
+ *
+ */
 public class ObrisiNepolozeniPredmetDialog extends JDialog{
 
 	/**
@@ -24,6 +29,13 @@ public class ObrisiNepolozeniPredmetDialog extends JDialog{
 
 	private static ObrisiNepolozeniPredmetDialog instance = null;
 	
+	/**
+	 * Metoda koja pravi/vraca instancu dijaloga za brisanje nepolozenog predmeta kod studenta.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 * @return instance
+	 */
 	public static ObrisiNepolozeniPredmetDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new ObrisiNepolozeniPredmetDialog(parent, title, modal);
@@ -31,6 +43,14 @@ public class ObrisiNepolozeniPredmetDialog extends JDialog{
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor dijaloga za brisanje nepolozenog predmeta kod studenta. Tu su implementirane funkcionalnosti za
+	 * potvrdu ili odustanak od brisanja predmeta iz baze nepolozenih predmeta, preko kontrolera.
+	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public ObrisiNepolozeniPredmetDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 				

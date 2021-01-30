@@ -6,6 +6,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+/**
+ * Key Listener koji proverava validnost tokom popunjavanja broja indeksa kod studenta.
+ * Dozvoljava samo unos 11 karaktera i to: velikih slova, brojeva, kose crte i crtice.
+ * @author Branimir
+ *
+ */
 public class IndexKeyListener implements KeyListener {
 
 	@Override

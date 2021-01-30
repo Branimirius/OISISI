@@ -9,6 +9,11 @@ import javax.swing.JDialog;
 import oisisi.TabIzmenaPredmeta;
 import oisisi.TabIzmenaStudenta;
 
+/**
+ * Dijalog za izmenu predmeta.
+ * @author Branimir
+ *
+ */
 public class EditPredmetDialog extends JDialog {
 
 	/**
@@ -18,6 +23,13 @@ public class EditPredmetDialog extends JDialog {
 
 	private static EditPredmetDialog instance = null;
 	
+	/**
+	 * Metoda koja poziva/pravi instancu dijaloga za izmenu predmeta.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 * @return instance
+	 */
 	public static EditPredmetDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new EditPredmetDialog(parent, title, modal);
@@ -25,6 +37,14 @@ public class EditPredmetDialog extends JDialog {
 		return instance;
 	}
 	
+	/**
+	 * Konstruktor dijaloga za izmenu predmeta.
+	 * Poziva tab za izmenu, na kome se nalaze svi potrebni elementi.
+	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public EditPredmetDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		

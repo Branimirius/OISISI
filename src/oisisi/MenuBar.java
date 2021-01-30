@@ -31,12 +31,22 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 
+/**
+ * Klasa koja modeluje liniju menija aplikacije.
+ * @author Branimir
+ *
+ */
 public class MenuBar extends JMenuBar implements ActionListener {
 
 	
 	
 	private static final long serialVersionUID = -7863806568418316202L;
 	
+	/**
+	 * Konstruktor linije menija aplikacije, sadrzi tri padajuca menija File, Edit i Help.
+	 * File : new, close; Edit : edit, delete; Help : help, about.
+	 * @param parent roditeljski frejm (main frame)
+	 */
 	public MenuBar(final JFrame parent) {
 
 		JMenu file = new JMenu("File");

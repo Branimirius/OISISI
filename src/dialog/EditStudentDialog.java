@@ -23,6 +23,11 @@ import oisisi.TabIzmenaStudenta;
 import oisisi.TabNepolozeniPredmeti;
 import oisisi.TabPolozeniPredmeti;
 
+/**
+ * Dijalog za izmenu studenta.
+ * @author Branimir
+ *
+ */
 public class EditStudentDialog extends JDialog{
 
 	/**
@@ -32,6 +37,13 @@ public class EditStudentDialog extends JDialog{
 	
 	private static EditStudentDialog instance = null;
 	
+	/**
+	 * Metoda koja poziva/pravi instancu dijaloga za izmenu studenta.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 * @return instance
+	 */
 	public static EditStudentDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
 			instance = new EditStudentDialog(parent, title, modal);
@@ -42,12 +54,25 @@ public class EditStudentDialog extends JDialog{
 	private Dimension dim;	
 	private TabIzmenaStudenta tabIzmena;
 	
+	/**
+	 * Metoda koja sluzi za kreiranje taba za izmenu studenta, dodavanje na tekucu komponentu i azuriranje
+	 * tabele nepolozenih predmeta studenta.
+	 * 
+	 */
 	public void showTabIzmena(){
 		this.tabIzmena = new TabIzmenaStudenta(dim);
 		this.add(tabIzmena);
 		this.updateViewNepolozeni();
 	}
 	
+	/**
+	 * Konstruktor dijaloga za izmenu studenta.
+	 * Poziva tab za izmenu, na kome se nalaze svi potrebni elementi.
+	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * @param parent roditeljski frejm
+	 * @param title naslov
+	 * @param modal modalnost
+	 */
 	public EditStudentDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		
@@ -63,6 +88,9 @@ public class EditStudentDialog extends JDialog{
 
 	}
 	
+/**
+ * Metoda koja azurira tabelu nepolozenih predmeta kod studenta.
+ */
 public void updateViewNepolozeni() {
 		
 		AbstractTableModelNepolozeni modelNepolozeni = (AbstractTableModelNepolozeni) NepolozeniJTable.getInstance().getModel();
