@@ -3,7 +3,7 @@ package controller;
 /**
  * Lista popunjenih polja unutar dijaloga, koristi se za evidenciju prilikom kontrole otkljucavanja/zakljucavanja 
  * dugmeta unutar dijaloga dodavanja/izmene predmeta.
- * @author brani
+ * @author Filip
  *
  */
 public class ValidListaPredmet {
