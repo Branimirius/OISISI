@@ -2,6 +2,7 @@ package model;
 
 /**
  * Klasa koja se koristi za enumeraciju titule rofesora.
+ * Podrzane opcije titula: BSc, MSc, mr, dr, prof. dr
  * @author Filip
  *
  */

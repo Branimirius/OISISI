@@ -8,7 +8,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 /**
- * Singleton klasa koja nasledjuje JTable i predstavlja tabelu nepolozenih predmeta.
+ * Singleton klasa koja nasledjuje JTable i predstavlja prikaz nepolozenih predmeta u obliku tabele.
  * @author Branimir
  *
  */
@@ -22,7 +22,7 @@ public class NepolozeniJTable extends JTable{
 	private static NepolozeniJTable instance = null;
 
 	/**
-	 * Metoda koja vraca/pravi instancu klase nepolozeniJTable.
+	 * Metoda koja kreira i instancu klase nepolozeniJTable.
 	 * @return instance
 	 */
 	public static NepolozeniJTable getInstance() {
@@ -33,8 +33,8 @@ public class NepolozeniJTable extends JTable{
 	}
 	
 	/**
-	 * Konstruktor tabele nepolozenih predmeta, koristi metode iz JTable klase.
-	 * Povezana je sa apstraktim modelom.
+     * Konstruktor koji kreira tabelu nepolozenih preddmeta koristeci metode iz JTable klase,
+	 * direktno je povezana sa apstraktnom model klasom preko modela.
 	 */
 	public NepolozeniJTable() {
 		this.setRowSelectionAllowed(true);
@@ -43,6 +43,9 @@ public class NepolozeniJTable extends JTable{
 		this.setModel(new AbstractTableModelNepolozeni());	
 	}
 	
+	/**
+	 * Metoda koja sluzi da pripremi izgled tabele, i menja izgled u zavisnosti od korisnikovih radnji
+	 */
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		

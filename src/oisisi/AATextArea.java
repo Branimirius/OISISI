@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 
 
 /**
- * Klasa koja se koristi za kreiranje prozora za about.
+ * Klasa koja se koristi za kreiranje about prozora
  * @author Branimir
  *
  */

@@ -4,7 +4,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 /**
- * Singleton klasa koja nasledjuje JTable i predstavlja tabelu polozenih predmeta.
+ * Singleton klasa koja nasledjuje JTable i predstavlja prikaz polozenih predmeta u obliku tabele.
  * @author Branimir
  *
  */
@@ -18,7 +18,7 @@ public class PolozeniJTable extends JTable{
 	private static PolozeniJTable instance = null;
 	
 	/**
-	 * Metoda koja vraca/pravi instancu klase polozeniJTable.
+	 * Metoda koja kreira i instancu klase polozeniJTable.
 	 * @return instance
 	 */
 	public static PolozeniJTable getInstance() {
@@ -29,8 +29,8 @@ public class PolozeniJTable extends JTable{
 	}
 	
 	/**
-	 * Konstruktor tabele polozenih predmeta, koristi metode iz JTable klase.
-	 * Povezana je sa apstraktim modelom.
+	 * Konstruktor koji kreira tabelu polozenih ispita koristeci metode iz JTable klase,
+	 * direktno je povezana sa apstraktnom model klasom preko modela.
 	 */
 	public PolozeniJTable() {
 		this.setRowSelectionAllowed(true);

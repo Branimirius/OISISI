@@ -7,8 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Klasa koja predstavlja model studenta u studentskoj sluzbi.
- * Kao polja sadrzi sve bitne osobine za jednu studentsku sluzbu.
+ * Model studenta koji se koristi kao predstava studenta u nasoj studentskoj sluzbi.
+ * Ovaj model poseduje sva polja koja su potrebna da definisemo jednog studenta
  * @author Branimir
  *
  */
@@ -31,17 +31,17 @@ public class Student {
 	
 	/**
 	 * Konstruktor sa parametrima za objekat studenta. Sva potrebna polja dobija kroz parametre.
-	 * @param brIndeksa
-	 * @param ime
-	 * @param prezime
-	 * @param godStudija
-	 * @param statusStudenta
-	 * @param prosecnaOcena
-	 * @param kontaktTel
-	 * @param godUpisa
-	 * @param datumRodjenja
-	 * @param adresaStana
-	 * @param eMail
+	 * @param brIndeksa Broj indeksa studenta 
+	 * @param ime tipa String
+	 * @param prezime tipa String
+	 * @param godStudija  koju godinu studija student pohadja tipa String
+	 * @param statusStudenta Boolean (Da li je na budzetu ili na samofinansiranju student)
+	 * @param prosecnaOcena izvucena prosecna ocena kao avg vrednost svih polozenih ispita
+	 * @param kontaktTel telefon studenta tipa String
+	 * @param godUpisa godina u kojoj je student poceo da studira tipa Int
+	 * @param datumRodjenja tipa Date
+	 * @param adresaStana tipa String
+	 * @param eMail tipa String
 	 */
 	public Student(String brIndeksa, String ime, String prezime, String godStudija, Status statusStudenta,
 			double prosecnaOcena, String kontaktTel, Integer godUpisa, String datumRodjenja, String adresaStana,
@@ -71,7 +71,8 @@ public class Student {
 	}
 	
 	/**
-	 * Metoda koja dodaje ocenu studentu, koristi se prilikom polaganja predmeta.
+	 * Metoda koja dodaje ocenu studentu. tj brise predmet sa liste ne polozenih
+	 * i dodaje ga u list polozenih predmeta, zajedno sa ocenom i datumom polaganja predmeta.
 	 * Ova metoda prvo kreira objekat ocene i zatim je dodaje u listu.
 	 * @param p predmet
 	 * @param vr vrednost ocene
@@ -84,7 +85,7 @@ public class Student {
 	}
 	
 	/**
-	 * Metoda koja dobija ocenu kao parametar i ubacuje je u listu ocena kod studenta.
+	 * Metoda koja dodaje polozeni ispit(ocenu) u listu polozenih predmeta (polozeni).
 	 * @param o ocena
 	 */
 	public void addOcena(Ocena o) {
@@ -92,7 +93,7 @@ public class Student {
 	}
 	
 	/**
-	 * Metoda koja prima predmet kao parametar i ubacuje ga u listu predmeta kod studenta.
+	 * Metoda koja dodaje nepolozeni ispitu listu nepolozenih predmeta (nepolozeni).
 	 * @param p predmet
 	 */
 	public void addPredmet(Predmet p) {

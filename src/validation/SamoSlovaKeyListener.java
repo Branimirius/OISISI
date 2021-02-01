@@ -8,13 +8,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- * Key Listener koji proverava validnost prilikom popunjavanja polja u kojima se ne sme pojaviti nista osim slova.
- * Dozvoljava samo unos slova u tekucem polju. Koristi se u svakom dijalogu.
+ * Key Listener koji se koristi pri proveri validnosti popunjavanja polja za koja primaju samo slova.
+ * Sluzi za proveru validnosti unetih znakova i ogranicava unos previse karaktera.
  * @author Filip
  *
  */
 public class SamoSlovaKeyListener implements KeyListener{
 	
+	/**
+	 *Ova funkcija se poziva pri unosenju karaktera u txtField, koristimo je za ogranicenje broja unetih karaktera.
+	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		if (arg0.isActionKey() || arg0.getKeyCode() == KeyEvent.VK_ENTER
@@ -29,6 +32,9 @@ public class SamoSlovaKeyListener implements KeyListener{
 
 	}
 
+	/**
+	 *Ova funkcija se poziva nako unosa karaktera u txtField, koristimo je da bi ogranicili unos odredjenih karaktera.
+	 */
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		if (arg0.isActionKey() || arg0.getKeyCode() == KeyEvent.VK_ENTER

@@ -5,8 +5,7 @@ import javax.swing.table.AbstractTableModel;
 import model.BazaNepolozeniPredmeti;
 
 /**
- * Apstraktni model koji se koristi za kreiranje tabele.
- * Radjeno po uzoru na vezbe.
+ * Klasa apstraknog modela, koja sluzi za kreiranje tabele prikaza Nepolozenih predmeta(NepolozeniJTable)
  * @author Branimir
  *
  */

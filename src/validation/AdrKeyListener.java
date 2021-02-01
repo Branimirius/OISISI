@@ -11,12 +11,15 @@ import javax.swing.JTextField;
 
 /**
  * Key Listener koji se koristi pri proveri validnosti popunjavanja polja za adresu.
- * Proverava da li su uneti znakovi koji se ne smeju javiti u adresi.
+ * Sluzi za proveru validnosti unetih znakova i ogranicava unos previse karaktera.
  * @author Branimir
  *
  */
 public class AdrKeyListener implements KeyListener{
 	
+		/**
+		 *Ova funkcija se poziva pri unosenju karaktera u txtField, koristimo je za ogranicenje broja unetih karaktera.
+		 */
 		@Override
 		public void keyPressed(KeyEvent arg0) {
 			if (arg0.isActionKey() || arg0.getKeyCode() == KeyEvent.VK_ENTER
@@ -31,6 +34,9 @@ public class AdrKeyListener implements KeyListener{
 
 		}
 
+		/**
+		 *Ova funkcija se poziva nako unosa karaktera u txtField, koristimo je da bi ogranicili unos odredjenih karaktera.
+		 */
 		@Override
 		public void keyReleased(KeyEvent arg0) {
 			if (arg0.isActionKey() || arg0.getKeyCode() == KeyEvent.VK_ENTER

@@ -27,7 +27,7 @@ import validation.GodIzvodjenjaKeyListener;
 import validation.SamoSlovaKeyListener;
 
 /**
- * Dijalog za dodavanje novog predmeta u tabelu svih predmeta.
+ * Dijalog pomocu koga se dodaje novi predmet u tabelu prikaza predmeta
  * @author Branimir
  *
  */
@@ -41,11 +41,11 @@ public class NewPredmetDialog extends JDialog{
 private static NewPredmetDialog instance = null;
 	
 	/**
-	 * Metoda koja pravi/vraca instancu dijaloga za dodavanje predmeta.
+	 * Metoda koja pravi i vraca instancu dijaloga za dodavanje predmeta.
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
-	 * @return instance
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
+	 * @return instance instanca dialoga
 	 */
 	public static NewPredmetDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
@@ -55,9 +55,9 @@ private static NewPredmetDialog instance = null;
 	}
 	
 	/**
-	 * Konstruktor dijaloga za dodavanje novog predmeta u tabelu predmeta, sastoji se od polja za svaku potrebnu informaciju,
-	 * dugmica za odustanak ili potvrdu. Ukoliko polja nisu validno popunjena, bacice gresku. Ukoliko nisu sva polja popunjena,
-	 * onemogucava pritisak dugmeta za potvrdu.
+	 * Kostruktor dijaloga za dodavanje novog predmeta u tabelu prikaza predmeta, sastoji se od parova labela i text polja,
+	 * labele oznacavaju potrebne informacije za kreiranje novog predmeta dok txtField-ovi sluze za preuzimanje tih istih informacija.
+	 * Dugme "Potrvdi" kreira predmeta sa unetim informacijama, dugme "Odustani" gasi ovaj dialog, beze sacuvavanja
 	 * Uzima dimenzije u odnosu na roditeljski frejm.
 	 * @param parent roditeljski frejm
 	 * @param title naslov

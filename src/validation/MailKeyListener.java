@@ -10,13 +10,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- * Key Listener koji proverava validnost tokom popunjavanja polja za e mail adresu studenta ili profesora.
- * dozvoljava unos 25 karaktera maksimalno, pri cemu nije moguce uneti  brojeve i znakove.
+* Key Listener koji se koristi pri proveri validnosti popunjavanja polja za email.
+ * Sluzi za proveru validnosti unetih znakova i ogranicava unos previse karaktera..
  * @author Branimir
  *
  */
 public class MailKeyListener implements KeyListener{
 	
+	/**
+	 *Ova funkcija se poziva pri unosenju karaktera u txtField, koristimo je za ogranicenje broja unetih karaktera.
+	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		if (arg0.isActionKey() || arg0.getKeyCode() == KeyEvent.VK_ENTER
@@ -31,6 +34,9 @@ public class MailKeyListener implements KeyListener{
 
 	}
 
+	/**
+	 *Ova funkcija se poziva nako unosa karaktera u txtField, koristimo je da bi ogranicili unos odredjenih karaktera.
+	 */
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		if (arg0.isActionKey() || arg0.getKeyCode() == KeyEvent.VK_ENTER

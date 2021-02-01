@@ -8,7 +8,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 /**
- * Singleton klasa koja nasledjuje JTable i predstavlja tabelu predmeta.
+ * Singleton klasa koja nasledjuje JTable i predstavlja  predmeta u obliku tabele
  * @author Filip
  *
  */
@@ -22,7 +22,7 @@ public class PredmetJTable extends JTable{
 	private static PredmetJTable instance = null;
 
 	/**
-	 * Metoda koja vraca/pravi instancu klase PredmetJTable.
+	 * Metoda koja kreira i instancu klase PredmetJTable.
 	 * @return instance
 	 */
 	public static PredmetJTable getInstance() {
@@ -33,8 +33,8 @@ public class PredmetJTable extends JTable{
 	}
 	
 	/**
-	 * Konstruktor tabele predmeta, koristi metode iz JTable klase.
-	 * Povezana je sa apstraktim modelom.
+	 * Konstruktor koji kreira tabelu predmeta koristeci metode iz JTable klase,
+	 * direktno je povezana sa apstraktnom model klasom preko modela.
 	 */
 	public PredmetJTable() {
 		this.setRowSelectionAllowed(true);
@@ -44,6 +44,9 @@ public class PredmetJTable extends JTable{
 		this.setModel(new AbstractTableModelPredmet());	
 	}
 	
+	/**
+	 * Metoda koja sluzi da pripremi izgled tabele, i menja izgled u zavisnosti od korisnikovih radnji
+	 */
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		

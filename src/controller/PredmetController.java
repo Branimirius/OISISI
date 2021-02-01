@@ -23,8 +23,8 @@ private static PredmetController instance = null;
 	
 	/**
 	 * /**
-	 * Metoda koja vraca/pravi instancu klase kontrolera svih predmeta.
-	 * @return instance
+	 * Metoda koja pravi i vraca instancu klase kontrolera predmeta.
+	 * @return instance instanca ove klase
 	 */
 	 
 	public static PredmetController getInstance() {
@@ -38,15 +38,15 @@ private static PredmetController instance = null;
 	
 	/**
 	 * Metoda koja dodaje predmet u tabelu svih predmeta, kao parametre prima polja iz modela predmeta koja su 
-	 * potrebna za konstruktor predmeta i dodavanje u listu unutar baze predmeta.
-	 * @param idPredmeta
-	 * @param nazivPredmeta
-	 * @param semestar
-	 * @param godinaIzvodjenja
-	 * @param predmetniProfesor
-	 * @param brojEspbBodova
-	 * @param listPolozili
-	 * @param listNisuPolozili
+	 * potrebna za konstruktor predmeta i dodavanje u listu unutar klase BazaPredmeta.
+	 * @param idPredmeta indentifikacioni broj predmeta u stringu 
+	 * @param nazivPredmeta naziv predmeta u stringu 
+	 * @param semestar semestar  odrzavanja predmeta
+	 * @param godinaIzvodjenja godina na kojoj se premdet izvodi 
+	 * @param predmetniProfesor ko je predmetni profesor (tipa  Profesor)
+	 * @param brojEspbBodova broj ESPB bodova (tipa int)
+	 * @param listPolozili lista studenata koji su polozili ovaj predmet
+	 * @param listNisuPolozili lista studenata koji nisu polozili ovaj predmet
 	 */
 	public void dodajPredmet(String idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
 			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili,
@@ -60,13 +60,13 @@ private static PredmetController instance = null;
 	}
 	
 	/**
-	 * Metoda koja vrsi izmenu predmeta u bazi predmeta tako sto azurira informacije parametrima koje prima. Ukoliko nije selektovan
-	 * nijedan predmet iz tabele, iskocice dijalog upozorenja i nece biti moguca izmena.
+	 * Metoda koja vrsi izmenu predmeta iz klase BazaPredmeta  tako sto azurira informacije parametrima koje prima. 
+	 * Ukoliko nije selektovan nijedan predmet iz tabele, iskocice dijalog upozorenja i nece biti omogucena izmena.
 	 * @param rowSelectedIndex selektovani predmet
-	 * @param nazivPredmeta
-	 * @param brojEspbBodova
-	 * @param semestar
-	 * @param godinaIzvodjenja
+	 * @param nazivPredmeta naziv predmeta u stringu 
+	 * @param brojEspbBodova broj ESPB bodova (tipa int)
+	 * @param semestar semestar  odrzavanja predmeta
+	 * @param godinaIzvodjenja godina na kojoj se premdet izvodi 
 	 */
 	public void izmeniPredmet(int rowSelectedIndex, String nazivPredmeta, Integer brojEspbBodova, Semestar semestar, Integer godinaIzvodjenja) {
 		if (rowSelectedIndex < 0) {
@@ -81,9 +81,9 @@ private static PredmetController instance = null;
 	}
 	
 	/**
-	 * Metoda koja uklanja selektovani predmet iz tabele predmeta. Ako nije selektovan predmet,
-	 *  iskocice dijalog upozorenja i izmena nece biti moguca.
-	 * @param rowSelectedIndex selektovani predmet
+	 * Metoda koja uklanja selektovani predmet iz tabele predmeta. 
+	 * Ako nije selektovan predmet, iskocice dijalog upozorenja i izmena nece biti moguca.
+	 * @param rowSelectedIndex indeks selektovanog predmeta
 	 */
 	public void izbrisiPredmet(int rowSelectedIndex) {
 		if (rowSelectedIndex < 0) {

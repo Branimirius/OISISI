@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Klasa koja reprezentuje model ocene.
- * Polja: student i predmet na koje se ocena odnosi, vrednost ocene i datum upisa ocene.
+ * Model predmeta koji se koristi kao predstava polozenog predmeta u nasoj studentskoj sluzbi.
+ * Ovaj model poseduje sva polja koja su potrebna da definisemo jedan polozeni predmet odnosno ocenu
  * @author Branimir
  *
  */
@@ -19,10 +19,10 @@ public class Ocena {
 	
 	/**
 	 * Konstruktor ocene, kao parametre prima sva potrebna polja.
-	 * @param student
-	 * @param predmet
-	 * @param ocena
-	 * @param datum
+	 * @param student Student koji je polozio predmet
+	 * @param predmet Predmet koji je polozen
+	 * @param ocena tipa  Int (od 5 - 10) koju je Student ostvari na Predmetu
+	 * @param datum tipa Date kog datuma je Student polozio Predmet
 	 */
 	public Ocena(Student student, Predmet predmet, int ocena, String datum) {
 		super();

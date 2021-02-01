@@ -23,8 +23,8 @@ public class ProfesorController {
 	private static ProfesorController instance = null;
 	
 	/**
-	 * Metoda koja vraca/pravi instancu klase kontrolera svih profesora.
-	 * @return instance
+	 * Metoda koja pravi i vraca instancu klase kontrolera profesora.
+	 * @return instance instanca ove klase
 	 */
 	public static ProfesorController getInstance() {
 		if(instance == null) {
@@ -37,17 +37,17 @@ public class ProfesorController {
 	
 	/**
 	 * Metoda koja dodaje profesora u tabelu svih profesora, kao parametre prima polja iz modela profesora koja su 
-	 * potrebna za konstruktor profesora i dodavanje u listu unutar baze profesora.
-	 * @param prezime
-	 * @param ime
-	 * @param datum_rodjenja
-	 * @param adresa_stanovanja
-	 * @param kontakt_telefon
-	 * @param email_adresa
-	 * @param broj_licne_karte
-	 * @param titula
-	 * @param zvanje
-	 * @param lista_predmeta
+	 * potrebna za konstrukciju profesora i dodavanje istog u listu profesora unutar klase BazaProfesora.
+	 * @param prezime prezime u stringu
+	 * @param ime ime u stringu
+	 * @param datum_rodjenja daturm rodjenja u date-u
+	 * @param adresa_stanovanja adresa u stringu
+	 * @param kontakt_telefon broj telefona u stringu
+	 * @param email_adresa email adresa u stringu
+	 * @param broj_licne_karte broj licne karte u stringu - koristi se kao indentifikator za profesora
+	 * @param titula vrednost iz enuma Titula
+	 * @param zvanje vrednost iz enuma Zvanje
+	 * @param lista_predmeta lista Predmeta na kojima Profesor predaje
 	 */
 	public void dodajProfesora(String prezime, String ime, String datum_rodjenja, String adresa_stanovanja, 
 			String kontakt_telefon, String email_adresa, String broj_licne_karte, 
@@ -61,19 +61,19 @@ public class ProfesorController {
 	}
 	
 	/**
-	 * Metoda koja vrsi izmenu pofesora u bazi profesora tako sto azurira informacije parametrima koje prima. Ukoliko nije selektovan
-	 * nijedan profesor iz tabele, iskocice dijalog upozorenja i nece biti moguca izmena.
-	 * @param prof
-	 * @param prezime
-	 * @param ime
-	 * @param datum_rodjenja
-	 * @param adresa_stanovanja
-	 * @param kontakt_telefon
-	 * @param email_adresa
-	 * @param broj_licne_karte
-	 * @param titula
-	 * @param zvanje
-	 * @param lista_predmeta
+	 * Metoda koja vrsi izmenu pofesora iz BazaProfesora tako sto azurira informacije parametrima koje prima. 
+	 * Ukoliko nije selektovan nijedan profesor iz tabele, iskocice dijalog upozorenja i nece biti omogucena izmena.
+	 * @param prof Profesor koga izmenjujemo
+	 * @param prezime prezime u stringu
+	 * @param ime ime u stringu
+	 * @param datum_rodjenja daturm rodjenja u date-u
+	 * @param adresa_stanovanja adresa u stringu
+	 * @param kontakt_telefon broj telefona u stringu
+	 * @param email_adresa email adresa u stringu
+	 * @param broj_licne_karte broj licne karte u stringu - koristi se kao indentifikator za profesora
+	 * @param titula vrednost iz enuma Titula
+	 * @param zvanje vrednost iz enuma Zvanje
+	 * @param lista_predmeta Predmeta na kojima Profesor predaje
 	 */
 	public void izmeniProfesora(Profesor prof, String prezime, String ime, String datum_rodjenja, String adresa_stanovanja, 
 			String kontakt_telefon, String email_adresa, String broj_licne_karte, 
@@ -86,8 +86,8 @@ public class ProfesorController {
 		JOptionPane.showMessageDialog(null, ("Izmena je izvrsena"));
 	}
 	/**
-	 * Metoda koja uklanja selektovanog profesora iz tabele profesora. Ako nije selektovan profesor,
-	 * iskocice dijalog upozorenja i izmena nece biti moguca.
+	 * Metoda koja uklanja selektovanog profesora iz tabele profesora. 
+	 * Ako nije selektovan profesor, iskocice dijalog upozorenja i izmena nece biti omogucena.
 	 * @param rowSelectedIndex indeks selektovanog profesora
 	 */
 	public void izbrisiProfesora(int rowSelectedIndex) {

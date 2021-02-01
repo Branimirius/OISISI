@@ -5,10 +5,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * Klasa koja change listener, sadrzi akcionu metodu koja registruje promenu taba, 
- * Koristi se za cuvanje informacije o selektovanom tabu u promenljivoj sel, da bi
- * se na osnovu toga otvarali odgovarajuci dijalozi.
- * @author brani
+ * Klasa koja sluzi da registruje tab na kome se nalazi korisnik ("Student", "Profeosor", "Predmet").
+ * ta infomacija nam je potrebna za otvaranje adekvatnog New/Edit/Delete Dialoga.
+ * @author Branimir
  *
  */
 public class ChangeListenerTabs implements ChangeListener {
@@ -18,7 +17,9 @@ public class ChangeListenerTabs implements ChangeListener {
 	
 	
 	
-
+	/**
+	Metoda koja se aktivira pri promeni taba i tu informaciju cuva u statickoj promenjivoj sel
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		// TODO Auto-generated method stub
@@ -32,7 +33,7 @@ public class ChangeListenerTabs implements ChangeListener {
 
 
 	/**
-	 * Geter metoda koja vraca indeks selektovanog taba.
+	 * Geter metoda koja vraca indeks selektovanog taba tabbedPane-a
 	 * @return selektovani tab id
 	 */
 	public int getSel() {

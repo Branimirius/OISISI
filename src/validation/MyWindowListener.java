@@ -10,6 +10,9 @@ import javax.swing.WindowConstants;
  * Window Listener koji se koristi prilikom zatvaranja glavnog prozora studentske sluzbe.
  * Prvo izbacuje dijalog gd korisnik potvrdjuje da li zaista zeli da napusti aplikaciju da ne bi dolazilo do 
  * slucajnog zatvaranja.
+ * 
+ * Window Listener predstavlja "pop out" prozorcic koji pita za potvrdu zatvaranja aplikacije.
+ * Sluzi da ne bi doslo do slucajnog zatvaranja aplikacije (cele sluzbe).
  * @author Filip
  *
  */
@@ -27,6 +30,9 @@ public class MyWindowListener implements WindowListener {
 
 	}
 
+	/**
+	 * u slucaju zatvaranja mainframe-a iniciramo "pop-out" prozor sa opcijama "yes"-zatvori "no"-odustani od zatvaranja
+	 */
 	@Override
 	public void windowClosing(WindowEvent arg0) {
 		JFrame frame = (JFrame) arg0.getComponent();

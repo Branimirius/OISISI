@@ -48,7 +48,7 @@ public class DodajNepolozeniPredmetDialog extends JDialog{
 	 * Inicijalizuju se dimenzije, polja, dugmici i sve funkcionalnosti dugmica u odnosu na popunjena polja.
 	 * @param parent roditeljski frejm
 	 * @param title naslov dijaloga
-	 * @param modal da li je dijalog modalan ili ne
+	 * @param modal boolean(da li je modalan?) 
 	 */
 	public DodajNepolozeniPredmetDialog(JFrame parent, String title, boolean modal) {
 		super(parent, title, modal);

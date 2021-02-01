@@ -1,8 +1,8 @@
 package controller;
 
 /**
- * Lista popunjenih polja unutar dijaloga, koristi se za evidenciju prilikom kontrole otkljucavanja/zakljucavanja 
- * dugmeta unutar dijaloga dodavanja/izmene studenta.
+* Lista uslova za svako txtField polje na Edit/New dialogu,
+ * ako je svaka boolean vrednost unutar liste == true adekvatan ButtonController otkljucava dugme "Potvrdi"
  * @author Branimir
  *
  */
@@ -23,8 +23,8 @@ public class ValidListaStudent {
 	private Boolean[] listValid = new Boolean[8];
 	
 	/**
-	 * Konstruktor liste popunjenih polja u dijalogu, false znaci da polje nije popunjeno,
-	 *  true znaci da jeste popunjeno. Inicijalno je false.
+	* Konstruktor liste popunjenih polja u dijalogu, false znaci da polje nije adekvatno popunjeno,
+	 *  true znaci da je adekvatno popunjeno. Posto su pri otvaranju dialoga sva polja prazna inicijalizujemo vrednosti liste na "false".
 	 */
 	public ValidListaStudent() {
 		this.listValid[0] = false;
@@ -54,7 +54,7 @@ public class ValidListaStudent {
 	}
 	
 	/**
-	 * Metoda za validaciju odredjenog segmenta valid liste popunjenih polja.
+	* Metoda za validaciju odredjenog clana valid liste poziva se kada txtField postane adekvatno popunjen.
 	 * @param i indeks popunjenog polja
 	 */
 	public void validateList(int i) {
@@ -62,8 +62,8 @@ public class ValidListaStudent {
 	}
 	
 	/**
-	 * Metoda koja nam daje informaciju da li je dijalog pravilno popunjen.
-	 * Koristi se za otkljucavanje/zakljucavanje dugmeta.
+	* Metoda koja kljucna za kontrolu stanja dugmeta, ako su svi clanovi ValidListe popunjeni 
+	 * to znaci da su sva txtField polja adekvatno ispunjena. Tj. Controller moze da otkljuca dugme "potvrdi".
 	 * @return boolean vrednost u zavisnosti od validnosti popunjenih polja
 	 */
 	public Boolean listValid() {

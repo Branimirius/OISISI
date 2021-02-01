@@ -15,8 +15,7 @@ import controller.ProfesorController;
 import oisisi.ProfesorJTable;
 
 /**
- * Dijalog za brisanje profesora. Sastoji se od konstruktora dijaloga unutar koga su implementirane 
- * sve potrebne funkcionalnosti.
+  * Dijalog za brisanje profesora, predstavlja "pop out" prozor koji trazi od korisnika potvrdu brisanja profesora.
  * @author Branimir
  *
  */
@@ -30,12 +29,11 @@ public class DeleteProfesorDialog extends JDialog{
 	private static DeleteProfesorDialog instance = null;
 	
 	/**
-	 * Metoda koja vraca instancu dijaloga za brisanje profesora.
-	 * Kao parametre prima roditeljski frejm, naslov dijaloga i istinitosnu vrednost da li je modalan ili ne.
-	 * @param parent
-	 * @param title
-	 * @param modal
-	 * @return instance
+	 * Metoda koja pravi i vraca instancu dijaloga za brisanje studenta.
+	 * @param parent roditeljski frejm
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
+	 * @return instance instanca dijaloga
 	 */
 	public static DeleteProfesorDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
@@ -46,11 +44,10 @@ public class DeleteProfesorDialog extends JDialog{
 	
 	/**
 	 * Konstruktor dijaloga za brisanje profesora,
-	 *  kao parametre prima roditeljski frejm, naslov dijaloga i istinitosnu vrednost da li je modalan ili ne.
 	 * Unutar ovog konstruktora implementirani su dugmici za potvrdu ili odustanak od brisanja profesora koji je selektovan u tabeli. 
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost 
+	 * @param title naslov dijaloga
+	 * @param modal  boolean(da li je modalan?)
 	 */
 	public DeleteProfesorDialog(Frame parent, String title, boolean modal) {
 		

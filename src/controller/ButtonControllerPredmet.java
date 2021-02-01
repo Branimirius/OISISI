@@ -6,7 +6,8 @@ import javax.swing.event.DocumentListener;
 
 /**
  * Klasa koja implementira DocumentListener,
- *  upotrebljena je za zakljucavanje dugmeta u dijalozima za izmenu i dodavanje predmeta.
+ *  koristi se za zakljucavanje dugmeta "Potvrdi"u dijalozima za izmenu i dodavanje profesora, 
+ *  stanje dugmeta zavisi od teksta koji se nalazi u txtField-ovima, tj da li je ValidListPredmet zapravo validna
  *  
  * @author Branimir
  *
@@ -18,11 +19,11 @@ public class ButtonControllerPredmet implements DocumentListener{
 	int br;
 	
 	 /**
-	   * Konstruktor kontrolera zakljucavanja dugmeta u dijalozima za izmenu i dodavanje predmeta
-	   * Prima parametre: dugme na koje se odnosi i broj polja koje se popunjava, kada su sva polja popunjena
-	   * dugme ce se otkljucati ili zakljucati ako je polje prazno.
-	 * @param b
-	 * @param i
+	   * Konstruktor kontrolera zakljucavanja dugmeta u dijalozima za izmenu i dodavanje profesora
+	   * Parametri konstruktora su dugme na koje primenjujemo ovaj kontroler i broj txtField-ova od kojih nam zavisi validnost uslova,
+	   * Dugme se otkljucava/zakljucava u zavisnosti od validnosti ValidListPredmet.
+	 * @param b dugme na koje primenjujemo kontroler
+	 * @param i  broj txtField-ova koriscenih za validaciju
 	 */	
 	public ButtonControllerPredmet(JButton b, int i) {
 		    button = b;
@@ -48,8 +49,8 @@ public class ButtonControllerPredmet implements DocumentListener{
 	}
 	
 	 /**
-	   * Metoda koja zakljucava dugme za potvrdu ako je neko polje prazno,
-	   * kao parametar uzima registrovani dogadjaj unutar dokumenta (polja).
+	   * Metoda koja zakljucava dugme za potvrdu ako svi uslovi za validnost liste nisu ispunjeni.
+	   * Sve moguce promene nad bilo kojim txtField-om pozivaju ovu funkciju (changedUpdate, insertUpdate, removeUpdate)
 	 * @param e registrovani dogadjaj unutar polja dijaloga
 	 */
 	public void disableIfEmpty(DocumentEvent e) {

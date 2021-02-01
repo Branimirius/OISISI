@@ -10,7 +10,8 @@ import model.Titula;
 import model.Zvanje;
 
 /**
- * Klasa koja predstavlja model profesora u studentskoj sluzbi.
+ * Model profesora koji se koristi kao predstava profesora u nasoj studenskoj sluzbi.
+ * Ovaj model poseduje sva polja koja su potrebna da definisemo jednog profesora.
  * @author Filip
  *
  */
@@ -35,18 +36,17 @@ public class Profesor {
     public Profesor() {}
 
 	/**
-	 * Konstruktor sa parametrima za model profesora.
-	 * Prima odgovarajuce parametre za svako polje.
-	 * @param prezime
-	 * @param ime
-	 * @param datumRodjenja
-	 * @param adresaStanovanja
-	 * @param kontaktTelefon
-	 * @param emailAdresa
-	 * @param brLicneKarte
-	 * @param titula
-	 * @param zvanje
-	 * @param listaPredmeta
+	 * Konstruktor sa parametrima za objekat profesora. Sva potrebna polja dobija kroz parametre
+	 * @param prezime tipa String
+	 * @param ime tipa String
+	 * @param datumRodjenja tipa Date, koristi se metoda StringToDate da prebaci String vrednost i u modelu je sacuva kao Date
+	 * @param adresaStanovanja tipa String
+	 * @param kontaktTelefon tipa String
+	 * @param emailAdresa tipa String
+	 * @param brLicneKarte indetifikator za profesore, tipa String
+	 * @param titula enum Titula
+	 * @param zvanje enum Zvanje
+	 * @param listaPredmeta lista Predmeta na kojima Profesor predaje
 	 */
 	public Profesor(String prezime, String ime, String datumRodjenja, String adresaStanovanja,
 			String kontaktTelefon, String emailAdresa, String brLicneKarte, Titula titula, Zvanje zvanje,

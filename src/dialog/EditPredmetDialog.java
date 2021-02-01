@@ -24,11 +24,11 @@ public class EditPredmetDialog extends JDialog {
 	private static EditPredmetDialog instance = null;
 	
 	/**
-	 * Metoda koja poziva/pravi instancu dijaloga za izmenu predmeta.
+	 * Metoda koja kreira i vraca instancu dijaloga za izmenu predmeta.
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
-	 * @return instance
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
+	 * @return instance instanca dialoga
 	 */
 	public static EditPredmetDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
@@ -38,12 +38,11 @@ public class EditPredmetDialog extends JDialog {
 	}
 	
 	/**
-	 * Konstruktor dijaloga za izmenu predmeta.
-	 * Poziva tab za izmenu, na kome se nalaze svi potrebni elementi.
-	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * Konstruktor dijaloga za izmenu predmeta, 
+	 * koji sluzi za kreiranje taba na kome ce se nalaziti TabIzmenapredmeta
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
 	 */
 	public EditPredmetDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);

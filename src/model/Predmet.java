@@ -5,7 +5,8 @@ import java.util.List;
 //enum Semestar{ZIMSKI, LETNJI};
 
 /**
- * Klasa koja predstavlja model predmeta.
+ * Model predmeta koji se koristi kao predstava predmeta u nasoj studentskoj sluzbi.
+ * Ovaj model poseduje sva polja koja su potrebna da definisemo jedan predmet
  * @author Filip
  *
  */
@@ -27,14 +28,14 @@ public class Predmet {
 	
 	/**
 	 * Konstruktor predmeta, prima parametre za svako polje.
-	 * @param idPredmeta
-	 * @param nazivPredmeta
-	 * @param semestar
-	 * @param godinaIzvodjenja
-	 * @param predmetniProfesor
-	 * @param brojEspbBodova
-	 * @param listPolozili
-	 * @param listNisuPolozili
+	 * @param idPredmeta tipa String jedinstven je i sluzi za indetifikaciju Predmeta
+	 * @param nazivPredmeta tipa String
+	 * @param semestar enum Semestar ( Letnji / Zimski)
+	 * @param godinaIzvodjenja tipa Int. na kojoj se godini predmet izvodi
+	 * @param predmetniProfesor koji profesor predaje ovaj predmet, tip Profesor
+	 * @param brojEspbBodova Integer ESPB bodovi
+	 * @param listPolozili lista Studenata koji su polozili ovaj predmet
+	 * @param listNisuPolozili lista Studenata koji nisu polozili ovaj predmet
 	 */
 	public Predmet(String idPredmeta, String nazivPredmeta, Semestar semestar, Integer godinaIzvodjenja,
 			Profesor predmetniProfesor, Integer brojEspbBodova, List<Student> listPolozili,

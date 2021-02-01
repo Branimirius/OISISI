@@ -35,7 +35,7 @@ import dialog.NewStudentDialog;
 
 
 /**
- * Linija alata u aplikaciji studentske sluzbe. Sadrzi alate za kreiranje, izmenu, brisanje i pretragu entiteta aplikacije.
+ * Klasa koja predstavlja liniju alata u aplikaciji. Sadrzi alate za kreiranje, izmenu, brisanje i pretragu entiteta unutar aplikacije.
  * @author Filip
  *
  */
@@ -47,8 +47,8 @@ public class MyToolbar extends JToolBar implements ActionListener, ItemListener 
 	private static final long serialVersionUID = 1307178798190736592L;
 
 	/**
-	 * Konstruktor linije alata u aplikaciji studentske sluzbe.
-	 * Kreira komponente za kreiranje, izmenu, brisanje i pretragu entiteta aplikacije.
+	 * Konstruktor linije alata i svih potrebnih opcija na njoj.
+	 * Dugmici na Toolbaru:  NEW, EDIT, DELETE, SEARCH(txtField), SEARCH(button)
 	 * @param parent
 	 */
 	public MyToolbar(final JFrame parent) {

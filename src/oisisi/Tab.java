@@ -13,9 +13,9 @@ import model.BazaNepolozeniPredmeti;
 
 
 /**
- * Tab nasledjuje JTabbedPane i predstavlja tabove na kojima se nalaze paneli sa odgovarajucim tabelama.
- * (tabela profesora, predmeta i studenata)
- * Ovde se upotrebljava change listener za registrovanje trenutnog taba.
+ * Tab nasledjuje JTabbedPane i predstavlja tabove na kojima se nalaze paneli sa odgovarajucim tabelama:
+ * Tabela profesora, tabela studenata, tabela predmeta.
+ * Koristimo klasu ChangeListenerTabs da bi odredili na kom se tabu korisnik nalazi.
  * @author Filip
  *
  */
@@ -28,6 +28,10 @@ public class Tab extends JTabbedPane{
 		
 	private static Tab instance = null;
 
+	/**
+	 * Metoda koja kreira i vraca instancu klase tab
+	 * @return instanca klase tab
+	 */
 	public static Tab getInstance() {
 		if (instance == null) {
 			instance = new Tab();
@@ -60,6 +64,9 @@ public class Tab extends JTabbedPane{
 	
 	JTabbedPane tabbedPane = new JTabbedPane();
 	
+	/**
+	 * Konsturktor Tab klase
+	 */
 	public Tab() {
 		
 		studentPanel.setLayout(new BorderLayout());

@@ -23,11 +23,11 @@ public class EditProfesorDialog extends JDialog{
 	private static EditProfesorDialog instance = null;
 	
 	/**
-	 * Metoda koja poziva/pravi instancu dijaloga za izmenu profesora.
+	* Metoda koja kreira i vraca instancu dijaloga za izmenu profesora.
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
-	 * @return instance
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
+	 * @return instance instanca dialoga
 	 */
 	public static EditProfesorDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
@@ -37,12 +37,11 @@ public class EditProfesorDialog extends JDialog{
 	}
 	
 	/**
-	 * Konstruktor dijaloga za izmenu profesora.
-	 * Poziva tab za izmenu, na kome se nalaze svi potrebni elementi.
-	 * Uzima dimenzije u odnosu na roditeljski frejm.
+	 * Konstruktor dijaloga za izmenu profesora, 
+	 * koji sluzi za kreiranje taba na kome ce se nalaziti TabIzmenaProfesora
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
 	 */
 	public EditProfesorDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);

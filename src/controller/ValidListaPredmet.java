@@ -1,8 +1,8 @@
 package controller;
 
 /**
- * Lista popunjenih polja unutar dijaloga, koristi se za evidenciju prilikom kontrole otkljucavanja/zakljucavanja 
- * dugmeta unutar dijaloga dodavanja/izmene predmeta.
+ * Lista uslova za svako txtField polje na Edit/New dialogu,
+ * ako je svaka boolean vrednost unutar liste == true adekvatan ButtonController otkljucava dugme "Potvrdi"
  * @author Filip
  *
  */
@@ -25,8 +25,8 @@ public class ValidListaPredmet {
 	private Boolean[] listValid = new Boolean[3];
 	
 	/**
-	 * Konstruktor liste popunjenih polja u dijalogu, false znaci da polje nije popunjeno,
-	 *  true znaci da jeste popunjeno. Inicijalno je false.
+	 * Konstruktor liste popunjenih polja u dijalogu, false znaci da polje nije adekvatno popunjeno,
+	 *  true znaci da je adekvatno popunjeno. Posto su pri otvaranju dialoga sva polja prazna inicijalizujemo vrednosti liste na "false".
 	 */
 	public ValidListaPredmet() {
 		this.listValid[0] = false;
@@ -51,7 +51,7 @@ public class ValidListaPredmet {
 	}
 	
 	/**
-	 * Metoda za validaciju odredjenog segmenta valid liste popunjenih polja.
+	 * Metoda za validaciju odredjenog clana valid liste poziva se kada txtField postane adekvatno popunjen.
 	 * @param i indeks popunjenog polja
 	 */
 	public void validateList(int i) {
@@ -59,7 +59,7 @@ public class ValidListaPredmet {
 	}
 	
 	/**
-	 * Metoda za ponistavanje validacije segmenta valid liste popunjenih polja.
+	  * Metoda za ponistavanje validacije dredjenog clana valid liste, poziva se kada txtField vise nije adekvatno popunjen,
 	 * @param i indeks polja koje nije validno popunjeno
 	 */
 	public void deValidateList(int i) {
@@ -67,8 +67,8 @@ public class ValidListaPredmet {
 	}
 	
 	/**
-	 * Metoda koja nam daje informaciju da li je dijalog pravilno popunjen.
-	 * Koristi se za otkljucavanje/zakljucavanje dugmeta.
+	* Metoda koja kljucna za kontrolu stanja dugmeta, ako su svi clanovi ValidListe popunjeni 
+	 * to znaci da su sva txtField polja adekvatno ispunjena. Tj. Controller moze da otkljuca dugme "potvrdi".
 	 * @return boolean vrednost u zavisnosti od validnosti popunjenih polja
 	 */
 	public Boolean listValid() {

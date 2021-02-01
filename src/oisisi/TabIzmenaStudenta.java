@@ -10,9 +10,10 @@ import javax.swing.JTabbedPane;
 
 
 /**
- * Tabbed pane koji sadrzi tabove za izmenu studenta, ukljucuje: tab za informacije (osnovne informacije),
- * tab sa tabelom polozenih predmeta, tab sa tabelom nepolozenih premdeta. Kod tabele polozenih se nalaze dugmici za
- * ponistavanje ocene i labela sa prosekom. Kod tabele nepolozenih se nalaze dugmici za polaganje, uklanjanje i dodavanje predmeta.
+ * JTabbedPane koji sadrzi sve potrebne tabove za izmenu studenta:
+ * Tab polozneih predmeta i Tab nepolozenih predmeta 
+ * Tab polozenih predmeta: dugmici za ponistavanje ocena i labela sa prosekom.
+ * Tab nepolozenih predmeta: dugmici za polaganje, uklanjanje  i  dodavanje predmeta.
  * @author Branimir
  *
  */
@@ -26,7 +27,7 @@ public class TabIzmenaStudenta extends JTabbedPane{
 	private static TabIzmenaStudenta instance = null;
 
 	/**
-	 * Metoda koja vraca/pravi instancu tabbed pane a za izmenu studenta.
+	 * Metoda koja kreira i  vraca instancu tabbed pane-a za izmenu studenta.
 	 * @param dim dimenzija tabbed pane a, zadaje se iz roditeljskog frejma.
 	 * @return instance
 	 */
@@ -40,9 +41,7 @@ public class TabIzmenaStudenta extends JTabbedPane{
 	//private TabPolozeniPredmeti polozeniPanel;
 	
 	/**
-	 * Konstruktor za tabbed pane za izmenu studenta, sadrzi: tab za informacije (osnovne informacije),
-	 * tab sa tabelom polozenih predmeta, tab sa tabelom nepolozenih premdeta. Kod tabele polozenih se nalaze dugmici za
-	 * ponistavanje ocene i labela sa prosekom. Kod tabele nepolozenih se nalaze dugmici za polaganje, uklanjanje i dodavanje predmeta. 
+	 * Konstruktor za tabbed pane sa svim potrebnim tabovima za izmenu studenta
 	 * @param dim dimenzija za tabbed pane, prosledjuje se iz roditeljskog frejma
 	 */
 	public TabIzmenaStudenta(Dimension dim) {

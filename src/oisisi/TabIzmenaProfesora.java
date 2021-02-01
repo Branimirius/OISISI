@@ -35,8 +35,8 @@ import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
 /**
- * Klasa koja predstavlja tabove na kojima se menjaju informacije o selektovanom profesoru.
- * Sastoji se od labela polja i dugmica za sve neophodne informacije o profesoru.
+ * JTabbedPane koji sadrzi sve potrebne tabove za izmenu profesora,
+ * tab se sastoji od svih labela polja i dugmica neophodnih za izmenu podataka o profesoru.
  * @author Filip
  *
  */
@@ -52,7 +52,7 @@ public class TabIzmenaProfesora extends JTabbedPane{
 	private static TabIzmenaProfesora instance = null;
 
 	/**
-	 * Metoda koja vraca/pravi instancu taba za izmenu profesora.
+	 * Metoda koja kreira i vraca instancu taba za izmenu profesora.
 	 * @param dim dimenzija koja se prosledjuje iz roditeljskog frejma.
 	 * @return instance
 	 */
@@ -64,10 +64,10 @@ public class TabIzmenaProfesora extends JTabbedPane{
 	}
 	
 	/**
-	 * Konstruktor taba za izmenu profesora. 
-	 * Kreiraju se labele, polja i dugmici za sve neophodne informacije o profesoru.  
-	 * Ukoliko nisu sva polja popunjena, dugme je zakljucano. Ukoliko neko polje nije validno popnjeno, 
-	 * program baca gresku. 
+	  *Konstruktor taba za izmenu profesora. 
+	 * Kreiraju se labele, txtpolja koja primaju sve neophodne informacije o profesoru, i dugmici
+	 * Ukoliko neko polje nije validno popnjeno dugme "potvrdi" nece biti omoguceno.
+	 * Dugme "odustani" gasi dialog, bez izvrsavanja zadatih promena.
 	 * @param dim dimenzija taba, salje se iz roditeljskog frejma
 	 */
 	public TabIzmenaProfesora(Dimension dim) {

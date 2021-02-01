@@ -2,11 +2,11 @@ package controller;
 
 import javax.swing.JOptionPane;
 
-import model.BazaNepolozeniPredmeti;
+
 import model.BazaOcena;
 import model.Ocena;
 import model.Predmet;
-import oisisi.TabNepolozeniPredmeti;
+
 import oisisi.TabPolozeniPredmeti;
 
 /**
@@ -19,8 +19,8 @@ public class OceneController {
 private static OceneController instance = null;
 	
 	/**
-	 * Metoda koja vraca/pravi instancu klase kontrolera polozenih predmeta.
-	 * @return instance
+	 * Metoda koja pravi i vraca instancu klase kontrolera polozenih predmeta.
+	 * @return instance instanca ove klase
 	 */
 	public static OceneController getInstance() {
 		if(instance == null) {
@@ -29,19 +29,22 @@ private static OceneController instance = null;
 		return instance;
 	}
 	
+	/**
+	 * Prazan konstruktor.
+	 */
 	private OceneController() {}
 	
 	/**
-	 * Metoda za inicijalizaciju tabele polozenih predmeta kod studenta.
-	 * Poziva listu iz baze ocena i azurira tabelu.
+	 * Metoda koja inicijalizuje tabelu nepolozenih predmeta pomocu podataka iz BazaOcena,
+	 * i nakon inicijalizacije azurira izgled te tabele koja se nalazi na Tab-u polozenih predmeta
 	 */
 	public void initOcene() {
 		BazaOcena.getInstance().initOcena();
 		TabPolozeniPredmeti.getInstance().updateViewPolozeni();
 	}
 	/**
-	 * Metoda koja ponistava ocenu, brise je iz tabele polozenih kod studenta.
-	 * @param id indeks ocene, iz liste ocena, koju ponistavamo
+	 * Metoda koja ponistava ocenu, tj. brise je iz tabele polozenih kod studenta.
+	 * @param id indeks ocene, iz liste polozenih predmeta (ocena) koju brisemo.
 	 */
 	public void ponistiOcenu(int id) {
 		if (id < 0) {

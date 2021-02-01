@@ -6,8 +6,7 @@ import model.BazaOcena;
 import model.BazaPredmeta;
 
 /**
- * Apstraktni model koji se koristi za kreiranje tabele.
- * Radjeno po uzoru na vezbe.
+ * Klasa apstraknog modela, koja sluzi za kreiranje tabele prikaza Polozenih predmeta(PolozeniJTable)
  * @author Branimir
  *
  */

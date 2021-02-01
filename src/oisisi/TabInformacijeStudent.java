@@ -34,17 +34,18 @@ import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
 /**
- * Ovo je tab koji se pojavljuje pri izmeni studenta i na njemu se mogu menjati sve osnovne informacije o studentu.
- * Sastoji se iz tekstualnih polja, labela i dugmica za potvrdu i odustanak. Dugme za potvrdu se zakljucava ukoliko 
- * nisu popunjena sva polja. Takodje nije moguce uneti nevalidne vrednosti u polja.
+ * Klasa koja predstavlja tab koji se pojavljuje pri izmeni studenta,
+ * na ovom tabu su predstavljene sve osnovne informacije o izabranom studentu,
+ * preko txtField-ova je omogucena izmena izabranog studenta,
+ * takodje postoje dugmici "potvrdi" "odustani"
+ * "potvrdi" je moguce kliknuti samo  ako su sva txtField polja adekvatno ispunjena
  * @author Branimir
  *
  */
 /**
- * Konstruktor taba za izmenu informacija o studentu.
- * Sastoji se iz tekstualnih polja, labela i dugmica za potvrdu i odustanak. Dugme za potvrdu se zakljucava ukoliko 
- * nisu popunjena sva polja. Takodje nije moguce uneti nevalidne vrednosti u polja.
- * @author brani
+ * Konstruktor taba koji prikazuje informacije o studentu.
+ * Zajedno sa svim potrebnim labelama i txtfield-ovima.
+ * @author Branimir
  *
  */
 public class TabInformacijeStudent extends JPanel {
@@ -266,7 +267,6 @@ public class TabInformacijeStudent extends JPanel {
 	
 	/**
 	 * Metoda koja pretvara tip statusa studenta iz String (combo box) u Status(model studenta)
-	 * Status nam je potreban za slanje u kontroler i konstruktor studenta.
 	 * @param status String
 	 * @return status Status
 	 */

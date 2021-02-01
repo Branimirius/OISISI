@@ -23,8 +23,8 @@ import oisisi.NepolozeniJTable;
 import oisisi.StudentJTable;
 
 /**
- * Baza nepolozenih predmeta studenata. Ovde se nalaze liste studenata i predmeta koje su neophodne za kreiranje 
- * odgovarajucih tabela.
+ * Baza  podataka koja cuva listu Nepolozenih predmeta kao glavnu bazu podataka koriscenu za kreiranje 
+ * svih potrebnih tabela u programu koje sadrze nepolozene predmete.
  * @author Filip
  *
  */
@@ -37,7 +37,7 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	private static BazaNepolozeniPredmeti instance = null;
 
 	/**
-	 * Metoda koja vraca instancu baze nepolozenih predmeta.
+	 * Metoda koja  kreira i  vraca instancu baze nepolozenih predmeta.
 	 * @return instance
 	 */
 	public static BazaNepolozeniPredmeti getInstance() {
@@ -54,8 +54,8 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	private Student stud;
 
 	/**
-	 * Konstruktor koji se koristi za pravljenje instance, sastoji se od metode inicijalizacije baze nepolozenih predmeta i 
-	 * definisanje kolona za tabelu nepolozenih.
+	  * Kontruktor koji se koristi za pravljenje instance baze nepolozenih predmeta, sostoji se od metode koja inicijalizuje bazu nepolozenih predmeta
+	 * tj. stavlja pocetne vrednosti u bazu iz txt dokumenta.
 	 */
 	private BazaNepolozeniPredmeti() {
 		
@@ -70,8 +70,8 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	}
 	
 	/**
-	 * Metoda koja pomocu deserijalizacije ucitava vrednosti nepolozenih prdmeta iz datog fajla i rasporedjuje ih u 
-	 * odgovarajuce liste.
+	  * Metoda koja pomocu deserijalizacije ucitava vrednosti svih nepolozenih predmeta iz datog fajla i rasporedjuje ih u 
+	 * bazu nepolozenih predmeta, tj listu "predmeti"
 	 */
 	public void initNepolozeniPredmeti() {
 		
@@ -137,8 +137,8 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	}
 	
 	/**
-	 * Metoda koja vrsi serijalizaciju trenutnog stanja u tabeli(nakon svih izmena) na taj nacin cuvamo stanje u tabeli za 
-	 * sledecu upotrebu.
+    * Metoda koja vrsi serijalizaciju, tj. sacuvava promene izvrsene nad nepolozenim predmetima  tj studentima, 
+    * poziva se pri zatvaranju programa preko menubar-a
 	 * @throws Exception
 	 * @throws IOException
 	 */
@@ -173,8 +173,8 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	}
 	
 	/**
-	 * Metoda koja prebacuje predmete iz nepolozenih u polozene (ocene). Koristi se u funkciji polaganja ispita i
-	 * unosa ocene.
+	 * Metoda koja prebacuje predmete iz nepolozenih u polozene (ocene). 
+	 * Koristi se u funkciji polaganja ispita i unosa ocene.
 	 * @param s vrednost ocene
 	 * @param t datum polaganja
 	 */
@@ -202,7 +202,7 @@ public class BazaNepolozeniPredmeti implements Serializable{
 		return ret;
 	}
 	/**
-	 * Brisanje liste nepolozenih predmeta.
+	 * Metoda koja brise celu listu nepolozenih predmeta "predmeti"
 	 */
 	public void clearPredmeti() {
 		predmeti.clear();
@@ -229,7 +229,7 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	}
 
 	/**
-	 * Odabir predmeta iz tabele.
+	 * Odabir predmeta iz tabele tj liste "predmeti"
 	 * @param rowIndex
 	 * @return
 	 */
@@ -238,7 +238,7 @@ public class BazaNepolozeniPredmeti implements Serializable{
 	}
 
 	/**
-	 * Preuzimanje vrednosti iz specificnog polja unutar tabele.
+	 * Preuzimanje vrednosti iz specificnog polja unutar tabele tj liste "predmeti"
 	 * @param row red
 	 * @param column kolona
 	 * @return vrednost polja(red, kolona)
@@ -267,7 +267,7 @@ public class BazaNepolozeniPredmeti implements Serializable{
 		}
 	}
 	/**
-	 * Brisanje predmeta prosledjenim indeksom iz liste nepolozenih predmeta.
+	 * Metoda koja brise nepolozeni predmet iz liste nepolozenih predmeta, predmet se bira preko ID-a.
 	 * @param ID indeks ciljanog predmeta
 	 */
 	public void izbrisiPredmet(String ID) {

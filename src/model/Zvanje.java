@@ -1,7 +1,8 @@
 package model;
 
 /**
- * Klasa koja se koristi za enumeraciju zvanja profesora.
+ * Klasa koja se koristi za enumeraciju zvanja profesora. 
+ * Opcije zvanja: Saradnik u nastavi, asistent, asistent sa doktoratom, docent, vanredni profesor, redovni profesor, profesor emeritus
  * @author Filip
  *
  */

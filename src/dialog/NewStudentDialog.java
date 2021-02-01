@@ -35,7 +35,7 @@ import validation.MailKeyListener;
 import validation.SamoSlovaKeyListener;
 
 /**
- * Dijalog za dodavanje novog studenta u tabelu svih studenata.
+ * Dijalog pomocu kog se dodaje novi student u tabelu prikaza studenata.
  * @author Branimir
  *
  */
@@ -50,11 +50,11 @@ public class NewStudentDialog extends JDialog {
 	private static NewStudentDialog instance = null;
 	
 	/**
-	 * Metoda koja pravi/vraca instancu dijaloga za dodavanje studenta.
+	 * Metoda koja pravi i vraca instancu dijaloga za dodavanje studenta.
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
-	 * @return instance
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
+	 * @return instance instanca dialoga
 	 */
 	public static NewStudentDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
@@ -65,13 +65,13 @@ public class NewStudentDialog extends JDialog {
 		
 	
 	/**
-	 * Konstruktor dijaloga za dodavanje novog studenta u tabelu studenata, sastoji se od polja za svaku potrebnu informaciju,
-	 * dugmica za odustanak ili potvrdu. Ukoliko polja nisu validno popunjena, bacice gresku. Ukoliko nisu sva polja popunjena,
-	 * onemogucava pritisak dugmeta za potvrdu.
+	 * Kostruktor dijaloga za dodavanje novog studenta u tabelu prikaza studenta, sastoji se od parova labela i text polja,
+	 * labele oznacavaju potrebne informacije za kreiranje novog studenta dok txtField-ovi sluze za preuzimanje tih istih informacija.
+	 * Dugme "Potrvdi" kreira studenta sa unetim informacijama, dugme "Odustani" gasi ovaj dialog, beze sacuvavanja
 	 * Uzima dimenzije u odnosu na roditeljski frejm.
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
 	 */
 	public NewStudentDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);

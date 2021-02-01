@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Ova klasa se koristi kao enumeracija za status studenta: B kao budzet ili S kao samofinansiranje.
+ * Ova klasa se koristi kao enumeracija za status studenta
  * @author Branimir
  *
  */

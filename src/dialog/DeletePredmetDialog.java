@@ -19,8 +19,7 @@ import oisisi.PredmetJTable;
 
 
 /**
- * Dijalog za brisanje predmeta. Sastoji se od konstruktora dijaloga unutar koga su implementirane 
- * sve potrebne funkcionalnosti.
+ * Dijalog za brisanje predmeta. predstavlja "pop out" prozor koji trazi od korisnika potvrdu brisanja predmeta.
  * @author Filip
  *
  */
@@ -35,11 +34,10 @@ private static DeletePredmetDialog instance = null;
 	
 	/**
 	 * Metoda koja vraca instancu dijaloga za brisanje predmeta.
-	 * Kao parametre prima roditeljski frejm, naslov dijaloga i istinitosnu vrednost da li je modalan ili ne.
-	 * @param parent
-	 * @param title
-	 * @param modal
-	 * @return instance
+	* @param parent roditeljski frejm
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
+	 * @return instance instanca dijaloga
 	 */
 	public static DeletePredmetDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
@@ -50,11 +48,10 @@ private static DeletePredmetDialog instance = null;
 	
 	/**
 	 * Konstruktor dijaloga za brisanje predmeta,
-	 *  kao parametre prima roditeljski frejm, naslov dijaloga i istinitosnu vrednost da li je modalan ili ne.
 	 * Unutar ovog konstruktora implementirani su dugmici za potvrdu ili odustanak od brisanja predmeta koji je selektovan u tabeli. 
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost 
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?)
 	 */
 	public DeletePredmetDialog(Frame parent, String title, boolean modal) {
 super(parent, title, modal);

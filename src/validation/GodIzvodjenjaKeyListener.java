@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- * Key Listener koji proverava validnost tokom popunjavanja polja za godinu izvodjenja predmeta.
- * Dozvoljava samo unos jednocifrenih brojeva od 1 do 6.
+* Key Listener koji se koristi pri proveri validnosti popunjavanja polja za godinu na kojoj se izvodi predmet..
+ * Sluzi za proveru validnosti unetih znakova i ogranicava unos previse karaktera.
  * @author Filip
  *
  */
@@ -20,6 +20,9 @@ public class GodIzvodjenjaKeyListener implements KeyListener{
 		
 	}
 
+	/**
+	 *Ova funkcija se poziva pri unosenju karaktera u txtField, koristimo je za ogranicenje broja unetih karaktera.
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.isActionKey() || e.getKeyCode() == KeyEvent.VK_ENTER
@@ -34,6 +37,9 @@ public class GodIzvodjenjaKeyListener implements KeyListener{
 		
 	}
 
+	/**
+	 *Ova funkcija se poziva nako unosa karaktera u txtField, koristimo je da bi ogranicili unos odredjenih karaktera.
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (e.isActionKey() || e.getKeyCode() == KeyEvent.VK_ENTER

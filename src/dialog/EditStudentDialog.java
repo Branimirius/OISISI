@@ -38,11 +38,11 @@ public class EditStudentDialog extends JDialog{
 	private static EditStudentDialog instance = null;
 	
 	/**
-	 * Metoda koja poziva/pravi instancu dijaloga za izmenu studenta.
+	 * Metoda koja kreira i vraca instancu dijaloga za izmenu studenta.
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
-	 * @return instance
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
+	 * @return instance instanca dialoga
 	 */
 	public static EditStudentDialog getInstance(Frame parent, String title, boolean modal) {
 		if (instance == null) {
@@ -55,8 +55,8 @@ public class EditStudentDialog extends JDialog{
 	private TabIzmenaStudenta tabIzmena;
 	
 	/**
-	 * Metoda koja sluzi za kreiranje taba za izmenu studenta, dodavanje na tekucu komponentu i azuriranje
-	 * tabele nepolozenih predmeta studenta.
+	 * Metoda koja sluzi za kreiranje taba na kome ce se nalaziti TabIzmenaStudenta
+	 * Moglo je sve da stoji unutar kontruktora bez ove funkcije
 	 * 
 	 */
 	public void showTabIzmena(){
@@ -68,10 +68,9 @@ public class EditStudentDialog extends JDialog{
 	/**
 	 * Konstruktor dijaloga za izmenu studenta.
 	 * Poziva tab za izmenu, na kome se nalaze svi potrebni elementi.
-	 * Uzima dimenzije u odnosu na roditeljski frejm.
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
 	 */
 	public EditStudentDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
@@ -89,7 +88,7 @@ public class EditStudentDialog extends JDialog{
 	}
 	
 /**
- * Metoda koja azurira tabelu nepolozenih predmeta kod studenta.
+ * Metoda koja azurira tabelu nepolozenih predmeta preko abstraktnog modela te jtabele.
  */
 public void updateViewNepolozeni() {
 		

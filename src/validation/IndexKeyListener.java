@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- * Key Listener koji proverava validnost tokom popunjavanja broja indeksa kod studenta.
- * Dozvoljava samo unos 11 karaktera i to: velikih slova, brojeva, kose crte i crtice.
+ * Key Listener koji se koristi pri proveri validnosti popunjavanja polja za indeks.
+ * Sluzi za proveru validnosti unetih znakova i ogranicava unos previse karaktera.
  * @author Branimir
  *
  */
@@ -20,6 +20,9 @@ public class IndexKeyListener implements KeyListener {
 		
 	}
 
+	/**
+	 *Ova funkcija se poziva pri unosenju karaktera u txtField, koristimo je za ogranicenje broja unetih karaktera.
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.isActionKey() || e.getKeyCode() == KeyEvent.VK_ENTER
@@ -34,6 +37,9 @@ public class IndexKeyListener implements KeyListener {
 		
 	}
 
+	/**
+	 *Ova funkcija se poziva nako unosa karaktera u txtField, koristimo je da bi ogranicili unos odredjenih karaktera.
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (e.isActionKey() || e.getKeyCode() == KeyEvent.VK_ENTER

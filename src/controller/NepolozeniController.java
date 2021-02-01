@@ -2,7 +2,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 
-import dialog.UnosOceneDialog;
+
 import model.BazaNepolozeniPredmeti;
 import model.BazaPredmeta;
 import model.BazaStudenata;
@@ -22,8 +22,8 @@ public class NepolozeniController {
 private static NepolozeniController instance = null;
 	
 	/**
-	 * Metoda koja vraca/pravi instancu klase kontrolera nepolozenih predmeta.
-	 * @return instance
+	 * Metoda koja pravi i vraca instancu klase kontrolera nepolozenih predmeta.
+	 * @return instance instanca ove klase
 	 */
 	public static NepolozeniController getInstance() {
 		if(instance == null) {
@@ -38,8 +38,8 @@ private static NepolozeniController instance = null;
 	private NepolozeniController() {}
 	
 	/**
-	 * Metoda koja inicaijalizuje tabelu nepolozenih predmeta tako sto uzima vrednosti iz liste unutar
-	 * baze nepolozenih predmeta.
+	 * Metoda koja inicijalizuje tabelu nepolozenih predmeta pomocu podataka iz BazaNepolozeniPredmeti,
+	 * i nakon inicijalizacije azurira izgled te tabele koja se nalazi na Tab-u nepolozenih predmeta
 	 */
 	public void initNepolozeni() {
 		BazaNepolozeniPredmeti.getInstance().initNepolozeniPredmeti();
@@ -47,11 +47,12 @@ private static NepolozeniController instance = null;
 	}
 	
 	/**
-	 * Metoda koja predstavlja polaganje predmeta jednog studenta,
-	 *  prima ocenu, datum i indeks predmeta koji se polaze.
-	 * @param o
-	 * @param t
-	 * @param id
+	 * Metoda koja predstavlja polaganje predmeta jednog studenta.
+	 *  Nalazi izabranog studenta, dodaje ocenu u listupolozeni u studentu,
+	 *  brise ispit iz liste nepolozenih . i na kraju azurira tabele (Nepolozeni, Polozeni, Student)
+	 * @param o ocena na ispitu, u string formatu
+	 * @param t datum polaganja ispita, u string formatu
+	 * @param id index predmeta
 	 */
 	public void Polaganje(String o, String t, int id) {
 		if (id < 0) {
@@ -66,8 +67,10 @@ private static NepolozeniController instance = null;
 		
 	}
 	/**
-	 * Dodavanje studenta u listu(tabelu) nepolozenih predmeta kod studenta.
-	 * @param id indeks predmeta (iz baze predmeta) koji se dodaje.
+	 * Dodavanje predmeta u listu nepolozenih predmeta studentu.
+	 * preko "id" nalazimo izabran predmet i dodajemo ga studentu,
+	 * koristimo lokalnu promenjivu "idS" da saznamo kom studentu dodajemo predmet
+	 * @param id indeks izabranog reda iz tabele predmeta
 	 */
 	public void dodajPredmet(int id) {
 		Predmet predmet = BazaPredmeta.getInstance().getRow(id);
@@ -78,7 +81,8 @@ private static NepolozeniController instance = null;
 	}
 	
 	/**
-	 * Dodavanje predmeta u listu nepolozenih predmeta, bez indeksa, preko objekta iz modela.
+	 * Dodavanje predmeta u listu nepolozenih predmeta studentu,
+	 * bez koriscenja id-a, vec preko objekta iz modela.
 	 * @param predmet objekat modela predmet
 	 */
 	public void dodajPredmetNoId(Predmet predmet) {
@@ -88,8 +92,9 @@ private static NepolozeniController instance = null;
 	}
 	
 	/**
-	 * Uklanjanje predmeta iz liste(tabele) nepolozenih predmeta kod studenta.
-	 * @param id indeks predmeta koji uklanjamo
+	 * Uklanjanje nepolozenog predmeta iz liste nepolozenih predmeta kod studenta.
+	 * Ova metoda ne pravi polozeni predmet, samo brise ne polozeni. 
+	 * @param id indeks reda u tabli na kom se nalazi predmeta koji uklanjamo
 	 */
 	public void obrisiPredmet(int id) {
 		if (id < 0) {

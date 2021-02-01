@@ -8,7 +8,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
 /**
- * Klasa koja se koristi za kreiranje prozora za help.
+ * Klasa koja se koristi za kreiranje help prozora
  * @author Branimir
  *
  */

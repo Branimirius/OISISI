@@ -5,8 +5,7 @@ import javax.swing.table.AbstractTableModel;
 import model.BazaPredmeta;
 
 /**
- * Apstraktni model koji se koristi za kreiranje tabele.
- * Radjeno po uzoru na vezbe.
+* Klasa apstraknog modela, koja sluzi za kreiranje tabele prikaza Predmeta(PredmetJTable)
  * @author Filip
  *
  */

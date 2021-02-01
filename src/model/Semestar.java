@@ -1,7 +1,8 @@
 package model;
 
 /**
- * Ova klasa se koristi kao enumeracija za semestar u kom se izvodi predmet.
+ * Klasa koja se koristi za enumeraciju semestra na kom se predmet izvodi.
+ * Podrzane opcije titula: Letnji, Zimski
  * @author Filip
  *
  */

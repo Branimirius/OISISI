@@ -32,8 +32,8 @@ import validation.GodIzvodjenjaKeyListener;
 import validation.SamoSlovaKeyListener;
 
 /**
- * Klasa koja predstavlja tabove na kojima se menjaju informacije o selektovanom predmetu.
- * Sastoji se od labela polja i dugmica za sve neophodne informacije o predmetu.
+ * JTabbedPane koji sadrzi sve potrebne tabove za izmenu predmeta,
+ * tab se sastoji od svih labela polja i dugmica neophodnih za izmenu podataka o predmetu.
  * @author Filip
  *
  */
@@ -47,7 +47,7 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 	private static TabIzmenaPredmeta instance = null;
 
 	/**
-	 * Metoda koja vraca/pravi instancu taba za izmenu predmeta.
+	 * Metoda koja kreira i vraca instancu taba za izmenu predmeta.
 	 * @param dim dimenzija koja se prosledjuje iz roditeljskog frejma.
 	 * @return instance
 	 */
@@ -61,9 +61,9 @@ public class TabIzmenaPredmeta extends JTabbedPane{
 	
 	/**
 	 * Konstruktor taba za izmenu predmeta. 
-	 * Kreiraju se labele, polja i dugmici za sve neophodne informacije o predmetu.  
-	 * Ukoliko nisu sva polja popunjena, dugme je zakljucano. Ukoliko neko polje nije validno popnjeno, 
-	 * program baca gresku. 
+	 * Kreiraju se labele, txtpolja koja primaju sve neophodne informacije o predmetu, i dugmici
+	 * Ukoliko neko polje nije validno popnjeno dugme "potvrdi" nece biti omoguceno.
+	 * Dugme "odustani" gasi dialog, bez izvrsavanja zadatih promena.
 	 * @param dim dimenzija taba, salje se iz roditeljskog frejma
 	 */
 	public TabIzmenaPredmeta(Dimension dim) {

@@ -29,8 +29,8 @@ import oisisi.TabPolozeniPredmeti;
 
 
 /**
- * Baza svih studenata. Ovde se nalazi lista svih studenata na studentskoj sluzbi i koristi se za kreiranje   
- * odgovarajucih tabela.
+ * Baza  podataka koja cuva listu Studenata kao glavnu bazu podataka koriscenu za kreiranje 
+ * svih potrebnih tabela u programu koje sadrze studente.
  * @author Branimir
  *
  */
@@ -42,7 +42,7 @@ public class BazaStudenata implements Serializable{
 	private static BazaStudenata instance = null;
 
 	/**
-	 * Metoda koja vraca instancu baze studenata.
+	 * Metoda koja kreira i vraca instancu baze studenata.
 	 * @return instance
 	 */
 	public static BazaStudenata getInstance() {
@@ -58,8 +58,8 @@ public class BazaStudenata implements Serializable{
 
 	
 	/**
-	 * Konstruktor koji se koristi za pravljenje instance, sastoji se od metode inicijalizacije baze studenata i 
-	 * definisanje kolona za tabelu studenata.
+	 * Kontruktor koji se koristi za pravljenje instance baze studenata, sostoji se od metode koja inicijalizuje bazu studenata
+	 * tj. stavlja pocetne vrednosti u bazu iz txt dokumenta.
 	 */
 	private BazaStudenata() {
 	
@@ -88,7 +88,7 @@ public class BazaStudenata implements Serializable{
 
 	/**
 	 * Metoda koja pomocu deserijalizacije ucitava vrednosti svih studenata iz datog fajla i rasporedjuje ih u 
-	 * odgovarajuce liste.
+	 * bazu studenata, tj listu "studenti"
 	 */
 	private void initStudente() {
 		
@@ -130,8 +130,7 @@ public class BazaStudenata implements Serializable{
 	}
 	
 	/**
-	 * Metoda koja vrsi serijalizaciju trenutnog stanja u tabeli (nakon svih izmena) na taj nacin cuvamo stanje u tabeli za 
-	 * sledecu upotrebu.
+	 * Metoda koja vrsi serijalizaciju, tj. sacuvava promene izvrsene nad studentima, poziva se pri zatvaranju programa preko menubar-a
 	 * @throws Exception
 	 * @throws IOException
 	 */
@@ -178,7 +177,8 @@ public class BazaStudenata implements Serializable{
 	}
 	
 	/**
-	 * Metoda koja upisuje ocenu studentu. Kao parametre prima predmet koji je polozen, vrednost ocene i datum polaganja.
+	 * Metoda koja stvara ocenu, upisuje je kod izabranog studenta(preko ids) 
+	 * dodaje ocenu u listu polozenih predmeta i a brise je iz liste nepolozenih predmeta
 	 * @param p predmet
 	 * @param s vrednost ocene
 	 * @param d datum polaganja
@@ -213,7 +213,7 @@ public class BazaStudenata implements Serializable{
 	}
 
 	/**
-	 * Odabir studenta iz tabele.
+	 * Vraca studenta sa odabranog reda iz tabele
 	 * @param rowIndex ciljani indeks studenta
 	 * @return student sa datog indeksa iz liste profesora
 	 */
@@ -222,7 +222,7 @@ public class BazaStudenata implements Serializable{
 	}
 
 	/**
-	 * Preuzimanje vrednosti iz specificnog polja unutar tabele.
+	 * Preuzimanje vrednosti iz specificnog polja unutar tabele tj liste "studenti"
 	 * @param row red
 	 * @param column kolona
 	 * @return vrednost polja(red, kolona)
@@ -263,17 +263,16 @@ public class BazaStudenata implements Serializable{
 
 	/**
 	 * Metoda koja dodaje novog studenta u listu studenata. Poziva se iz kontrolera.
-	 * @param prezime
-	 * @param ime
-	 * @param datumRodjenja
-	 * @param adresaStana
-	 * @param kontaktTel
-	 * @param eMail
-	 * @param brIndeksa
-	 * @param godUpisa
-	 * @param godStudija
-	 * @param statusStudenta
-	 * @param prosecnaOcena
+     * @param prezime tipa String
+	 * @param ime tipa String 
+	 * @param datumRodjenja tipa Date
+	 * @param adresaStana tipa String 
+	 * @param kontaktTel telefon studenta tipa String
+	 * @param eMail email studenta tipa String
+	 * @param brIndeksa Broj indeksa studenta  - koristi se kao idetifikator
+	 * @param godUpisa godina u kojoj je upisao student fakultet tipa Int
+	 * @param godStudija koju godinu studija student pohadja tipa String
+	 * @param statusStudenta Boolean (Da li je na budzetu ili na samofinansiranju student)
 	 */
 	public void dodajStudenta(String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta,
@@ -298,16 +297,16 @@ public class BazaStudenata implements Serializable{
 	 * Metoda koja menja informacije o selektovanom studentu ciji se ID prosledjuje kao parametar.
 	 * Kao parametre prima sva potrebna polja za konstrukciju studenta. Ubacuje ga u listu(tabelu) 
 	 * @param ID indeks selektovanog studenta iz liste(tabele)
-	 * @param prezime
-	 * @param ime
-	 * @param datumRodjenja
-	 * @param adresaStana
-	 * @param kontaktTel
-	 * @param eMail
-	 * @param brIndeksa
-	 * @param godUpisa
-	 * @param godStudija
-	 * @param statusStudenta
+	 * @param prezime tipa String
+	 * @param ime tipa String 
+	 * @param datumRodjenja tipa Date
+	 * @param adresaStana tipa String 
+	 * @param kontaktTel telefon studenta tipa String
+	 * @param eMail email studenta tipa String
+	 * @param brIndeksa Broj indeksa studenta  - koristi se kao indetifikator
+	 * @param godUpisa godina u kojoj je upisao student fakultet tipa Int
+	 * @param godStudija koju godinu studija student pohadja tipa String
+	 * @param statusStudenta Boolean (Da li je na budzetu ili na samofinansiranju student)
 	 */
 	public void izmeniStudenta(String ID, String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta) {
@@ -327,7 +326,7 @@ public class BazaStudenata implements Serializable{
 		}
 	}
 	/**
-	 * Metoda koja trazi ID selektovanog studenta u listi studenata i brise taj element liste.
+	 * Metoda koja brise studenta iz liste studenata, studenta bira preko ID-a 
 	 * @param ID indeks selektovanog studenta
 	 */
 	public void izbrisiStudenta(String ID) {
@@ -339,8 +338,7 @@ public class BazaStudenata implements Serializable{
 		}
 	}
 	/**
-	 * Metoda koja proverava da li dati indeks studenta vec postoji u listi studenata.
-	 * Koristi se pri sprecavanju pojave dva ista studenta u listi studenata.
+	 * Da li postoji student sa prosledjenim ID-om, sprecava unos dva ista studenta(sa istim ID)
 	 * @param ID indeks koji se uporedjuje
 	 * @return istinitosna vrednost
 	 */

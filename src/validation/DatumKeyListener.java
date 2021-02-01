@@ -8,13 +8,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- * Key Listener koji proverava validnost tokom popunjavanja polja za datum.
- * Dozvoljava samo unos brojeva i kose crtice u formatu koji je naznacen pre popunjavanja.
+ * Key Listener koji se koristi pri proveri validnosti popunjavanja polja za datum.
+ * Sluzi za proveru validnosti unetih znakova i ogranicava unos previse karaktera..
  * @author Branimir
  *
  */
 public class DatumKeyListener implements KeyListener {
 
+	/**
+	 *Ova funkcija se poziva pri unosenju karaktera u txtField, koristimo je za ogranicenje broja unetih karaktera.
+	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		
@@ -30,6 +33,9 @@ public class DatumKeyListener implements KeyListener {
 
 	}
 
+	/**
+	 *Ova funkcija se poziva nako unosa karaktera u txtField, koristimo je da bi ogranicili unos odredjenih karaktera.
+		 */
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 

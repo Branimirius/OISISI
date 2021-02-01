@@ -1,12 +1,11 @@
 package controller;
 
-import java.util.List;
+
 
 import javax.swing.JOptionPane;
 
 import model.BazaStudenata;
-import model.Ocena;
-import model.Predmet;
+
 import model.Status;
 import model.Student;
 import oisisi.MainFrame;
@@ -23,7 +22,7 @@ public class StudentController {
 private static StudentController instance = null;
 	
 	/**
-	 * Metoda koja vraca/pravi instancu klase kontrolera svih studenata.
+	 * Metoda koja pravi i vraca instancu klase kontrolera studenata.
 	 * @return instance
 	 */
 	public static StudentController getInstance() {
@@ -37,7 +36,7 @@ private static StudentController instance = null;
 	
 	/**
 	 * Metoda koja dodaje studenta u tabelu svih studenata, kao parametre prima polja iz modela studenta koja su 
-	 * potrebna za konstruktor studenta i dodavanje u listu unutar baze studenata.
+	 * potrebna za konstruktor studenta i dodavanje u listu unutar klase BazaStudenata.
 	 * @param prezime
 	 * @param ime
 	 * @param datumRodjenja
@@ -61,19 +60,19 @@ private static StudentController instance = null;
 	}
 	
 	/**
-	 * Metoda koja vrsi izmenu studenta u bazi studenata tako sto azurira informacije parametrima koje prima. Ukoliko nije selektovan
-	 * nijedan student iz tabele, iskocice dijalog upozorenja i nece biti moguca izmena.
+	 * Metoda koja vrsi izmenu studenta iz BazaStudenata tako sto azurira informacije parametrima koje prima. 
+	 * Ukoliko nije selektovan nijedan student iz tabele, iskocice dijalog upozorenja i nece biti omogucena izmena.
 	 * @param rowSelectedIndex indeks selektovanog studenta
-	 * @param prezime
-	 * @param ime
-	 * @param datumRodjenja
-	 * @param adresaStana
-	 * @param kontaktTel
-	 * @param eMail
-	 * @param brIndeksa
-	 * @param godUpisa
-	 * @param godStudija
-	 * @param statusStudenta
+	 * @param prezime prezime u stringu
+	 * @param ime ime u stringu
+	 * @param datumRodjenja datum rodjenja u date-u
+	 * @param adresaStana adresa stanovanja u stringu
+	 * @param kontaktTel broj telfona u stringu 
+	 * @param eMail email adresa u stringu 
+	 * @param brIndeksa broj Indexa studenta u stringu - koristi se kao indentifikator za Studente
+	 * @param godUpisa godina upisa 
+	 * @param godStudija godina studija(od 1 do 4)
+	 * @param statusStudenta vrednost iz enuma Status
 	 */
 	public void izmeniStudenta(int rowSelectedIndex, String prezime, String ime, String datumRodjenja, String adresaStana, String kontaktTel,
 			String eMail, String brIndeksa, Integer godUpisa, String godStudija, Status statusStudenta) {
@@ -89,8 +88,8 @@ private static StudentController instance = null;
 	}
 	
 	/**
-	 * Metoda koja uklanja selektovanog studenta iz tabele studenata. Ako nije selektovan student,
-	 * iskocice dijalog upozorenja i izmena nece biti moguca.
+	 * Metoda koja uklanja selektovanog studenta iz tabele studenata. 
+	 * Ako nije selektovan student, iskocice dijalog upozorenja i izmena nece biti omogucena.
 	 * @param rowSelectedIndex indeks selektovanog studenta
 	 */
 	public void izbrisiStudenta(int rowSelectedIndex) {

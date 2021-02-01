@@ -16,8 +16,9 @@ import java.util.List;
 import oisisi.StudentJTable;
 
 /**
- * Baza polozenih predmeta studenata. Ovde se nalaze liste studenata, predmeta i ocena koje su neophodne za kreiranje 
- * odgovarajucih tabela.
+ *  Baza  podataka koja cuva listu Ocena kao glavnu bazu podataka koriscenu za kreiranje 
+ * svih potrebnih tabela u programu koje sadrze ocene
+ *  Ocena je u stvari Predmet + brojcana ocena + datum kog je polozen ispit .
  * @author Branimir
  *
  */
@@ -30,7 +31,7 @@ public class BazaOcena implements Serializable{
 	private static BazaOcena instance = null;
 
 	/**
-	 * Metoda koja vraca instancu baze ocena.
+	 * Metoda koja kreira i vraca instancu baze ocena.
 	 * @return instance
 	 */
 	public static BazaOcena getInstance() {
@@ -44,8 +45,8 @@ public class BazaOcena implements Serializable{
 	private List<String> kolone;
 
 	/**
-	 * Konstruktor koji se koristi za pravljenje instance, sastoji se od metode inicijalizacije baze ocena i 
-	 * definisanje kolona za tabelu polozenih predmeta.
+	  * Kontruktor koji se koristi za pravljenje instance baze ocena, sostoji se od metode koja inicijalizuje bazu ocena
+	 * tj. stavlja pocetne vrednosti u bazu iz txt dokumenta.
 	 */
 	private BazaOcena() {
 		initOcena();
@@ -59,8 +60,8 @@ public class BazaOcena implements Serializable{
 	}
 	
 	/**
-	 * Metoda koja pomocu deserijalizacije ucitava vrednosti polozenih prdmeta iz datog fajla i rasporedjuje ih u 
-	 * odgovarajuce liste.
+	 * Metoda koja pomocu deserijalizacije ucitava vrednosti svih ocene iz datog fajla i rasporedjuje ih u 
+	 * bazu ocena, tj listu "ocene"
 	 */
 	public void initOcena() {
 		
@@ -158,8 +159,8 @@ public class BazaOcena implements Serializable{
 	}
 	
 	/**
-	 * Metoda koja vrsi serijalizaciju trenutnog stanja u tabeli (nakon svih izmena) na taj nacin cuvamo stanje u tabeli za 
-	 * sledecu upotrebu.
+	 * Metoda koja vrsi serijalizaciju, tj. sacuvava promene izvrsene nad ocenama tj studentima, 
+	 * poziva se pri zatvaranju programa preko menubar-a
 	 * @throws Exception
 	 * @throws IOException
 	 */
@@ -209,7 +210,7 @@ public class BazaOcena implements Serializable{
 	}
 	
 	/**
-	 * Odabir predmeta iz tabele.
+	 * Odabir ocene iz tabele.
 	 * @param rowIndex
 	 * @return
 	 */
@@ -218,7 +219,7 @@ public class BazaOcena implements Serializable{
 	}
 	
 	/**
-	 * Preuzimanje vrednosti iz specificnog polja unutar tabele.
+	 * Preuzimanje vrednosti iz specificnog polja unutar tabele tj. lise "ocene".
 	 * @param row red
 	 * @param column kolona
 	 * @return vrednost polja(red, kolona)
@@ -257,7 +258,7 @@ public class BazaOcena implements Serializable{
 	}
 	
 	/**
-	 * Brisanje liste ocena.
+	 * Metoda koja brise celu listu ocena.
 	 */
 	public void clearOcene() {
 		this.ocene.clear();
@@ -265,7 +266,7 @@ public class BazaOcena implements Serializable{
 	}
 	
 	/**
-	 * Brisanje ocene prosledjenim indeksom iz liste polozenih predmeta.
+	 * Metoda koja brise ocenu iz liste ocena, ocena se bira preko ID-a.
 	 * @param ID indeks ciljane ocene
 	 */
 	public void izbrisiOcenu(Ocena o) {

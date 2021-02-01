@@ -32,7 +32,7 @@ import validation.SamoSlovaKeyListener;
 import javax.swing.JComboBox;
 
 /**
- * Dijalog za dodavanje novog profesora u tabelu svih profesora.
+ * Dijalog pomocu kog se dodaje novi profesor u tabelu prikaza profesora.
  * @author Filip
  *
  */
@@ -44,13 +44,13 @@ public class NewProfesorDialog  extends JDialog{
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Konstruktor dijaloga za dodavanje novog profesora u tabelu profesora, sastoji se od polja za svaku potrebnu informaciju,
-	 * dugmica za odustanak ili potvrdu. Ukoliko polja nisu validno popunjena, bacice gresku. Ukoliko nisu sva polja popunjena,
-	 * onemogucava pritisak dugmeta za potvrdu.
+	 * Kostruktor dijaloga za dodavanje novog profesora u tabelu prikaza profesora, sastoji se od parova labela i text polja,
+	 * labele oznacavaju potrebne informacije za kreiranje novog profesora dok txtField-ovi sluze za preuzimanje tih istih informacija.
+	 * Dugme "Potrvdi" kreira profesora sa unetim informacijama, dugme "Odustani" gasi ovaj dialog, beze sacuvavanja
 	 * Uzima dimenzije u odnosu na roditeljski frejm.
 	 * @param parent roditeljski frejm
-	 * @param title naslov
-	 * @param modal modalnost
+	 * @param title naslov dijaloga
+	 * @param modal boolean(da li je modalan?) 
 	 */
 	public NewProfesorDialog(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);

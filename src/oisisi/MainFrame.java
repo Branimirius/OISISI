@@ -19,8 +19,8 @@ import java.awt.BorderLayout;
 
 
 /**
- * Ovo je singleton klasa glavnog prozora aplikacije, instanca se poziva upravo u Main.
- * Ovo je stablo aplikacije.
+ * MainFrame klasa predstavalja  glavni prozor aplikacije, instanca ove klase se poziva u Main klasi.
+ * Osnova cele studentske sluzbe.
  * @author Filip
  *
  */
@@ -34,7 +34,7 @@ public class MainFrame extends JFrame{
 	private static MainFrame instance = null;
 
 	/**
-	 * Metoda koja pravi/vraca instancu klase MainFrame.
+	 * Metoda koja kreira i vraca instancu klase MainFrame.
 	 * @return instance
 	 */
 	public static MainFrame getInstance() {
@@ -47,7 +47,7 @@ public class MainFrame extends JFrame{
 	private Tab tab;
 	
 	/**
-	 * Konstruktor u kome je definisan izgled glavnog prozora aplikacije, koristi se u instanciranju.
+	 * Konstruktor u kome je definisan izgled glavnog prozora aplikacije.
 	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,7 +83,8 @@ public class MainFrame extends JFrame{
 	}
 	
 	/**
-	 * Metoda koja azurira izgled tabele studenata nakon svake izmene.
+	 * Metoda koja sluzi za azuriranje izgleda tabele studenata, 
+	 * poziva se nakon svake promene te tabele.
 	 */
 	public void updateViewStudent() {
 		
@@ -94,7 +95,8 @@ public class MainFrame extends JFrame{
 	}
 	
 	/**
-	 * Metoda koja azurira izgled tabele profesora nakon svake izmene.
+	 * Metoda koja sluzi za azuriranje izgleda tabele profesora, 
+	 * poziva se nakon svake promene te tabele.
 	 */
 	public void updateViewProfesor() {
 		
@@ -105,7 +107,8 @@ public class MainFrame extends JFrame{
 	}
 	
 	/**
-	 * Metoda koja azurira izgled tabele predmeta nakon svake izmene.
+	 * Metoda koja sluzi za azuriranje izgleda tabele predmeta, 
+	 * poziva se nakon svake promene te tabele.
 	 */
 	public void updateViewPredmet() {
 		
@@ -116,7 +119,8 @@ public class MainFrame extends JFrame{
 	}
 	
 	/**
-	 * Metoda koja poziva tabove sa tabelama studenata, profesora i premeta.
+	 * Metoda koja kreira tab, na kome se nalaze tabovi studenata, profesora i predmeta,
+	 * zatim updatuje tabelu studenata i tabelu profesora
 	 */
 	public void showTab() {
 		this.tab = new Tab();
